@@ -4,7 +4,7 @@ use strict;
 use warnings;
 
 use Catalyst::ScriptRunner;
-Catalyst::ScriptRunner->run('Tipping', 'Create');
+Catalyst::ScriptRunner->run('Tipping::WebApp', 'Create');
 
 1;
 

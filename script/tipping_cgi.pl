@@ -1,7 +1,7 @@
 #!/usr/bin/env perl
 
 use Catalyst::ScriptRunner;
-Catalyst::ScriptRunner->run('Tipping', 'CGI');
+Catalyst::ScriptRunner->run('Tipping::WebApp', 'CGI');
 
 1;
 

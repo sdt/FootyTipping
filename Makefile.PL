@@ -7,7 +7,7 @@ use Module::Install::Catalyst; # Complain loudly if you don't have
                                # 'make dist' to create a standalone tarball.
 
 name 'Tipping';
-all_from 'lib/Tipping.pm';
+all_from 'lib/Tipping/WebApp.pm';
 
 requires 'Catalyst::Runtime' => '5.80032';
 requires 'Catalyst::Plugin::ConfigLoader';
