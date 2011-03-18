@@ -4,6 +4,8 @@ use namespace::autoclean;
 
 use Catalyst::Runtime 5.80;
 
+use Tipping::Config;
+
 # Set flags and add plugins for the application.
 #
 # Note that ORDERING IS IMPORTANT here as plugins are initialized in order,
@@ -16,10 +18,7 @@ use Catalyst::Runtime 5.80;
 # Static::Simple: will serve static files from the application's root
 #                 directory
 
-# TODO: replace ConfigLoader with something non-catalyst
-
 use Catalyst qw/
-    ConfigLoader
     Static::Simple
 /;
 
@@ -35,6 +34,10 @@ our $VERSION = '0.01';
 # details given here can function as a default configuration,
 # with an external configuration file acting as an override for
 # local deployment.
+
+__PACKAGE__->config(
+    Tipping::Config->config
+);
 
 __PACKAGE__->config(
     name => 'Tipping',
