@@ -15,8 +15,10 @@ requires 'Catalyst::Action::RenderView';
 
 requires 'Config::JFDI';
 requires 'DBIx::Class::DeploymentHandler';
+requires 'File::ShareDir';
 requires 'Moose';
 requires 'namespace::autoclean';
+requires 'Params::Validate';
 requires 'SQL::Translator';
 
 test_requires 'Test::More' => '0.88';

@@ -1,0 +1,346 @@
+---
+schema:
+  procedures: {}
+  tables:
+    dbix_class_deploymenthandler_versions:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+        - deferrable: 1
+          expression: ''
+          fields:
+            - version
+          match_type: ''
+          name: dbix_class_deploymenthandler_versions_version
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: UNIQUE
+      fields:
+        ddl:
+          data_type: text
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: ddl
+          order: 3
+          size:
+            - 0
+        id:
+          data_type: int
+          default_value: ~
+          is_auto_increment: 1
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: id
+          order: 1
+          size:
+            - 0
+        upgrade_sql:
+          data_type: text
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: upgrade_sql
+          order: 4
+          size:
+            - 0
+        version:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 1
+          name: version
+          order: 2
+          size:
+            - 50
+      indices: []
+      name: dbix_class_deploymenthandler_versions
+      options: []
+      order: 1
+  triggers: {}
+  views: {}
+translator:
+  add_drop_table: 0
+  filename: ~
+  no_comments: 0
+  parser_args:
+    package: &1 !!perl/hash:Tipping::Schema
+      class_mappings:
+        DBIx::Class::DeploymentHandler::VersionStorage::Standard::VersionResult: __VERSION
+        Tipping::Schema::Result::Game: Game
+        Tipping::Schema::Result::Team: Team
+        Tipping::Schema::Result::Venue: Venue
+      source_registrations:
+        Game: !!perl/hash:DBIx::Class::ResultSource::Table
+          _columns:
+            away_team_behinds:
+              data_type: integer
+              default: 0
+              is_nullable: 0
+            away_team_goals:
+              data_type: integer
+              default: 0
+              is_nullable: 0
+            away_team_id:
+              data_type: integer
+              is_nullable: 0
+            home_team_behinds:
+              data_type: integer
+              default: 0
+              is_nullable: 0
+            home_team_goals:
+              data_type: integer
+              default: 0
+              is_nullable: 0
+            home_team_id:
+              data_type: integer
+              is_nullable: 0
+            round:
+              data_type: integer
+              is_nullable: 0
+            start_time:
+              _ic_dt_method: timestamp_with_timezone
+              _inflate_info:
+                deflate: !!perl/code '{ "DUMMY" }'
+                inflate: !!perl/code '{ "DUMMY" }'
+              data_type: timestamp with time zone
+              is_nullable: 0
+            venue_id:
+              data_type: integer
+              is_nullable: 0
+          _columns_info_loaded: 0
+          _ordered_columns:
+            - round
+            - home_team_id
+            - away_team_id
+            - venue_id
+            - start_time
+            - home_team_goals
+            - home_team_behinds
+            - away_team_goals
+            - away_team_behinds
+          _primaries: &2
+            - venue_id
+            - start_time
+          _relationships:
+            away_team:
+              attrs:
+                accessor: single
+                fk_columns:
+                  away_team_id: 1
+                is_foreign_key_constraint: 1
+                undef_on_null_fk: 1
+              class: Tipping::Schema::Result::Team
+              cond:
+                foreign.team_id: self.away_team_id
+              source: Tipping::Schema::Result::Team
+            home_team:
+              attrs:
+                accessor: single
+                fk_columns:
+                  home_team_id: 1
+                is_foreign_key_constraint: 1
+                undef_on_null_fk: 1
+              class: Tipping::Schema::Result::Team
+              cond:
+                foreign.team_id: self.home_team_id
+              source: Tipping::Schema::Result::Team
+            venue:
+              attrs:
+                accessor: single
+                fk_columns:
+                  venue_id: 1
+                is_foreign_key_constraint: 1
+                undef_on_null_fk: 1
+              class: Tipping::Schema::Result::Venue
+              cond:
+                foreign.venue_id: self.venue_id
+              source: Tipping::Schema::Result::Venue
+          _unique_constraints:
+            primary: *2
+          name: game
+          result_class: Tipping::Schema::Result::Game
+          resultset_attributes: {}
+          resultset_class: DBIx::Class::ResultSet
+          schema: *1
+          source_name: Game
+          sqlt_deploy_callback: default_sqlt_deploy_hook
+        Team: !!perl/hash:DBIx::Class::ResultSource::Table
+          _columns:
+            name:
+              data_type: varchar
+              is_nullable: 0
+            nickname:
+              data_type: varchar
+              is_nullable: 0
+            team_id:
+              data_type: integer
+              is_auto_increment: 1
+              is_nullable: 0
+          _columns_info_loaded: 0
+          _ordered_columns:
+            - team_id
+            - name
+            - nickname
+          _primaries: &3
+            - team_id
+          _relationships:
+            away_games:
+              attrs:
+                accessor: multi
+                cascade_copy: 1
+                cascade_delete: 1
+                join_type: LEFT
+              class: Tipping::Schema::Result::Game
+              cond:
+                foreign.away_team_id: self.team_id
+              source: Tipping::Schema::Result::Game
+            games:
+              attrs:
+                accessor: multi
+                cascade_copy: 1
+                cascade_delete: 1
+                join_type: LEFT
+              class: Tipping::Schema::Result::Game
+              cond:
+                - foreign_key.home_team_id: self.team_id
+                - foreign_key.away_team_id: self.team_id
+              source: Tipping::Schema::Result::Game
+            home_games:
+              attrs:
+                accessor: multi
+                cascade_copy: 1
+                cascade_delete: 1
+                join_type: LEFT
+              class: Tipping::Schema::Result::Game
+              cond:
+                foreign.home_team_id: self.team_id
+              source: Tipping::Schema::Result::Game
+          _unique_constraints:
+            primary: *3
+          name: team
+          result_class: Tipping::Schema::Result::Team
+          resultset_attributes: {}
+          resultset_class: DBIx::Class::ResultSet
+          schema: *1
+          source_name: Team
+          sqlt_deploy_callback: default_sqlt_deploy_hook
+        Venue: !!perl/hash:DBIx::Class::ResultSource::Table
+          _columns:
+            name:
+              data_type: varchar
+              is_nullable: 0
+            sponsor_name:
+              data_type: varchar
+              is_nullable: 0
+            venue_id:
+              data_type: integer
+              is_auto_increment: 1
+              is_nullable: 0
+          _columns_info_loaded: 0
+          _ordered_columns:
+            - venue_id
+            - name
+            - sponsor_name
+          _primaries: &4
+            - venue_id
+          _relationships:
+            games:
+              attrs:
+                accessor: multi
+                cascade_copy: 1
+                cascade_delete: 1
+                join_type: LEFT
+              class: Tipping::Schema::Result::Game
+              cond:
+                foreign.venue_id: self.venue_id
+              source: Tipping::Schema::Result::Game
+          _unique_constraints:
+            primary: *4
+          name: venue
+          result_class: Tipping::Schema::Result::Venue
+          resultset_attributes: {}
+          resultset_class: DBIx::Class::ResultSet
+          schema: *1
+          source_name: Venue
+          sqlt_deploy_callback: default_sqlt_deploy_hook
+        __VERSION: !!perl/hash:DBIx::Class::ResultSource::Table
+          _columns:
+            ddl:
+              data_type: text
+              is_nullable: 1
+            id:
+              data_type: int
+              is_auto_increment: 1
+            upgrade_sql:
+              data_type: text
+              is_nullable: 1
+            version:
+              data_type: varchar
+              size: 50
+          _columns_info_loaded: 0
+          _ordered_columns:
+            - id
+            - version
+            - ddl
+            - upgrade_sql
+          _primaries: &5
+            - id
+          _relationships: {}
+          _unique_constraints:
+            dbix_class_deploymenthandler_versions_version:
+              - version
+            primary: *5
+          name: dbix_class_deploymenthandler_versions
+          result_class: DBIx::Class::DeploymentHandler::VersionStorage::Standard::VersionResult
+          resultset_attributes: {}
+          resultset_class: DBIx::Class::DeploymentHandler::VersionStorage::Standard::VersionResultSet
+          schema: *1
+          source_name: __VERSION
+          sqlt_deploy_callback: default_sqlt_deploy_hook
+      storage: !!perl/hash:DBIx::Class::Storage::DBI
+        _connect_info:
+          - dsn: dbi:SQLite:tipping.sqlite.db
+        _dbh_details: {}
+        _dbh_gen: 0
+        _dbi_connect_info:
+          - dbi:SQLite:tipping.sqlite.db
+          - ~
+          - ~
+          - &6
+            AutoCommit: 1
+            PrintError: 0
+            RaiseError: 1
+            ShowErrorStatement: 1
+        _dbic_connect_attributes: *6
+        _in_dbh_do: 0
+        _sql_maker: ~
+        _sql_maker_opts: {}
+        savepoints: []
+        schema: *1
+        transaction_depth: 0
+    sources:
+      - __VERSION
+  parser_type: SQL::Translator::Parser::DBIx::Class
+  producer_args: {}
+  producer_type: SQL::Translator::Producer::YAML
+  show_warnings: 0
+  trace: 0
+  version: 0.11007

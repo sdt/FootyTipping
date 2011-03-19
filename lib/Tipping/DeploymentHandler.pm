@@ -1,8 +1,10 @@
 package Tipping::DeploymentHandler;
 
 use Modern::Perl;
-use DBIx::Class::DeploymentHandler;
-use SQL::Translator;
+
+use DBIx::Class::DeploymentHandler ();
+use File::ShareDir (qw/ module_dir /);
+use SQL::Translator ();
 use Moose;
 
 has schema => (
@@ -24,6 +26,7 @@ sub _build_deployment_handler {
         databases           => [qw/ SQLite PostgreSQL MySQL /],
         sql_translator_args => { add_drop_table => 0, },
         force_overwrite     => 1,
+        #script_directory    => module_dir('Tipping::DeploymentHandler'),
     } );
 
     return $dh;
@@ -63,6 +66,14 @@ sub prepare {
         } );
 
     $trans->translate;
+}
+
+sub update {
+    my $self = shift;
+
+    #TODO: this probably won't work once we get past version 1
+    $self->deployment_handler->install;
+    $self->deployment_handler->upgrade;
 }
 
 no Moose;
