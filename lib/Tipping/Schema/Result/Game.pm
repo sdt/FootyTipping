@@ -16,6 +16,11 @@ my $score = {
 __PACKAGE__->load_components(qw/Core InflateColumn::DateTime/);
 __PACKAGE__->table('game');
 __PACKAGE__->add_columns(
+    round        => {
+        data_type   => 'integer',
+        is_nullable => 0,
+    },
+
     home_team_id => $foreign_key,
     away_team_id => $foreign_key,
 

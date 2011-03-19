@@ -1,7 +1,7 @@
 package Tipping::Schema;
 use base qw/DBIx::Class::Schema/;
 
-use version 0.77; our $VERSION = qv("v0.0.1");
+our $VERSION = "1";
 
 use Modern::Perl;
 

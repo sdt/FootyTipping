@@ -6,7 +6,8 @@ use Data::Dumper::Concise;
 
 sub config {
     state $config = Config::JFDI->new(name => "Tipping");
-    say STDERR "CONFIG: ", Dumper($config->get);
+    die unless $config->found;
+    say STDERR "Tipping::Config = ", Dumper($config->get);
     return $config->get;
 }
 
