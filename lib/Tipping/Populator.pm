@@ -24,7 +24,7 @@ sub populate {
     my ($data) = YAML::XS::Load($args{yaml});
     say STDERR Dumper($data) if $args{verbose};
 
-    for my $row (@{ $data->{rows} }) {
+    for my $row (@{ $data->{insert} }) {
         $args{schema}->resultset($data->{table})->create({
             zip @{ $data->{columns} }, @{ $row }
         });

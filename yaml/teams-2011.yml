@@ -1,0 +1,57 @@
+---
+table: Team
+columns:
+  - name
+  - nickname
+insert:
+  -
+    - Adelaide
+    - Crows
+  -
+    - Brisbane
+    - Lions
+  -
+    - Carlton
+    - Blues
+  -
+    - Collingwood
+    - Mapgies
+  -
+    - Essendon
+    - Bombers
+  -
+    - Fremantle
+    - Dockers
+  -
+    - Geelong
+    - Cats
+  -
+    - Gold Coast
+    - Suns
+  -
+    - Hawthorn
+    - Hawks
+  -
+    - Melbourne
+    - Demons
+  -
+    - North Melbourne
+    - Kangaroos
+  -
+    - Port Adelaide
+    - Power
+  -
+    - Richmond
+    - Tigers
+  -
+    - St Kilda
+    - Saints
+  -
+    - Sydney
+    - Swans
+  -
+    - West Coast
+    - Eagles
+  -
+    - Western Bulldogs
+    - Western Bulldogs
