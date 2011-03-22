@@ -1,0 +1,44 @@
+table: Venue
+columns:
+  - name
+  - sponsor_name
+insert:
+  -
+    - Football Park
+    - AAMI Stadium
+  -
+    - Homebush
+    - ANZ Stadium
+  -
+    - York Park
+    - Aurora Stadium
+  -
+    - Cazaly's Stadium
+    - Cazaly's Stadium
+  -
+    - Docklands Stadium
+    - Etihad Stadium
+  -
+    - Gabba
+    - Gabba
+  -
+    - Gold Coast Stadium
+    - Gold Coast Stadium
+  -
+    - Manuka Oval
+    - Manuka Oval
+  -
+    - MCG
+    - MCG
+  -
+    - Subiaco Oval
+    - Patersons Stadium
+  -
+    - SCG
+    - SCG
+  -
+    - Cardinia Park
+    - Skilled Stadium
+  -
+    - Marrara Stadium
+    - TIO Stadium

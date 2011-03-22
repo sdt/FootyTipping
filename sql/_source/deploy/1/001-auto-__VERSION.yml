@@ -92,35 +92,28 @@ translator:
           _columns:
             away_team_behinds:
               data_type: integer
-              default: 0
+              default_value: 0
               is_nullable: 0
             away_team_goals:
               data_type: integer
-              default: 0
+              default_value: 0
               is_nullable: 0
             away_team_id:
               data_type: integer
               is_nullable: 0
             home_team_behinds:
               data_type: integer
-              default: 0
+              default_value: 0
               is_nullable: 0
             home_team_goals:
               data_type: integer
-              default: 0
+              default_value: 0
               is_nullable: 0
             home_team_id:
               data_type: integer
               is_nullable: 0
             round:
               data_type: integer
-              is_nullable: 0
-            start_time:
-              _ic_dt_method: timestamp_with_timezone
-              _inflate_info:
-                deflate: !!perl/code '{ "DUMMY" }'
-                inflate: !!perl/code '{ "DUMMY" }'
-              data_type: timestamp with time zone
               is_nullable: 0
             venue_id:
               data_type: integer
@@ -131,14 +124,14 @@ translator:
             - home_team_id
             - away_team_id
             - venue_id
-            - start_time
             - home_team_goals
             - home_team_behinds
             - away_team_goals
             - away_team_behinds
           _primaries: &2
-            - venue_id
-            - start_time
+            - round
+            - home_team_id
+            - away_team_id
           _relationships:
             away_team:
               attrs:

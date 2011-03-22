@@ -7,8 +7,9 @@ schema:
         - deferrable: 1
           expression: ''
           fields:
-            - venue_id
-            - start_time
+            - round
+            - home_team_id
+            - away_team_id
           match_type: ''
           name: ''
           on_delete: ''
@@ -59,29 +60,29 @@ schema:
       fields:
         away_team_behinds:
           data_type: integer
-          default_value: ~
+          default_value: 0
           is_nullable: 0
           is_primary_key: 0
           is_unique: 0
           name: away_team_behinds
-          order: 9
+          order: 8
           size:
             - 0
         away_team_goals:
           data_type: integer
-          default_value: ~
+          default_value: 0
           is_nullable: 0
           is_primary_key: 0
           is_unique: 0
           name: away_team_goals
-          order: 8
+          order: 7
           size:
             - 0
         away_team_id:
           data_type: integer
           default_value: ~
           is_nullable: 0
-          is_primary_key: 0
+          is_primary_key: 1
           is_unique: 0
           name: away_team_id
           order: 3
@@ -89,29 +90,29 @@ schema:
             - 0
         home_team_behinds:
           data_type: integer
-          default_value: ~
+          default_value: 0
           is_nullable: 0
           is_primary_key: 0
           is_unique: 0
           name: home_team_behinds
-          order: 7
+          order: 6
           size:
             - 0
         home_team_goals:
           data_type: integer
-          default_value: ~
+          default_value: 0
           is_nullable: 0
           is_primary_key: 0
           is_unique: 0
           name: home_team_goals
-          order: 6
+          order: 5
           size:
             - 0
         home_team_id:
           data_type: integer
           default_value: ~
           is_nullable: 0
-          is_primary_key: 0
+          is_primary_key: 1
           is_unique: 0
           name: home_team_id
           order: 2
@@ -121,27 +122,17 @@ schema:
           data_type: integer
           default_value: ~
           is_nullable: 0
-          is_primary_key: 0
+          is_primary_key: 1
           is_unique: 0
           name: round
           order: 1
-          size:
-            - 0
-        start_time:
-          data_type: timestamp with time zone
-          default_value: ~
-          is_nullable: 0
-          is_primary_key: 1
-          is_unique: 0
-          name: start_time
-          order: 5
           size:
             - 0
         venue_id:
           data_type: integer
           default_value: ~
           is_nullable: 0
-          is_primary_key: 1
+          is_primary_key: 0
           is_unique: 0
           name: venue_id
           order: 4
@@ -284,35 +275,28 @@ translator:
           _columns:
             away_team_behinds:
               data_type: integer
-              default: 0
+              default_value: 0
               is_nullable: 0
             away_team_goals:
               data_type: integer
-              default: 0
+              default_value: 0
               is_nullable: 0
             away_team_id:
               data_type: integer
               is_nullable: 0
             home_team_behinds:
               data_type: integer
-              default: 0
+              default_value: 0
               is_nullable: 0
             home_team_goals:
               data_type: integer
-              default: 0
+              default_value: 0
               is_nullable: 0
             home_team_id:
               data_type: integer
               is_nullable: 0
             round:
               data_type: integer
-              is_nullable: 0
-            start_time:
-              _ic_dt_method: timestamp_with_timezone
-              _inflate_info:
-                deflate: !!perl/code '{ "DUMMY" }'
-                inflate: !!perl/code '{ "DUMMY" }'
-              data_type: timestamp with time zone
               is_nullable: 0
             venue_id:
               data_type: integer
@@ -323,14 +307,14 @@ translator:
             - home_team_id
             - away_team_id
             - venue_id
-            - start_time
             - home_team_goals
             - home_team_behinds
             - away_team_goals
             - away_team_behinds
           _primaries: &2
-            - venue_id
-            - start_time
+            - round
+            - home_team_id
+            - away_team_id
           _relationships:
             away_team:
               attrs:

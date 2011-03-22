@@ -10,7 +10,7 @@ my $foreign_key = {
 my $score = {
     data_type           => "integer",
     is_nullable         => 0,
-    default             => 0,
+    default_value       => 0,
 };
 
 __PACKAGE__->load_components(qw/Core InflateColumn::DateTime/);
@@ -25,10 +25,10 @@ __PACKAGE__->add_columns(
     away_team_id => $foreign_key,
 
     venue_id     => $foreign_key,
-    start_time => {
-        data_type   => 'timestamp with time zone',
-        is_nullable => 0,
-    },
+#    start_time => {
+#        data_type   => 'timestamp with time zone',
+#        is_nullable => 0,
+#    },
 
     home_team_goals   => $score,
     home_team_behinds => $score,
@@ -37,7 +37,8 @@ __PACKAGE__->add_columns(
     away_team_behinds => $score,
 );
 
-__PACKAGE__->set_primary_key(qw/ venue_id start_time /);
+#__PACKAGE__->set_primary_key(qw/ venue_id start_time /);
+__PACKAGE__->set_primary_key(qw/ round home_team_id away_team_id /);
 
 __PACKAGE__->belongs_to(
     home_team => 'Tipping::Schema::Result::Team',

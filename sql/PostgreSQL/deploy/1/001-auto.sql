@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Sun Mar 20 10:48:57 2011
+-- Created on Tue Mar 22 21:30:00 2011
 -- 
 ;
 --
@@ -33,12 +33,11 @@ CREATE TABLE "game" (
   "home_team_id" integer NOT NULL,
   "away_team_id" integer NOT NULL,
   "venue_id" integer NOT NULL,
-  "start_time" timestamp with time zone NOT NULL,
-  "home_team_goals" integer NOT NULL,
-  "home_team_behinds" integer NOT NULL,
-  "away_team_goals" integer NOT NULL,
-  "away_team_behinds" integer NOT NULL,
-  PRIMARY KEY ("venue_id", "start_time")
+  "home_team_goals" integer DEFAULT 0 NOT NULL,
+  "home_team_behinds" integer DEFAULT 0 NOT NULL,
+  "away_team_goals" integer DEFAULT 0 NOT NULL,
+  "away_team_behinds" integer DEFAULT 0 NOT NULL,
+  PRIMARY KEY ("round", "home_team_id", "away_team_id")
 );
 CREATE INDEX "game_idx_away_team_id" on "game" ("away_team_id");
 CREATE INDEX "game_idx_home_team_id" on "game" ("home_team_id");

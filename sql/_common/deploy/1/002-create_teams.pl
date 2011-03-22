@@ -6,8 +6,11 @@ use Tipping::Populator ();
 sub {
     my $schema = shift;
 
-    Tipping::Populator::populate(
-        schema  => $schema,
-        yaml    => scalar slurp('yaml/teams-2011.yml'),
-    );
+    for my $yaml (qw/ teams venues games /) {
+        Tipping::Populator::populate(
+            schema  => $schema,
+            yaml    => scalar slurp("yaml/2011/$yaml.yml"),
+#            verbose => 1,
+        );
+    }
 }

@@ -1,0 +1,1498 @@
+table: Game
+rows:
+  -
+    round: 1
+    home_team:
+      name: Carlton
+    away_team:
+      name: Richmond
+    venue:
+      sponsor_name: MCG
+  -
+    round: 1
+    home_team:
+      name: Geelong
+    away_team:
+      name: St Kilda
+    venue:
+      sponsor_name: MCG
+  -
+    round: 1
+    home_team:
+      name: Collingwood
+    away_team:
+      name: Port Adelaide
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 1
+    home_team:
+      name: Adelaide
+    away_team:
+      name: Hawthorn
+    venue:
+      sponsor_name: AAMI Stadium
+  -
+    round: 1
+    home_team:
+      name: Brisbane
+    away_team:
+      name: Fremantle
+    venue:
+      sponsor_name: Gabba
+  -
+    round: 1
+    home_team:
+      name: Essendon
+    away_team:
+      name: Western Bulldogs
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 1
+    home_team:
+      name: Melbourne
+    away_team:
+      name: Sydney
+    venue:
+      sponsor_name: MCG
+  -
+    round: 1
+    home_team:
+      name: West Coast
+    away_team:
+      name: North Melbourne
+    venue:
+      sponsor_name: Patersons Stadium
+  -
+    round: 2
+    home_team:
+      name: St Kilda
+    away_team:
+      name: Richmond
+    venue:
+      sponsor_name: MCG
+  -
+    round: 2
+    home_team:
+      name: North Melbourne
+    away_team:
+      name: Collingwood
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 2
+    home_team:
+      name: Port Adelaide
+    away_team:
+      name: West Coast
+    venue:
+      sponsor_name: AAMI Stadium
+  -
+    round: 2
+    home_team:
+      name: Gold Coast
+    away_team:
+      name: Carlton
+    venue:
+      sponsor_name: Gabba
+  -
+    round: 2
+    home_team:
+      name: Fremantle
+    away_team:
+      name: Geelong
+    venue:
+      sponsor_name: Patersons Stadium
+  -
+    round: 2
+    home_team:
+      name: Western Bulldogs
+    away_team:
+      name: Brisbane
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 2
+    home_team:
+      name: Sydney
+    away_team:
+      name: Essendon
+    venue:
+      sponsor_name: ANZ Stadium
+  -
+    round: 2
+    home_team:
+      name: Hawthorn
+    away_team:
+      name: Melbourne
+    venue:
+      sponsor_name: MCG
+  -
+    round: 3
+    home_team:
+      name: Collingwood
+    away_team:
+      name: Carlton
+    venue:
+      sponsor_name: MCG
+  -
+    round: 3
+    home_team:
+      name: Western Bulldogs
+    away_team:
+      name: Gold Coast
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 3
+    home_team:
+      name: Adelaide
+    away_team:
+      name: Fremantle
+    venue:
+      sponsor_name: AAMI Stadium
+  -
+    round: 3
+    home_team:
+      name: Richmond
+    away_team:
+      name: Hawthorn
+    venue:
+      sponsor_name: MCG
+  -
+    round: 3
+    home_team:
+      name: West Coast
+    away_team:
+      name: Sydney
+    venue:
+      sponsor_name: Patersons Stadium
+  -
+    round: 3
+    home_team:
+      name: Melbourne
+    away_team:
+      name: Brisbane
+    venue:
+      sponsor_name: MCG
+  -
+    round: 3
+    home_team:
+      name: Geelong
+    away_team:
+      name: Port Adelaide
+    venue:
+      sponsor_name: Skilled Stadium
+  -
+    round: 3
+    home_team:
+      name: St Kilda
+    away_team:
+      name: Essendon
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 4
+    home_team:
+      name: Richmond
+    away_team:
+      name: Collingwood
+    venue:
+      sponsor_name: MCG
+  -
+    round: 4
+    home_team:
+      name: Hawthorn
+    away_team:
+      name: West Coast
+    venue:
+      sponsor_name: Aurora Stadium
+  -
+    round: 4
+    home_team:
+      name: Carlton
+    away_team:
+      name: Essendon
+    venue:
+      sponsor_name: MCG
+  -
+    round: 4
+    home_team:
+      name: Sydney
+    away_team:
+      name: Geelong
+    venue:
+      sponsor_name: SCG
+  -
+    round: 4
+    home_team:
+      name: Port Adelaide
+    away_team:
+      name: Adelaide
+    venue:
+      sponsor_name: AAMI Stadium
+  -
+    round: 4
+    home_team:
+      name: Gold Coast
+    away_team:
+      name: Melbourne
+    venue:
+      sponsor_name: Gabba
+  -
+    round: 4
+    home_team:
+      name: Fremantle
+    away_team:
+      name: North Melbourne
+    venue:
+      sponsor_name: Patersons Stadium
+  -
+    round: 5
+    home_team:
+      name: Brisbane
+    away_team:
+      name: St Kilda
+    venue:
+      sponsor_name: Gabba
+  -
+    round: 5
+    home_team:
+      name: Port Adelaide
+    away_team:
+      name: Gold Coast
+    venue:
+      sponsor_name: AAMI Stadium
+  -
+    round: 5
+    home_team:
+      name: Carlton
+    away_team:
+      name: Adelaide
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 5
+    home_team:
+      name: North Melbourne
+    away_team:
+      name: Richmond
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 5
+    home_team:
+      name: Essendon
+    away_team:
+      name: Collingwood
+    venue:
+      sponsor_name: MCG
+  -
+    round: 5
+    home_team:
+      name: Fremantle
+    away_team:
+      name: Western Bulldogs
+    venue:
+      sponsor_name: Patersons Stadium
+  -
+    round: 5
+    home_team:
+      name: Hawthorn
+    away_team:
+      name: Geelong
+    venue:
+      sponsor_name: MCG
+  -
+    round: 6
+    home_team:
+      name: West Coast
+    away_team:
+      name: Melbourne
+    venue:
+      sponsor_name: Patersons Stadium
+  -
+    round: 6
+    home_team:
+      name: Sydney
+    away_team:
+      name: Carlton
+    venue:
+      sponsor_name: SCG
+  -
+    round: 6
+    home_team:
+      name: North Melbourne
+    away_team:
+      name: Port Adelaide
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 6
+    home_team:
+      name: Richmond
+    away_team:
+      name: Brisbane
+    venue:
+      sponsor_name: MCG
+  -
+    round: 6
+    home_team:
+      name: Adelaide
+    away_team:
+      name: St Kilda
+    venue:
+      sponsor_name: AAMI Stadium
+  -
+    round: 6
+    home_team:
+      name: Essendon
+    away_team:
+      name: Gold Coast
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 6
+    home_team:
+      name: Collingwood
+    away_team:
+      name: Western Bulldogs
+    venue:
+      sponsor_name: MCG
+  -
+    round: 7
+    home_team:
+      name: Port Adelaide
+    away_team:
+      name: Hawthorn
+    venue:
+      sponsor_name: AAMI Stadium
+  -
+    round: 7
+    home_team:
+      name: Western Bulldogs
+    away_team:
+      name: Sydney
+    venue:
+      sponsor_name: Manuka Oval
+  -
+    round: 7
+    home_team:
+      name: Geelong
+    away_team:
+      name: North Melbourne
+    venue:
+      sponsor_name: Skilled Stadium
+  -
+    round: 7
+    home_team:
+      name: Richmond
+    away_team:
+      name: Fremantle
+    venue:
+      sponsor_name: MCG
+  -
+    round: 7
+    home_team:
+      name: Gold Coast
+    away_team:
+      name: Brisbane
+    venue:
+      sponsor_name: Gabba
+  -
+    round: 7
+    home_team:
+      name: Essendon
+    away_team:
+      name: West Coast
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 7
+    home_team:
+      name: Melbourne
+    away_team:
+      name: Adelaide
+    venue:
+      sponsor_name: MCG
+  -
+    round: 7
+    home_team:
+      name: St Kilda
+    away_team:
+      name: Carlton
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 8
+    home_team:
+      name: Geelong
+    away_team:
+      name: Collingwood
+    venue:
+      sponsor_name: MCG
+  -
+    round: 8
+    home_team:
+      name: North Melbourne
+    away_team:
+      name: Melbourne
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 8
+    home_team:
+      name: Adelaide
+    away_team:
+      name: Gold Coast
+    venue:
+      sponsor_name: AAMI Stadium
+  -
+    round: 8
+    home_team:
+      name: Brisbane
+    away_team:
+      name: Essendon
+    venue:
+      sponsor_name: Gabba
+  -
+    round: 8
+    home_team:
+      name: Sydney
+    away_team:
+      name: Port Adelaide
+    venue:
+      sponsor_name: SCG
+  -
+    round: 8
+    home_team:
+      name: Hawthorn
+    away_team:
+      name: St Kilda
+    venue:
+      sponsor_name: MCG
+  -
+    round: 8
+    home_team:
+      name: Western Bulldogs
+    away_team:
+      name: Richmond
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 8
+    home_team:
+      name: West Coast
+    away_team:
+      name: Fremantle
+    venue:
+      sponsor_name: Patersons Stadium
+  -
+    round: 9
+    home_team:
+      name: Carlton
+    away_team:
+      name: Geelong
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 9
+    home_team:
+      name: St Kilda
+    away_team:
+      name: Melbourne
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 9
+    home_team:
+      name: Port Adelaide
+    away_team:
+      name: Fremantle
+    venue:
+      sponsor_name: AAMI Stadium
+  -
+    round: 9
+    home_team:
+      name: Brisbane
+    away_team:
+      name: North Melbourne
+    venue:
+      sponsor_name: Gabba
+  -
+    round: 9
+    home_team:
+      name: Richmond
+    away_team:
+      name: Essendon
+    venue:
+      sponsor_name: MCG
+  -
+    round: 9
+    home_team:
+      name: Collingwood
+    away_team:
+      name: Adelaide
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 9
+    home_team:
+      name: Sydney
+    away_team:
+      name: Hawthorn
+    venue:
+      sponsor_name: SCG
+  -
+    round: 9
+    home_team:
+      name: West Coast
+    away_team:
+      name: Western Bulldogs
+    venue:
+      sponsor_name: Patersons Stadium
+  -
+    round: 10
+    home_team:
+      name: Melbourne
+    away_team:
+      name: Carlton
+    venue:
+      sponsor_name: MCG
+  -
+    round: 10
+    home_team:
+      name: North Melbourne
+    away_team:
+      name: Sydney
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 10
+    home_team:
+      name: Fremantle
+    away_team:
+      name: St Kilda
+    venue:
+      sponsor_name: Patersons Stadium
+  -
+    round: 10
+    home_team:
+      name: Gold Coast
+    away_team:
+      name: Geelong
+    venue:
+      sponsor_name: Gold Coast Stadium
+  -
+    round: 10
+    home_team:
+      name: Richmond
+    away_team:
+      name: Port Adelaide
+    venue:
+      sponsor_name: TIO Stadium
+  -
+    round: 10
+    home_team:
+      name: Adelaide
+    away_team:
+      name: Brisbane
+    venue:
+      sponsor_name: AAMI Stadium
+  -
+    round: 10
+    home_team:
+      name: Collingwood
+    away_team:
+      name: West Coast
+    venue:
+      sponsor_name: MCG
+  -
+    round: 10
+    home_team:
+      name: Western Bulldogs
+    away_team:
+      name: Hawthorn
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 11
+    home_team:
+      name: Essendon
+    away_team:
+      name: Melbourne
+    venue:
+      sponsor_name: MCG
+  -
+    round: 11
+    home_team:
+      name: Geelong
+    away_team:
+      name: Western Bulldogs
+    venue:
+      sponsor_name: Skilled Stadium
+  -
+    round: 11
+    home_team:
+      name: West Coast
+    away_team:
+      name: Gold Coast
+    venue:
+      sponsor_name: Patersons Stadium
+  -
+    round: 11
+    home_team:
+      name: Brisbane
+    away_team:
+      name: Sydney
+    venue:
+      sponsor_name: Gabba
+  -
+    round: 11
+    home_team:
+      name: Collingwood
+    away_team:
+      name: St Kilda
+    venue:
+      sponsor_name: MCG
+  -
+    round: 11
+    home_team:
+      name: Hawthorn
+    away_team:
+      name: Fremantle
+    venue:
+      sponsor_name: MCG
+  -
+    round: 11
+    home_team:
+      name: North Melbourne
+    away_team:
+      name: Adelaide
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 11
+    home_team:
+      name: Port Adelaide
+    away_team:
+      name: Carlton
+    venue:
+      sponsor_name: AAMI Stadium
+  -
+    round: 12
+    home_team:
+      name: St Kilda
+    away_team:
+      name: Western Bulldogs
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 12
+    home_team:
+      name: Adelaide
+    away_team:
+      name: West Coast
+    venue:
+      sponsor_name: AAMI Stadium
+  -
+    round: 12
+    home_team:
+      name: Gold Coast
+    away_team:
+      name: North Melbourne
+    venue:
+      sponsor_name: Gold Coast Stadium
+  -
+    round: 12
+    home_team:
+      name: Geelong
+    away_team:
+      name: Hawthorn
+    venue:
+      sponsor_name: MCG
+  -
+    round: 12
+    home_team:
+      name: Carlton
+    away_team:
+      name: Brisbane
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 12
+    home_team:
+      name: Sydney
+    away_team:
+      name: Richmond
+    venue:
+      sponsor_name: SCG
+  -
+    round: 12
+    home_team:
+      name: Fremantle
+    away_team:
+      name: Essendon
+    venue:
+      sponsor_name: Patersons Stadium
+  -
+    round: 12
+    home_team:
+      name: Melbourne
+    away_team:
+      name: Collingwood
+    venue:
+      sponsor_name: MCG
+  -
+    round: 13
+    home_team:
+      name: Western Bulldogs
+    away_team:
+      name: Adelaide
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 13
+    home_team:
+      name: Hawthorn
+    away_team:
+      name: Gold Coast
+    venue:
+      sponsor_name: Aurora Stadium
+  -
+    round: 13
+    home_team:
+      name: Essendon
+    away_team:
+      name: North Melbourne
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 13
+    home_team:
+      name: Brisbane
+    away_team:
+      name: Richmond
+    venue:
+      sponsor_name: Gabba
+  -
+    round: 13
+    home_team:
+      name: St Kilda
+    away_team:
+      name: Geelong
+    venue:
+      sponsor_name: MCG
+  -
+    round: 13
+    home_team:
+      name: Melbourne
+    away_team:
+      name: Fremantle
+    venue:
+      sponsor_name: MCG
+  -
+    round: 13
+    home_team:
+      name: Carlton
+    away_team:
+      name: Sydney
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 13
+    home_team:
+      name: West Coast
+    away_team:
+      name: Port Adelaide
+    venue:
+      sponsor_name: Patersons Stadium
+  -
+    round: 14
+    home_team:
+      name: Hawthorn
+    away_team:
+      name: Essendon
+    venue:
+      sponsor_name: MCG
+  -
+    round: 14
+    home_team:
+      name: Gold Coast
+    away_team:
+      name: Western Bulldogs
+    venue:
+      sponsor_name: Gold Coast Stadium
+  -
+    round: 14
+    home_team:
+      name: Richmond
+    away_team:
+      name: Melbourne
+    venue:
+      sponsor_name: MCG
+  -
+    round: 14
+    home_team:
+      name: Sydney
+    away_team:
+      name: Collingwood
+    venue:
+      sponsor_name: ANZ Stadium
+  -
+    round: 14
+    home_team:
+      name: Fremantle
+    away_team:
+      name: Brisbane
+    venue:
+      sponsor_name: Patersons Stadium
+  -
+    round: 14
+    home_team:
+      name: Geelong
+    away_team:
+      name: Adelaide
+    venue:
+      sponsor_name: Skilled Stadium
+  -
+    round: 14
+    home_team:
+      name: Carlton
+    away_team:
+      name: West Coast
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 14
+    home_team:
+      name: Port Adelaide
+    away_team:
+      name: North Melbourne
+    venue:
+      sponsor_name: AAMI Stadium
+  -
+    round: 15
+    home_team:
+      name: Western Bulldogs
+    away_team:
+      name: Melbourne
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 15
+    home_team:
+      name: Richmond
+    away_team:
+      name: Carlton
+    venue:
+      sponsor_name: MCG
+  -
+    round: 15
+    home_team:
+      name: Fremantle
+    away_team:
+      name: Gold Coast
+    venue:
+      sponsor_name: Patersons Stadium
+  -
+    round: 15
+    home_team:
+      name: Essendon
+    away_team:
+      name: Geelong
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 15
+    home_team:
+      name: Adelaide
+    away_team:
+      name: Sydney
+    venue:
+      sponsor_name: AAMI Stadium
+  -
+    round: 15
+    home_team:
+      name: Brisbane
+    away_team:
+      name: Port Adelaide
+    venue:
+      sponsor_name: Gabba
+  -
+    round: 15
+    home_team:
+      name: Collingwood
+    away_team:
+      name: Hawthorn
+    venue:
+      sponsor_name: MCG
+  -
+    round: 15
+    home_team:
+      name: North Melbourne
+    away_team:
+      name: St Kilda
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 16
+    home_team:
+      name: West Coast
+    away_team:
+      name: Geelong
+    venue:
+      sponsor_name: Patersons Stadium
+  -
+    round: 16
+    home_team:
+      name: Hawthorn
+    away_team:
+      name: Brisbane
+    venue:
+      sponsor_name: Aurora Stadium
+  -
+    round: 16
+    home_team:
+      name: Gold Coast
+    away_team:
+      name: Sydney
+    venue:
+      sponsor_name: Gold Coast Stadium
+  -
+    round: 16
+    home_team:
+      name: Essendon
+    away_team:
+      name: Richmond
+    venue:
+      sponsor_name: MCG
+  -
+    round: 16
+    home_team:
+      name: Collingwood
+    away_team:
+      name: North Melbourne
+    venue:
+      sponsor_name: MCG
+  -
+    round: 16
+    home_team:
+      name: Port Adelaide
+    away_team:
+      name: St Kilda
+    venue:
+      sponsor_name: AAMI Stadium
+  -
+    round: 16
+    home_team:
+      name: Western Bulldogs
+    away_team:
+      name: Carlton
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 17
+    home_team:
+      name: Adelaide
+    away_team:
+      name: Essendon
+    venue:
+      sponsor_name: AAMI Stadium
+  -
+    round: 17
+    home_team:
+      name: Richmond
+    away_team:
+      name: Gold Coast
+    venue:
+      sponsor_name: Cazaly's Stadium
+  -
+    round: 17
+    home_team:
+      name: Carlton
+    away_team:
+      name: Collingwood
+    venue:
+      sponsor_name: MCG
+  -
+    round: 17
+    home_team:
+      name: St Kilda
+    away_team:
+      name: West Coast
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 17
+    home_team:
+      name: Melbourne
+    away_team:
+      name: Port Adelaide
+    venue:
+      sponsor_name: TIO Stadium
+  -
+    round: 17
+    home_team:
+      name: Sydney
+    away_team:
+      name: Fremantle
+    venue:
+      sponsor_name: SCG
+  -
+    round: 17
+    home_team:
+      name: Brisbane
+    away_team:
+      name: Geelong
+    venue:
+      sponsor_name: Gabba
+  -
+    round: 17
+    home_team:
+      name: North Melbourne
+    away_team:
+      name: Western Bulldogs
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 18
+    home_team:
+      name: St Kilda
+    away_team:
+      name: Adelaide
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 18
+    home_team:
+      name: North Melbourne
+    away_team:
+      name: Brisbane
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 18
+    home_team:
+      name: Sydney
+    away_team:
+      name: Western Bulldogs
+    venue:
+      sponsor_name: SCG
+  -
+    round: 18
+    home_team:
+      name: Gold Coast
+    away_team:
+      name: Collingwood
+    venue:
+      sponsor_name: Gold Coast Stadium
+  -
+    round: 18
+    home_team:
+      name: Essendon
+    away_team:
+      name: Carlton
+    venue:
+      sponsor_name: MCG
+  -
+    round: 18
+    home_team:
+      name: Geelong
+    away_team:
+      name: Richmond
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 18
+    home_team:
+      name: Melbourne
+    away_team:
+      name: Hawthorn
+    venue:
+      sponsor_name: MCG
+  -
+    round: 18
+    home_team:
+      name: Fremantle
+    away_team:
+      name: West Coast
+    venue:
+      sponsor_name: Patersons Stadium
+  -
+    round: 19
+    home_team:
+      name: North Melbourne
+    away_team:
+      name: Carlton
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 19
+    home_team:
+      name: Western Bulldogs
+    away_team:
+      name: West Coast
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 19
+    home_team:
+      name: Geelong
+    away_team:
+      name: Melbourne
+    venue:
+      sponsor_name: Skilled Stadium
+  -
+    round: 19
+    home_team:
+      name: Gold Coast
+    away_team:
+      name: St Kilda
+    venue:
+      sponsor_name: Gold Coast Stadium
+  -
+    round: 19
+    home_team:
+      name: Fremantle
+    away_team:
+      name: Hawthorn
+    venue:
+      sponsor_name: Patersons Stadium
+  -
+    round: 19
+    home_team:
+      name: Collingwood
+    away_team:
+      name: Essendon
+    venue:
+      sponsor_name: MCG
+  -
+    round: 19
+    home_team:
+      name: Adelaide
+    away_team:
+      name: Port Adelaide
+    venue:
+      sponsor_name: AAMI Stadium
+  -
+    round: 20
+    home_team:
+      name: St Kilda
+    away_team:
+      name: Fremantle
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 20
+    home_team:
+      name: Carlton
+    away_team:
+      name: Melbourne
+    venue:
+      sponsor_name: MCG
+  -
+    round: 20
+    home_team:
+      name: Geelong
+    away_team:
+      name: Gold Coast
+    venue:
+      sponsor_name: Skilled Stadium
+  -
+    round: 20
+    home_team:
+      name: Essendon
+    away_team:
+      name: Sydney
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 20
+    home_team:
+      name: Port Adelaide
+    away_team:
+      name: Collingwood
+    venue:
+      sponsor_name: AAMI Stadium
+  -
+    round: 20
+    home_team:
+      name: Brisbane
+    away_team:
+      name: Adelaide
+    venue:
+      sponsor_name: Gabba
+  -
+    round: 20
+    home_team:
+      name: Hawthorn
+    away_team:
+      name: North Melbourne
+    venue:
+      sponsor_name: Aurora Stadium
+  -
+    round: 20
+    home_team:
+      name: West Coast
+    away_team:
+      name: Richmond
+    venue:
+      sponsor_name: Patersons Stadium
+  -
+    round: 21
+    home_team:
+      name: St Kilda
+    away_team:
+      name: Collingwood
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 21
+    home_team:
+      name: Hawthorn
+    away_team:
+      name: Port Adelaide
+    venue:
+      sponsor_name: MCG
+  -
+    round: 21
+    home_team:
+      name: Fremantle
+    away_team:
+      name: Carlton
+    venue:
+      sponsor_name: Patersons Stadium
+  -
+    round: 21
+    home_team:
+      name: Western Bulldogs
+    away_team:
+      name: Essendon
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 21
+    home_team:
+      name: Brisbane
+    away_team:
+      name: Gold Coast
+    venue:
+      sponsor_name: Gabba
+  -
+    round: 21
+    home_team:
+      name: Melbourne
+    away_team:
+      name: West Coast
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 21
+    home_team:
+      name: Richmond
+    away_team:
+      name: Sydney
+    venue:
+      sponsor_name: MCG
+  -
+    round: 21
+    home_team:
+      name: Adelaide
+    away_team:
+      name: Geelong
+    venue:
+      sponsor_name: AAMI Stadium
+  -
+    round: 22
+    home_team:
+      name: Carlton
+    away_team:
+      name: Hawthorn
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 22
+    home_team:
+      name: Gold Coast
+    away_team:
+      name: Adelaide
+    venue:
+      sponsor_name: Gold Coast Stadium
+  -
+    round: 22
+    home_team:
+      name: West Coast
+    away_team:
+      name: Essendon
+    venue:
+      sponsor_name: Patersons Stadium
+  -
+    round: 22
+    home_team:
+      name: North Melbourne
+    away_team:
+      name: Fremantle
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 22
+    home_team:
+      name: Collingwood
+    away_team:
+      name: Brisbane
+    venue:
+      sponsor_name: MCG
+  -
+    round: 22
+    home_team:
+      name: Sydney
+    away_team:
+      name: St Kilda
+    venue:
+      sponsor_name: ANZ Stadium
+  -
+    round: 22
+    home_team:
+      name: Port Adelaide
+    away_team:
+      name: Western Bulldogs
+    venue:
+      sponsor_name: AAMI Stadium
+  -
+    round: 22
+    home_team:
+      name: Melbourne
+    away_team:
+      name: Richmond
+    venue:
+      sponsor_name: MCG
+  -
+    round: 23
+    home_team:
+      name: Fremantle
+    away_team:
+      name: Collingwood
+    venue:
+      sponsor_name: Patersons Stadium
+  -
+    round: 23
+    home_team:
+      name: Hawthorn
+    away_team:
+      name: Western Bulldogs
+    venue:
+      sponsor_name: MCG
+  -
+    round: 23
+    home_team:
+      name: Geelong
+    away_team:
+      name: Sydney
+    venue:
+      sponsor_name: Skilled Stadium
+  -
+    round: 23
+    home_team:
+      name: St Kilda
+    away_team:
+      name: North Melbourne
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 23
+    home_team:
+      name: Brisbane
+    away_team:
+      name: West Coast
+    venue:
+      sponsor_name: Gabba
+  -
+    round: 23
+    home_team:
+      name: Adelaide
+    away_team:
+      name: Richmond
+    venue:
+      sponsor_name: AAMI Stadium
+  -
+    round: 23
+    home_team:
+      name: Melbourne
+    away_team:
+      name: Gold Coast
+    venue:
+      sponsor_name: MCG
+  -
+    round: 23
+    home_team:
+      name: Essendon
+    away_team:
+      name: Port Adelaide
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 24
+    home_team:
+      name: Carlton
+    away_team:
+      name: St Kilda
+    venue:
+      sponsor_name: MCG
+  -
+    round: 24
+    home_team:
+      name: Port Adelaide
+    away_team:
+      name: Melbourne
+    venue:
+      sponsor_name: AAMI Stadium
+  -
+    round: 24
+    home_team:
+      name: Western Bulldogs
+    away_team:
+      name: Fremantle
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 24
+    home_team:
+      name: Sydney
+    away_team:
+      name: Brisbane
+    venue:
+      sponsor_name: SCG
+  -
+    round: 24
+    home_team:
+      name: West Coast
+    away_team:
+      name: Adelaide
+    venue:
+      sponsor_name: Patersons Stadium
+  -
+    round: 24
+    home_team:
+      name: Collingwood
+    away_team:
+      name: Geelong
+    venue:
+      sponsor_name: MCG
+  -
+    round: 24
+    home_team:
+      name: Richmond
+    away_team:
+      name: North Melbourne
+    venue:
+      sponsor_name: Etihad Stadium
+  -
+    round: 24
+    home_team:
+      name: Gold Coast
+    away_team:
+      name: Hawthorn
+    venue:
+      sponsor_name: Gold Coast Stadium
