@@ -109,6 +109,7 @@ my @columns = qw/ round home_team:name away_team:name venuej:sponsor_name /;
 sub _emit_round {
     my ($out, $round, $home_team, $away_team, $venue) = @_;
     say {$out} '  -';
+    say {$out} "    season: 2011";
     say {$out} "    round: $round";
     say {$out} "    home_team:";
     say {$out} "      name: $home_team";

@@ -16,6 +16,16 @@ my $score = {
 __PACKAGE__->load_components(qw/Core InflateColumn::DateTime/);
 __PACKAGE__->table('game');
 __PACKAGE__->add_columns(
+    game_id => {
+        data_type           => 'integer',
+        is_auto_increment   => 1,
+        is_nullable         => 0,
+    },
+
+    season       => {
+        data_type   => 'integer',
+        is_nullable => 0,
+    },
     round        => {
         data_type   => 'integer',
         is_nullable => 0,
@@ -37,8 +47,10 @@ __PACKAGE__->add_columns(
     away_team_behinds => $score,
 );
 
-#__PACKAGE__->set_primary_key(qw/ venue_id start_time /);
-__PACKAGE__->set_primary_key(qw/ round home_team_id away_team_id /);
+__PACKAGE__->set_primary_key('game_id');
+
+__PACKAGE__->add_unique_constraint([ qw/ season round home_team_id / ]);
+__PACKAGE__->add_unique_constraint([ qw/ season round away_team_id / ]);
 
 __PACKAGE__->belongs_to(
     home_team => 'Tipping::Schema::Result::Team',
@@ -53,6 +65,11 @@ __PACKAGE__->belongs_to(
     'venue_id'
 );
 
+__PACKAGE__->has_many(
+    tips => 'Tipping::Schema::Result::Tip',
+    'game_id'
+);
+
 1;
 
 __END__
@@ -61,6 +78,6 @@ __END__
 
 =head1 NAME
 
-Tipping::Schema::Result::Game
+Tipping::Schema::Result::Game - Schema table representing individual games
 
 =cut

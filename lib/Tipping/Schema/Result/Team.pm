@@ -23,6 +23,9 @@ __PACKAGE__->add_columns(
 
 __PACKAGE__->set_primary_key('team_id');
 
+__PACKAGE__->add_unique_constraint([ qw/ name / ]);
+__PACKAGE__->add_unique_constraint([ qw/ nickname / ]);
+
 __PACKAGE__->has_many(
     home_games => 'Tipping::Schema::Result::Game',
     'home_team_id',
@@ -45,6 +48,6 @@ __END__
 
 =head1 NAME
 
-Tipping::Schema::Result::Team
+Tipping::Schema::Result::Team - Schema table representing teams
 
 =cut
