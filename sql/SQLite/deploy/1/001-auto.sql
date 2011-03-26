@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Sat Mar 26 15:03:26 2011
+-- Created on Sat Mar 26 20:57:46 2011
 -- 
 
 ;
@@ -32,8 +32,7 @@ CREATE TABLE user (
   user_name varchar NOT NULL,
   real_name varchar NOT NULL,
   screen_name varchar,
-  password varchar NOT NULL,
-  team_id integer
+  password varchar NOT NULL
 );
 CREATE UNIQUE INDEX user_real_name ON user (real_name);
 CREATE UNIQUE INDEX user_screen_name ON user (screen_name);
@@ -78,6 +77,17 @@ CREATE INDEX game_idx_home_team_id ON game (home_team_id);
 CREATE INDEX game_idx_venue_id ON game (venue_id);
 CREATE UNIQUE INDEX game_season_round_away_team_id ON game (season, round, away_team_id);
 CREATE UNIQUE INDEX game_season_round_home_team_id ON game (season, round, home_team_id);
+--
+-- Table: team_user
+--
+CREATE TABLE team_user (
+  user_id integer NOT NULL,
+  team_id integer NOT NULL,
+  PRIMARY KEY (user_id, team_id)
+);
+CREATE INDEX team_user_idx_team_id ON team_user (team_id);
+CREATE INDEX team_user_idx_user_id ON team_user (user_id);
+CREATE UNIQUE INDEX team_user_user_id ON team_user (user_id);
 --
 -- Table: tip
 --

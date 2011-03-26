@@ -27,10 +27,6 @@ __PACKAGE__->add_columns(
         data_type           => 'varchar',
         is_nullable         => 0,
     },
-    team_id => {
-        data_type           => 'integer',
-        is_nullable         => 1,
-    },
 );
 
 __PACKAGE__->set_primary_key('user_id');
@@ -53,8 +49,8 @@ __PACKAGE__->many_to_many(
 );
 
 __PACKAGE__->might_have(
-    team => 'Tipping::Schema::Result::Team',
-    'team_id'
+    team => 'Tipping::Schema::Result::Team_User',
+    'user_id'
 );
 
 

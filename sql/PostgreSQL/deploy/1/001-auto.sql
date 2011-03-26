@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Sat Mar 26 15:03:27 2011
+-- Created on Sat Mar 26 20:57:47 2011
 -- 
 ;
 --
@@ -37,7 +37,6 @@ CREATE TABLE "user" (
   "real_name" character varying NOT NULL,
   "screen_name" character varying,
   "password" character varying NOT NULL,
-  "team_id" integer,
   PRIMARY KEY ("user_id"),
   CONSTRAINT "user_real_name" UNIQUE ("real_name"),
   CONSTRAINT "user_screen_name" UNIQUE ("screen_name"),
@@ -94,6 +93,19 @@ CREATE INDEX "game_idx_venue_id" on "game" ("venue_id");
 
 ;
 --
+-- Table: team_user
+--
+CREATE TABLE "team_user" (
+  "user_id" integer NOT NULL,
+  "team_id" integer NOT NULL,
+  PRIMARY KEY ("user_id", "team_id"),
+  CONSTRAINT "team_user_user_id" UNIQUE ("user_id")
+);
+CREATE INDEX "team_user_idx_team_id" on "team_user" ("team_id");
+CREATE INDEX "team_user_idx_user_id" on "team_user" ("user_id");
+
+;
+--
 -- Table: tip
 --
 CREATE TABLE "tip" (
@@ -129,6 +141,14 @@ ALTER TABLE "game" ADD FOREIGN KEY ("home_team_id")
 ;
 ALTER TABLE "game" ADD FOREIGN KEY ("venue_id")
   REFERENCES "venue" ("venue_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
+
+;
+ALTER TABLE "team_user" ADD FOREIGN KEY ("team_id")
+  REFERENCES "team" ("team_id") DEFERRABLE;
+
+;
+ALTER TABLE "team_user" ADD FOREIGN KEY ("user_id")
+  REFERENCES "user" ("user_id") ON DELETE CASCADE DEFERRABLE;
 
 ;
 ALTER TABLE "tip" ADD FOREIGN KEY ("game_id")
