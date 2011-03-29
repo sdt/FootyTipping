@@ -31,13 +31,9 @@ sub populate {
     }
 
     for my $row (@{ $data->{rows} }) {
-        say STDERR Dumper($row);
+        #say STDERR Dumper($row);
         $args{schema}->resultset($data->{table})->create($row);
     }
 }
-
-# Needs to be:
-# round => 1
-# home_team => { name => 'Hawthorn' }
 
 1;
