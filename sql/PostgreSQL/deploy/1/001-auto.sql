@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Wed Mar 30 16:14:34 2011
+-- Created on Wed Mar 30 16:23:17 2011
 -- 
 ;
 --
@@ -106,16 +106,16 @@ CREATE INDEX "game_idx_venue_id" on "game" ("venue_id");
 
 ;
 --
--- Table: team_user
+-- Table: team_supporter
 --
-CREATE TABLE "team_user" (
+CREATE TABLE "team_supporter" (
   "user_id" integer NOT NULL,
   "team_id" integer NOT NULL,
   PRIMARY KEY ("user_id", "team_id"),
-  CONSTRAINT "team_user_user_id" UNIQUE ("user_id")
+  CONSTRAINT "team_supporter_user_id" UNIQUE ("user_id")
 );
-CREATE INDEX "team_user_idx_team_id" on "team_user" ("team_id");
-CREATE INDEX "team_user_idx_user_id" on "team_user" ("user_id");
+CREATE INDEX "team_supporter_idx_user_id" on "team_supporter" ("user_id");
+CREATE INDEX "team_supporter_idx_team_id" on "team_supporter" ("team_id");
 
 ;
 --
@@ -166,12 +166,12 @@ ALTER TABLE "game" ADD FOREIGN KEY ("venue_id")
   REFERENCES "venue" ("venue_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
 
 ;
-ALTER TABLE "team_user" ADD FOREIGN KEY ("team_id")
-  REFERENCES "team" ("team_id") DEFERRABLE;
+ALTER TABLE "team_supporter" ADD FOREIGN KEY ("user_id")
+  REFERENCES "user" ("user_id") ON DELETE CASCADE DEFERRABLE;
 
 ;
-ALTER TABLE "team_user" ADD FOREIGN KEY ("user_id")
-  REFERENCES "user" ("user_id") ON DELETE CASCADE DEFERRABLE;
+ALTER TABLE "team_supporter" ADD FOREIGN KEY ("team_id")
+  REFERENCES "team" ("team_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
 
 ;
 ALTER TABLE "tip" ADD FOREIGN KEY ("competition_id")

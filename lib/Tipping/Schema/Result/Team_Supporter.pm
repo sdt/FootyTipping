@@ -1,10 +1,10 @@
-package Tipping::Schema::Result::Team_User;
+package Tipping::Schema::Result::Team_Supporter;
 use parent 'DBIx::Class';
 
 use Modern::Perl;
 
 __PACKAGE__->load_components('Core');
-__PACKAGE__->table('team_user');
+__PACKAGE__->table('team_supporter');
 __PACKAGE__->add_columns(
     user_id => {
         data_type           => 'integer',
@@ -22,7 +22,7 @@ __PACKAGE__->set_primary_key(qw/ user_id team_id /);
 __PACKAGE__->add_unique_constraint([ qw/ user_id / ]);
 
 __PACKAGE__->belongs_to(
-    user => 'Tipping::Schema::Result::User',
+    supporter => 'Tipping::Schema::Result::User',
     'user_id'
 );
 __PACKAGE__->belongs_to(

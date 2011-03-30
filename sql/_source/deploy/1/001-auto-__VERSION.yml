@@ -89,7 +89,7 @@ translator:
         Tipping::Schema::Result::Competition_Tipper: Competition_Tipper
         Tipping::Schema::Result::Game: Game
         Tipping::Schema::Result::Team: Team
-        Tipping::Schema::Result::Team_User: Team_User
+        Tipping::Schema::Result::Team_Supporter: Team_Supporter
         Tipping::Schema::Result::Tip: Tip
         Tipping::Schema::Result::User: User
         Tipping::Schema::Result::Venue: Venue
@@ -407,6 +407,16 @@ translator:
               cond:
                 foreign.home_team_id: self.team_id
               source: Tipping::Schema::Result::Game
+            supporters:
+              attrs:
+                accessor: multi
+                cascade_copy: 1
+                cascade_delete: 1
+                join_type: LEFT
+              class: Tipping::Schema::Result::Team_Supporter
+              cond:
+                foreign.team_id: self.team_id
+              source: Tipping::Schema::Result::Team_Supporter
           _unique_constraints:
             primary: *6
             team_name:
@@ -420,7 +430,7 @@ translator:
           schema: *1
           source_name: Team
           sqlt_deploy_callback: default_sqlt_deploy_hook
-        Team_User: !!perl/hash:DBIx::Class::ResultSource::Table
+        Team_Supporter: !!perl/hash:DBIx::Class::ResultSource::Table
           _columns:
             team_id:
               data_type: integer
@@ -436,6 +446,17 @@ translator:
             - user_id
             - team_id
           _relationships:
+            supporter:
+              attrs:
+                accessor: single
+                fk_columns:
+                  user_id: 1
+                is_foreign_key_constraint: 1
+                undef_on_null_fk: 1
+              class: Tipping::Schema::Result::User
+              cond:
+                foreign.user_id: self.user_id
+              source: Tipping::Schema::Result::User
             team:
               attrs:
                 accessor: single
@@ -447,27 +468,16 @@ translator:
               cond:
                 foreign.team_id: self.team_id
               source: Tipping::Schema::Result::Team
-            user:
-              attrs:
-                accessor: single
-                fk_columns:
-                  user_id: 1
-                is_foreign_key_constraint: 1
-                undef_on_null_fk: 1
-              class: Tipping::Schema::Result::User
-              cond:
-                foreign.user_id: self.user_id
-              source: Tipping::Schema::Result::User
           _unique_constraints:
             primary: *7
-            team_user_user_id:
+            team_supporter_user_id:
               - user_id
-          name: team_user
-          result_class: Tipping::Schema::Result::Team_User
+          name: team_supporter
+          result_class: Tipping::Schema::Result::Team_Supporter
           resultset_attributes: {}
           resultset_class: DBIx::Class::ResultSet
           schema: *1
-          source_name: Team_User
+          source_name: Team_Supporter
           sqlt_deploy_callback: default_sqlt_deploy_hook
         Tip: !!perl/hash:DBIx::Class::ResultSource::Table
           _columns:
@@ -590,10 +600,10 @@ translator:
                 cascade_delete: 1
                 cascade_update: 1
                 join_type: LEFT
-              class: Tipping::Schema::Result::Team_User
+              class: Tipping::Schema::Result::Team_Supporter
               cond:
                 foreign.user_id: self.user_id
-              source: Tipping::Schema::Result::Team_User
+              source: Tipping::Schema::Result::Team_Supporter
             tips:
               attrs:
                 accessor: multi

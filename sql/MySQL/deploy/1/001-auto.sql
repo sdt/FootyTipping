@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Wed Mar 30 16:14:34 2011
+-- Created on Wed Mar 30 16:23:17 2011
 -- 
 ;
 SET foreign_key_checks=0;
@@ -100,17 +100,17 @@ CREATE TABLE `game` (
   CONSTRAINT `game_fk_venue_id` FOREIGN KEY (`venue_id`) REFERENCES `venue` (`venue_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 --
--- Table: `team_user`
+-- Table: `team_supporter`
 --
-CREATE TABLE `team_user` (
+CREATE TABLE `team_supporter` (
   `user_id` integer NOT NULL,
   `team_id` integer NOT NULL,
-  INDEX `team_user_idx_team_id` (`team_id`),
-  INDEX `team_user_idx_user_id` (`user_id`),
+  INDEX `team_supporter_idx_user_id` (`user_id`),
+  INDEX `team_supporter_idx_team_id` (`team_id`),
   PRIMARY KEY (`user_id`, `team_id`),
-  UNIQUE `team_user_user_id` (`user_id`),
-  CONSTRAINT `team_user_fk_team_id` FOREIGN KEY (`team_id`) REFERENCES `team` (`team_id`),
-  CONSTRAINT `team_user_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE
+  UNIQUE `team_supporter_user_id` (`user_id`),
+  CONSTRAINT `team_supporter_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE,
+  CONSTRAINT `team_supporter_fk_team_id` FOREIGN KEY (`team_id`) REFERENCES `team` (`team_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 --
 -- Table: `tip`

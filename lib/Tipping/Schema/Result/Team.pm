@@ -39,6 +39,10 @@ __PACKAGE__->has_many(
     [ { 'foreign_key.home_team_id' => 'self.team_id' },
       { 'foreign_key.away_team_id' => 'self.team_id' } ]
 );
+__PACKAGE__->has_many(
+    supporters => 'Tipping::Schema::Result::Team_Supporter',
+    'team_id'
+);
 
 1;
 
@@ -52,7 +56,7 @@ Tipping::Schema::Result::Team - DBIx::Class
 
 =head1 DESCRIPTION
 
-A team has a name and a nickname.
+A team has a name and a nickname, and zero or more supporters.
 
 =head1 AUTHOR
 

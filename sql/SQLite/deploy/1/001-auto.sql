@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Wed Mar 30 16:14:33 2011
+-- Created on Wed Mar 30 16:23:17 2011
 -- 
 
 ;
@@ -89,16 +89,16 @@ CREATE INDEX game_idx_venue_id ON game (venue_id);
 CREATE UNIQUE INDEX game_season_round_away_team_id ON game (season, round, away_team_id);
 CREATE UNIQUE INDEX game_season_round_home_team_id ON game (season, round, home_team_id);
 --
--- Table: team_user
+-- Table: team_supporter
 --
-CREATE TABLE team_user (
+CREATE TABLE team_supporter (
   user_id integer NOT NULL,
   team_id integer NOT NULL,
   PRIMARY KEY (user_id, team_id)
 );
-CREATE INDEX team_user_idx_team_id ON team_user (team_id);
-CREATE INDEX team_user_idx_user_id ON team_user (user_id);
-CREATE UNIQUE INDEX team_user_user_id ON team_user (user_id);
+CREATE INDEX team_supporter_idx_user_id ON team_supporter (user_id);
+CREATE INDEX team_supporter_idx_team_id ON team_supporter (team_id);
+CREATE UNIQUE INDEX team_supporter_user_id ON team_supporter (user_id);
 --
 -- Table: tip
 --

@@ -59,7 +59,7 @@ __PACKAGE__->many_to_many(
 );
 
 __PACKAGE__->might_have(
-    team => 'Tipping::Schema::Result::Team_User',
+    team => 'Tipping::Schema::Result::Team_Supporter',
     'user_id'
 );
 
