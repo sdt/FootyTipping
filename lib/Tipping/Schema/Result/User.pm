@@ -37,15 +37,15 @@ __PACKAGE__->add_unique_constraint([ qw/ screen_name / ]);
 
 __PACKAGE__->has_many(
     tips => 'Tipping::Schema::Result::Tip',
-    'user_id'
+    'tipper_id'
 );
 
 __PACKAGE__->has_many(
-    competition_users => 'Tipping::Schema::Result::Competition_User',
+    competition_tippers => 'Tipping::Schema::Result::Competition_Tipper',
     'user_id'
 );
 __PACKAGE__->many_to_many(
-    competitions => 'competition_users',
+    competitions => 'competition_tippers',
     'competition_id'
 );
 
@@ -74,7 +74,7 @@ __END__
 
 Tipping::Schema::Result::User - DBix:Class result source
 
-=head2 DESCRIPTION
+=head1 DESCRIPTION
 
 A user can be a tipper in zero or more competitions or an administrator of zero
 or more competitions.
@@ -84,5 +84,9 @@ competition, until tipping closes for a particular game.
 
 A user who is an administrator of a competition may enter tips for any users in
 that competition, at any time.
+
+=head1 AUTHOR
+
+Stephen Thirlwall <sdt@dr.com>
 
 =cut

@@ -35,6 +35,7 @@ __PACKAGE__->add_columns(
     away_team_id => $foreign_key,
 
     venue_id     => $foreign_key,
+
 #    start_time => {
 #        data_type   => 'timestamp with time zone',
 #        is_nullable => 0,
@@ -45,6 +46,12 @@ __PACKAGE__->add_columns(
 
     away_team_goals   => $score,
     away_team_behinds => $score,
+
+    has_ended   => {
+        data_type     => 'boolean',
+        is_nullable   => 0,
+        default_value => 'false',
+    },
 );
 
 __PACKAGE__->set_primary_key('game_id');
@@ -78,6 +85,15 @@ __END__
 
 =head1 NAME
 
-Tipping::Schema::Result::Game - Schema table representing individual games
+Tipping::Schema::Result::Game - DBIx::Class result source
+
+=head1 DESCRIPTION
+
+A game for a given round and season takes place between two teams at a venue
+at a given start time.
+
+=head1 AUTHOR
+
+Stephen Thirlwall <sdt@dr.com>
 
 =cut

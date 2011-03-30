@@ -86,7 +86,7 @@ translator:
         DBIx::Class::DeploymentHandler::VersionStorage::Standard::VersionResult: __VERSION
         Tipping::Schema::Result::Competition: Competition
         Tipping::Schema::Result::Competition_Admin: Competition_Admin
-        Tipping::Schema::Result::Competition_User: Competition_User
+        Tipping::Schema::Result::Competition_Tipper: Competition_Tipper
         Tipping::Schema::Result::Game: Game
         Tipping::Schema::Result::Team: Team
         Tipping::Schema::Result::Team_User: Team_User
@@ -124,16 +124,16 @@ translator:
               cond:
                 foreign.competition_id: self.competition_id
               source: Tipping::Schema::Result::Competition_Admin
-            competition_users:
+            competition_tippers:
               attrs:
                 accessor: multi
                 cascade_copy: 1
                 cascade_delete: 1
                 join_type: LEFT
-              class: Tipping::Schema::Result::Competition_User
+              class: Tipping::Schema::Result::Competition_Tipper
               cond:
                 foreign.competition_id: self.competition_id
-              source: Tipping::Schema::Result::Competition_User
+              source: Tipping::Schema::Result::Competition_Tipper
           _unique_constraints:
             competition_name:
               - name
@@ -192,7 +192,7 @@ translator:
           schema: *1
           source_name: Competition_Admin
           sqlt_deploy_callback: default_sqlt_deploy_hook
-        Competition_User: !!perl/hash:DBIx::Class::ResultSource::Table
+        Competition_Tipper: !!perl/hash:DBIx::Class::ResultSource::Table
           _columns:
             competition_id:
               data_type: integer
@@ -232,12 +232,12 @@ translator:
               source: Tipping::Schema::Result::User
           _unique_constraints:
             primary: *4
-          name: competition_user
-          result_class: Tipping::Schema::Result::Competition_User
+          name: competition_tipper
+          result_class: Tipping::Schema::Result::Competition_Tipper
           resultset_attributes: {}
           resultset_class: DBIx::Class::ResultSet
           schema: *1
-          source_name: Competition_User
+          source_name: Competition_Tipper
           sqlt_deploy_callback: default_sqlt_deploy_hook
         Game: !!perl/hash:DBIx::Class::ResultSource::Table
           _columns:
@@ -255,6 +255,10 @@ translator:
             game_id:
               data_type: integer
               is_auto_increment: 1
+              is_nullable: 0
+            has_ended:
+              data_type: boolean
+              default_value: false
               is_nullable: 0
             home_team_behinds:
               data_type: integer
@@ -288,6 +292,7 @@ translator:
             - home_team_behinds
             - away_team_goals
             - away_team_behinds
+            - has_ended
           _primaries: &5
             - game_id
           _relationships:
@@ -466,24 +471,40 @@ translator:
           sqlt_deploy_callback: default_sqlt_deploy_hook
         Tip: !!perl/hash:DBIx::Class::ResultSource::Table
           _columns:
+            competition_id:
+              data_type: integer
+              is_nullable: 0
             game_id:
               data_type: integer
               is_nullable: 0
             home_team_to_win:
               data_type: boolean
               is_nullable: 0
-            user_id:
+            tipper_id:
               data_type: integer
               is_nullable: 0
           _columns_info_loaded: 0
           _ordered_columns:
-            - user_id
+            - tipper_id
+            - competition_id
             - game_id
             - home_team_to_win
           _primaries: &8
-            - user_id
+            - tipper_id
+            - competition_id
             - game_id
           _relationships:
+            competition:
+              attrs:
+                accessor: single
+                fk_columns:
+                  competition_id: 1
+                is_foreign_key_constraint: 1
+                undef_on_null_fk: 1
+              class: Tipping::Schema::Result::Competition
+              cond:
+                foreign.competition_id: self.competition_id
+              source: Tipping::Schema::Result::Competition
             game:
               attrs:
                 accessor: single
@@ -495,16 +516,16 @@ translator:
               cond:
                 foreign.game_id: self.game_id
               source: Tipping::Schema::Result::Game
-            user:
+            tipper:
               attrs:
                 accessor: single
                 fk_columns:
-                  user_id: 1
+                  tipper_id: 1
                 is_foreign_key_constraint: 1
                 undef_on_null_fk: 1
               class: Tipping::Schema::Result::User
               cond:
-                foreign.user_id: self.user_id
+                foreign.user_id: self.tipper_id
               source: Tipping::Schema::Result::User
           _unique_constraints:
             primary: *8
@@ -553,16 +574,16 @@ translator:
               cond:
                 foreign.user_id: self.user_id
               source: Tipping::Schema::Result::Competition_Admin
-            competition_users:
+            competition_tippers:
               attrs:
                 accessor: multi
                 cascade_copy: 1
                 cascade_delete: 1
                 join_type: LEFT
-              class: Tipping::Schema::Result::Competition_User
+              class: Tipping::Schema::Result::Competition_Tipper
               cond:
                 foreign.user_id: self.user_id
-              source: Tipping::Schema::Result::Competition_User
+              source: Tipping::Schema::Result::Competition_Tipper
             team:
               attrs:
                 accessor: single
@@ -581,7 +602,7 @@ translator:
                 join_type: LEFT
               class: Tipping::Schema::Result::Tip
               cond:
-                foreign.user_id: self.user_id
+                foreign.tipper_id: self.user_id
               source: Tipping::Schema::Result::Tip
           _unique_constraints:
             primary: *9

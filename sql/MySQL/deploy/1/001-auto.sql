@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Wed Mar 30 15:43:19 2011
+-- Created on Wed Mar 30 16:14:34 2011
 -- 
 ;
 SET foreign_key_checks=0;
@@ -63,16 +63,16 @@ CREATE TABLE `competition_admin` (
   CONSTRAINT `competition_admin_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 --
--- Table: `competition_user`
+-- Table: `competition_tipper`
 --
-CREATE TABLE `competition_user` (
+CREATE TABLE `competition_tipper` (
   `user_id` integer NOT NULL,
   `competition_id` integer NOT NULL,
-  INDEX `competition_user_idx_competition_id` (`competition_id`),
-  INDEX `competition_user_idx_user_id` (`user_id`),
+  INDEX `competition_tipper_idx_competition_id` (`competition_id`),
+  INDEX `competition_tipper_idx_user_id` (`user_id`),
   PRIMARY KEY (`user_id`, `competition_id`),
-  CONSTRAINT `competition_user_fk_competition_id` FOREIGN KEY (`competition_id`) REFERENCES `competition` (`competition_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `competition_user_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `competition_tipper_fk_competition_id` FOREIGN KEY (`competition_id`) REFERENCES `competition` (`competition_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `competition_tipper_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 --
 -- Table: `game`
@@ -88,6 +88,7 @@ CREATE TABLE `game` (
   `home_team_behinds` integer NOT NULL DEFAULT 0,
   `away_team_goals` integer NOT NULL DEFAULT 0,
   `away_team_behinds` integer NOT NULL DEFAULT 0,
+  `has_ended` enum('0','1') NOT NULL DEFAULT 'false',
   INDEX `game_idx_away_team_id` (`away_team_id`),
   INDEX `game_idx_home_team_id` (`home_team_id`),
   INDEX `game_idx_venue_id` (`venue_id`),
@@ -115,13 +116,16 @@ CREATE TABLE `team_user` (
 -- Table: `tip`
 --
 CREATE TABLE `tip` (
-  `user_id` integer NOT NULL,
+  `tipper_id` integer NOT NULL,
+  `competition_id` integer NOT NULL,
   `game_id` integer NOT NULL,
   `home_team_to_win` enum('0','1') NOT NULL,
+  INDEX `tip_idx_competition_id` (`competition_id`),
   INDEX `tip_idx_game_id` (`game_id`),
-  INDEX `tip_idx_user_id` (`user_id`),
-  PRIMARY KEY (`user_id`, `game_id`),
+  INDEX `tip_idx_tipper_id` (`tipper_id`),
+  PRIMARY KEY (`tipper_id`, `competition_id`, `game_id`),
+  CONSTRAINT `tip_fk_competition_id` FOREIGN KEY (`competition_id`) REFERENCES `competition` (`competition_id`),
   CONSTRAINT `tip_fk_game_id` FOREIGN KEY (`game_id`) REFERENCES `game` (`game_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `tip_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `tip_fk_tipper_id` FOREIGN KEY (`tipper_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 SET foreign_key_checks=1

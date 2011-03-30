@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Wed Mar 30 15:43:18 2011
+-- Created on Wed Mar 30 16:14:33 2011
 -- 
 
 ;
@@ -58,15 +58,15 @@ CREATE TABLE competition_admin (
 CREATE INDEX competition_admin_idx_competition_id ON competition_admin (competition_id);
 CREATE INDEX competition_admin_idx_user_id ON competition_admin (user_id);
 --
--- Table: competition_user
+-- Table: competition_tipper
 --
-CREATE TABLE competition_user (
+CREATE TABLE competition_tipper (
   user_id integer NOT NULL,
   competition_id integer NOT NULL,
   PRIMARY KEY (user_id, competition_id)
 );
-CREATE INDEX competition_user_idx_competition_id ON competition_user (competition_id);
-CREATE INDEX competition_user_idx_user_id ON competition_user (user_id);
+CREATE INDEX competition_tipper_idx_competition_id ON competition_tipper (competition_id);
+CREATE INDEX competition_tipper_idx_user_id ON competition_tipper (user_id);
 --
 -- Table: game
 --
@@ -80,7 +80,8 @@ CREATE TABLE game (
   home_team_goals integer NOT NULL DEFAULT 0,
   home_team_behinds integer NOT NULL DEFAULT 0,
   away_team_goals integer NOT NULL DEFAULT 0,
-  away_team_behinds integer NOT NULL DEFAULT 0
+  away_team_behinds integer NOT NULL DEFAULT 0,
+  has_ended boolean NOT NULL DEFAULT 'false'
 );
 CREATE INDEX game_idx_away_team_id ON game (away_team_id);
 CREATE INDEX game_idx_home_team_id ON game (home_team_id);
@@ -102,11 +103,13 @@ CREATE UNIQUE INDEX team_user_user_id ON team_user (user_id);
 -- Table: tip
 --
 CREATE TABLE tip (
-  user_id integer NOT NULL,
+  tipper_id integer NOT NULL,
+  competition_id integer NOT NULL,
   game_id integer NOT NULL,
   home_team_to_win boolean NOT NULL,
-  PRIMARY KEY (user_id, game_id)
+  PRIMARY KEY (tipper_id, competition_id, game_id)
 );
+CREATE INDEX tip_idx_competition_id ON tip (competition_id);
 CREATE INDEX tip_idx_game_id ON tip (game_id);
-CREATE INDEX tip_idx_user_id ON tip (user_id);
+CREATE INDEX tip_idx_tipper_id ON tip (tipper_id);
 COMMIT

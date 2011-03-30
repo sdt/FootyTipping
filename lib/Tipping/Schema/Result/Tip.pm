@@ -11,7 +11,8 @@ my $foreign_key = {
 __PACKAGE__->load_components('Core');
 __PACKAGE__->table('tip');
 __PACKAGE__->add_columns(
-    user_id          => $foreign_key,
+    tipper_id        => $foreign_key,
+    competition_id   => $foreign_key,
     game_id          => $foreign_key,
     home_team_to_win => {
         data_type   => 'boolean',
@@ -19,15 +20,19 @@ __PACKAGE__->add_columns(
     },
 );
 
-__PACKAGE__->set_primary_key(qw/ user_id game_id /);
+__PACKAGE__->set_primary_key(qw/ tipper_id competition_id game_id /);
 
 __PACKAGE__->belongs_to(
-    user => 'Tipping::Schema::Result::User',
-    'user_id'
+    tipper => 'Tipping::Schema::Result::User',
+    'tipper_id'
 );
 __PACKAGE__->belongs_to(
     game => 'Tipping::Schema::Result::Game',
     'game_id'
+);
+__PACKAGE__->belongs_to(
+    competition => 'Tipping::Schema::Result::Competition',
+    'competition_id'
 );
 
 1;
@@ -38,6 +43,14 @@ __END__
 
 =head1 NAME
 
-Tipping::Schema::Result::Game - Schema table representing individual games
+Tipping::Schema::Result::Game - DBIx::Class result source
+
+=head1 DESCRIPTION
+
+A tipper may make a tip for a game in the competition they are a tipper in.
+
+=head1 AUTHOR
+
+Stephen Thirlwall <sdt@dr.com>
 
 =cut

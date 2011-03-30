@@ -1,10 +1,10 @@
-package Tipping::Schema::Result::Competition_User;
+package Tipping::Schema::Result::Competition_Tipper;
 use parent 'DBIx::Class';
 
 use Modern::Perl;
 
 __PACKAGE__->load_components('Core');
-__PACKAGE__->table('competition_user');
+__PACKAGE__->table('competition_tipper');
 __PACKAGE__->add_columns(
     user_id => {
         data_type           => 'integer',
@@ -35,6 +35,17 @@ __END__
 
 =head1 NAME
 
-Tipping::Schema::Result::Competition_User - Schema table representing many-to-many relationship between users and tipping competitions
+Tipping::Schema::Result::Competition_Tipper - DBIx::Class result source
+
+=head1 DESCRIPTION
+
+A tipper is a user connected to a competition.
+
+A competition has zero or more users. A user may be a tipper in zero or more
+competitions.
+
+=head1 AUTHOR
+
+Stephen Thirlwall <sdt@dr.com>
 
 =cut

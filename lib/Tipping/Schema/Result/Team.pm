@@ -48,6 +48,14 @@ __END__
 
 =head1 NAME
 
-Tipping::Schema::Result::Team - Schema table representing teams
+Tipping::Schema::Result::Team - DBIx::Class
+
+=head1 DESCRIPTION
+
+A team has a name and a nickname.
+
+=head1 AUTHOR
+
+Stephen Thirlwall <sdt@dr.com>
 
 =cut

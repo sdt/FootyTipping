@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Wed Mar 30 15:43:18 2011
+-- Created on Wed Mar 30 16:14:34 2011
 -- 
 ;
 --
@@ -70,15 +70,15 @@ CREATE INDEX "competition_admin_idx_user_id" on "competition_admin" ("user_id");
 
 ;
 --
--- Table: competition_user
+-- Table: competition_tipper
 --
-CREATE TABLE "competition_user" (
+CREATE TABLE "competition_tipper" (
   "user_id" integer NOT NULL,
   "competition_id" integer NOT NULL,
   PRIMARY KEY ("user_id", "competition_id")
 );
-CREATE INDEX "competition_user_idx_competition_id" on "competition_user" ("competition_id");
-CREATE INDEX "competition_user_idx_user_id" on "competition_user" ("user_id");
+CREATE INDEX "competition_tipper_idx_competition_id" on "competition_tipper" ("competition_id");
+CREATE INDEX "competition_tipper_idx_user_id" on "competition_tipper" ("user_id");
 
 ;
 --
@@ -95,6 +95,7 @@ CREATE TABLE "game" (
   "home_team_behinds" integer DEFAULT 0 NOT NULL,
   "away_team_goals" integer DEFAULT 0 NOT NULL,
   "away_team_behinds" integer DEFAULT 0 NOT NULL,
+  "has_ended" boolean DEFAULT 'false' NOT NULL,
   PRIMARY KEY ("game_id"),
   CONSTRAINT "game_season_round_away_team_id" UNIQUE ("season", "round", "away_team_id"),
   CONSTRAINT "game_season_round_home_team_id" UNIQUE ("season", "round", "home_team_id")
@@ -121,13 +122,15 @@ CREATE INDEX "team_user_idx_user_id" on "team_user" ("user_id");
 -- Table: tip
 --
 CREATE TABLE "tip" (
-  "user_id" integer NOT NULL,
+  "tipper_id" integer NOT NULL,
+  "competition_id" integer NOT NULL,
   "game_id" integer NOT NULL,
   "home_team_to_win" boolean NOT NULL,
-  PRIMARY KEY ("user_id", "game_id")
+  PRIMARY KEY ("tipper_id", "competition_id", "game_id")
 );
+CREATE INDEX "tip_idx_competition_id" on "tip" ("competition_id");
 CREATE INDEX "tip_idx_game_id" on "tip" ("game_id");
-CREATE INDEX "tip_idx_user_id" on "tip" ("user_id");
+CREATE INDEX "tip_idx_tipper_id" on "tip" ("tipper_id");
 
 ;
 --
@@ -143,11 +146,11 @@ ALTER TABLE "competition_admin" ADD FOREIGN KEY ("user_id")
   REFERENCES "user" ("user_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
 
 ;
-ALTER TABLE "competition_user" ADD FOREIGN KEY ("competition_id")
+ALTER TABLE "competition_tipper" ADD FOREIGN KEY ("competition_id")
   REFERENCES "competition" ("competition_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
 
 ;
-ALTER TABLE "competition_user" ADD FOREIGN KEY ("user_id")
+ALTER TABLE "competition_tipper" ADD FOREIGN KEY ("user_id")
   REFERENCES "user" ("user_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
 
 ;
@@ -171,10 +174,14 @@ ALTER TABLE "team_user" ADD FOREIGN KEY ("user_id")
   REFERENCES "user" ("user_id") ON DELETE CASCADE DEFERRABLE;
 
 ;
+ALTER TABLE "tip" ADD FOREIGN KEY ("competition_id")
+  REFERENCES "competition" ("competition_id") DEFERRABLE;
+
+;
 ALTER TABLE "tip" ADD FOREIGN KEY ("game_id")
   REFERENCES "game" ("game_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
 
 ;
-ALTER TABLE "tip" ADD FOREIGN KEY ("user_id")
+ALTER TABLE "tip" ADD FOREIGN KEY ("tipper_id")
   REFERENCES "user" ("user_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
 

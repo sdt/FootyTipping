@@ -43,4 +43,8 @@ Each competition has zero or more users who are administrators.
 Administrators do not need to be a member of the competition, but usually are.
 A user may be the administrator of multiple competitions.
 
+=head1 AUTHOR
+
+Stephen Thirlwall <sdt@dr.com>
+
 =cut

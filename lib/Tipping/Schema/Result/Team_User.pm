@@ -38,6 +38,14 @@ __END__
 
 =head1 NAME
 
-Tipping::Schema::Result::Competition_User - Schema table representing optional one-to-one relationship between users and teams. A user might have a team.
+Tipping::Schema::Result::Yeam_User - DBIx::Class result source
+
+=head1 DESCRIPTION
+
+A user may be a supporter of one team. A team has zero or more supporters.
+
+=head1 AUTHOR
+
+Stephen Thirlwall <sdt@dr.com>
 
 =cut

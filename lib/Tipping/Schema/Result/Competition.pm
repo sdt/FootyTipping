@@ -26,11 +26,11 @@ __PACKAGE__->set_primary_key('competition_id');
 __PACKAGE__->add_unique_constraint([ qw/ name / ]);
 
 __PACKAGE__->has_many(
-    competition_users => 'Tipping::Schema::Result::Competition_User',
+    competition_tippers => 'Tipping::Schema::Result::Competition_Tipper',
     'competition_id'
 );
 __PACKAGE__->many_to_many(
-    users => 'competition_users',
+    tippers => 'competition_tippers',
     'user_id'
 );
 
@@ -57,5 +57,9 @@ Tipping::Schema::Result::Competition - DBIx::Class result source
 
 A tipping competition has zero or more tippers and zero or more administrators.
 The administrators do not need to be tippers and vice versa.
+
+=head1 AUTHOR
+
+Stephen Thirlwall <sdt@dr.com>
 
 =cut

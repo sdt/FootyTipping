@@ -39,6 +39,25 @@ __END__
 
 =head1 NAME
 
-Tipping::Schema::Result::Venue - Schema table representing game venues
+Tipping::Schema::Result::Venue - DBIx::Class result source
+
+=head1 DESCRIPTION
+
+Games take place at a venue. The venue has a real name, and a sponsor name.
+
+=head1 BUGS AND LIMITATIONS
+
+The sponsor name of a venue may change over time. The main name may as well.
+Ideally, we should have a venue with maybe an address and a timezone, and then
+two other tables for name and sponsor name which also include start and end
+dates.
+
+eg. Docklands stadium was called Colonial Stadium, Telstra Dome, Etihad Stadium
+
+This means that historical games will be listed with the correct stadium name.
+
+=head1 AUTHOR
+
+Stephen Thirlwall <sdt@dr.com>
 
 =cut
