@@ -39,12 +39,22 @@ __PACKAGE__->has_many(
     tips => 'Tipping::Schema::Result::Tip',
     'user_id'
 );
+
 __PACKAGE__->has_many(
     competition_users => 'Tipping::Schema::Result::Competition_User',
     'user_id'
 );
 __PACKAGE__->many_to_many(
     competitions => 'competition_users',
+    'competition_id'
+);
+
+__PACKAGE__->has_many(
+    competition_admins => 'Tipping::Schema::Result::Competition_Admin',
+    'user_id'
+);
+__PACKAGE__->many_to_many(
+    competitions_administered => 'competition_admins',
     'competition_id'
 );
 
@@ -62,6 +72,17 @@ __END__
 
 =head1 NAME
 
-Tipping::Schema::Result::Competition - Schema table representing tipping competitions
+Tipping::Schema::Result::User - DBix:Class result source
+
+=head2 DESCRIPTION
+
+A user can be a tipper in zero or more competitions or an administrator of zero
+or more competitions.
+
+A user who is a tipper in a competition may enter tips for themselves in that
+competition, until tipping closes for a particular game.
+
+A user who is an administrator of a competition may enter tips for any users in
+that competition, at any time.
 
 =cut

@@ -27,14 +27,21 @@ __PACKAGE__->add_unique_constraint([ qw/ name / ]);
 
 __PACKAGE__->has_many(
     competition_users => 'Tipping::Schema::Result::Competition_User',
-    'user_id'
+    'competition_id'
 );
 __PACKAGE__->many_to_many(
     users => 'competition_users',
     'user_id'
 );
 
-
+__PACKAGE__->has_many(
+    competition_admins => 'Tipping::Schema::Result::Competition_Admin',
+    'competition_id'
+);
+__PACKAGE__->many_to_many(
+    admins => 'competition_admins',
+    'user_id'
+);
 
 1;
 
@@ -44,6 +51,11 @@ __END__
 
 =head1 NAME
 
-Tipping::Schema::Result::Competition - Schema table representing tipping competitions
+Tipping::Schema::Result::Competition - DBIx::Class result source
+
+=head1 DESCRIPTION
+
+A tipping competition has zero or more tippers and zero or more administrators.
+The administrators do not need to be tippers and vice versa.
 
 =cut

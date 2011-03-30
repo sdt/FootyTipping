@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Sat Mar 26 20:57:47 2011
+-- Created on Wed Mar 30 15:43:18 2011
 -- 
 ;
 --
@@ -55,6 +55,18 @@ CREATE TABLE "venue" (
   CONSTRAINT "venue_name" UNIQUE ("name"),
   CONSTRAINT "venue_sponsor_name" UNIQUE ("sponsor_name")
 );
+
+;
+--
+-- Table: competition_admin
+--
+CREATE TABLE "competition_admin" (
+  "user_id" integer NOT NULL,
+  "competition_id" integer NOT NULL,
+  PRIMARY KEY ("user_id", "competition_id")
+);
+CREATE INDEX "competition_admin_idx_competition_id" on "competition_admin" ("competition_id");
+CREATE INDEX "competition_admin_idx_user_id" on "competition_admin" ("user_id");
 
 ;
 --
@@ -123,8 +135,16 @@ CREATE INDEX "tip_idx_user_id" on "tip" ("user_id");
 --
 
 ;
+ALTER TABLE "competition_admin" ADD FOREIGN KEY ("competition_id")
+  REFERENCES "competition" ("competition_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
+
+;
+ALTER TABLE "competition_admin" ADD FOREIGN KEY ("user_id")
+  REFERENCES "user" ("user_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
+
+;
 ALTER TABLE "competition_user" ADD FOREIGN KEY ("competition_id")
-  REFERENCES "competition" ("competition_id") DEFERRABLE;
+  REFERENCES "competition" ("competition_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
 
 ;
 ALTER TABLE "competition_user" ADD FOREIGN KEY ("user_id")

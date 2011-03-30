@@ -64,6 +64,82 @@ schema:
       name: competition
       options: []
       order: 1
+    competition_admin:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - user_id
+            - competition_id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+        - deferrable: 1
+          expression: ''
+          fields:
+            - competition_id
+          match_type: ''
+          name: competition_admin_fk_competition_id
+          on_delete: CASCADE
+          on_update: CASCADE
+          options: []
+          reference_fields:
+            - competition_id
+          reference_table: competition
+          type: FOREIGN KEY
+        - deferrable: 1
+          expression: ''
+          fields:
+            - user_id
+          match_type: ''
+          name: competition_admin_fk_user_id
+          on_delete: CASCADE
+          on_update: CASCADE
+          options: []
+          reference_fields:
+            - user_id
+          reference_table: user
+          type: FOREIGN KEY
+      fields:
+        competition_id:
+          data_type: integer
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: competition_id
+          order: 2
+          size:
+            - 0
+        user_id:
+          data_type: integer
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: user_id
+          order: 1
+          size:
+            - 0
+      indices:
+        - fields:
+            - competition_id
+          name: competition_admin_idx_competition_id
+          options: []
+          type: NORMAL
+        - fields:
+            - user_id
+          name: competition_admin_idx_user_id
+          options: []
+          type: NORMAL
+      name: competition_admin
+      options: []
+      order: 5
     competition_user:
       constraints:
         - deferrable: 1
@@ -85,8 +161,8 @@ schema:
             - competition_id
           match_type: ''
           name: competition_user_fk_competition_id
-          on_delete: ''
-          on_update: ''
+          on_delete: CASCADE
+          on_update: CASCADE
           options: []
           reference_fields:
             - competition_id
@@ -139,7 +215,7 @@ schema:
           type: NORMAL
       name: competition_user
       options: []
-      order: 5
+      order: 6
     game:
       constraints:
         - deferrable: 1
@@ -341,7 +417,7 @@ schema:
           type: NORMAL
       name: game
       options: []
-      order: 6
+      order: 7
     team:
       constraints:
         - deferrable: 1
@@ -503,7 +579,7 @@ schema:
           type: NORMAL
       name: team_user
       options: []
-      order: 7
+      order: 8
     tip:
       constraints:
         - deferrable: 1
@@ -589,7 +665,7 @@ schema:
           type: NORMAL
       name: tip
       options: []
-      order: 8
+      order: 9
     user:
       constraints:
         - deferrable: 1
@@ -781,6 +857,7 @@ translator:
       class_mappings:
         DBIx::Class::DeploymentHandler::VersionStorage::Standard::VersionResult: __VERSION
         Tipping::Schema::Result::Competition: Competition
+        Tipping::Schema::Result::Competition_Admin: Competition_Admin
         Tipping::Schema::Result::Competition_User: Competition_User
         Tipping::Schema::Result::Game: Game
         Tipping::Schema::Result::Team: Team
@@ -809,6 +886,16 @@ translator:
           _primaries: &2
             - competition_id
           _relationships:
+            competition_admins:
+              attrs:
+                accessor: multi
+                cascade_copy: 1
+                cascade_delete: 1
+                join_type: LEFT
+              class: Tipping::Schema::Result::Competition_Admin
+              cond:
+                foreign.competition_id: self.competition_id
+              source: Tipping::Schema::Result::Competition_Admin
             competition_users:
               attrs:
                 accessor: multi
@@ -817,7 +904,7 @@ translator:
                 join_type: LEFT
               class: Tipping::Schema::Result::Competition_User
               cond:
-                foreign.user_id: self.competition_id
+                foreign.competition_id: self.competition_id
               source: Tipping::Schema::Result::Competition_User
           _unique_constraints:
             competition_name:
@@ -830,7 +917,7 @@ translator:
           schema: *1
           source_name: Competition
           sqlt_deploy_callback: default_sqlt_deploy_hook
-        Competition_User: !!perl/hash:DBIx::Class::ResultSource::Table
+        Competition_Admin: !!perl/hash:DBIx::Class::ResultSource::Table
           _columns:
             competition_id:
               data_type: integer
@@ -870,6 +957,53 @@ translator:
               source: Tipping::Schema::Result::User
           _unique_constraints:
             primary: *3
+          name: competition_admin
+          result_class: Tipping::Schema::Result::Competition_Admin
+          resultset_attributes: {}
+          resultset_class: DBIx::Class::ResultSet
+          schema: *1
+          source_name: Competition_Admin
+          sqlt_deploy_callback: default_sqlt_deploy_hook
+        Competition_User: !!perl/hash:DBIx::Class::ResultSource::Table
+          _columns:
+            competition_id:
+              data_type: integer
+              is_nullable: 0
+            user_id:
+              data_type: integer
+              is_nullable: 0
+          _columns_info_loaded: 0
+          _ordered_columns:
+            - user_id
+            - competition_id
+          _primaries: &4
+            - user_id
+            - competition_id
+          _relationships:
+            competition:
+              attrs:
+                accessor: single
+                fk_columns:
+                  competition_id: 1
+                is_foreign_key_constraint: 1
+                undef_on_null_fk: 1
+              class: Tipping::Schema::Result::Competition
+              cond:
+                foreign.competition_id: self.competition_id
+              source: Tipping::Schema::Result::Competition
+            user:
+              attrs:
+                accessor: single
+                fk_columns:
+                  user_id: 1
+                is_foreign_key_constraint: 1
+                undef_on_null_fk: 1
+              class: Tipping::Schema::Result::User
+              cond:
+                foreign.user_id: self.user_id
+              source: Tipping::Schema::Result::User
+          _unique_constraints:
+            primary: *4
           name: competition_user
           result_class: Tipping::Schema::Result::Competition_User
           resultset_attributes: {}
@@ -926,7 +1060,7 @@ translator:
             - home_team_behinds
             - away_team_goals
             - away_team_behinds
-          _primaries: &4
+          _primaries: &5
             - game_id
           _relationships:
             away_team:
@@ -981,7 +1115,7 @@ translator:
               - season
               - round
               - home_team_id
-            primary: *4
+            primary: *5
           name: game
           result_class: Tipping::Schema::Result::Game
           resultset_attributes: {}
@@ -1006,7 +1140,7 @@ translator:
             - team_id
             - name
             - nickname
-          _primaries: &5
+          _primaries: &6
             - team_id
           _relationships:
             away_games:
@@ -1041,7 +1175,7 @@ translator:
                 foreign.home_team_id: self.team_id
               source: Tipping::Schema::Result::Game
           _unique_constraints:
-            primary: *5
+            primary: *6
             team_name:
               - name
             team_nickname:
@@ -1065,7 +1199,7 @@ translator:
           _ordered_columns:
             - user_id
             - team_id
-          _primaries: &6
+          _primaries: &7
             - user_id
             - team_id
           _relationships:
@@ -1092,7 +1226,7 @@ translator:
                 foreign.user_id: self.user_id
               source: Tipping::Schema::Result::User
           _unique_constraints:
-            primary: *6
+            primary: *7
             team_user_user_id:
               - user_id
           name: team_user
@@ -1118,7 +1252,7 @@ translator:
             - user_id
             - game_id
             - home_team_to_win
-          _primaries: &7
+          _primaries: &8
             - user_id
             - game_id
           _relationships:
@@ -1145,7 +1279,7 @@ translator:
                 foreign.user_id: self.user_id
               source: Tipping::Schema::Result::User
           _unique_constraints:
-            primary: *7
+            primary: *8
           name: tip
           result_class: Tipping::Schema::Result::Tip
           resultset_attributes: {}
@@ -1178,9 +1312,19 @@ translator:
             - real_name
             - screen_name
             - password
-          _primaries: &8
+          _primaries: &9
             - user_id
           _relationships:
+            competition_admins:
+              attrs:
+                accessor: multi
+                cascade_copy: 1
+                cascade_delete: 1
+                join_type: LEFT
+              class: Tipping::Schema::Result::Competition_Admin
+              cond:
+                foreign.user_id: self.user_id
+              source: Tipping::Schema::Result::Competition_Admin
             competition_users:
               attrs:
                 accessor: multi
@@ -1212,7 +1356,7 @@ translator:
                 foreign.user_id: self.user_id
               source: Tipping::Schema::Result::Tip
           _unique_constraints:
-            primary: *8
+            primary: *9
             user_real_name:
               - real_name
             user_screen_name:
@@ -1243,7 +1387,7 @@ translator:
             - venue_id
             - name
             - sponsor_name
-          _primaries: &9
+          _primaries: &10
             - venue_id
           _relationships:
             games:
@@ -1257,7 +1401,7 @@ translator:
                 foreign.venue_id: self.venue_id
               source: Tipping::Schema::Result::Game
           _unique_constraints:
-            primary: *9
+            primary: *10
             venue_name:
               - name
             venue_sponsor_name:
@@ -1289,13 +1433,13 @@ translator:
             - version
             - ddl
             - upgrade_sql
-          _primaries: &10
+          _primaries: &11
             - id
           _relationships: {}
           _unique_constraints:
             dbix_class_deploymenthandler_versions_version:
               - version
-            primary: *10
+            primary: *11
           name: dbix_class_deploymenthandler_versions
           result_class: DBIx::Class::DeploymentHandler::VersionStorage::Standard::VersionResult
           resultset_attributes: {}
@@ -1312,12 +1456,12 @@ translator:
           - dbi:SQLite:tipping.sqlite.db
           - ~
           - ~
-          - &11
+          - &12
             AutoCommit: 1
             PrintError: 0
             RaiseError: 1
             ShowErrorStatement: 1
-        _dbic_connect_attributes: *11
+        _dbic_connect_attributes: *12
         _in_dbh_do: 0
         _sql_maker: ~
         _sql_maker_opts: {}
@@ -1326,16 +1470,17 @@ translator:
         transaction_depth: 0
     sources:
       - Venue
-      - Team
       - Competition
+      - Team
       - Competition_User
-      - User
       - Team_User
+      - User
       - Game
       - Tip
+      - Competition_Admin
   parser_type: SQL::Translator::Parser::DBIx::Class
   producer_args: {}
   producer_type: SQL::Translator::Producer::YAML
   show_warnings: 0
   trace: 0
-  version: 0.11007
+  version: 0.11006

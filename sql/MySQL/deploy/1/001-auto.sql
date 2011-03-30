@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Sat Mar 26 20:57:47 2011
+-- Created on Wed Mar 30 15:43:19 2011
 -- 
 ;
 SET foreign_key_checks=0;
@@ -51,6 +51,18 @@ CREATE TABLE `venue` (
   UNIQUE `venue_sponsor_name` (`sponsor_name`)
 ) ENGINE=InnoDB;
 --
+-- Table: `competition_admin`
+--
+CREATE TABLE `competition_admin` (
+  `user_id` integer NOT NULL,
+  `competition_id` integer NOT NULL,
+  INDEX `competition_admin_idx_competition_id` (`competition_id`),
+  INDEX `competition_admin_idx_user_id` (`user_id`),
+  PRIMARY KEY (`user_id`, `competition_id`),
+  CONSTRAINT `competition_admin_fk_competition_id` FOREIGN KEY (`competition_id`) REFERENCES `competition` (`competition_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `competition_admin_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+--
 -- Table: `competition_user`
 --
 CREATE TABLE `competition_user` (
@@ -59,7 +71,7 @@ CREATE TABLE `competition_user` (
   INDEX `competition_user_idx_competition_id` (`competition_id`),
   INDEX `competition_user_idx_user_id` (`user_id`),
   PRIMARY KEY (`user_id`, `competition_id`),
-  CONSTRAINT `competition_user_fk_competition_id` FOREIGN KEY (`competition_id`) REFERENCES `competition` (`competition_id`),
+  CONSTRAINT `competition_user_fk_competition_id` FOREIGN KEY (`competition_id`) REFERENCES `competition` (`competition_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `competition_user_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 --
