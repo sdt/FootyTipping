@@ -1,0 +1,27 @@
+Rough design scribble
+
+Main page:
+    Results  Tipping  Ladder
+
+Results page:
+    Previous rounds results by default
+
+Tipping page;
+    Current rounds tips by default
+
+Controller: /tips/$season [/$round?] [/competitionid?] [/userid?]
+    Get current user (or subbed userid?)
+    Get games for $season,$round
+    if (post) {
+        update tips for $user,$season,$round
+    }
+    Get tips for $user,$season,$round
+    Present games/tips
+
+Controller: /ladder [/$season?] [/$round?] [/$competitionid?]
+    Check user is member or administrator of competition
+    Get current ladder for $season/$round/$competition
+
+Controller: /results [/$season?] [/$round?] [/$competitionid?]
+
+
