@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Thu Mar 31 17:22:30 2011
+-- Created on Thu Mar 31 22:15:03 2011
 -- 
 
 ;
@@ -43,7 +43,8 @@ CREATE UNIQUE INDEX user__user_name ON user_ (user_name);
 CREATE TABLE venue (
   venue_id INTEGER PRIMARY KEY NOT NULL,
   name varchar NOT NULL,
-  sponsor_name varchar NOT NULL
+  sponsor_name varchar NOT NULL,
+  time_zone varchar NOT NULL
 );
 CREATE UNIQUE INDEX venue_name ON venue (name);
 CREATE UNIQUE INDEX venue_sponsor_name ON venue (sponsor_name);

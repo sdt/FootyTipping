@@ -909,6 +909,16 @@ schema:
           order: 3
           size:
             - 0
+        time_zone:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: time_zone
+          order: 4
+          size:
+            - 0
         venue_id:
           data_type: integer
           default_value: ~
@@ -1517,6 +1527,9 @@ translator:
             sponsor_name:
               data_type: varchar
               is_nullable: 0
+            time_zone:
+              data_type: varchar
+              is_nullable: 0
             venue_id:
               data_type: integer
               is_auto_increment: 1
@@ -1526,6 +1539,7 @@ translator:
             - venue_id
             - name
             - sponsor_name
+            - time_zone
           _primaries: &10
             - venue_id
           _relationships:
@@ -1609,9 +1623,9 @@ translator:
         transaction_depth: 0
     sources:
       - Competition
-      - Venue
       - Team
       - Competition_Tipper
+      - Venue
       - User
       - Game
       - Tip
@@ -1622,4 +1636,4 @@ translator:
   producer_type: SQL::Translator::Producer::YAML
   show_warnings: 0
   trace: 0
-  version: 0.11006
+  version: 0.11007

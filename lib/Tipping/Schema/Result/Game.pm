@@ -36,8 +36,8 @@ __PACKAGE__->add_columns(
 
     venue_id     => $foreign_key,
 
-#    start_time => {
-#        data_type   => 'timestamp with time zone',
+#    start_time_utc => {
+#        data_type   => 'timestamp',
 #        is_nullable => 0,
 #    },
 

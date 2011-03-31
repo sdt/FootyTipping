@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Thu Mar 31 17:22:30 2011
+-- Created on Thu Mar 31 22:15:03 2011
 -- 
 ;
 --
@@ -51,6 +51,7 @@ CREATE TABLE "venue" (
   "venue_id" serial NOT NULL,
   "name" character varying NOT NULL,
   "sponsor_name" character varying NOT NULL,
+  "time_zone" character varying NOT NULL,
   PRIMARY KEY ("venue_id"),
   CONSTRAINT "venue_name" UNIQUE ("name"),
   CONSTRAINT "venue_sponsor_name" UNIQUE ("sponsor_name")

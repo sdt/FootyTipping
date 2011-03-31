@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Thu Mar 31 17:22:31 2011
+-- Created on Thu Mar 31 22:15:03 2011
 -- 
 ;
 SET foreign_key_checks=0;
@@ -46,6 +46,7 @@ CREATE TABLE `venue` (
   `venue_id` integer NOT NULL auto_increment,
   `name` varchar(255) NOT NULL,
   `sponsor_name` varchar(255) NOT NULL,
+  `time_zone` varchar(255) NOT NULL,
   PRIMARY KEY (`venue_id`),
   UNIQUE `venue_name` (`name`),
   UNIQUE `venue_sponsor_name` (`sponsor_name`)

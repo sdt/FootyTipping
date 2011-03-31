@@ -667,6 +667,9 @@ translator:
             sponsor_name:
               data_type: varchar
               is_nullable: 0
+            time_zone:
+              data_type: varchar
+              is_nullable: 0
             venue_id:
               data_type: integer
               is_auto_increment: 1
@@ -676,6 +679,7 @@ translator:
             - venue_id
             - name
             - sponsor_name
+            - time_zone
           _primaries: &10
             - venue_id
           _relationships:
@@ -764,4 +768,4 @@ translator:
   producer_type: SQL::Translator::Producer::YAML
   show_warnings: 0
   trace: 0
-  version: 0.11006
+  version: 0.11007

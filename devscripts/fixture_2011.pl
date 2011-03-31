@@ -90,7 +90,7 @@ while (<DATA>) {
                 ([A-Z]+)
                $/x) {
 
-            my ($home_team, $away_team, $venue, $melb_time, $local_time, 
+            my ($home_team, $away_team, $venue, $melb_time, $local_time,
                 $network) = ($1, $2, $3, $4, $5, $6);
             _emit_round($out, $round, $home_team, $away_team, $venue);
         }

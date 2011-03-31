@@ -19,6 +19,10 @@ __PACKAGE__->add_columns(
         data_type           => 'varchar',
         is_nullable         => 0,
     },
+    time_zone => {
+        data_type           => 'varchar',
+        is_nullable         => 0,
+    },
 );
 
 __PACKAGE__->set_primary_key('venue_id');
