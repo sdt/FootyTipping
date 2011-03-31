@@ -4,7 +4,7 @@ use parent 'DBIx::Class';
 use Modern::Perl;
 
 __PACKAGE__->load_components('Core');
-__PACKAGE__->table('user');
+__PACKAGE__->table('user_');
 __PACKAGE__->add_columns(
     user_id => {
         data_type           => 'integer',
@@ -38,6 +38,10 @@ __PACKAGE__->add_unique_constraint([ qw/ screen_name / ]);
 __PACKAGE__->has_many(
     tips => 'Tipping::Schema::Result::Tip',
     'tipper_id'
+);
+__PACKAGE__->has_many(
+    submitted_tips => 'Tipping::Schema::Result::Tip',
+    'submitter_id'
 );
 
 __PACKAGE__->has_many(

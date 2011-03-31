@@ -12,19 +12,29 @@ __PACKAGE__->load_components('Core');
 __PACKAGE__->table('tip');
 __PACKAGE__->add_columns(
     tipper_id        => $foreign_key,
+    submitter_id     => $foreign_key,
     competition_id   => $foreign_key,
     game_id          => $foreign_key,
+
     home_team_to_win => {
         data_type   => 'boolean',
         is_nullable => 0,
     },
+    timestamp        => {
+        data_type       => 'timestamp',
+        set_on_create   => 1,
+    },
 );
 
-__PACKAGE__->set_primary_key(qw/ tipper_id competition_id game_id /);
+__PACKAGE__->set_primary_key(qw/ tipper_id competition_id game_id timestamp /);
 
 __PACKAGE__->belongs_to(
     tipper => 'Tipping::Schema::Result::User',
     'tipper_id'
+);
+__PACKAGE__->belongs_to(
+    submitter => 'Tipping::Schema::Result::User',
+    'submitter_id'
 );
 __PACKAGE__->belongs_to(
     game => 'Tipping::Schema::Result::Game',
@@ -48,6 +58,17 @@ Tipping::Schema::Result::Game - DBIx::Class result source
 =head1 DESCRIPTION
 
 A tipper may make a tip for a game in the competition they are a tipper in.
+
+=head1 BUGS AND LIMITATIONS
+
+Tips can be entered by a tipper, or by an administrator of that competition.
+We probably want an audit trail of who changed tips and when. In this regard
+this table should probably be extended to:
+
+    tipper, game, competition, timestamp, submitter
+
+The primary key would also take the timestamp into account. The tip which
+counts is the one with the latest timestamp.
 
 =head1 AUTHOR
 

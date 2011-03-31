@@ -490,19 +490,28 @@ translator:
             home_team_to_win:
               data_type: boolean
               is_nullable: 0
+            submitter_id:
+              data_type: integer
+              is_nullable: 0
+            timestamp:
+              data_type: timestamp
+              set_on_create: 1
             tipper_id:
               data_type: integer
               is_nullable: 0
           _columns_info_loaded: 0
           _ordered_columns:
             - tipper_id
+            - submitter_id
             - competition_id
             - game_id
             - home_team_to_win
+            - timestamp
           _primaries: &8
             - tipper_id
             - competition_id
             - game_id
+            - timestamp
           _relationships:
             competition:
               attrs:
@@ -526,6 +535,17 @@ translator:
               cond:
                 foreign.game_id: self.game_id
               source: Tipping::Schema::Result::Game
+            submitter:
+              attrs:
+                accessor: single
+                fk_columns:
+                  submitter_id: 1
+                is_foreign_key_constraint: 1
+                undef_on_null_fk: 1
+              class: Tipping::Schema::Result::User
+              cond:
+                foreign.user_id: self.submitter_id
+              source: Tipping::Schema::Result::User
             tipper:
               attrs:
                 accessor: single
@@ -594,6 +614,16 @@ translator:
               cond:
                 foreign.user_id: self.user_id
               source: Tipping::Schema::Result::Competition_Tipper
+            submitted_tips:
+              attrs:
+                accessor: multi
+                cascade_copy: 1
+                cascade_delete: 1
+                join_type: LEFT
+              class: Tipping::Schema::Result::Tip
+              cond:
+                foreign.submitter_id: self.user_id
+              source: Tipping::Schema::Result::Tip
             team:
               attrs:
                 accessor: single
@@ -616,13 +646,13 @@ translator:
               source: Tipping::Schema::Result::Tip
           _unique_constraints:
             primary: *9
-            user_real_name:
+            user__real_name:
               - real_name
-            user_screen_name:
+            user__screen_name:
               - screen_name
-            user_user_name:
+            user__user_name:
               - user_name
-          name: user
+          name: user_
           result_class: Tipping::Schema::Result::User
           resultset_attributes: {}
           resultset_class: DBIx::Class::ResultSet

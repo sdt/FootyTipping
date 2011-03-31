@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Wed Mar 30 16:23:17 2011
+-- Created on Thu Mar 31 17:22:30 2011
 -- 
 
 ;
@@ -25,18 +25,18 @@ CREATE TABLE team (
 CREATE UNIQUE INDEX team_name ON team (name);
 CREATE UNIQUE INDEX team_nickname ON team (nickname);
 --
--- Table: user
+-- Table: user_
 --
-CREATE TABLE user (
+CREATE TABLE user_ (
   user_id INTEGER PRIMARY KEY NOT NULL,
   user_name varchar NOT NULL,
   real_name varchar NOT NULL,
   screen_name varchar,
   password varchar NOT NULL
 );
-CREATE UNIQUE INDEX user_real_name ON user (real_name);
-CREATE UNIQUE INDEX user_screen_name ON user (screen_name);
-CREATE UNIQUE INDEX user_user_name ON user (user_name);
+CREATE UNIQUE INDEX user__real_name ON user_ (real_name);
+CREATE UNIQUE INDEX user__screen_name ON user_ (screen_name);
+CREATE UNIQUE INDEX user__user_name ON user_ (user_name);
 --
 -- Table: venue
 --
@@ -104,12 +104,15 @@ CREATE UNIQUE INDEX team_supporter_user_id ON team_supporter (user_id);
 --
 CREATE TABLE tip (
   tipper_id integer NOT NULL,
+  submitter_id integer NOT NULL,
   competition_id integer NOT NULL,
   game_id integer NOT NULL,
   home_team_to_win boolean NOT NULL,
-  PRIMARY KEY (tipper_id, competition_id, game_id)
+  timestamp timestamp NOT NULL,
+  PRIMARY KEY (tipper_id, competition_id, game_id, timestamp)
 );
 CREATE INDEX tip_idx_competition_id ON tip (competition_id);
 CREATE INDEX tip_idx_game_id ON tip (game_id);
+CREATE INDEX tip_idx_submitter_id ON tip (submitter_id);
 CREATE INDEX tip_idx_tipper_id ON tip (tipper_id);
 COMMIT
