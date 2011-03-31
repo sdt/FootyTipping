@@ -1,0 +1,7 @@
+name: Tipping
+database:
+  dsn: dbi:Pg:dbname=tipping;host=localhost
+  user: tipping
+  password: tipping
+  AutoCommit: 1
+  RaiseError: 1
