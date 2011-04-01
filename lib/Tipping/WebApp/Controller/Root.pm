@@ -26,11 +26,12 @@ The root page (/)
 
 =cut
 
-sub index :Path :Args(0) {
+sub index :Path :Args(0) {      ## no critic (ProhibitBuiltinHomonyms)
     my ( $self, $c ) = @_;
 
     # Hello World
     $c->response->body( $c->welcome_message );
+    return;
 }
 
 =head2 default
@@ -39,10 +40,11 @@ Standard 404 error page
 
 =cut
 
-sub default :Path {
+sub default :Path {             ## no critic (ProhibitBuiltinHomonyms)
     my ( $self, $c ) = @_;
     $c->response->body( 'Page not found' );
-    $c->response->status(404);
+    $c->response->status(404);  ## no critic (ProhibitMagicNumbers)
+    return;
 }
 
 =head2 end

@@ -2,6 +2,7 @@ package Tipping::DeploymentHandler;
 
 use Modern::Perl;
 
+use Carp (qw/ croak /);
 use Data::Dumper::Concise (qw/ Dumper /);
 use DBIx::Class::DeploymentHandler ();
 use File::ShareDir (qw/ module_dir /);
@@ -19,7 +20,7 @@ has deployment_handler => (
     lazy_build  => 1,
 );
 
-sub _build_deployment_handler {
+sub _build_deployment_handler { ## no critic (ProhibitUnusedPrivateSubroutines)
     my $self = shift;
 
     my $dh = DBIx::Class::DeploymentHandler->new( {
@@ -67,6 +68,8 @@ sub prepare {
         } );
 
     $trans->translate;
+
+    return;
 }
 
 sub update {
@@ -83,12 +86,14 @@ sub update {
         $self->deployment_handler->upgrade;
     }
     elsif ($database_version > $schema_version) {
-        die "Downgrade schema from v$database_version to v$schema_version "
+        croak "Downgrade schema from v$database_version to v$schema_version "
           . "not yet supported";
     }
     else {
         say "Schema already up to date at v$schema_version";
     }
+
+    return;
 }
 
 no Moose;

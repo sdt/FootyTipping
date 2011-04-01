@@ -1,12 +1,13 @@
 package Tipping::Config;
 use Modern::Perl;
 
+use Carp (qw/ croak /);
 use Config::JFDI;
-use Data::Dumper::Concise;
+use Data::Dumper::Concise (qw/ Dumper /);
 
 sub config {
     state $config = Config::JFDI->new(name => "Tipping");
-    die "Cannot find config file" unless $config->found;
+    croak "Cannot find config file" if not $config->found;
     say STDERR "Tipping::Config = ", Dumper($config->get)
         if $config->{debug_config};
     return $config->get;

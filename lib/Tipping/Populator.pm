@@ -34,6 +34,8 @@ sub populate {
         #say STDERR Dumper($row);
         $args{schema}->resultset($data->{table})->create($row);
     }
+
+    return;
 }
 
 1;

@@ -1,0 +1,4 @@
+exclude = RequireUseStrict RequireUseWarnings RequireRcsKeywords RequirePodSections RequireVersionVar RequireArgUnpacking RequirePodLinksIncludeText ProhibitEmptyQuotes
+
+[ControlStructures::ProhibitPostfixControls]
+flowcontrol = die say croak
