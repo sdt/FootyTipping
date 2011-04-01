@@ -1602,13 +1602,17 @@ translator:
           sqlt_deploy_callback: default_sqlt_deploy_hook
       storage: !!perl/hash:DBIx::Class::Storage::DBI
         _connect_info:
-          - dsn: dbi:SQLite:tipping.sqlite.db
+          - AutoCommit: 1
+            RaiseError: 1
+            dsn: dbi:Pg:dbname=tipping;host=localhost
+            password: tipping
+            user: tipping
         _dbh_details: {}
         _dbh_gen: 0
         _dbi_connect_info:
-          - dbi:SQLite:tipping.sqlite.db
-          - ~
-          - ~
+          - dbi:Pg:dbname=tipping;host=localhost
+          - tipping
+          - tipping
           - &12
             AutoCommit: 1
             PrintError: 0
@@ -1622,10 +1626,10 @@ translator:
         schema: *1
         transaction_depth: 0
     sources:
-      - Competition
       - Team
       - Competition_Tipper
       - Venue
+      - Competition
       - User
       - Game
       - Tip
@@ -1636,4 +1640,4 @@ translator:
   producer_type: SQL::Translator::Producer::YAML
   show_warnings: 0
   trace: 0
-  version: 0.11007
+  version: 0.11006
