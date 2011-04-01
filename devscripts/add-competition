@@ -1,0 +1,20 @@
+#!/usr/bin/env perl
+use Modern::Perl;
+
+use Getopt::Lazy
+    'name=s' => 'Name of competition (required)',
+    'password=s' => 'Password to join competition (optional)',
+    -summary => 'Add a tipping competition',
+    -usage => '%c %o',
+    ;
+
+use Tipping::Config;
+use Tipping::Schema;
+
+GetOptions(-autohelp => sub { not defined $name });
+
+my $schema = Tipping::Schema->connect(Tipping::Config->config->{database});
+$schema->resultset('Competition')->create({
+        name        => $name,
+        password    => $password,
+    });

@@ -1,0 +1,40 @@
+#!/usr/bin/env perl
+use Modern::Perl;
+
+use Getopt::Lazy
+    'username=s'     => 'Login name                 (required)',
+    'password=s'     => 'Password                   (required)',
+    'realname=s'     => 'Real name                  (required)',
+    'nickname=s'     => 'Screen name                (optional)',
+    '@competition=s' => 'Competition                (zero or more)',
+    'team=s'         => 'Supported team             (optional)',
+    -summary => 'Add a user',
+    -usage => '%c %o',
+    ;
+
+use Tipping::Config;
+use Tipping::Schema;
+
+use Data::Dumper;
+
+GetOptions(-autohelp => sub {
+        not (defined $username and defined $password and defined $realname)
+    });
+
+my $schema = Tipping::Schema->connect(Tipping::Config->config->{database});
+$schema->txn_do(sub {
+
+    my $user = $schema->resultset('User')->create({
+            user_name       => $username,
+            real_name       => $realname,
+            screen_name     => $nickname,
+            password        => $password,
+        });
+
+    for my $compname (@competition) {
+        my $competition = $schema->resultset('Competition')->find({
+                name => $compname
+            });
+        $user->add_to_competitions($competition);
+    }
+});
