@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Fri Apr  1 22:23:15 2011
+-- Created on Fri Apr  1 23:07:34 2011
 -- 
 
 ;
@@ -30,12 +30,11 @@ CREATE UNIQUE INDEX tbl_team_nickname ON tbl_team (nickname);
 CREATE TABLE tbl_user (
   user_id INTEGER PRIMARY KEY NOT NULL,
   user_name varchar NOT NULL,
+  password varchar NOT NULL,
   real_name varchar NOT NULL,
-  screen_name varchar,
-  password varchar NOT NULL
+  email varchar NOT NULL
 );
 CREATE UNIQUE INDEX tbl_user_real_name ON tbl_user (real_name);
-CREATE UNIQUE INDEX tbl_user_screen_name ON tbl_user (screen_name);
 CREATE UNIQUE INDEX tbl_user_user_name ON tbl_user (user_name);
 --
 -- Table: tbl_venue
@@ -57,10 +56,12 @@ CREATE TABLE tbl_competition_user (
   can_submit_tips_for_others boolean NOT NULL DEFAULT '0',
   can_change_closed_tips boolean NOT NULL DEFAULT '0',
   can_grant_powers boolean NOT NULL DEFAULT '0',
+  screen_name varchar,
   PRIMARY KEY (user_id, competition_id)
 );
 CREATE INDEX tbl_competition_user_idx_competition_id ON tbl_competition_user (competition_id);
 CREATE INDEX tbl_competition_user_idx_user_id ON tbl_competition_user (user_id);
+CREATE UNIQUE INDEX tbl_competition_user_competition_id_screen_name ON tbl_competition_user (competition_id, screen_name);
 --
 -- Table: tbl_game
 --

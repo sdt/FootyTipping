@@ -3,6 +3,11 @@ use parent 'DBIx::Class';
 
 use Modern::Perl;
 
+my $string = {
+    data_type           => 'varchar',
+    is_nullable         => 0,
+};
+
 __PACKAGE__->load_components('Core');
 __PACKAGE__->table('tbl_user');
 __PACKAGE__->add_columns(
@@ -11,29 +16,17 @@ __PACKAGE__->add_columns(
         is_auto_increment   => 1,
         is_nullable         => 0,
     },
-    user_name => {
-        data_type           => 'varchar',
-        is_nullable         => 0,
-    },
-    real_name => {
-        data_type           => 'varchar',
-        is_nullable         => 0,
-    },
-    screen_name => {
-        data_type           => 'varchar',
-        is_nullable         => 1,
-    },
-    password => {
-        data_type           => 'varchar',
-        is_nullable         => 0,
-    },
+
+    user_name => $string,
+    password  => $string,
+    real_name => $string,
+    email     => $string,
 );
 
 __PACKAGE__->set_primary_key('user_id');
 
 __PACKAGE__->add_unique_constraint([ qw/ user_name / ]);
 __PACKAGE__->add_unique_constraint([ qw/ real_name / ]);
-__PACKAGE__->add_unique_constraint([ qw/ screen_name / ]);
 
 __PACKAGE__->has_many(
     tips => 'Tipping::Schema::Result::Tip',
@@ -70,6 +63,9 @@ __END__
 Tipping::Schema::Result::User - DBix:Class result source
 
 =head1 DESCRIPTION
+
+A user has a username, password, email address and a real name.
+A user has a screen name, but this is per competition.
 
 A user can be a member of zero or more competitions.
 

@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Fri Apr  1 22:23:15 2011
+-- Created on Fri Apr  1 23:07:35 2011
 -- 
 ;
 --
@@ -34,12 +34,11 @@ CREATE TABLE "tbl_team" (
 CREATE TABLE "tbl_user" (
   "user_id" serial NOT NULL,
   "user_name" character varying NOT NULL,
-  "real_name" character varying NOT NULL,
-  "screen_name" character varying,
   "password" character varying NOT NULL,
+  "real_name" character varying NOT NULL,
+  "email" character varying NOT NULL,
   PRIMARY KEY ("user_id"),
   CONSTRAINT "tbl_user_real_name" UNIQUE ("real_name"),
-  CONSTRAINT "tbl_user_screen_name" UNIQUE ("screen_name"),
   CONSTRAINT "tbl_user_user_name" UNIQUE ("user_name")
 );
 
@@ -67,7 +66,9 @@ CREATE TABLE "tbl_competition_user" (
   "can_submit_tips_for_others" boolean DEFAULT '0' NOT NULL,
   "can_change_closed_tips" boolean DEFAULT '0' NOT NULL,
   "can_grant_powers" boolean DEFAULT '0' NOT NULL,
-  PRIMARY KEY ("user_id", "competition_id")
+  "screen_name" character varying,
+  PRIMARY KEY ("user_id", "competition_id"),
+  CONSTRAINT "tbl_competition_user_competition_id_screen_name" UNIQUE ("competition_id", "screen_name")
 );
 CREATE INDEX "tbl_competition_user_idx_competition_id" on "tbl_competition_user" ("competition_id");
 CREATE INDEX "tbl_competition_user_idx_user_id" on "tbl_competition_user" ("user_id");

@@ -23,9 +23,15 @@ __PACKAGE__->add_columns(
     can_submit_tips_for_others  => $user_capability,
     can_change_closed_tips      => $user_capability,
     can_grant_powers            => $user_capability,
+
+    screen_name => {
+        data_type           => 'varchar',
+        is_nullable         => 1,
+    },
 );
 
 __PACKAGE__->set_primary_key(qw/ user_id competition_id /);
+__PACKAGE__->add_unique_constraint([ qw/ competition_id screen_name / ]);
 
 __PACKAGE__->belongs_to(
     user => 'Tipping::Schema::Result::User',
@@ -53,6 +59,8 @@ or more users.
 
 There is only one type of user, but they have differing capabilities. A users
 capabilities can vary between competitions.
+
+A user has an optional screen name associated with each competition.
 
 =head1 AUTHOR
 

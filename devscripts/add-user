@@ -5,7 +5,7 @@ use Getopt::Lazy
     'username=s'     => 'Login name                 (required)',
     'password=s'     => 'Password                   (required)',
     'realname=s'     => 'Real name                  (required)',
-    'nickname=s'     => 'Screen name                (optional)',
+    'email=s'        => 'Email address              (required)',
     '@competition=s' => 'Competition                (zero or more)',
     'team=s'         => 'Supported team             (optional)',
     -summary => 'Add a user',
@@ -23,9 +23,9 @@ $schema->txn_do(sub {
 
     my $user = $schema->resultset('User')->create({
             user_name       => $username,
-            real_name       => $realname,
-            screen_name     => $nickname,
             password        => $password,
+            real_name       => $realname,
+            email           => $email,
         });
 
     for my $compname (@competition) {

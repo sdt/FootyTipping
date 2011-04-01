@@ -151,6 +151,9 @@ translator:
             competition_id:
               data_type: integer
               is_nullable: 0
+            screen_name:
+              data_type: varchar
+              is_nullable: 1
             user_id:
               data_type: integer
               is_nullable: 0
@@ -161,6 +164,7 @@ translator:
             - can_submit_tips_for_others
             - can_change_closed_tips
             - can_grant_powers
+            - screen_name
           _primaries: &3
             - user_id
             - competition_id
@@ -189,6 +193,9 @@ translator:
               source: Tipping::Schema::Result::User
           _unique_constraints:
             primary: *3
+            tbl_competition_user_competition_id_screen_name:
+              - competition_id
+              - screen_name
           name: tbl_competition_user
           result_class: Tipping::Schema::Result::Competition_User
           resultset_attributes: {}
@@ -525,15 +532,15 @@ translator:
           sqlt_deploy_callback: default_sqlt_deploy_hook
         User: !!perl/hash:DBIx::Class::ResultSource::Table
           _columns:
+            email:
+              data_type: varchar
+              is_nullable: 0
             password:
               data_type: varchar
               is_nullable: 0
             real_name:
               data_type: varchar
               is_nullable: 0
-            screen_name:
-              data_type: varchar
-              is_nullable: 1
             user_id:
               data_type: integer
               is_auto_increment: 1
@@ -545,9 +552,9 @@ translator:
           _ordered_columns:
             - user_id
             - user_name
-            - real_name
-            - screen_name
             - password
+            - real_name
+            - email
           _primaries: &8
             - user_id
           _relationships:
@@ -595,8 +602,6 @@ translator:
             primary: *8
             tbl_user_real_name:
               - real_name
-            tbl_user_screen_name:
-              - screen_name
             tbl_user_user_name:
               - user_name
           name: tbl_user
