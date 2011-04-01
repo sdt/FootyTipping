@@ -85,8 +85,6 @@ translator:
       class_mappings:
         DBIx::Class::DeploymentHandler::VersionStorage::Standard::VersionResult: __VERSION
         Tipping::Schema::Result::Competition: Competition
-        Tipping::Schema::Result::Competition_Admin: Competition_Admin
-        Tipping::Schema::Result::Competition_Tipper: Competition_Tipper
         Tipping::Schema::Result::Competition_User: Competition_User
         Tipping::Schema::Result::Game: Game
         Tipping::Schema::Result::Team: Team
@@ -126,109 +124,15 @@ translator:
                 foreign.competition_id: self.competition_id
               source: Tipping::Schema::Result::Competition_User
           _unique_constraints:
-            competition_name:
-              - name
             primary: *2
-          name: competition
+            tbl_competition_name:
+              - name
+          name: tbl_competition
           result_class: Tipping::Schema::Result::Competition
           resultset_attributes: {}
           resultset_class: DBIx::Class::ResultSet
           schema: *1
           source_name: Competition
-          sqlt_deploy_callback: default_sqlt_deploy_hook
-        Competition_Admin: !!perl/hash:DBIx::Class::ResultSource::Table
-          _columns:
-            competition_id:
-              data_type: integer
-              is_nullable: 0
-            user_id:
-              data_type: integer
-              is_nullable: 0
-          _columns_info_loaded: 0
-          _ordered_columns:
-            - user_id
-            - competition_id
-          _primaries: &3
-            - user_id
-            - competition_id
-          _relationships:
-            competition:
-              attrs:
-                accessor: single
-                fk_columns:
-                  competition_id: 1
-                is_foreign_key_constraint: 1
-                undef_on_null_fk: 1
-              class: Tipping::Schema::Result::Competition
-              cond:
-                foreign.competition_id: self.competition_id
-              source: Tipping::Schema::Result::Competition
-            user:
-              attrs:
-                accessor: single
-                fk_columns:
-                  user_id: 1
-                is_foreign_key_constraint: 1
-                undef_on_null_fk: 1
-              class: Tipping::Schema::Result::User
-              cond:
-                foreign.user_id: self.user_id
-              source: Tipping::Schema::Result::User
-          _unique_constraints:
-            primary: *3
-          name: competition_admin
-          result_class: Tipping::Schema::Result::Competition_Admin
-          resultset_attributes: {}
-          resultset_class: DBIx::Class::ResultSet
-          schema: *1
-          source_name: Competition_Admin
-          sqlt_deploy_callback: default_sqlt_deploy_hook
-        Competition_Tipper: !!perl/hash:DBIx::Class::ResultSource::Table
-          _columns:
-            competition_id:
-              data_type: integer
-              is_nullable: 0
-            user_id:
-              data_type: integer
-              is_nullable: 0
-          _columns_info_loaded: 0
-          _ordered_columns:
-            - user_id
-            - competition_id
-          _primaries: &4
-            - user_id
-            - competition_id
-          _relationships:
-            competition:
-              attrs:
-                accessor: single
-                fk_columns:
-                  competition_id: 1
-                is_foreign_key_constraint: 1
-                undef_on_null_fk: 1
-              class: Tipping::Schema::Result::Competition
-              cond:
-                foreign.competition_id: self.competition_id
-              source: Tipping::Schema::Result::Competition
-            user:
-              attrs:
-                accessor: single
-                fk_columns:
-                  user_id: 1
-                is_foreign_key_constraint: 1
-                undef_on_null_fk: 1
-              class: Tipping::Schema::Result::User
-              cond:
-                foreign.user_id: self.user_id
-              source: Tipping::Schema::Result::User
-          _unique_constraints:
-            primary: *4
-          name: competition_tipper
-          result_class: Tipping::Schema::Result::Competition_Tipper
-          resultset_attributes: {}
-          resultset_class: DBIx::Class::ResultSet
-          schema: *1
-          source_name: Competition_Tipper
           sqlt_deploy_callback: default_sqlt_deploy_hook
         Competition_User: !!perl/hash:DBIx::Class::ResultSource::Table
           _columns:
@@ -257,7 +161,7 @@ translator:
             - can_submit_tips_for_others
             - can_change_closed_tips
             - can_grant_powers
-          _primaries: &5
+          _primaries: &3
             - user_id
             - competition_id
           _relationships:
@@ -284,8 +188,8 @@ translator:
                 foreign.user_id: self.user_id
               source: Tipping::Schema::Result::User
           _unique_constraints:
-            primary: *5
-          name: competition_user
+            primary: *3
+          name: tbl_competition_user
           result_class: Tipping::Schema::Result::Competition_User
           resultset_attributes: {}
           resultset_class: DBIx::Class::ResultSet
@@ -346,7 +250,7 @@ translator:
             - away_team_goals
             - away_team_behinds
             - has_ended
-          _primaries: &6
+          _primaries: &4
             - game_id
           _relationships:
             away_team:
@@ -393,16 +297,16 @@ translator:
                 foreign.venue_id: self.venue_id
               source: Tipping::Schema::Result::Venue
           _unique_constraints:
-            game_season_round_away_team_id:
+            primary: *4
+            tbl_game_season_round_away_team_id:
               - season
               - round
               - away_team_id
-            game_season_round_home_team_id:
+            tbl_game_season_round_home_team_id:
               - season
               - round
               - home_team_id
-            primary: *6
-          name: game
+          name: tbl_game
           result_class: Tipping::Schema::Result::Game
           resultset_attributes: {}
           resultset_class: DBIx::Class::ResultSet
@@ -426,7 +330,7 @@ translator:
             - team_id
             - name
             - nickname
-          _primaries: &7
+          _primaries: &5
             - team_id
           _relationships:
             away_games:
@@ -471,12 +375,12 @@ translator:
                 foreign.team_id: self.team_id
               source: Tipping::Schema::Result::Team_Supporter
           _unique_constraints:
-            primary: *7
-            team_name:
+            primary: *5
+            tbl_team_name:
               - name
-            team_nickname:
+            tbl_team_nickname:
               - nickname
-          name: team
+          name: tbl_team
           result_class: Tipping::Schema::Result::Team
           resultset_attributes: {}
           resultset_class: DBIx::Class::ResultSet
@@ -495,7 +399,7 @@ translator:
           _ordered_columns:
             - user_id
             - team_id
-          _primaries: &8
+          _primaries: &6
             - user_id
             - team_id
           _relationships:
@@ -522,10 +426,10 @@ translator:
                 foreign.team_id: self.team_id
               source: Tipping::Schema::Result::Team
           _unique_constraints:
-            primary: *8
-            team_supporter_user_id:
+            primary: *6
+            tbl_team_supporter_user_id:
               - user_id
-          name: team_supporter
+          name: tbl_team_supporter
           result_class: Tipping::Schema::Result::Team_Supporter
           resultset_attributes: {}
           resultset_class: DBIx::Class::ResultSet
@@ -560,7 +464,7 @@ translator:
             - game_id
             - home_team_to_win
             - timestamp
-          _primaries: &9
+          _primaries: &7
             - tipper_id
             - competition_id
             - game_id
@@ -611,8 +515,8 @@ translator:
                 foreign.user_id: self.tipper_id
               source: Tipping::Schema::Result::User
           _unique_constraints:
-            primary: *9
-          name: tip
+            primary: *7
+          name: tbl_tip
           result_class: Tipping::Schema::Result::Tip
           resultset_attributes: {}
           resultset_class: DBIx::Class::ResultSet
@@ -644,7 +548,7 @@ translator:
             - real_name
             - screen_name
             - password
-          _primaries: &10
+          _primaries: &8
             - user_id
           _relationships:
             competition_users:
@@ -688,14 +592,14 @@ translator:
                 foreign.tipper_id: self.user_id
               source: Tipping::Schema::Result::Tip
           _unique_constraints:
-            primary: *10
-            user__real_name:
+            primary: *8
+            tbl_user_real_name:
               - real_name
-            user__screen_name:
+            tbl_user_screen_name:
               - screen_name
-            user__user_name:
+            tbl_user_user_name:
               - user_name
-          name: user_
+          name: tbl_user
           result_class: Tipping::Schema::Result::User
           resultset_attributes: {}
           resultset_class: DBIx::Class::ResultSet
@@ -723,7 +627,7 @@ translator:
             - name
             - sponsor_name
             - time_zone
-          _primaries: &11
+          _primaries: &9
             - venue_id
           _relationships:
             games:
@@ -737,12 +641,12 @@ translator:
                 foreign.venue_id: self.venue_id
               source: Tipping::Schema::Result::Game
           _unique_constraints:
-            primary: *11
-            venue_name:
+            primary: *9
+            tbl_venue_name:
               - name
-            venue_sponsor_name:
+            tbl_venue_sponsor_name:
               - sponsor_name
-          name: venue
+          name: tbl_venue
           result_class: Tipping::Schema::Result::Venue
           resultset_attributes: {}
           resultset_class: DBIx::Class::ResultSet
@@ -769,13 +673,13 @@ translator:
             - version
             - ddl
             - upgrade_sql
-          _primaries: &12
+          _primaries: &10
             - id
           _relationships: {}
           _unique_constraints:
             dbix_class_deploymenthandler_versions_version:
               - version
-            primary: *12
+            primary: *10
           name: dbix_class_deploymenthandler_versions
           result_class: DBIx::Class::DeploymentHandler::VersionStorage::Standard::VersionResult
           resultset_attributes: {}
@@ -792,12 +696,12 @@ translator:
           - dbi:SQLite:tipping.sqlite.db
           - ~
           - ~
-          - &13
+          - &11
             AutoCommit: 1
             PrintError: 0
             RaiseError: 1
             ShowErrorStatement: 1
-        _dbic_connect_attributes: *13
+        _dbic_connect_attributes: *11
         _in_dbh_do: 0
         _sql_maker: ~
         _sql_maker_opts: {}

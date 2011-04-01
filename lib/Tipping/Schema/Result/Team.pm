@@ -4,7 +4,7 @@ use parent 'DBIx::Class';
 use Modern::Perl;
 
 __PACKAGE__->load_components('Core');
-__PACKAGE__->table('team');
+__PACKAGE__->table('tbl_team');
 __PACKAGE__->add_columns(
     team_id => {
         data_type           => 'integer',

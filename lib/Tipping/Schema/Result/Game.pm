@@ -14,7 +14,7 @@ my $score = {
 };
 
 __PACKAGE__->load_components(qw/Core InflateColumn::DateTime/);
-__PACKAGE__->table('game');
+__PACKAGE__->table('tbl_game');
 __PACKAGE__->add_columns(
     game_id => {
         data_type           => 'integer',

@@ -15,7 +15,7 @@ my $user_capability = {
 };
 
 __PACKAGE__->load_components('Core');
-__PACKAGE__->table('competition_user');
+__PACKAGE__->table('tbl_competition_user');
 __PACKAGE__->add_columns(
     user_id                     => $foreign_key,
     competition_id              => $foreign_key,

@@ -9,7 +9,7 @@ my $foreign_key = {
 };
 
 __PACKAGE__->load_components('Core');
-__PACKAGE__->table('tip');
+__PACKAGE__->table('tbl_tip');
 __PACKAGE__->add_columns(
     tipper_id        => $foreign_key,
     submitter_id     => $foreign_key,

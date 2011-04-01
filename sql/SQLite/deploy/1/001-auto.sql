@@ -1,77 +1,57 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Fri Apr  1 21:40:33 2011
+-- Created on Fri Apr  1 22:23:15 2011
 -- 
 
 ;
 BEGIN TRANSACTION;
 --
--- Table: competition
+-- Table: tbl_competition
 --
-CREATE TABLE competition (
+CREATE TABLE tbl_competition (
   competition_id INTEGER PRIMARY KEY NOT NULL,
   name varchar NOT NULL,
   password varchar
 );
-CREATE UNIQUE INDEX competition_name ON competition (name);
+CREATE UNIQUE INDEX tbl_competition_name ON tbl_competition (name);
 --
--- Table: team
+-- Table: tbl_team
 --
-CREATE TABLE team (
+CREATE TABLE tbl_team (
   team_id INTEGER PRIMARY KEY NOT NULL,
   name varchar NOT NULL,
   nickname varchar NOT NULL
 );
-CREATE UNIQUE INDEX team_name ON team (name);
-CREATE UNIQUE INDEX team_nickname ON team (nickname);
+CREATE UNIQUE INDEX tbl_team_name ON tbl_team (name);
+CREATE UNIQUE INDEX tbl_team_nickname ON tbl_team (nickname);
 --
--- Table: user_
+-- Table: tbl_user
 --
-CREATE TABLE user_ (
+CREATE TABLE tbl_user (
   user_id INTEGER PRIMARY KEY NOT NULL,
   user_name varchar NOT NULL,
   real_name varchar NOT NULL,
   screen_name varchar,
   password varchar NOT NULL
 );
-CREATE UNIQUE INDEX user__real_name ON user_ (real_name);
-CREATE UNIQUE INDEX user__screen_name ON user_ (screen_name);
-CREATE UNIQUE INDEX user__user_name ON user_ (user_name);
+CREATE UNIQUE INDEX tbl_user_real_name ON tbl_user (real_name);
+CREATE UNIQUE INDEX tbl_user_screen_name ON tbl_user (screen_name);
+CREATE UNIQUE INDEX tbl_user_user_name ON tbl_user (user_name);
 --
--- Table: venue
+-- Table: tbl_venue
 --
-CREATE TABLE venue (
+CREATE TABLE tbl_venue (
   venue_id INTEGER PRIMARY KEY NOT NULL,
   name varchar NOT NULL,
   sponsor_name varchar NOT NULL,
   time_zone varchar NOT NULL
 );
-CREATE UNIQUE INDEX venue_name ON venue (name);
-CREATE UNIQUE INDEX venue_sponsor_name ON venue (sponsor_name);
+CREATE UNIQUE INDEX tbl_venue_name ON tbl_venue (name);
+CREATE UNIQUE INDEX tbl_venue_sponsor_name ON tbl_venue (sponsor_name);
 --
--- Table: competition_admin
+-- Table: tbl_competition_user
 --
-CREATE TABLE competition_admin (
-  user_id integer NOT NULL,
-  competition_id integer NOT NULL,
-  PRIMARY KEY (user_id, competition_id)
-);
-CREATE INDEX competition_admin_idx_competition_id ON competition_admin (competition_id);
-CREATE INDEX competition_admin_idx_user_id ON competition_admin (user_id);
---
--- Table: competition_tipper
---
-CREATE TABLE competition_tipper (
-  user_id integer NOT NULL,
-  competition_id integer NOT NULL,
-  PRIMARY KEY (user_id, competition_id)
-);
-CREATE INDEX competition_tipper_idx_competition_id ON competition_tipper (competition_id);
-CREATE INDEX competition_tipper_idx_user_id ON competition_tipper (user_id);
---
--- Table: competition_user
---
-CREATE TABLE competition_user (
+CREATE TABLE tbl_competition_user (
   user_id integer NOT NULL,
   competition_id integer NOT NULL,
   can_submit_tips_for_others boolean NOT NULL DEFAULT '0',
@@ -79,12 +59,12 @@ CREATE TABLE competition_user (
   can_grant_powers boolean NOT NULL DEFAULT '0',
   PRIMARY KEY (user_id, competition_id)
 );
-CREATE INDEX competition_user_idx_competition_id ON competition_user (competition_id);
-CREATE INDEX competition_user_idx_user_id ON competition_user (user_id);
+CREATE INDEX tbl_competition_user_idx_competition_id ON tbl_competition_user (competition_id);
+CREATE INDEX tbl_competition_user_idx_user_id ON tbl_competition_user (user_id);
 --
--- Table: game
+-- Table: tbl_game
 --
-CREATE TABLE game (
+CREATE TABLE tbl_game (
   game_id INTEGER PRIMARY KEY NOT NULL,
   season integer NOT NULL,
   round integer NOT NULL,
@@ -97,26 +77,26 @@ CREATE TABLE game (
   away_team_behinds integer NOT NULL DEFAULT 0,
   has_ended boolean NOT NULL DEFAULT 'false'
 );
-CREATE INDEX game_idx_away_team_id ON game (away_team_id);
-CREATE INDEX game_idx_home_team_id ON game (home_team_id);
-CREATE INDEX game_idx_venue_id ON game (venue_id);
-CREATE UNIQUE INDEX game_season_round_away_team_id ON game (season, round, away_team_id);
-CREATE UNIQUE INDEX game_season_round_home_team_id ON game (season, round, home_team_id);
+CREATE INDEX tbl_game_idx_away_team_id ON tbl_game (away_team_id);
+CREATE INDEX tbl_game_idx_home_team_id ON tbl_game (home_team_id);
+CREATE INDEX tbl_game_idx_venue_id ON tbl_game (venue_id);
+CREATE UNIQUE INDEX tbl_game_season_round_away_team_id ON tbl_game (season, round, away_team_id);
+CREATE UNIQUE INDEX tbl_game_season_round_home_team_id ON tbl_game (season, round, home_team_id);
 --
--- Table: team_supporter
+-- Table: tbl_team_supporter
 --
-CREATE TABLE team_supporter (
+CREATE TABLE tbl_team_supporter (
   user_id integer NOT NULL,
   team_id integer NOT NULL,
   PRIMARY KEY (user_id, team_id)
 );
-CREATE INDEX team_supporter_idx_user_id ON team_supporter (user_id);
-CREATE INDEX team_supporter_idx_team_id ON team_supporter (team_id);
-CREATE UNIQUE INDEX team_supporter_user_id ON team_supporter (user_id);
+CREATE INDEX tbl_team_supporter_idx_user_id ON tbl_team_supporter (user_id);
+CREATE INDEX tbl_team_supporter_idx_team_id ON tbl_team_supporter (team_id);
+CREATE UNIQUE INDEX tbl_team_supporter_user_id ON tbl_team_supporter (user_id);
 --
--- Table: tip
+-- Table: tbl_tip
 --
-CREATE TABLE tip (
+CREATE TABLE tbl_tip (
   tipper_id integer NOT NULL,
   submitter_id integer NOT NULL,
   competition_id integer NOT NULL,
@@ -125,8 +105,8 @@ CREATE TABLE tip (
   timestamp timestamp NOT NULL,
   PRIMARY KEY (tipper_id, competition_id, game_id, timestamp)
 );
-CREATE INDEX tip_idx_competition_id ON tip (competition_id);
-CREATE INDEX tip_idx_game_id ON tip (game_id);
-CREATE INDEX tip_idx_submitter_id ON tip (submitter_id);
-CREATE INDEX tip_idx_tipper_id ON tip (tipper_id);
+CREATE INDEX tbl_tip_idx_competition_id ON tbl_tip (competition_id);
+CREATE INDEX tbl_tip_idx_game_id ON tbl_tip (game_id);
+CREATE INDEX tbl_tip_idx_submitter_id ON tbl_tip (submitter_id);
+CREATE INDEX tbl_tip_idx_tipper_id ON tbl_tip (tipper_id);
 COMMIT
