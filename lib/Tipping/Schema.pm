@@ -24,6 +24,13 @@ __END__
 
 Tipping::Schema - DBIX::Class::Schema class for Tipping
 
+=head1 METHODS
+
+=head2 instance
+
+Returns a singleton instance of the schema created on-demand from
+Tipping::Config.
+
 =head1 AUTHOR
 
 Stephen Thirlwall <stephen.thirlwall@strategicdata.com.au>
