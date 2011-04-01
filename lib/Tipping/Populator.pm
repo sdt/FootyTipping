@@ -39,3 +39,33 @@ sub populate {
 }
 
 1;
+
+__END__
+
+=pod
+
+=head1 NAME
+
+Tipping::Populator - Helper class to populate database tables from yaml files
+
+=head1 DESCRIPTION
+
+Metadata tables such as team, venue, game need to be bulk created. This module
+is intended to make this easy by defining a yaml format to create and update
+metadata tables.
+
+=head1 SUBROUTINES
+
+=head2 populate(schema => $schema, yaml => $yamldata, [ $verbose => 1)
+
+Populate the database with the given yaml data.
+
+=head1 BUGS AND LIMITATIONS
+
+Needs a better name.
+
+=head1 AUTHOR
+
+Stephen Thirlwall <sdt@dr.com>
+
+=cut

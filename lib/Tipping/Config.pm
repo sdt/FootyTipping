@@ -35,6 +35,13 @@ Local overrides can be placed in tipping_local.$ext
 
 The environment variable TIPPING_CONFIG can be used to override both.
 
+=head1 FUNCTIONS
+
+=head2 config
+
+Returns a hash containing the current configuration. Loaded on demand.
+Dies if config file cannot be found.
+
 =head1 AUTHOR
 
 Stephen Thirlwall <sdt@dr.com>
