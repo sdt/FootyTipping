@@ -2,7 +2,7 @@ package Tipping::Config;
 use Modern::Perl;
 
 use Carp (qw/ croak /);
-use Config::JFDI;
+use Config::JFDI ();
 use Data::Dumper::Concise (qw/ Dumper /);
 
 sub config {
@@ -23,9 +23,9 @@ Tipping::Config - Application configuration support using Config::JFDI
 
 =head1 SYNOPSIS
 
-use TIpping::Config;
+use Tipping::Config ();
 
-$something = Tipping::Config->{something};
+$something = Tipping::Config->config->{something};
 
 =head1 DESCRIPTION
 

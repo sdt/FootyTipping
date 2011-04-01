@@ -7,11 +7,13 @@ use Data::Dumper::Concise (qw/ Dumper /);
 use DBIx::Class::DeploymentHandler ();
 use File::ShareDir (qw/ module_dir /);
 use SQL::Translator ();
+use Tipping::Schema ();
 use Moose;
 
 has schema => (
-    is  => 'ro',
-    isa => 'DBIx::Class::Schema',
+    is      => 'ro',
+    isa     => 'DBIx::Class::Schema',
+    default => sub { Tipping::Schema->instance },
 );
 
 has _deployment_handler => (

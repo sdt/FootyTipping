@@ -4,7 +4,7 @@ use namespace::autoclean;
 
 use Catalyst::Runtime 5.80;
 
-use Tipping::Config;
+use Tipping::Config ();
 
 # Set flags and add plugins for the application.
 #

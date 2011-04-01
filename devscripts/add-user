@@ -12,16 +12,13 @@ use Getopt::Lazy
     -usage => '%c %o',
     ;
 
-use Tipping::Config;
-use Tipping::Schema;
-
-use Data::Dumper;
+use Tipping::Schema ();
 
 GetOptions(-autohelp => sub {
         not (defined $username and defined $password and defined $realname)
     });
 
-my $schema = Tipping::Schema->connect(Tipping::Config->config->{database});
+my $schema = Tipping::Schema->instance;
 $schema->txn_do(sub {
 
     my $user = $schema->resultset('User')->create({

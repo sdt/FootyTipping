@@ -8,12 +8,11 @@ use Getopt::Lazy
     -usage => '%c %o',
     ;
 
-use Tipping::Config;
-use Tipping::Schema;
+use Tipping::Schema ();
 
 GetOptions(-autohelp => sub { not defined $name });
 
-my $schema = Tipping::Schema->connect(Tipping::Config->config->{database});
+my $schema = Tipping::Schema->instance;
 $schema->resultset('Competition')->create({
         name        => $name,
         password    => $password,
