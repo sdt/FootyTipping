@@ -71,14 +71,10 @@ Tipping::Schema::Result::User - DBix:Class result source
 
 =head1 DESCRIPTION
 
-A user can be a tipper in zero or more competitions or an administrator of zero
-or more competitions.
+A user can be a member of zero or more competitions.
 
-A user who is a tipper in a competition may enter tips for themselves in that
-competition, until tipping closes for a particular game.
-
-A user who is an administrator of a competition may enter tips for any users in
-that competition, at any time.
+A user has a set of capabilites per competition. By default a user has no
+special capabilities.
 
 =head1 AUTHOR
 

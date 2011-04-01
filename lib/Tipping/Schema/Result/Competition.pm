@@ -46,8 +46,8 @@ Tipping::Schema::Result::Competition - DBIx::Class result source
 
 =head1 DESCRIPTION
 
-A tipping competition has zero or more tippers and zero or more administrators.
-The administrators do not need to be tippers and vice versa.
+A tipping competition has many users. There is only one type of user, but
+with different capabilities.
 
 =head1 AUTHOR
 

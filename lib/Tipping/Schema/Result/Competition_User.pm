@@ -48,10 +48,11 @@ Tipping::Schema::Result::Competition_User - DBIx::Class result source
 
 =head1 DESCRIPTION
 
-A tipper is a user connected to a competition.
+A user can be a member of zero or more competitions. A competition has zero
+or more users.
 
-A competition has zero or more users. A user may be a tipper in zero or more
-competitions.
+There is only one type of user, but they have differing capabilities. A users
+capabilities can vary between competitions.
 
 =head1 AUTHOR
 
