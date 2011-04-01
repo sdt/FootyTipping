@@ -34,4 +34,11 @@ $schema->txn_do(sub {
             });
         $user->add_to_competitions($competition);
     }
+
+    if (defined $team) {
+        my $supported_team = $schema->resultset('Team')->find({
+                name => $team
+            });
+        $supported_team->add_to_supporters({ supporter => $user });
+    }
 });
