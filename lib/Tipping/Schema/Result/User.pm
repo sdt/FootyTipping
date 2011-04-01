@@ -50,7 +50,7 @@ __PACKAGE__->has_many(
 );
 __PACKAGE__->many_to_many(
     competitions => 'competition_tippers',
-    'competition_id'
+    'competition'   # GOTCHA!: competition, not competition_id!
 );
 
 __PACKAGE__->has_many(
@@ -59,7 +59,7 @@ __PACKAGE__->has_many(
 );
 __PACKAGE__->many_to_many(
     competitions_administered => 'competition_admins',
-    'competition_id'
+    'competition'
 );
 
 __PACKAGE__->might_have(

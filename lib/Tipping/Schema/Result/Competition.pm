@@ -31,7 +31,7 @@ __PACKAGE__->has_many(
 );
 __PACKAGE__->many_to_many(
     tippers => 'competition_tippers',
-    'user_id'
+    'user'  # GOTCHA!: user, not user_id
 );
 
 __PACKAGE__->has_many(
@@ -40,7 +40,7 @@ __PACKAGE__->has_many(
 );
 __PACKAGE__->many_to_many(
     admins => 'competition_admins',
-    'user_id'
+    'user'
 );
 
 1;
