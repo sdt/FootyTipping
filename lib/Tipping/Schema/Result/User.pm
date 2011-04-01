@@ -45,21 +45,12 @@ __PACKAGE__->has_many(
 );
 
 __PACKAGE__->has_many(
-    competition_tippers => 'Tipping::Schema::Result::Competition_Tipper',
+    competition_users => 'Tipping::Schema::Result::Competition_User',
     'user_id'
 );
 __PACKAGE__->many_to_many(
-    competitions => 'competition_tippers',
+    competitions => 'competition_users',
     'competition'   # GOTCHA!: competition, not competition_id!
-);
-
-__PACKAGE__->has_many(
-    competition_admins => 'Tipping::Schema::Result::Competition_Admin',
-    'user_id'
-);
-__PACKAGE__->many_to_many(
-    competitions_administered => 'competition_admins',
-    'competition'
 );
 
 __PACKAGE__->might_have(

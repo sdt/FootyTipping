@@ -26,21 +26,12 @@ __PACKAGE__->set_primary_key('competition_id');
 __PACKAGE__->add_unique_constraint([ qw/ name / ]);
 
 __PACKAGE__->has_many(
-    competition_tippers => 'Tipping::Schema::Result::Competition_Tipper',
+    competition_users => 'Tipping::Schema::Result::Competition_User',
     'competition_id'
 );
 __PACKAGE__->many_to_many(
-    tippers => 'competition_tippers',
+    users => 'competition_users',
     'user'  # GOTCHA!: user, not user_id
-);
-
-__PACKAGE__->has_many(
-    competition_admins => 'Tipping::Schema::Result::Competition_Admin',
-    'competition_id'
-);
-__PACKAGE__->many_to_many(
-    admins => 'competition_admins',
-    'user'
 );
 
 1;
