@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Fri Apr  1 17:19:26 2011
+-- Created on Fri Apr  1 21:40:33 2011
 -- 
 
 ;
@@ -68,6 +68,19 @@ CREATE TABLE competition_tipper (
 );
 CREATE INDEX competition_tipper_idx_competition_id ON competition_tipper (competition_id);
 CREATE INDEX competition_tipper_idx_user_id ON competition_tipper (user_id);
+--
+-- Table: competition_user
+--
+CREATE TABLE competition_user (
+  user_id integer NOT NULL,
+  competition_id integer NOT NULL,
+  can_submit_tips_for_others boolean NOT NULL DEFAULT '0',
+  can_change_closed_tips boolean NOT NULL DEFAULT '0',
+  can_grant_powers boolean NOT NULL DEFAULT '0',
+  PRIMARY KEY (user_id, competition_id)
+);
+CREATE INDEX competition_user_idx_competition_id ON competition_user (competition_id);
+CREATE INDEX competition_user_idx_user_id ON competition_user (user_id);
 --
 -- Table: game
 --

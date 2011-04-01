@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Fri Apr  1 17:19:26 2011
+-- Created on Fri Apr  1 21:40:34 2011
 -- 
 ;
 SET foreign_key_checks=0;
@@ -60,8 +60,8 @@ CREATE TABLE `competition_admin` (
   INDEX `competition_admin_idx_competition_id` (`competition_id`),
   INDEX `competition_admin_idx_user_id` (`user_id`),
   PRIMARY KEY (`user_id`, `competition_id`),
-  CONSTRAINT `competition_admin_fk_competition_id` FOREIGN KEY (`competition_id`) REFERENCES `competition` (`competition_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `competition_admin_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user_` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `competition_admin_fk_competition_id` FOREIGN KEY (`competition_id`) REFERENCES `competition` (`competition_id`),
+  CONSTRAINT `competition_admin_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user_` (`user_id`)
 ) ENGINE=InnoDB;
 --
 -- Table: `competition_tipper`
@@ -72,8 +72,23 @@ CREATE TABLE `competition_tipper` (
   INDEX `competition_tipper_idx_competition_id` (`competition_id`),
   INDEX `competition_tipper_idx_user_id` (`user_id`),
   PRIMARY KEY (`user_id`, `competition_id`),
-  CONSTRAINT `competition_tipper_fk_competition_id` FOREIGN KEY (`competition_id`) REFERENCES `competition` (`competition_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `competition_tipper_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user_` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `competition_tipper_fk_competition_id` FOREIGN KEY (`competition_id`) REFERENCES `competition` (`competition_id`),
+  CONSTRAINT `competition_tipper_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user_` (`user_id`)
+) ENGINE=InnoDB;
+--
+-- Table: `competition_user`
+--
+CREATE TABLE `competition_user` (
+  `user_id` integer NOT NULL,
+  `competition_id` integer NOT NULL,
+  `can_submit_tips_for_others` enum('0','1') NOT NULL DEFAULT '0',
+  `can_change_closed_tips` enum('0','1') NOT NULL DEFAULT '0',
+  `can_grant_powers` enum('0','1') NOT NULL DEFAULT '0',
+  INDEX `competition_user_idx_competition_id` (`competition_id`),
+  INDEX `competition_user_idx_user_id` (`user_id`),
+  PRIMARY KEY (`user_id`, `competition_id`),
+  CONSTRAINT `competition_user_fk_competition_id` FOREIGN KEY (`competition_id`) REFERENCES `competition` (`competition_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `competition_user_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `user_` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 --
 -- Table: `game`

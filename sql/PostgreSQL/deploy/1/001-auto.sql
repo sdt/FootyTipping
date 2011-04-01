@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Fri Apr  1 17:19:26 2011
+-- Created on Fri Apr  1 21:40:34 2011
 -- 
 ;
 --
@@ -83,6 +83,21 @@ CREATE INDEX "competition_tipper_idx_user_id" on "competition_tipper" ("user_id"
 
 ;
 --
+-- Table: competition_user
+--
+CREATE TABLE "competition_user" (
+  "user_id" integer NOT NULL,
+  "competition_id" integer NOT NULL,
+  "can_submit_tips_for_others" boolean DEFAULT '0' NOT NULL,
+  "can_change_closed_tips" boolean DEFAULT '0' NOT NULL,
+  "can_grant_powers" boolean DEFAULT '0' NOT NULL,
+  PRIMARY KEY ("user_id", "competition_id")
+);
+CREATE INDEX "competition_user_idx_competition_id" on "competition_user" ("competition_id");
+CREATE INDEX "competition_user_idx_user_id" on "competition_user" ("user_id");
+
+;
+--
 -- Table: game
 --
 CREATE TABLE "game" (
@@ -143,18 +158,26 @@ CREATE INDEX "tip_idx_tipper_id" on "tip" ("tipper_id");
 
 ;
 ALTER TABLE "competition_admin" ADD FOREIGN KEY ("competition_id")
-  REFERENCES "competition" ("competition_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
+  REFERENCES "competition" ("competition_id") DEFERRABLE;
 
 ;
 ALTER TABLE "competition_admin" ADD FOREIGN KEY ("user_id")
-  REFERENCES "user_" ("user_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
+  REFERENCES "user_" ("user_id") DEFERRABLE;
 
 ;
 ALTER TABLE "competition_tipper" ADD FOREIGN KEY ("competition_id")
-  REFERENCES "competition" ("competition_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
+  REFERENCES "competition" ("competition_id") DEFERRABLE;
 
 ;
 ALTER TABLE "competition_tipper" ADD FOREIGN KEY ("user_id")
+  REFERENCES "user_" ("user_id") DEFERRABLE;
+
+;
+ALTER TABLE "competition_user" ADD FOREIGN KEY ("competition_id")
+  REFERENCES "competition" ("competition_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
+
+;
+ALTER TABLE "competition_user" ADD FOREIGN KEY ("user_id")
   REFERENCES "user_" ("user_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
 
 ;
