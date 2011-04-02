@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Fri Apr  1 23:07:34 2011
+-- Created on Sat Apr  2 17:34:42 2011
 -- 
 
 ;
@@ -76,7 +76,7 @@ CREATE TABLE tbl_game (
   home_team_behinds integer NOT NULL DEFAULT 0,
   away_team_goals integer NOT NULL DEFAULT 0,
   away_team_behinds integer NOT NULL DEFAULT 0,
-  has_ended boolean NOT NULL DEFAULT 'false'
+  has_ended boolean NOT NULL DEFAULT '0'
 );
 CREATE INDEX tbl_game_idx_away_team_id ON tbl_game (away_team_id);
 CREATE INDEX tbl_game_idx_home_team_id ON tbl_game (home_team_id);

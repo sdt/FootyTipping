@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Fri Apr  1 23:07:35 2011
+-- Created on Sat Apr  2 17:34:42 2011
 -- 
 ;
 --
@@ -88,7 +88,7 @@ CREATE TABLE "tbl_game" (
   "home_team_behinds" integer DEFAULT 0 NOT NULL,
   "away_team_goals" integer DEFAULT 0 NOT NULL,
   "away_team_behinds" integer DEFAULT 0 NOT NULL,
-  "has_ended" boolean DEFAULT 'false' NOT NULL,
+  "has_ended" boolean DEFAULT '0' NOT NULL,
   PRIMARY KEY ("game_id"),
   CONSTRAINT "tbl_game_season_round_away_team_id" UNIQUE ("season", "round", "away_team_id"),
   CONSTRAINT "tbl_game_season_round_home_team_id" UNIQUE ("season", "round", "home_team_id")

@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Fri Apr  1 23:07:35 2011
+-- Created on Sat Apr  2 17:34:43 2011
 -- 
 ;
 SET foreign_key_checks=0;
@@ -81,7 +81,7 @@ CREATE TABLE `tbl_game` (
   `home_team_behinds` integer NOT NULL DEFAULT 0,
   `away_team_goals` integer NOT NULL DEFAULT 0,
   `away_team_behinds` integer NOT NULL DEFAULT 0,
-  `has_ended` enum('0','1') NOT NULL DEFAULT 'false',
+  `has_ended` enum('0','1') NOT NULL DEFAULT '0',
   INDEX `tbl_game_idx_away_team_id` (`away_team_id`),
   INDEX `tbl_game_idx_home_team_id` (`home_team_id`),
   INDEX `tbl_game_idx_venue_id` (`venue_id`),

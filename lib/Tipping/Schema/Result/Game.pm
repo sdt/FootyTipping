@@ -50,7 +50,7 @@ __PACKAGE__->add_columns(
     has_ended   => {
         data_type     => 'boolean',
         is_nullable   => 0,
-        default_value => 'false',
+        default_value => 0,
     },
 );
 
