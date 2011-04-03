@@ -1,0 +1,29 @@
+#!/usr/bin/env perl
+use Modern::Perl;
+
+use Getopt::Lazy
+    'username=s'     => 'Login name                 (required)',
+    'compname=s'     => 'Competition name           (required)',
+    -summary => 'Add a user to a competition',
+    -usage => '%c %o',
+    ;
+
+use Tipping::Schema ();
+
+GetOptions(-autohelp => sub {
+        not (defined $username and defined $compname)
+    });
+
+my $schema = Tipping::Schema->instance;
+$schema->txn_do(sub {
+
+    my $user = $schema->resultset('User')->find({
+            user_name => $username
+        });
+
+    my $competition = $schema->resultset('Competition')->find({
+            name => $compname
+        });
+
+    $user->add_to_competitions($competition);
+});

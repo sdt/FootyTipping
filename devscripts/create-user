@@ -6,7 +6,6 @@ use Getopt::Lazy
     'password=s'     => 'Password                   (required)',
     'realname=s'     => 'Real name                  (required)',
     'email=s'        => 'Email address              (required)',
-    '@competition=s' => 'Competition                (zero or more)',
     'team=s'         => 'Supported team             (optional)',
     -summary => 'Add a user',
     -usage => '%c %o',
@@ -15,7 +14,10 @@ use Getopt::Lazy
 use Tipping::Schema ();
 
 GetOptions(-autohelp => sub {
-        not (defined $username and defined $password and defined $realname)
+        not (defined $username and
+             defined $password and
+             defined $realname and
+             defined $email)
     });
 
 my $schema = Tipping::Schema->instance;
@@ -27,13 +29,6 @@ $schema->txn_do(sub {
             real_name       => $realname,
             email           => $email,
         });
-
-    for my $compname (@competition) {
-        my $competition = $schema->resultset('Competition')->find({
-                name => $compname
-            });
-        $user->add_to_competitions($competition);
-    }
 
     if (defined $team) {
         my $supported_team = $schema->resultset('Team')->find({

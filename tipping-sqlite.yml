@@ -1,3 +1,3 @@
 name: Tipping
 database:
-  dsn: dbi:SQLite:tipping.sqlite.db
+  dsn: dbi:SQLite:sqlite.db
