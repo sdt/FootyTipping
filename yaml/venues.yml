@@ -1,0 +1,89 @@
+table: Venue
+rows:
+  -
+    name: Football Park
+    time_zone: Australia/Adelaide
+    alternate_names:
+        -
+            name: AAMI Stadium
+            start_year: 2003
+  -
+    name: Stadium Australia
+    time_zone: Australia/Sydney
+    alternate_names:
+        -
+            name: Telstra Stadium
+            start_year: 2002
+            end_year: 2007
+        -
+            name: ANZ Stadium
+            start_year: 2008
+  -
+    name: York Park
+    time_zone: Australia/Hobart
+    alternate_names:
+        -
+            name: Aurora Stadium
+            start_year: 2004
+  -
+    name: "Cazaly's Stadium"
+    time_zone: Australia/Brisbane
+    alternate_names:
+        -
+            name: Bundaberg Rum Stadium
+            start_year: 2002
+            end_year: 2003
+  -
+    name: Docklands Stadium
+    time_zone: Australia/Melbourne
+    alternate_names:
+        -
+            name: Colonial Stadium
+            end_year: 2002
+        -
+            name: Telstra Dome
+            start_year: 2003
+            end_year: 2008
+        -
+            name: Etihad Stadium
+            start_year: 2009
+  -
+    name: Gabba
+    time_zone: Australia/Brisbane
+  -
+    name: Gold Coast Stadium
+    time_zone: Australia/Brisbane
+  -
+    name: Manuka Oval
+    time_zone: Australia/Canberra
+  -
+    name: MCG
+    time_zone: Australia/Melbourne
+  -
+    name: Subiaco Oval
+    time_zone: Australia/Perth
+    alternate_names:
+        -
+            name: Patersons Stadium
+            start_year: 2011
+  -
+    name: SCG
+    time_zone: Australia/Sydney
+  -
+    name: Kardinia Park
+    time_zone: Australia/Melbourne
+    alternate_names:
+        -
+            name: Shell Stadium
+            start_year: 1999
+            end_year: 2001
+        -
+            name: Skilled Stadium
+            start_year: 2002
+  -
+    name: Marrara Stadium
+    time_zone: Australia/Darwin
+    alternate_names:
+        -
+            name: TIO Stadium
+            start_year: 2006
