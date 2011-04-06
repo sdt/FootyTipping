@@ -5,12 +5,18 @@ use Carp (qw/ croak /);
 use Config::JFDI ();
 use Data::Dumper::Concise (qw/ Dumper /);
 
+sub _build_config {
+    my $config_obj = Config::JFDI->new(name => "Tipping");
+    croak "Cannot find config file" if not $config_obj->found;
+    my $config_hash = $config_obj->get;
+    say STDERR "Tipping::Config = ", Dumper($config_hash)
+        if $config_hash->{debug_config};
+    return $config_hash;
+}
+
 sub config {
-    state $config = Config::JFDI->new(name => "Tipping");
-    croak "Cannot find config file" if not $config->found;
-    say STDERR "Tipping::Config = ", Dumper($config->get)
-        if $config->{debug_config};
-    return $config->get;
+    state $config = _build_config;
+    return $config;
 }
 
 1;
