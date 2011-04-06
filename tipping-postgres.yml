@@ -3,5 +3,6 @@ database:
   dsn: dbi:Pg:dbname=tipping;host=localhost
   user: tipping
   password: tipping
+  pg_enable_utf8: 1
   AutoCommit: 1
   RaiseError: 1
