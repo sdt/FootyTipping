@@ -33,6 +33,6 @@ Tipping::Config.
 
 =head1 AUTHOR
 
-Stephen Thirlwall <stephen.thirlwall@strategicdata.com.au>
+Stephen Thirlwall <sdt@dr.com>
 
 =cut
