@@ -77,6 +77,16 @@ __PACKAGE__->has_many(
     'game_id'
 );
 
+sub home_team_score {
+    my $self = shift;
+    return $self->home_team_goals * 6 + $self->home_team_behinds;
+}
+
+sub away_team_score {
+    my $self = shift;
+    return $self->away_team_goals * 6 + $self->away_team_behinds;
+}
+
 1;
 
 __END__
