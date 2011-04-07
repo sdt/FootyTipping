@@ -14,7 +14,7 @@ use Test::Tipping::Database;
 $ENV{PATH} .= ':/usr/sbin';
 
 my @db_drivers = qw/ Pg SQLite mysql /;
-my $db_driver = $ENV{TIPPING_DB_DRIVER} // $db_drivers[0];
+my $db_driver = $ENV{TIPPING_DB_DRIVER} // $db_drivers[1];
 
 Test::Tipping::Database::install($db_driver, Tipping::Config->config);
 
@@ -50,6 +50,24 @@ print_games(scalar $games->search(
 
 diag "Exiting";
 
+sub get_preffered_venue_name {
+    my $venue = shift;
+
+    my $this = 2011;
+    my $sponsor = $venue->sponsor_names->find({
+            start_year => [
+                { '<=' => $this },
+                { '='  => undef },
+            ],
+            end_year => [
+                { '>=' => $this },
+                { '='  => undef },
+            ]
+        });
+
+    return ($sponsor // $venue)->name;
+}
+
 sub print_games {
     my $resultset = shift;
     while (my $game = $resultset->next) {
@@ -58,7 +76,7 @@ sub print_games {
         diag "Round " . $game->round . " " .
              $game->home_team->nickname . " vs " .
              $game->away_team->nickname . " at " .
-             $game->venue->name . " " .
+             get_preffered_venue_name($game->venue) . " ",
              $localtime->strftime('%A %B %e%l:%M%P') .
              " (" . $game->venue->time_zone . ')';
     }
