@@ -58,7 +58,7 @@ sub print_games {
         diag "Round " . $game->round . " " .
              $game->home_team->nickname . " vs " .
              $game->away_team->nickname . " at " .
-             $game->venue->sponsor_name . " " .
+             $game->venue->name . " " .
              $localtime->strftime('%A %B %e%l:%M%P') .
              " (" . $game->venue->time_zone . ')';
     }

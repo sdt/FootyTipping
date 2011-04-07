@@ -15,10 +15,6 @@ __PACKAGE__->add_columns(
         data_type           => 'varchar',
         is_nullable         => 0,
     },
-    sponsor_name => {
-        data_type           => 'varchar',
-        is_nullable         => 0,
-    },
     time_zone => {
         data_type           => 'varchar',
         is_nullable         => 0,
@@ -28,10 +24,14 @@ __PACKAGE__->add_columns(
 __PACKAGE__->set_primary_key('venue_id');
 
 __PACKAGE__->add_unique_constraint([ qw/ name / ]);
-__PACKAGE__->add_unique_constraint([ qw/ sponsor_name / ]);
 
 __PACKAGE__->has_many(
     games => 'Tipping::Schema::Result::Game',
+    'venue_id'
+);
+
+__PACKAGE__->has_many(
+    sponsor_names => 'Tipping::Schema::Result::Venue_SponsorName',
     'venue_id'
 );
 
@@ -47,18 +47,8 @@ Tipping::Schema::Result::Venue - DBIx::Class result source
 
 =head1 DESCRIPTION
 
-Games take place at a venue. The venue has a real name, and a sponsor name.
-
-=head1 BUGS AND LIMITATIONS
-
-The sponsor name of a venue may change over time. The main name may as well.
-Ideally, we should have a venue with maybe an address and a timezone, and then
-two other tables for name and sponsor name which also include start and end
-dates.
-
-eg. Docklands stadium was called Colonial Stadium, Telstra Dome, Etihad Stadium
-
-This means that historical games will be listed with the correct stadium name.
+Games take place at a venue. The venue has a real name, a time zone, and
+many sponsor names (but only one in any given year).
 
 =head1 AUTHOR
 

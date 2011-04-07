@@ -7,6 +7,7 @@ use List::MoreUtils (qw/ zip /);
 use Params::Validate (qw/ validate :types /);
 use YAML::XS ();
 
+
 sub populate {
     my %args = validate(@_, {
             schema => {
@@ -24,15 +25,16 @@ sub populate {
     my ($data) = YAML::XS::Load($args{yaml});
     say STDERR Dumper($data) if $args{verbose};
 
+    my $resultset = $args{schema}->resultset($data->{table});
+
     for my $row (@{ $data->{insert} }) {
-        $args{schema}->resultset($data->{table})->create({
+        $resultset->create({
             zip @{ $data->{columns} }, @{ $row }
         });
     }
 
     for my $row (@{ $data->{rows} }) {
-        #say STDERR Dumper($row);
-        $args{schema}->resultset($data->{table})->create($row);
+        $resultset->create($row);
     }
 
     return;

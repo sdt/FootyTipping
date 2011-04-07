@@ -3,7 +3,7 @@ rows:
   -
     name: "Cazaly's Stadium"
     time_zone: Australia/Brisbane
-    alternate_names:
+    sponsor_names:
         -
             name: Bundaberg Rum Stadium
             start_year: 2002
@@ -11,7 +11,7 @@ rows:
   -
     name: Docklands Stadium
     time_zone: Australia/Melbourne
-    alternate_names:
+    sponsor_names:
         -
             name: Colonial Stadium
             end_year: 2002
@@ -25,7 +25,7 @@ rows:
   -
     name: Football Park
     time_zone: Australia/Adelaide
-    alternate_names:
+    sponsor_names:
         -
             name: AAMI Stadium
             start_year: 2003
@@ -38,7 +38,7 @@ rows:
   -
     name: Kardinia Park
     time_zone: Australia/Melbourne
-    alternate_names:
+    sponsor_names:
         -
             name: Shell Stadium
             start_year: 1999
@@ -52,7 +52,7 @@ rows:
   -
     name: Marrara Stadium
     time_zone: Australia/Darwin
-    alternate_names:
+    sponsor_names:
         -
             name: TIO Stadium
             start_year: 2006
@@ -61,7 +61,7 @@ rows:
     time_zone: Australia/Melbourne
   - name: Princes Park
     time_zone: Australia/Melbourne
-    alternate_names:
+    sponsor_names:
         -
             name: Optus Oval
             start_year: 1994
@@ -72,7 +72,7 @@ rows:
   -
     name: Stadium Australia
     time_zone: Australia/Sydney
-    alternate_names:
+    sponsor_names:
         -
             name: Telstra Stadium
             start_year: 2002
@@ -86,14 +86,14 @@ rows:
   -
     name: Subiaco Oval
     time_zone: Australia/Perth
-    alternate_names:
+    sponsor_names:
         -
             name: Patersons Stadium
             start_year: 2011
   -
     name: York Park
     time_zone: Australia/Hobart
-    alternate_names:
+    sponsor_names:
         -
             name: Aurora Stadium
             start_year: 2004
