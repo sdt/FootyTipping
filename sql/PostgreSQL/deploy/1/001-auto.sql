@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Sat Apr  2 17:34:42 2011
+-- Created on Thu Apr  7 10:46:54 2011
 -- 
 ;
 --
@@ -84,6 +84,7 @@ CREATE TABLE "tbl_game" (
   "home_team_id" integer NOT NULL,
   "away_team_id" integer NOT NULL,
   "venue_id" integer NOT NULL,
+  "start_time_utc" timestamp NOT NULL,
   "home_team_goals" integer DEFAULT 0 NOT NULL,
   "home_team_behinds" integer DEFAULT 0 NOT NULL,
   "away_team_goals" integer DEFAULT 0 NOT NULL,

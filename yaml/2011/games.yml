@@ -9,6 +9,7 @@ rows:
       name: Richmond
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-03-24T07:10:00
   -
     season: 2011
     round: 1
@@ -18,6 +19,7 @@ rows:
       name: St Kilda
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-03-25T07:40:00
   -
     season: 2011
     round: 1
@@ -27,6 +29,7 @@ rows:
       name: Port Adelaide
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-03-26T02:10:00
   -
     season: 2011
     round: 1
@@ -36,6 +39,7 @@ rows:
       name: Hawthorn
     venue:
       sponsor_name: AAMI Stadium
+    start_time_utc: 2011-03-26T08:40:00
   -
     season: 2011
     round: 1
@@ -45,6 +49,7 @@ rows:
       name: Fremantle
     venue:
       sponsor_name: Gabba
+    start_time_utc: 2011-03-26T08:10:00
   -
     season: 2011
     round: 1
@@ -54,6 +59,7 @@ rows:
       name: Western Bulldogs
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-03-27T01:10:00
   -
     season: 2011
     round: 1
@@ -63,6 +69,7 @@ rows:
       name: Sydney
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-03-27T02:10:00
   -
     season: 2011
     round: 1
@@ -72,6 +79,7 @@ rows:
       name: North Melbourne
     venue:
       sponsor_name: Patersons Stadium
+    start_time_utc: 2011-03-27T07:10:00
   -
     season: 2011
     round: 2
@@ -81,6 +89,7 @@ rows:
       name: Richmond
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-04-01T07:40:00
   -
     season: 2011
     round: 2
@@ -90,6 +99,7 @@ rows:
       name: Collingwood
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-04-02T02:10:00
   -
     season: 2011
     round: 2
@@ -99,6 +109,7 @@ rows:
       name: West Coast
     venue:
       sponsor_name: AAMI Stadium
+    start_time_utc: 2011-04-02T03:10:00
   -
     season: 2011
     round: 2
@@ -108,6 +119,7 @@ rows:
       name: Carlton
     venue:
       sponsor_name: Gabba
+    start_time_utc: 2011-04-02T07:40:00
   -
     season: 2011
     round: 2
@@ -117,6 +129,7 @@ rows:
       name: Geelong
     venue:
       sponsor_name: Patersons Stadium
+    start_time_utc: 2011-04-02T08:40:00
   -
     season: 2011
     round: 2
@@ -126,6 +139,7 @@ rows:
       name: Brisbane
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-04-03T03:10:00
   -
     season: 2011
     round: 2
@@ -135,6 +149,7 @@ rows:
       name: Essendon
     venue:
       sponsor_name: ANZ Stadium
+    start_time_utc: 2011-04-03T04:10:00
   -
     season: 2011
     round: 2
@@ -144,6 +159,7 @@ rows:
       name: Melbourne
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-04-03T06:40:00
   -
     season: 2011
     round: 3
@@ -153,6 +169,7 @@ rows:
       name: Carlton
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-04-08T09:40:00
   -
     season: 2011
     round: 3
@@ -162,6 +179,7 @@ rows:
       name: Gold Coast
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-04-09T04:10:00
   -
     season: 2011
     round: 3
@@ -171,6 +189,7 @@ rows:
       name: Fremantle
     venue:
       sponsor_name: AAMI Stadium
+    start_time_utc: 2011-04-09T05:10:00
   -
     season: 2011
     round: 3
@@ -180,6 +199,7 @@ rows:
       name: Hawthorn
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-04-09T09:10:00
   -
     season: 2011
     round: 3
@@ -189,6 +209,7 @@ rows:
       name: Sydney
     venue:
       sponsor_name: Patersons Stadium
+    start_time_utc: 2011-04-09T09:40:00
   -
     season: 2011
     round: 3
@@ -198,6 +219,7 @@ rows:
       name: Brisbane
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-04-10T03:10:00
   -
     season: 2011
     round: 3
@@ -207,6 +229,7 @@ rows:
       name: Port Adelaide
     venue:
       sponsor_name: Skilled Stadium
+    start_time_utc: 2011-04-10T04:10:00
   -
     season: 2011
     round: 3
@@ -216,6 +239,7 @@ rows:
       name: Essendon
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-04-10T06:40:00
   -
     season: 2011
     round: 4
@@ -225,6 +249,7 @@ rows:
       name: Collingwood
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-04-15T09:40:00
   -
     season: 2011
     round: 4
@@ -234,6 +259,7 @@ rows:
       name: West Coast
     venue:
       sponsor_name: Aurora Stadium
+    start_time_utc: 2011-04-16T04:10:00
   -
     season: 2011
     round: 4
@@ -243,6 +269,7 @@ rows:
       name: Essendon
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-04-16T04:10:00
   -
     season: 2011
     round: 4
@@ -252,6 +279,7 @@ rows:
       name: Geelong
     venue:
       sponsor_name: SCG
+    start_time_utc: 2011-04-16T09:10:00
   -
     season: 2011
     round: 4
@@ -261,6 +289,7 @@ rows:
       name: Adelaide
     venue:
       sponsor_name: AAMI Stadium
+    start_time_utc: 2011-04-16T09:40:00
   -
     season: 2011
     round: 4
@@ -270,6 +299,7 @@ rows:
       name: Melbourne
     venue:
       sponsor_name: Gabba
+    start_time_utc: 2011-04-17T04:10:00
   -
     season: 2011
     round: 4
@@ -279,6 +309,7 @@ rows:
       name: North Melbourne
     venue:
       sponsor_name: Patersons Stadium
+    start_time_utc: 2011-04-17T06:40:00
   -
     season: 2011
     round: 5
@@ -288,6 +319,7 @@ rows:
       name: St Kilda
     venue:
       sponsor_name: Gabba
+    start_time_utc: 2011-04-21T09:40:00
   -
     season: 2011
     round: 5
@@ -297,6 +329,7 @@ rows:
       name: Gold Coast
     venue:
       sponsor_name: AAMI Stadium
+    start_time_utc: 2011-04-23T05:10:00
   -
     season: 2011
     round: 5
@@ -306,6 +339,7 @@ rows:
       name: Adelaide
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-04-23T09:10:00
   -
     season: 2011
     round: 5
@@ -315,6 +349,7 @@ rows:
       name: Richmond
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-04-24T06:40:00
   -
     season: 2011
     round: 5
@@ -324,6 +359,7 @@ rows:
       name: Collingwood
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-04-25T04:40:00
   -
     season: 2011
     round: 5
@@ -333,6 +369,7 @@ rows:
       name: Western Bulldogs
     venue:
       sponsor_name: Patersons Stadium
+    start_time_utc: 2011-04-25T10:40:00
   -
     season: 2011
     round: 5
@@ -342,6 +379,7 @@ rows:
       name: Geelong
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-04-26T04:40:00
   -
     season: 2011
     round: 6
@@ -351,6 +389,7 @@ rows:
       name: Melbourne
     venue:
       sponsor_name: Patersons Stadium
+    start_time_utc: 2011-04-28T10:40:00
   -
     season: 2011
     round: 6
@@ -360,6 +399,7 @@ rows:
       name: Carlton
     venue:
       sponsor_name: SCG
+    start_time_utc: 2011-04-29T09:40:00
   -
     season: 2011
     round: 6
@@ -369,6 +409,7 @@ rows:
       name: Port Adelaide
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-04-30T04:10:00
   -
     season: 2011
     round: 6
@@ -378,6 +419,7 @@ rows:
       name: Brisbane
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-04-30T09:10:00
   -
     season: 2011
     round: 6
@@ -387,6 +429,7 @@ rows:
       name: St Kilda
     venue:
       sponsor_name: AAMI Stadium
+    start_time_utc: 2011-04-30T09:40:00
   -
     season: 2011
     round: 6
@@ -396,6 +439,7 @@ rows:
       name: Gold Coast
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-05-01T03:10:00
   -
     season: 2011
     round: 6
@@ -405,6 +449,7 @@ rows:
       name: Western Bulldogs
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-05-01T06:40:00
   -
     season: 2011
     round: 7
@@ -414,6 +459,7 @@ rows:
       name: Hawthorn
     venue:
       sponsor_name: AAMI Stadium
+    start_time_utc: 2011-05-06T10:40:00
   -
     season: 2011
     round: 7
@@ -423,6 +469,7 @@ rows:
       name: Sydney
     venue:
       sponsor_name: Manuka Oval
+    start_time_utc: 2011-05-07T03:10:00
   -
     season: 2011
     round: 7
@@ -432,6 +479,7 @@ rows:
       name: North Melbourne
     venue:
       sponsor_name: Skilled Stadium
+    start_time_utc: 2011-05-07T04:10:00
   -
     season: 2011
     round: 7
@@ -441,6 +489,7 @@ rows:
       name: Fremantle
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-05-07T06:10:00
   -
     season: 2011
     round: 7
@@ -450,6 +499,7 @@ rows:
       name: Brisbane
     venue:
       sponsor_name: Gabba
+    start_time_utc: 2011-05-07T09:10:00
   -
     season: 2011
     round: 7
@@ -459,6 +509,7 @@ rows:
       name: West Coast
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-05-08T03:10:00
   -
     season: 2011
     round: 7
@@ -468,6 +519,7 @@ rows:
       name: Adelaide
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-05-08T04:10:00
   -
     season: 2011
     round: 7
@@ -477,6 +529,7 @@ rows:
       name: Carlton
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-05-09T09:20:00
   -
     season: 2011
     round: 8
@@ -486,6 +539,7 @@ rows:
       name: Collingwood
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-05-13T09:40:00
   -
     season: 2011
     round: 8
@@ -495,6 +549,7 @@ rows:
       name: Melbourne
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-05-14T04:10:00
   -
     season: 2011
     round: 8
@@ -504,6 +559,7 @@ rows:
       name: Gold Coast
     venue:
       sponsor_name: AAMI Stadium
+    start_time_utc: 2011-05-14T05:10:00
   -
     season: 2011
     round: 8
@@ -513,6 +569,7 @@ rows:
       name: Essendon
     venue:
       sponsor_name: Gabba
+    start_time_utc: 2011-05-14T09:10:00
   -
     season: 2011
     round: 8
@@ -522,6 +579,7 @@ rows:
       name: Port Adelaide
     venue:
       sponsor_name: SCG
+    start_time_utc: 2011-05-14T09:10:00
   -
     season: 2011
     round: 8
@@ -531,6 +589,7 @@ rows:
       name: St Kilda
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-05-15T03:10:00
   -
     season: 2011
     round: 8
@@ -540,6 +599,7 @@ rows:
       name: Richmond
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-05-15T04:10:00
   -
     season: 2011
     round: 8
@@ -549,6 +609,7 @@ rows:
       name: Fremantle
     venue:
       sponsor_name: Patersons Stadium
+    start_time_utc: 2011-05-15T06:40:00
   -
     season: 2011
     round: 9
@@ -558,6 +619,7 @@ rows:
       name: Geelong
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-05-20T09:40:00
   -
     season: 2011
     round: 9
@@ -567,6 +629,7 @@ rows:
       name: Melbourne
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-05-21T04:10:00
   -
     season: 2011
     round: 9
@@ -576,6 +639,7 @@ rows:
       name: Fremantle
     venue:
       sponsor_name: AAMI Stadium
+    start_time_utc: 2011-05-21T05:10:00
   -
     season: 2011
     round: 9
@@ -585,6 +649,7 @@ rows:
       name: North Melbourne
     venue:
       sponsor_name: Gabba
+    start_time_utc: 2011-05-21T09:10:00
   -
     season: 2011
     round: 9
@@ -594,6 +659,7 @@ rows:
       name: Essendon
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-05-21T09:40:00
   -
     season: 2011
     round: 9
@@ -603,6 +669,7 @@ rows:
       name: Adelaide
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-05-22T03:10:00
   -
     season: 2011
     round: 9
@@ -612,6 +679,7 @@ rows:
       name: Hawthorn
     venue:
       sponsor_name: SCG
+    start_time_utc: 2011-05-22T04:10:00
   -
     season: 2011
     round: 9
@@ -621,6 +689,7 @@ rows:
       name: Western Bulldogs
     venue:
       sponsor_name: Patersons Stadium
+    start_time_utc: 2011-05-22T06:40:00
   -
     season: 2011
     round: 10
@@ -630,6 +699,7 @@ rows:
       name: Carlton
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-05-27T09:40:00
   -
     season: 2011
     round: 10
@@ -639,6 +709,7 @@ rows:
       name: Sydney
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-05-28T04:10:00
   -
     season: 2011
     round: 10
@@ -648,6 +719,7 @@ rows:
       name: St Kilda
     venue:
       sponsor_name: Patersons Stadium
+    start_time_utc: 2011-05-28T05:10:00
   -
     season: 2011
     round: 10
@@ -657,6 +729,7 @@ rows:
       name: Geelong
     venue:
       sponsor_name: Gold Coast Stadium
+    start_time_utc: 2011-05-28T09:10:00
   -
     season: 2011
     round: 10
@@ -666,6 +739,7 @@ rows:
       name: Port Adelaide
     venue:
       sponsor_name: TIO Stadium
+    start_time_utc: 2011-05-28T10:40:00
   -
     season: 2011
     round: 10
@@ -675,6 +749,7 @@ rows:
       name: Brisbane
     venue:
       sponsor_name: AAMI Stadium
+    start_time_utc: 2011-05-29T03:10:00
   -
     season: 2011
     round: 10
@@ -684,6 +759,7 @@ rows:
       name: West Coast
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-05-29T04:10:00
   -
     season: 2011
     round: 10
@@ -693,6 +769,7 @@ rows:
       name: Hawthorn
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-05-29T06:40:00
   -
     season: 2011
     round: 11
@@ -702,6 +779,7 @@ rows:
       name: Melbourne
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-06-03T09:40:00
   -
     season: 2011
     round: 11
@@ -711,6 +789,7 @@ rows:
       name: Western Bulldogs
     venue:
       sponsor_name: Skilled Stadium
+    start_time_utc: 2011-06-04T04:10:00
   -
     season: 2011
     round: 11
@@ -720,6 +799,7 @@ rows:
       name: Gold Coast
     venue:
       sponsor_name: Patersons Stadium
+    start_time_utc: 2011-06-04T05:10:00
   -
     season: 2011
     round: 11
@@ -729,6 +809,7 @@ rows:
       name: Sydney
     venue:
       sponsor_name: Gabba
+    start_time_utc: 2011-06-04T09:10:00
   -
     season: 2011
     round: 11
@@ -738,6 +819,7 @@ rows:
       name: St Kilda
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-06-04T09:10:00
   -
     season: 2011
     round: 11
@@ -747,6 +829,7 @@ rows:
       name: Fremantle
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-06-05T03:10:00
   -
     season: 2011
     round: 11
@@ -756,6 +839,7 @@ rows:
       name: Adelaide
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-06-05T04:10:00
   -
     season: 2011
     round: 11
@@ -765,6 +849,7 @@ rows:
       name: Carlton
     venue:
       sponsor_name: AAMI Stadium
+    start_time_utc: 2011-06-05T06:40:00
   -
     season: 2011
     round: 12
@@ -774,6 +859,7 @@ rows:
       name: Western Bulldogs
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-06-10T09:40:00
   -
     season: 2011
     round: 12
@@ -783,6 +869,7 @@ rows:
       name: West Coast
     venue:
       sponsor_name: AAMI Stadium
+    start_time_utc: 2011-06-11T05:10:00
   -
     season: 2011
     round: 12
@@ -792,6 +879,7 @@ rows:
       name: North Melbourne
     venue:
       sponsor_name: Gold Coast Stadium
+    start_time_utc: 2011-06-11T09:10:00
   -
     season: 2011
     round: 12
@@ -801,6 +889,7 @@ rows:
       name: Hawthorn
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-06-11T09:10:00
   -
     season: 2011
     round: 12
@@ -810,6 +899,7 @@ rows:
       name: Brisbane
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-06-12T03:10:00
   -
     season: 2011
     round: 12
@@ -819,6 +909,7 @@ rows:
       name: Richmond
     venue:
       sponsor_name: SCG
+    start_time_utc: 2011-06-12T04:10:00
   -
     season: 2011
     round: 12
@@ -828,6 +919,7 @@ rows:
       name: Essendon
     venue:
       sponsor_name: Patersons Stadium
+    start_time_utc: 2011-06-12T06:40:00
   -
     season: 2011
     round: 12
@@ -837,6 +929,7 @@ rows:
       name: Collingwood
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-06-13T04:10:00
   -
     season: 2011
     round: 13
@@ -846,6 +939,7 @@ rows:
       name: Adelaide
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-06-17T09:40:00
   -
     season: 2011
     round: 13
@@ -855,6 +949,7 @@ rows:
       name: Gold Coast
     venue:
       sponsor_name: Aurora Stadium
+    start_time_utc: 2011-06-18T04:10:00
   -
     season: 2011
     round: 13
@@ -864,6 +959,7 @@ rows:
       name: North Melbourne
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-06-18T04:10:00
   -
     season: 2011
     round: 13
@@ -873,6 +969,7 @@ rows:
       name: Richmond
     venue:
       sponsor_name: Gabba
+    start_time_utc: 2011-06-18T09:10:00
   -
     season: 2011
     round: 13
@@ -882,6 +979,7 @@ rows:
       name: Geelong
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-06-18T09:10:00
   -
     season: 2011
     round: 13
@@ -891,6 +989,7 @@ rows:
       name: Fremantle
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-06-19T03:10:00
   -
     season: 2011
     round: 13
@@ -900,6 +999,7 @@ rows:
       name: Sydney
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-06-19T04:10:00
   -
     season: 2011
     round: 13
@@ -909,6 +1009,7 @@ rows:
       name: Port Adelaide
     venue:
       sponsor_name: Patersons Stadium
+    start_time_utc: 2011-06-19T06:40:00
   -
     season: 2011
     round: 14
@@ -918,6 +1019,7 @@ rows:
       name: Essendon
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-06-24T09:40:00
   -
     season: 2011
     round: 14
@@ -927,6 +1029,7 @@ rows:
       name: Western Bulldogs
     venue:
       sponsor_name: Gold Coast Stadium
+    start_time_utc: 2011-06-25T04:10:00
   -
     season: 2011
     round: 14
@@ -936,6 +1039,7 @@ rows:
       name: Melbourne
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-06-25T04:10:00
   -
     season: 2011
     round: 14
@@ -945,6 +1049,7 @@ rows:
       name: Collingwood
     venue:
       sponsor_name: ANZ Stadium
+    start_time_utc: 2011-06-25T09:10:00
   -
     season: 2011
     round: 14
@@ -954,6 +1059,7 @@ rows:
       name: Brisbane
     venue:
       sponsor_name: Patersons Stadium
+    start_time_utc: 2011-06-25T09:40:00
   -
     season: 2011
     round: 14
@@ -963,6 +1069,7 @@ rows:
       name: Adelaide
     venue:
       sponsor_name: Skilled Stadium
+    start_time_utc: 2011-06-26T03:10:00
   -
     season: 2011
     round: 14
@@ -972,6 +1079,7 @@ rows:
       name: West Coast
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-06-26T04:10:00
   -
     season: 2011
     round: 14
@@ -981,6 +1089,7 @@ rows:
       name: North Melbourne
     venue:
       sponsor_name: AAMI Stadium
+    start_time_utc: 2011-06-26T06:40:00
   -
     season: 2011
     round: 15
@@ -990,6 +1099,7 @@ rows:
       name: Melbourne
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-07-01T09:40:00
   -
     season: 2011
     round: 15
@@ -999,6 +1109,7 @@ rows:
       name: Carlton
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-07-02T04:10:00
   -
     season: 2011
     round: 15
@@ -1008,6 +1119,7 @@ rows:
       name: Gold Coast
     venue:
       sponsor_name: Patersons Stadium
+    start_time_utc: 2011-07-02T05:10:00
   -
     season: 2011
     round: 15
@@ -1017,6 +1129,7 @@ rows:
       name: Geelong
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-07-02T09:10:00
   -
     season: 2011
     round: 15
@@ -1026,6 +1139,7 @@ rows:
       name: Sydney
     venue:
       sponsor_name: AAMI Stadium
+    start_time_utc: 2011-07-02T09:40:00
   -
     season: 2011
     round: 15
@@ -1035,6 +1149,7 @@ rows:
       name: Port Adelaide
     venue:
       sponsor_name: Gabba
+    start_time_utc: 2011-07-03T03:10:00
   -
     season: 2011
     round: 15
@@ -1044,6 +1159,7 @@ rows:
       name: Hawthorn
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-07-03T04:10:00
   -
     season: 2011
     round: 15
@@ -1053,6 +1169,7 @@ rows:
       name: St Kilda
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-07-03T06:40:00
   -
     season: 2011
     round: 16
@@ -1062,6 +1179,7 @@ rows:
       name: Geelong
     venue:
       sponsor_name: Patersons Stadium
+    start_time_utc: 2011-07-08T10:40:00
   -
     season: 2011
     round: 16
@@ -1071,6 +1189,7 @@ rows:
       name: Brisbane
     venue:
       sponsor_name: Aurora Stadium
+    start_time_utc: 2011-07-09T04:10:00
   -
     season: 2011
     round: 16
@@ -1080,6 +1199,7 @@ rows:
       name: Sydney
     venue:
       sponsor_name: Gold Coast Stadium
+    start_time_utc: 2011-07-09T09:10:00
   -
     season: 2011
     round: 16
@@ -1089,6 +1209,7 @@ rows:
       name: Richmond
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-07-09T09:10:00
   -
     season: 2011
     round: 16
@@ -1098,6 +1219,7 @@ rows:
       name: North Melbourne
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-07-10T03:10:00
   -
     season: 2011
     round: 16
@@ -1107,6 +1229,7 @@ rows:
       name: St Kilda
     venue:
       sponsor_name: AAMI Stadium
+    start_time_utc: 2011-07-10T05:10:00
   -
     season: 2011
     round: 16
@@ -1116,6 +1239,7 @@ rows:
       name: Carlton
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-07-10T06:40:00
   -
     season: 2011
     round: 17
@@ -1125,6 +1249,7 @@ rows:
       name: Essendon
     venue:
       sponsor_name: AAMI Stadium
+    start_time_utc: 2011-07-15T10:40:00
   -
     season: 2011
     round: 17
@@ -1134,6 +1259,7 @@ rows:
       name: Gold Coast
     venue:
       sponsor_name: Cazaly's Stadium
+    start_time_utc: 2011-07-16T04:10:00
   -
     season: 2011
     round: 17
@@ -1143,6 +1269,7 @@ rows:
       name: Collingwood
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-07-16T04:10:00
   -
     season: 2011
     round: 17
@@ -1152,6 +1279,7 @@ rows:
       name: West Coast
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-07-16T09:10:00
   -
     season: 2011
     round: 17
@@ -1161,6 +1289,7 @@ rows:
       name: Port Adelaide
     venue:
       sponsor_name: TIO Stadium
+    start_time_utc: 2011-07-16T10:40:00
   -
     season: 2011
     round: 17
@@ -1170,6 +1299,7 @@ rows:
       name: Fremantle
     venue:
       sponsor_name: SCG
+    start_time_utc: 2011-07-17T03:10:00
   -
     season: 2011
     round: 17
@@ -1179,6 +1309,7 @@ rows:
       name: Geelong
     venue:
       sponsor_name: Gabba
+    start_time_utc: 2011-07-17T04:10:00
   -
     season: 2011
     round: 17
@@ -1188,6 +1319,7 @@ rows:
       name: Western Bulldogs
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-07-17T06:40:00
   -
     season: 2011
     round: 18
@@ -1197,6 +1329,7 @@ rows:
       name: Adelaide
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-07-22T09:40:00
   -
     season: 2011
     round: 18
@@ -1206,6 +1339,7 @@ rows:
       name: Brisbane
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-07-23T04:10:00
   -
     season: 2011
     round: 18
@@ -1215,6 +1349,7 @@ rows:
       name: Western Bulldogs
     venue:
       sponsor_name: SCG
+    start_time_utc: 2011-07-23T04:10:00
   -
     season: 2011
     round: 18
@@ -1224,6 +1359,7 @@ rows:
       name: Collingwood
     venue:
       sponsor_name: Gold Coast Stadium
+    start_time_utc: 2011-07-23T09:10:00
   -
     season: 2011
     round: 18
@@ -1233,6 +1369,7 @@ rows:
       name: Carlton
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-07-23T09:10:00
   -
     season: 2011
     round: 18
@@ -1242,6 +1379,7 @@ rows:
       name: Richmond
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-07-24T03:10:00
   -
     season: 2011
     round: 18
@@ -1251,6 +1389,7 @@ rows:
       name: Hawthorn
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-07-24T04:10:00
   -
     season: 2011
     round: 18
@@ -1260,6 +1399,7 @@ rows:
       name: West Coast
     venue:
       sponsor_name: Patersons Stadium
+    start_time_utc: 2011-07-24T06:40:00
   -
     season: 2011
     round: 19
@@ -1269,6 +1409,7 @@ rows:
       name: Carlton
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-07-29T09:40:00
   -
     season: 2011
     round: 19
@@ -1278,6 +1419,7 @@ rows:
       name: West Coast
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-07-30T04:10:00
   -
     season: 2011
     round: 19
@@ -1287,6 +1429,7 @@ rows:
       name: Melbourne
     venue:
       sponsor_name: Skilled Stadium
+    start_time_utc: 2011-07-30T04:10:00
   -
     season: 2011
     round: 19
@@ -1296,6 +1439,7 @@ rows:
       name: St Kilda
     venue:
       sponsor_name: Gold Coast Stadium
+    start_time_utc: 2011-07-30T09:10:00
   -
     season: 2011
     round: 19
@@ -1305,6 +1449,7 @@ rows:
       name: Hawthorn
     venue:
       sponsor_name: Patersons Stadium
+    start_time_utc: 2011-07-30T09:40:00
   -
     season: 2011
     round: 19
@@ -1314,6 +1459,7 @@ rows:
       name: Essendon
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-07-31T04:10:00
   -
     season: 2011
     round: 19
@@ -1323,6 +1469,7 @@ rows:
       name: Port Adelaide
     venue:
       sponsor_name: AAMI Stadium
+    start_time_utc: 2011-07-31T06:40:00
   -
     season: 2011
     round: 20
@@ -1332,6 +1479,7 @@ rows:
       name: Fremantle
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-08-05T09:40:00
   -
     season: 2011
     round: 20
@@ -1341,6 +1489,7 @@ rows:
       name: Melbourne
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-08-06T04:10:00
   -
     season: 2011
     round: 20
@@ -1350,6 +1499,7 @@ rows:
       name: Gold Coast
     venue:
       sponsor_name: Skilled Stadium
+    start_time_utc: 2011-08-06T04:10:00
   -
     season: 2011
     round: 20
@@ -1359,6 +1509,7 @@ rows:
       name: Sydney
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-08-06T09:10:00
   -
     season: 2011
     round: 20
@@ -1368,6 +1519,7 @@ rows:
       name: Collingwood
     venue:
       sponsor_name: AAMI Stadium
+    start_time_utc: 2011-08-06T09:40:00
   -
     season: 2011
     round: 20
@@ -1377,6 +1529,7 @@ rows:
       name: Adelaide
     venue:
       sponsor_name: Gabba
+    start_time_utc: 2011-08-07T03:10:00
   -
     season: 2011
     round: 20
@@ -1386,6 +1539,7 @@ rows:
       name: North Melbourne
     venue:
       sponsor_name: Aurora Stadium
+    start_time_utc: 2011-08-07T04:10:00
   -
     season: 2011
     round: 20
@@ -1395,6 +1549,7 @@ rows:
       name: Richmond
     venue:
       sponsor_name: Patersons Stadium
+    start_time_utc: 2011-08-07T06:40:00
   -
     season: 2011
     round: 21
@@ -1404,6 +1559,7 @@ rows:
       name: Collingwood
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-08-12T09:40:00
   -
     season: 2011
     round: 21
@@ -1413,6 +1569,7 @@ rows:
       name: Port Adelaide
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-08-13T04:10:00
   -
     season: 2011
     round: 21
@@ -1422,6 +1579,7 @@ rows:
       name: Carlton
     venue:
       sponsor_name: Patersons Stadium
+    start_time_utc: 2011-08-13T05:10:00
   -
     season: 2011
     round: 21
@@ -1431,6 +1589,7 @@ rows:
       name: Essendon
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-08-13T09:10:00
   -
     season: 2011
     round: 21
@@ -1440,6 +1599,7 @@ rows:
       name: Gold Coast
     venue:
       sponsor_name: Gabba
+    start_time_utc: 2011-08-13T09:10:00
   -
     season: 2011
     round: 21
@@ -1449,6 +1609,7 @@ rows:
       name: West Coast
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-08-14T03:10:00
   -
     season: 2011
     round: 21
@@ -1458,6 +1619,7 @@ rows:
       name: Sydney
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-08-14T04:10:00
   -
     season: 2011
     round: 21
@@ -1467,6 +1629,7 @@ rows:
       name: Geelong
     venue:
       sponsor_name: AAMI Stadium
+    start_time_utc: 2011-08-14T06:40:00
   -
     season: 2011
     round: 22
@@ -1476,6 +1639,7 @@ rows:
       name: Hawthorn
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-08-19T09:40:00
   -
     season: 2011
     round: 22
@@ -1485,6 +1649,7 @@ rows:
       name: Adelaide
     venue:
       sponsor_name: Gold Coast Stadium
+    start_time_utc: 2011-08-20T04:10:00
   -
     season: 2011
     round: 22
@@ -1494,6 +1659,7 @@ rows:
       name: Essendon
     venue:
       sponsor_name: Patersons Stadium
+    start_time_utc: 2011-08-20T05:10:00
   -
     season: 2011
     round: 22
@@ -1503,6 +1669,7 @@ rows:
       name: Fremantle
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-08-20T09:10:00
   -
     season: 2011
     round: 22
@@ -1512,6 +1679,7 @@ rows:
       name: Brisbane
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-08-20T09:10:00
   -
     season: 2011
     round: 22
@@ -1521,6 +1689,7 @@ rows:
       name: St Kilda
     venue:
       sponsor_name: ANZ Stadium
+    start_time_utc: 2011-08-21T03:10:00
   -
     season: 2011
     round: 22
@@ -1530,6 +1699,7 @@ rows:
       name: Western Bulldogs
     venue:
       sponsor_name: AAMI Stadium
+    start_time_utc: 2011-08-21T05:10:00
   -
     season: 2011
     round: 22
@@ -1539,6 +1709,7 @@ rows:
       name: Richmond
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-08-21T06:40:00
   -
     season: 2011
     round: 23
@@ -1548,6 +1719,7 @@ rows:
       name: Collingwood
     venue:
       sponsor_name: Patersons Stadium
+    start_time_utc: 2011-08-26T10:40:00
   -
     season: 2011
     round: 23
@@ -1557,6 +1729,7 @@ rows:
       name: Western Bulldogs
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-08-27T04:10:00
   -
     season: 2011
     round: 23
@@ -1566,6 +1739,7 @@ rows:
       name: Sydney
     venue:
       sponsor_name: Skilled Stadium
+    start_time_utc: 2011-08-27T04:10:00
   -
     season: 2011
     round: 23
@@ -1575,6 +1749,7 @@ rows:
       name: North Melbourne
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-08-27T09:10:00
   -
     season: 2011
     round: 23
@@ -1584,6 +1759,7 @@ rows:
       name: West Coast
     venue:
       sponsor_name: Gabba
+    start_time_utc: 2011-08-27T09:10:00
   -
     season: 2011
     round: 23
@@ -1593,6 +1769,7 @@ rows:
       name: Richmond
     venue:
       sponsor_name: AAMI Stadium
+    start_time_utc: 2011-08-28T03:10:00
   -
     season: 2011
     round: 23
@@ -1602,6 +1779,7 @@ rows:
       name: Gold Coast
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-08-28T04:10:00
   -
     season: 2011
     round: 23
@@ -1611,6 +1789,7 @@ rows:
       name: Port Adelaide
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-08-28T06:40:00
   -
     season: 2011
     round: 24
@@ -1620,6 +1799,7 @@ rows:
       name: St Kilda
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-09-02T00:00:00
   -
     season: 2011
     round: 24
@@ -1629,6 +1809,7 @@ rows:
       name: Melbourne
     venue:
       sponsor_name: AAMI Stadium
+    start_time_utc: 2011-09-02T00:00:00
   -
     season: 2011
     round: 24
@@ -1638,6 +1819,7 @@ rows:
       name: Fremantle
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-09-02T00:00:00
   -
     season: 2011
     round: 24
@@ -1647,6 +1829,7 @@ rows:
       name: Brisbane
     venue:
       sponsor_name: SCG
+    start_time_utc: 2011-09-02T00:00:00
   -
     season: 2011
     round: 24
@@ -1656,6 +1839,7 @@ rows:
       name: Adelaide
     venue:
       sponsor_name: Patersons Stadium
+    start_time_utc: 2011-09-02T00:00:00
   -
     season: 2011
     round: 24
@@ -1665,6 +1849,7 @@ rows:
       name: Geelong
     venue:
       sponsor_name: MCG
+    start_time_utc: 2011-09-02T00:00:00
   -
     season: 2011
     round: 24
@@ -1674,6 +1859,7 @@ rows:
       name: North Melbourne
     venue:
       sponsor_name: Etihad Stadium
+    start_time_utc: 2011-09-02T00:00:00
   -
     season: 2011
     round: 24
@@ -1683,3 +1869,4 @@ rows:
       name: Hawthorn
     venue:
       sponsor_name: Gold Coast Stadium
+    start_time_utc: 2011-09-02T00:00:00

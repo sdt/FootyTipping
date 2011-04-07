@@ -4,9 +4,11 @@ use Modern::Perl;
 
 use autodie;
 use List::MoreUtils qw/ zip /;
+use DateTime::Format::DateParse;
 
 my $round;
 my $month;
+my $timezone;
 my $day_of_month;
 
 my $venue_regex = join('|', qw/
@@ -42,6 +44,20 @@ while (<DATA>) {
                 (\d+)
                $/x) {
             $round = $1;
+        }
+
+        when (/^
+                [A-Z][a-z]+,
+                    \s+
+                ([A-Z][a-z]+)
+                    \s+
+                (\d+)
+                    .*?
+                (EST|EDT)\s+LOCAL\s+TIME
+              /x) {
+            $month        = $month_number{$1};
+            $day_of_month = $2;
+            $timezone     = $3;
         }
 
         when (/^
@@ -92,7 +108,7 @@ while (<DATA>) {
 
             my ($home_team, $away_team, $venue, $melb_time, $local_time,
                 $network) = ($1, $2, $3, $4, $5, $6);
-            _emit_round($out, $round, $home_team, $away_team, $venue);
+            _emit_round($out, $round, $home_team, $away_team, $venue, $melb_time, $timezone);
         }
 
         when (/^Byes?:/) {
@@ -105,9 +121,23 @@ while (<DATA>) {
     }
 }
 
-my @columns = qw/ round home_team:name away_team:name venuej:sponsor_name /;
 sub _emit_round {
-    my ($out, $round, $home_team, $away_team, $venue) = @_;
+    my ($out, $round, $home_team, $away_team, $venue, $melb_time, $timezone) = @_;
+
+    my $dt;
+    if (defined $melb_time) {
+        $dt = DateTime::Format::DateParse->parse_datetime( $melb_time, 'Australia/Melbourne' );
+        if ($timezone eq 'EDT') {
+            $dt->subtract( hours => 1);
+        }
+        $dt->set_month($month);
+        $dt->set_day($day_of_month);
+    }
+    else {
+        $dt = DateTime->new(year => 2011, month => 9, day => 2);
+    }
+    $dt->set_time_zone('UTC');
+
     say {$out} '  -';
     say {$out} "    season: 2011";
     say {$out} "    round: $round";
@@ -117,6 +147,9 @@ sub _emit_round {
     say {$out} "      name: $away_team";
     say {$out} "    venue:";
     say {$out} "      sponsor_name: $venue";
+    say {$out} "    start_time_utc: $dt";
+
+    $dt->set_time_zone('Australia/Melbourne');
 }
 
 __DATA__

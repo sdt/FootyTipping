@@ -49,9 +49,13 @@ diag "Exiting";
 sub print_games {
     my $resultset = shift;
     while (my $game = $resultset->next) {
+        my $localtime = $game->start_time_utc->clone();
+        $localtime->set_time_zone($game->venue->time_zone);
         diag "Round " . $game->round . " " .
              $game->home_team->nickname . " vs " .
              $game->away_team->nickname . " at " .
-             $game->venue->sponsor_name;
+             $game->venue->sponsor_name . " " .
+             $localtime->strftime('%A %B %e%l:%M%P') .
+             " (" . $game->venue->time_zone . ')';
     }
 }
