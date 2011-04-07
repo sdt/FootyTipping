@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Thu Apr  7 10:46:54 2011
+-- Created on Thu Apr  7 17:07:38 2011
 -- 
 ;
 --
@@ -49,12 +49,23 @@ CREATE TABLE "tbl_user" (
 CREATE TABLE "tbl_venue" (
   "venue_id" serial NOT NULL,
   "name" character varying NOT NULL,
-  "sponsor_name" character varying NOT NULL,
   "time_zone" character varying NOT NULL,
   PRIMARY KEY ("venue_id"),
-  CONSTRAINT "tbl_venue_name" UNIQUE ("name"),
-  CONSTRAINT "tbl_venue_sponsor_name" UNIQUE ("sponsor_name")
+  CONSTRAINT "tbl_venue_name" UNIQUE ("name")
 );
+
+;
+--
+-- Table: tbl_venue_sponsorname
+--
+CREATE TABLE "tbl_venue_sponsorname" (
+  "venue_id" serial NOT NULL,
+  "name" character varying NOT NULL,
+  "start_year" integer,
+  "end_year" integer,
+  PRIMARY KEY ("venue_id", "name")
+);
+CREATE INDEX "tbl_venue_sponsorname_idx_venue_id" on "tbl_venue_sponsorname" ("venue_id");
 
 ;
 --
@@ -133,6 +144,10 @@ CREATE INDEX "tbl_tip_idx_tipper_id" on "tbl_tip" ("tipper_id");
 --
 -- Foreign Key Definitions
 --
+
+;
+ALTER TABLE "tbl_venue_sponsorname" ADD FOREIGN KEY ("venue_id")
+  REFERENCES "tbl_venue" ("venue_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
 
 ;
 ALTER TABLE "tbl_competition_user" ADD FOREIGN KEY ("competition_id")

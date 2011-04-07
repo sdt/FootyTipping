@@ -192,7 +192,7 @@ schema:
           type: NORMAL
       name: tbl_competition_user
       options: []
-      order: 5
+      order: 6
     tbl_game:
       constraints:
         - deferrable: 1
@@ -414,7 +414,7 @@ schema:
           type: NORMAL
       name: tbl_game
       options: []
-      order: 6
+      order: 7
     tbl_team:
       constraints:
         - deferrable: 1
@@ -576,7 +576,7 @@ schema:
           type: NORMAL
       name: tbl_team_supporter
       options: []
-      order: 7
+      order: 8
     tbl_tip:
       constraints:
         - deferrable: 1
@@ -730,7 +730,7 @@ schema:
           type: NORMAL
       name: tbl_tip
       options: []
-      order: 8
+      order: 9
     tbl_user:
       constraints:
         - deferrable: 1
@@ -851,18 +851,6 @@ schema:
           reference_fields: []
           reference_table: ''
           type: UNIQUE
-        - deferrable: 1
-          expression: ''
-          fields:
-            - sponsor_name
-          match_type: ''
-          name: tbl_venue_sponsor_name
-          on_delete: ''
-          on_update: ''
-          options: []
-          reference_fields: []
-          reference_table: ''
-          type: UNIQUE
       fields:
         name:
           data_type: varchar
@@ -874,16 +862,6 @@ schema:
           order: 2
           size:
             - 0
-        sponsor_name:
-          data_type: varchar
-          default_value: ~
-          is_nullable: 0
-          is_primary_key: 0
-          is_unique: 1
-          name: sponsor_name
-          order: 3
-          size:
-            - 0
         time_zone:
           data_type: varchar
           default_value: ~
@@ -891,7 +869,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: time_zone
-          order: 4
+          order: 3
           size:
             - 0
         venue_id:
@@ -909,6 +887,85 @@ schema:
       name: tbl_venue
       options: []
       order: 4
+    tbl_venue_sponsorname:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - venue_id
+            - name
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+        - deferrable: 1
+          expression: ''
+          fields:
+            - venue_id
+          match_type: ''
+          name: tbl_venue_sponsorname_fk_venue_id
+          on_delete: CASCADE
+          on_update: CASCADE
+          options: []
+          reference_fields:
+            - venue_id
+          reference_table: tbl_venue
+          type: FOREIGN KEY
+      fields:
+        end_year:
+          data_type: integer
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: end_year
+          order: 4
+          size:
+            - 0
+        name:
+          data_type: varchar
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: name
+          order: 2
+          size:
+            - 0
+        start_year:
+          data_type: integer
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: start_year
+          order: 3
+          size:
+            - 0
+        venue_id:
+          data_type: integer
+          default_value: ~
+          is_auto_increment: 1
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: venue_id
+          order: 1
+          size:
+            - 0
+      indices:
+        - fields:
+            - venue_id
+          name: tbl_venue_sponsorname_idx_venue_id
+          options: []
+          type: NORMAL
+      name: tbl_venue_sponsorname
+      options: []
+      order: 5
   triggers: {}
   views: {}
 translator:
@@ -927,6 +984,7 @@ translator:
         Tipping::Schema::Result::Tip: Tip
         Tipping::Schema::Result::User: User
         Tipping::Schema::Result::Venue: Venue
+        Tipping::Schema::Result::Venue_SponsorName: Venue_SponsorName
       source_registrations:
         Competition: !!perl/hash:DBIx::Class::ResultSource::Table
           _columns:
@@ -1459,9 +1517,6 @@ translator:
             name:
               data_type: varchar
               is_nullable: 0
-            sponsor_name:
-              data_type: varchar
-              is_nullable: 0
             time_zone:
               data_type: varchar
               is_nullable: 0
@@ -1473,7 +1528,6 @@ translator:
           _ordered_columns:
             - venue_id
             - name
-            - sponsor_name
             - time_zone
           _primaries: &9
             - venue_id
@@ -1488,18 +1542,71 @@ translator:
               cond:
                 foreign.venue_id: self.venue_id
               source: Tipping::Schema::Result::Game
+            sponsor_names:
+              attrs:
+                accessor: multi
+                cascade_copy: 1
+                cascade_delete: 1
+                join_type: LEFT
+              class: Tipping::Schema::Result::Venue_SponsorName
+              cond:
+                foreign.venue_id: self.venue_id
+              source: Tipping::Schema::Result::Venue_SponsorName
           _unique_constraints:
             primary: *9
             tbl_venue_name:
               - name
-            tbl_venue_sponsor_name:
-              - sponsor_name
           name: tbl_venue
           result_class: Tipping::Schema::Result::Venue
           resultset_attributes: {}
           resultset_class: DBIx::Class::ResultSet
           schema: *1
           source_name: Venue
+          sqlt_deploy_callback: default_sqlt_deploy_hook
+        Venue_SponsorName: !!perl/hash:DBIx::Class::ResultSource::Table
+          _columns:
+            end_year:
+              data_type: integer
+              is_nullable: 1
+            name:
+              data_type: varchar
+              is_nullable: 0
+            start_year:
+              data_type: integer
+              is_nullable: 1
+            venue_id:
+              data_type: integer
+              is_auto_increment: 1
+              is_nullable: 0
+          _columns_info_loaded: 0
+          _ordered_columns:
+            - venue_id
+            - name
+            - start_year
+            - end_year
+          _primaries: &10
+            - venue_id
+            - name
+          _relationships:
+            venue:
+              attrs:
+                accessor: single
+                fk_columns:
+                  venue_id: 1
+                is_foreign_key_constraint: 1
+                undef_on_null_fk: 1
+              class: Tipping::Schema::Result::Venue
+              cond:
+                foreign.venue_id: self.venue_id
+              source: Tipping::Schema::Result::Venue
+          _unique_constraints:
+            primary: *10
+          name: tbl_venue_sponsorname
+          result_class: Tipping::Schema::Result::Venue_SponsorName
+          resultset_attributes: {}
+          resultset_class: DBIx::Class::ResultSet
+          schema: *1
+          source_name: Venue_SponsorName
           sqlt_deploy_callback: default_sqlt_deploy_hook
         __VERSION: !!perl/hash:DBIx::Class::ResultSource::Table
           _columns:
@@ -1521,13 +1628,13 @@ translator:
             - version
             - ddl
             - upgrade_sql
-          _primaries: &10
+          _primaries: &11
             - id
           _relationships: {}
           _unique_constraints:
             dbix_class_deploymenthandler_versions_version:
               - version
-            primary: *10
+            primary: *11
           name: dbix_class_deploymenthandler_versions
           result_class: DBIx::Class::DeploymentHandler::VersionStorage::Standard::VersionResult
           resultset_attributes: {}
@@ -1544,12 +1651,12 @@ translator:
           - dbi:SQLite:sqlite.db
           - ~
           - ~
-          - &11
+          - &12
             AutoCommit: 1
             PrintError: 0
             RaiseError: 1
             ShowErrorStatement: 1
-        _dbic_connect_attributes: *11
+        _dbic_connect_attributes: *12
         _in_dbh_do: 0
         _sql_maker: ~
         _sql_maker_opts: {}
@@ -1564,10 +1671,11 @@ translator:
       - User
       - Game
       - Team_Supporter
+      - Venue_SponsorName
       - Tip
   parser_type: SQL::Translator::Parser::DBIx::Class
   producer_args: {}
   producer_type: SQL::Translator::Producer::YAML
   show_warnings: 0
   trace: 0
-  version: 0.11006
+  version: 0.11007

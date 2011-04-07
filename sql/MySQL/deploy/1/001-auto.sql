@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Thu Apr  7 10:46:54 2011
+-- Created on Thu Apr  7 17:07:38 2011
 -- 
 ;
 SET foreign_key_checks=0;
@@ -44,11 +44,21 @@ CREATE TABLE `tbl_user` (
 CREATE TABLE `tbl_venue` (
   `venue_id` integer NOT NULL auto_increment,
   `name` varchar(255) NOT NULL,
-  `sponsor_name` varchar(255) NOT NULL,
   `time_zone` varchar(255) NOT NULL,
   PRIMARY KEY (`venue_id`),
-  UNIQUE `tbl_venue_name` (`name`),
-  UNIQUE `tbl_venue_sponsor_name` (`sponsor_name`)
+  UNIQUE `tbl_venue_name` (`name`)
+) ENGINE=InnoDB;
+--
+-- Table: `tbl_venue_sponsorname`
+--
+CREATE TABLE `tbl_venue_sponsorname` (
+  `venue_id` integer NOT NULL auto_increment,
+  `name` varchar(255) NOT NULL,
+  `start_year` integer,
+  `end_year` integer,
+  INDEX `tbl_venue_sponsorname_idx_venue_id` (`venue_id`),
+  PRIMARY KEY (`venue_id`, `name`),
+  CONSTRAINT `tbl_venue_sponsorname_fk_venue_id` FOREIGN KEY (`venue_id`) REFERENCES `tbl_venue` (`venue_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 --
 -- Table: `tbl_competition_user`
