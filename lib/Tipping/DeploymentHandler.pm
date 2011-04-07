@@ -9,6 +9,7 @@ use File::ShareDir (qw/ module_dir /);
 use SQL::Translator ();
 use Tipping::Schema ();
 use Moose;
+use namespace::autoclean;
 
 has schema => (
     is      => 'ro',
@@ -20,6 +21,7 @@ has _deployment_handler => (
     is          => 'ro',
     isa         => 'DBIx::Class::DeploymentHandler',
     lazy_build  => 1,
+    init_arg    => undef,
 );
 
 sub _build__deployment_handler { ## no critic (ProhibitUnusedPrivateSubroutines)
@@ -98,7 +100,6 @@ sub update {
     return;
 }
 
-no Moose;
 __PACKAGE__->meta->make_immutable();
 1;
 

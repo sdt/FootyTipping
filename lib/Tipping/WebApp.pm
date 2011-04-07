@@ -48,6 +48,12 @@ __PACKAGE__->config(
 # Start the application
 __PACKAGE__->setup();
 
+__PACKAGE__->meta->make_immutable;
+1;
+
+__END__
+
+=pod
 
 =head1 NAME
 
@@ -75,5 +81,3 @@ This library is free software. You can redistribute it and/or modify
 it under the same terms as Perl itself.
 
 =cut
-
-1;

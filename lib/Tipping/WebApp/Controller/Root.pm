@@ -67,5 +67,4 @@ it under the same terms as Perl itself.
 =cut
 
 __PACKAGE__->meta->make_immutable;
-
 1;
