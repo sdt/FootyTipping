@@ -12,7 +12,7 @@ use Tipping::Schema ();
 
 GetOptions(-autohelp => sub { not defined $name });
 
-my $schema = Tipping::Schema->instance;
+my $schema = Tipping::Schema->connect;
 $schema->resultset('Competition')->create({
         name        => $name,
         password    => $password,

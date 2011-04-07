@@ -78,11 +78,13 @@ __PACKAGE__->has_many(
 );
 
 sub home_team_score {
+    ## no critic (ProhibitMagicNumbers)
     my $self = shift;
     return $self->home_team_goals * 6 + $self->home_team_behinds;
 }
 
 sub away_team_score {
+    ## no critic (ProhibitMagicNumbers)
     my $self = shift;
     return $self->away_team_goals * 6 + $self->away_team_behinds;
 }
@@ -101,6 +103,16 @@ Tipping::Schema::Result::Game - DBIx::Class result source
 
 A game for a given round and season takes place between two teams at a venue
 at a given start time.
+
+=head1 METHODS
+
+=head2 home_team_score
+
+Virtual column which computes the home team score.
+
+=head2 away_team_score
+
+Virtual column which computes the away team score.
 
 =head1 AUTHOR
 

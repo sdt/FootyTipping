@@ -9,9 +9,12 @@ use Tipping::Config ();
 # load all Result classes in Tipping/Schema/Result
 __PACKAGE__->load_namespaces();
 
-sub instance {
-    state $instance = __PACKAGE__->connect(Tipping::Config->config->{database});
-    return $instance;
+sub connect {                           ## no critic (ProhibitBuiltinHomonyms)
+    my ($class, @params) = @_;
+    if (@params) {
+        return $class->next::method(@params);
+    }
+    return $class->next::method(Tipping::Config->config->{database});
 }
 
 1;
@@ -26,10 +29,10 @@ Tipping::Schema - DBIX::Class::Schema class for Tipping
 
 =head1 METHODS
 
-=head2 instance
+=head2 connect
 
-Returns a singleton instance of the schema created on-demand from
-Tipping::Config.
+Overload of DBIx::Class::Schema::connect which defaults to using the
+connect info in Tipping::Config.
 
 =head1 AUTHOR
 

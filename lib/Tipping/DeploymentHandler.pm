@@ -13,7 +13,7 @@ use Moose;
 has schema => (
     is      => 'ro',
     isa     => 'DBIx::Class::Schema',
-    default => sub { Tipping::Schema->instance },
+    default => sub { Tipping::Schema->connect },
 );
 
 has _deployment_handler => (

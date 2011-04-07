@@ -14,7 +14,7 @@ GetOptions(-autohelp => sub {
         not (defined $username and defined $compname)
     });
 
-my $schema = Tipping::Schema->instance;
+my $schema = Tipping::Schema->connect;
 $schema->txn_do(sub {
 
     my $user = $schema->resultset('User')->find({

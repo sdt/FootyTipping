@@ -1,6 +1,10 @@
 #!/usr/bin/env perl
 
 use Modern::Perl;
+
+use FindBin ();
+use lib "$FindBin::Bin";
+
 use Test::Most;
 use Tipping::Config;
 use Tipping::Schema;
@@ -10,7 +14,7 @@ use Test::Tipping::Database;
 $ENV{PATH} .= ':/usr/sbin';
 
 my @db_drivers = qw/ Pg SQLite mysql /;
-my $db_driver = $ENV{TIPPING_DB_DRIVER};
+my $db_driver = $ENV{TIPPING_DB_DRIVER} // $db_drivers[0];
 
 Test::Tipping::Database::install($db_driver, Tipping::Config->config);
 
@@ -18,10 +22,11 @@ plan tests => 1;
 
 lives_ok { Tipping::DeploymentHandler->new->update } 'Deploy database';
 
-my $schema = Tipping::Schema->instance;
+my $schema = Tipping::Schema->connect;
+my $games = $schema->resultset('Game');
 
 diag('Round 3');
-print_games(scalar $schema->resultset('Game')->search(
+print_games(scalar $games->search(
     {
         round => 3,
     },
@@ -31,7 +36,7 @@ print_games(scalar $schema->resultset('Game')->search(
 ));
 
 diag('Hawthorn games');
-print_games(scalar $schema->resultset('Game')->search(
+print_games(scalar $games->search(
     {
         -or => [
             { 'home_team.name' => 'Hawthorn' },
@@ -43,7 +48,6 @@ print_games(scalar $schema->resultset('Game')->search(
     }
 ));
 
-Tipping::Schema->instance->storage->disconnect;
 diag "Exiting";
 
 sub print_games {
