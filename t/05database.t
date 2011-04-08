@@ -14,8 +14,6 @@ use Tipping::Schema;
 use Tipping::DeploymentHandler;
 use Test::Tipping::Database;
 
-#$ENV{PATH} .= ':/usr/sbin';
-
 my @db_drivers = qw/ Pg SQLite mysql /;
 my $db_driver = $ENV{TIPPING_DB_DRIVER} // $db_drivers[1];
 try {
@@ -54,5 +52,3 @@ is($mcg->sponsor_name(2011), undef, 'No sponsor name for MCG');
 my $docklands = $venues->find({ name => { 'like' => '%Docklands%' }});
 is($docklands->sponsor_name(2011), 'Etihad Stadium', 'Docklands Stadium is Etihad Stadium in 2011');
 is($docklands->sponsor_name(2008), 'Telstra Dome', 'Docklands Stadium is Telstra Dome in 2008');
-
-diag "Exiting";

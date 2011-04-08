@@ -22,6 +22,7 @@ sub install {
 
         when ('mysql') {
             use Test::mysqld ();
+            $ENV{PATH} .= ':/usr/sbin';
             my $sqlite = $config->{test_database} = Test::mysqld->new(
                         my_cnf => { 'skip-networking' => '' }
                     ) or croak $Test::mysqld::errstr;
