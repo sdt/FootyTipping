@@ -35,6 +35,27 @@ __PACKAGE__->has_many(
     'venue_id'
 );
 
+#TODO: is this the right place for this? Feels wrong doing a query here.
+sub sponsor_name {
+    my ($self, $year) = @_;
+
+    my $sponsor = $self->sponsor_names->find({
+            start_year => [
+                { '<=' => $year },
+                { '='  => undef },
+            ],
+            end_year => [
+                { '>=' => $year },
+                { '='  => undef },
+            ]
+        });
+
+    if (defined $sponsor) {
+        return $sponsor->name;
+    }
+    return;
+}
+
 1;
 
 __END__
@@ -49,6 +70,12 @@ Tipping::Schema::Result::Venue - DBIx::Class result source
 
 Games take place at a venue. The venue has a real name, a time zone, and
 many sponsor names (but only one in any given year).
+
+=head1 METHODS
+
+=head2 sponsor_name($year)
+
+Returns the sponsor name for the given year, or undef if none exists;
 
 =head1 AUTHOR
 
