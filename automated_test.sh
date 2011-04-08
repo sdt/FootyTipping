@@ -1,6 +1,9 @@
 #!/bin/sh
 # Automated testing
 
+# Bail out as soon as something fails
+set -e
+
 # Do the basic tests first
 for db in mysql Pg SQLite; do
     echo Testing with $db
