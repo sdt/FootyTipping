@@ -1,4 +1,5 @@
 package Tipping::WebApp::Controller::Root;
+use Modern::Perl;
 use Moose;
 use namespace::autoclean;
 
