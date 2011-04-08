@@ -738,7 +738,7 @@ rows:
     away_team:
       name: Port Adelaide
     venue:
-      name: Marrara Stadium
+      name: Marrara Oval
     start_time_utc: 2011-05-28T10:40:00
   -
     season: 2011
@@ -1288,7 +1288,7 @@ rows:
     away_team:
       name: Port Adelaide
     venue:
-      name: Marrara Stadium
+      name: Marrara Oval
     start_time_utc: 2011-07-16T10:40:00
   -
     season: 2011
