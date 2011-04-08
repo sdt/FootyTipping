@@ -37,7 +37,7 @@ sub team {
 
 =pod
 
-=HEAD1 NAME
+=head1 NAME
 
 Tipping::Schema::ResultSet::Game - DBIx::Class ResultSet class
 

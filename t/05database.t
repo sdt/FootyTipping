@@ -50,7 +50,7 @@ print_games(scalar $games->search(
 
 diag "Exiting";
 
-sub get_preffered_venue_name {
+sub get_preferred_venue_name {
     my $venue = shift;
 
     my $this = 2011;
@@ -76,7 +76,7 @@ sub print_games {
         diag "Round " . $game->round . " " .
              $game->home_team->nickname . " vs " .
              $game->away_team->nickname . " at " .
-             get_preffered_venue_name($game->venue) . " ",
+             get_preferred_venue_name($game->venue) . " ",
              $localtime->strftime('%A %B %e%l:%M%P') .
              " (" . $game->venue->time_zone . ')';
     }
