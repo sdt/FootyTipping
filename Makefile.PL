@@ -14,7 +14,7 @@ requires 'Catalyst::Plugin::Static::Simple';
 requires 'Catalyst::Action::RenderView';
 
 requires 'Carp';
-requires 'Config::JFDI';
+requires 'Config::ZOMG';
 requires 'Data::Dumper::Concise';
 requires 'DBIx::Class::DeploymentHandler';
 requires 'File::ShareDir';
