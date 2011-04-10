@@ -7,7 +7,7 @@ set -e
 squeak() {
     local color=$1
     shift
-    echo -e "\033[${color}m$@\033[0m"
+    echo "\033[${color}m$@\033[0m"
 }
 
 # Do a run with SQLite and the extra test flags
@@ -29,4 +29,4 @@ HARNESS_PERL_SWITCHES=-MDevel::Cover=+ignore,^$HOME/perl5,^t/ make test > /dev/n
 cover > /dev/null
 make distclean > /dev/null 2> /dev/null
 
-squeak 32 All done!
+squeak 32 All done
