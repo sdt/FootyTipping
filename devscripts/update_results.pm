@@ -1,17 +1,14 @@
 #!/usr/bin/env perl
 use Modern::Perl;
+
 use autodie;
+use DateTime;
+use IO::String;
+use WWW::Mechanize;
 use YAML;
 
 # Historical data files grabbed from:
 #  http://stats.rleague.com/afl/seas/season_idx.html
-
-my $yaml = {
-        table   => 'Game',
-        attr    => {
-            prefetch => [qw/ home_team away_team /],
-        }
-    };
 
 sub fix_team {
     my ($team) = @_;
@@ -24,11 +21,17 @@ sub fix_team {
 }
 
 sub parse_file {
-    my ($filename) = @_;
+    my ($fh) = @_;
 
     my ($season, $round, $game);
+    my $yaml = {
+            table   => 'Game',
+            attr    => {
+                prefetch => [qw/ home_team away_team /],
+            }
+        };
 
-    open my $fh, '<', $filename;
+
     while (my $line = <$fh>) {
         given ($line) {
 
@@ -63,7 +66,8 @@ sub parse_file {
             }
         }
     }
-    close $fh;
+
+    return $yaml;
 }
 
 sub parse_home_game_line {
@@ -77,6 +81,9 @@ sub parse_home_game_line {
     $game->{update}->{home_team_behinds} = $behinds;
 }
 
-parse_file($_) for (<*.html>);
+my $year = DateTime->now->year;
+my $url = "http://stats.rleague.com/afl/seas/$year.html";
+my $fh = IO::String->new(WWW::Mechanize->new->get($url)->content);
+my $yaml = parse_file($fh);
 
 print Dump($yaml);

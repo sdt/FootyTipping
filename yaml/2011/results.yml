@@ -181,3 +181,91 @@ update:
       has_ended: 1
       home_team_behinds: 26
       home_team_goals: 16
+  - search:
+      away_team.name: Carlton
+      home_team.name: Collingwood
+      round: 3
+      season: 2011
+    update:
+      away_team_behinds: 8
+      away_team_goals: 11
+      has_ended: 1
+      home_team_behinds: 12
+      home_team_goals: 15
+  - search:
+      away_team.name: Gold Coast
+      home_team.name: Western Bulldogs
+      round: 3
+      season: 2011
+    update:
+      away_team_behinds: 9
+      away_team_goals: 7
+      has_ended: 1
+      home_team_behinds: 14
+      home_team_goals: 18
+  - search:
+      away_team.name: Fremantle
+      home_team.name: Adelaide
+      round: 3
+      season: 2011
+    update:
+      away_team_behinds: 13
+      away_team_goals: 11
+      has_ended: 1
+      home_team_behinds: 12
+      home_team_goals: 7
+  - search:
+      away_team.name: Sydney
+      home_team.name: West Coast
+      round: 3
+      season: 2011
+    update:
+      away_team_behinds: 11
+      away_team_goals: 15
+      has_ended: 1
+      home_team_behinds: 10
+      home_team_goals: 13
+  - search:
+      away_team.name: Hawthorn
+      home_team.name: Richmond
+      round: 3
+      season: 2011
+    update:
+      away_team_behinds: 13
+      away_team_goals: 17
+      has_ended: 1
+      home_team_behinds: 16
+      home_team_goals: 6
+  - search:
+      away_team.name: Brisbane
+      home_team.name: Melbourne
+      round: 3
+      season: 2011
+    update:
+      away_team_behinds: 5
+      away_team_goals: 11
+      has_ended: 1
+      home_team_behinds: 10
+      home_team_goals: 12
+  - search:
+      away_team.name: Port Adelaide
+      home_team.name: Geelong
+      round: 3
+      season: 2011
+    update:
+      away_team_behinds: 7
+      away_team_goals: 6
+      has_ended: 1
+      home_team_behinds: 20
+      home_team_goals: 17
+  - search:
+      away_team.name: Essendon
+      home_team.name: St Kilda
+      round: 3
+      season: 2011
+    update:
+      away_team_behinds: 10
+      away_team_goals: 21
+      has_ended: 1
+      home_team_behinds: 12
+      home_team_goals: 12
