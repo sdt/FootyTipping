@@ -37,6 +37,14 @@ sub populate {
         $resultset->create($row);
     }
 
+    for my $row (@{ $data->{updates} }) {
+        my $db_row = $resultset->find($row->{search}, $data->{attr});
+        while (my ($key, $value) = each %{ $row->{update} }) {
+            $db_row->set_column($key => $value);
+            $db_row->update;
+        }
+    }
+
     return;
 }
 
