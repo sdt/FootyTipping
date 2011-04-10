@@ -7,7 +7,7 @@ set -e
 squeak() {
     local color=$1
     shift
-    echo "\033[${color}m$@\033[0m"
+    /bin/echo -e "\033[${color}m$@\033[0m"
 }
 
 # Do a run with SQLite and the extra test flags
