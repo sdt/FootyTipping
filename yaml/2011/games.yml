@@ -1,5 +1,5 @@
 table: Game
-rows:
+create:
   -
     season: 2011
     round: 1

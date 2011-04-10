@@ -1,5 +1,6 @@
+---
 table: Venue
-rows:
+create:
   -
     name: "Cazaly's Stadium"
     time_zone: Australia/Brisbane

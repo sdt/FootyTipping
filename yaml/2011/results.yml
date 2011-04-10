@@ -4,7 +4,7 @@ attr:
     - home_team
     - away_team
 table: Game
-updates:
+update:
   - search:
       away_team.name: Richmond
       home_team.name: Carlton

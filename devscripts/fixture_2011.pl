@@ -31,7 +31,7 @@ open my $out, '>', $outfile;
 
 
 say {$out} 'table: Game';
-say {$out} 'rows:';
+say {$out} 'create:';
 
 while (<DATA>) {
     chomp;

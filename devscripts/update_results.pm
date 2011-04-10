@@ -57,7 +57,7 @@ sub parse_file {
                 $game->{update}->{away_team_behinds} = $3;
                 $game->{update}->{has_ended}         = 1;
 
-                push(@{ $yaml->{updates} }, $game);
+                push(@{ $yaml->{update} }, $game);
                 #print Dump($game);
                 $game = { search => { season => $season, round => $round } };
             }

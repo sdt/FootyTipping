@@ -27,22 +27,16 @@ sub populate {
 
     my $resultset = $args{schema}->resultset($data->{table});
 
-    for my $row (@{ $data->{insert} }) {
-        $resultset->create({
-            zip @{ $data->{columns} }, @{ $row }
-        });
-    }
-
-    for my $row (@{ $data->{rows} }) {
+    # Each item in a create set is just a hashref
+    for my $row (@{ $data->{create} }) {
         $resultset->create($row);
     }
 
-    for my $row (@{ $data->{updates} }) {
+    # Update sets have two hashrefs, one to search on, and one to update with.
+    for my $row (@{ $data->{update} }) {
         my $db_row = $resultset->find($row->{search}, $data->{attr});
-        while (my ($key, $value) = each %{ $row->{update} }) {
-            $db_row->set_column($key => $value);
-            $db_row->update;
-        }
+        $db_row->set_columns($row->{update});
+        $db_row->update;
     }
 
     return;

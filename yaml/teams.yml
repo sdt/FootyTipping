@@ -1,56 +1,37 @@
+---
 table: Team
-columns:
-  - name
-  - nickname
-insert:
-  -
-    - Adelaide
-    - Crows
-  -
-    - Brisbane
-    - Lions
-  -
-    - Carlton
-    - Blues
-  -
-    - Collingwood
-    - Mapgies
-  -
-    - Essendon
-    - Bombers
-  -
-    - Fremantle
-    - Dockers
-  -
-    - Geelong
-    - Cats
-  -
-    - Gold Coast
-    - Suns
-  -
-    - Hawthorn
-    - Hawks
-  -
-    - Melbourne
-    - Demons
-  -
-    - North Melbourne
-    - Kangaroos
-  -
-    - Port Adelaide
-    - Power
-  -
-    - Richmond
-    - Tigers
-  -
-    - St Kilda
-    - Saints
-  -
-    - Sydney
-    - Swans
-  -
-    - West Coast
-    - Eagles
-  -
-    - Western Bulldogs
-    - Western Bulldogs
+create:
+- name: Adelaide
+  nickname: Crows
+- name: Brisbane
+  nickname: Lions
+- name: Carlton
+  nickname: Blues
+- name: Collingwood
+  nickname: Mapgies
+- name: Essendon
+  nickname: Bombers
+- name: Fremantle
+  nickname: Dockers
+- name: Geelong
+  nickname: Cats
+- name: Gold Coast
+  nickname: Suns
+- name: Hawthorn
+  nickname: Hawks
+- name: Melbourne
+  nickname: Demons
+- name: North Melbourne
+  nickname: Kangaroos
+- name: Port Adelaide
+  nickname: Power
+- name: Richmond
+  nickname: Tigers
+- name: St Kilda
+  nickname: Saints
+- name: Sydney
+  nickname: Swans
+- name: West Coast
+  nickname: Eagles
+- name: Western Bulldogs
+  nickname: Western Bulldogs
