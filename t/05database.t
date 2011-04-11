@@ -96,15 +96,25 @@ my $home_team_winners = $games->has_ended(1)->search(
                 \'(away_team_goals*6 + away_team_behinds - home_team_behinds)/6'
             },
         },
-    );
-my $scores = $home_team_winners->search(undef,
         {
-            select   => [qw/ home_team.name /],
-            as       => [qw/ winner         /],
-            prefetch => [qw/ home_team      /],
+            '+select' => [qw/ home_team.name /],
+            '+as'     => [qw/ winner         /],
+            prefetch  => [qw/ home_team      /],
+        },
+    );
+my $home_team_wins = $home_team_winners->search(undef,
+        {
+            '+select' => [ { count => '*' } ],
+            '+as'     => [qw/ num_wins /],
+            group_by  => [qw/ home_team_id /],
+        },
+    );
+my $winners = $home_team_wins->search(undef,
+        {
+            columns => [qw/ winner num_wins /],
         },
     );
 #say STDERR Dumper(\@home_team_winners);
-while (my $game = $scores->next) {
-    say STDERR Dumper($game->get_column('winner'));
+while (my $game = $home_team_wins->next) {
+    say STDERR $game->get_column('winner'), ' ', $game->get_column('num_wins');
 }
