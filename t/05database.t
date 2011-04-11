@@ -97,24 +97,13 @@ my $home_team_winners = $games->has_ended(1)->search(
             },
         },
         {
-            '+select' => [qw/ home_team.name /],
-            '+as'     => [qw/ winner         /],
+            '+select' => [ 'home_team.name', { count => '*'} ],
+            '+as'     => [qw/ winner  num_wins /],
             prefetch  => [qw/ home_team      /],
-        },
-    );
-my $home_team_wins = $home_team_winners->search(undef,
-        {
-            '+select' => [ { count => '*' } ],
-            '+as'     => [qw/ num_wins /],
             group_by  => [qw/ home_team_id /],
+            order_by  => [ { -desc => [qw/ num_wins /] } ],
         },
     );
-my $winners = $home_team_wins->search(undef,
-        {
-            columns => [qw/ winner num_wins /],
-        },
-    );
-#say STDERR Dumper(\@home_team_winners);
-while (my $game = $home_team_wins->next) {
+while (my $game = $home_team_winners->next) {
     say STDERR $game->get_column('winner'), ' ', $game->get_column('num_wins');
 }
