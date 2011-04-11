@@ -33,15 +33,22 @@ sub team {
         );
 }
 
+sub has_ended {
+    my ($self, $has_ended) = @_;
+    return $self->search({ has_ended => $has_ended });
+}
+
 sub with_scores {
     my ($self) = @_;
     # TODO: add { -as => 'home_team_score' } into the +select line somehow
     # http://search.cpan.org/~abraxxa/DBIx-Class-0.08127/lib/DBIx/Class/ResultSet.pm#select
     return $self->search(undef,
         {
-            '+select' => [ 'home_team_goals * 6 + home_team_behinds',
-                           'away_team_goals * 6 + away_team_behinds' ],
-            '+as'     => [qw/ home_team_score away_team_score /],
+            '+select' => [
+               'home_team_goals * 6 + home_team_behinds',
+               'away_team_goals * 6 + away_team_behinds',
+            ],
+            '+as' => [qw/ home_team_score away_team_score /],
         }
     );
 }
@@ -75,6 +82,10 @@ Filter the game table by home team's name.
 =head2 team ($team_name)
 
 Filter the game table by team name - finds both home and away games.
+
+=head2 has_ended ($bool)
+
+Filter the game table by games which have ended (or not).
 
 =head2 with_scores ()
 
