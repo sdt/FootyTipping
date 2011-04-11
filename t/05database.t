@@ -89,3 +89,17 @@ for my $id (1 .. $num_users) {
         $user->add_to_competitions($comps->find({ name => "comp$compid" }));
     }
 }
+
+my $home_team_winners = $games->with_scores->search(
+        {
+            home_team_goals => \'> (6 * away_team_goals + away_team_behinds - home_team_behinds) / 6',
+        },
+        {
+            prefetch => [qw/ home_team away_team /],
+            order_by => 'start_time_utc',
+        },
+    );
+while (my $game = $home_team_winners->next) {
+    say STDERR $game->home_team->name, ": ", $game->home_team_score, " ",
+               $game->away_team_score;
+}

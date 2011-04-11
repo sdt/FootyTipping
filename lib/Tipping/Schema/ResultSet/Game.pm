@@ -33,6 +33,19 @@ sub team {
         );
 }
 
+sub with_scores {
+    my ($self) = @_;
+    # TODO: add { -as => 'home_team_score' } into the +select line somehow
+    # http://search.cpan.org/~abraxxa/DBIx-Class-0.08127/lib/DBIx/Class/ResultSet.pm#select
+    return $self->search(undef,
+        {
+            '+select' => [ 'home_team_goals * 6 + home_team_behinds',
+                           'away_team_goals * 6 + away_team_behinds' ],
+            '+as'     => [qw/ home_team_score away_team_score /],
+        }
+    );
+}
+
 1;
 
 =pod
@@ -62,6 +75,11 @@ Filter the game table by home team's name.
 =head2 team ($team_name)
 
 Filter the game table by team name - finds both home and away games.
+
+=head2 with_scores ()
+
+Injects two extra virtual columns into the resultset - home_team_score and
+away_team_score.
 
 =head1 AUTHOR
 
