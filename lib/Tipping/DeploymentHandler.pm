@@ -69,6 +69,8 @@ sub prepare {
             show_datatypes   => 1,
             show_sizes       => 1,
             show_fk_only     => 0,
+            skip_tables      => [qw/ dbix_class_deploymenthandler_versions /],
+            add_color        => 1,
         } );
 
     $trans->translate;
