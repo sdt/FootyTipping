@@ -3,16 +3,6 @@ use parent 'DBIx::Class';
 
 use Modern::Perl;
 
-my $foreign_key = {
-    data_type           => "integer",
-    is_nullable         => 0,
-};
-my $score = {
-    data_type           => "integer",
-    is_nullable         => 0,
-    default_value       => 0,
-};
-
 __PACKAGE__->load_components(qw/Core InflateColumn::DateTime/);
 __PACKAGE__->table('tbl_game');
 __PACKAGE__->add_columns(
@@ -21,55 +11,47 @@ __PACKAGE__->add_columns(
         is_auto_increment   => 1,
         is_nullable         => 0,
     },
-
-    season       => {
-        data_type   => 'integer',
-        is_nullable => 0,
+    season => {
+        data_type           => 'integer',
+        is_nullable         => 0,
     },
-    round        => {
-        data_type   => 'integer',
-        is_nullable => 0,
+    round => {
+        data_type           => 'integer',
+        is_nullable         => 0,
     },
-
-    home_team_id => $foreign_key,
-    away_team_id => $foreign_key,
-
-    venue_id     => $foreign_key,
-
+    venue_id => {
+        data_type           => "integer",
+        is_nullable         => 0,
+    },
     start_time_utc => {
-        data_type   => 'timestamp',
-        is_nullable => 0,
+        data_type           => 'timestamp',
+        is_nullable         => 0,
     },
-
-    home_team_goals   => $score,
-    home_team_behinds => $score,
-
-    away_team_goals   => $score,
-    away_team_behinds => $score,
-
     has_ended   => {
-        data_type     => 'boolean',
-        is_nullable   => 0,
-        default_value => 0,
+        data_type           => 'boolean',
+        is_nullable         => 0,
+        default_value       => 0,
     },
 );
 
 __PACKAGE__->set_primary_key('game_id');
 
-__PACKAGE__->add_unique_constraint([ qw/ season round home_team_id / ]);
-__PACKAGE__->add_unique_constraint([ qw/ season round away_team_id / ]);
+# TODO: for round 24 the time isn't decided until after round 23
+# Need some way to make those unique
+#__PACKAGE__->add_unique_constraint([qw/ season round venue_id start_time_utc /]);
 
-__PACKAGE__->belongs_to(
-    home_team => 'Tipping::Schema::Result::Team',
-    'home_team_id'
-);
-__PACKAGE__->belongs_to(
-    away_team => 'Tipping::Schema::Result::Team',
-    'away_team_id'
-);
 __PACKAGE__->belongs_to(
     venue => 'Tipping::Schema::Result::Venue',
     'venue_id'
+);
+
+__PACKAGE__->has_many(
+    game_teams => 'Tipping::Schema::Result::Game_Team',
+    'game_id'
+);
+__PACKAGE__->many_to_many(
+    teams => 'game_teams',
+    'team',
 );
 
 __PACKAGE__->has_many(
@@ -77,16 +59,12 @@ __PACKAGE__->has_many(
     'game_id'
 );
 
-sub home_team_score {
-    ## no critic (ProhibitMagicNumbers)
-    my $self = shift;
-    return $self->home_team_goals * 6 + $self->home_team_behinds;
-}
+sub set_home_team {
+    my ($self, $team_name) = @_;
 
-sub away_team_score {
-    ## no critic (ProhibitMagicNumbers)
-    my $self = shift;
-    return $self->away_team_goals * 6 + $self->away_team_behinds;
+    my $team = $self->schema->resultset('Team')->find({ name => $team_name });
+    $self->add_to_teams($team, { is_home_team => 1 });
+    return;
 }
 
 1;
@@ -103,16 +81,6 @@ Tipping::Schema::Result::Game - DBIx::Class result source
 
 A game for a given round and season takes place between two teams at a venue
 at a given start time.
-
-=head1 METHODS
-
-=head2 home_team_score
-
-Virtual column which computes the home team score.
-
-=head2 away_team_score
-
-Virtual column which computes the away team score.
 
 =head1 AUTHOR
 

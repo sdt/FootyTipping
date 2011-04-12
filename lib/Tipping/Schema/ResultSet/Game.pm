@@ -13,44 +13,17 @@ sub round {
     return $self->search({ round => $round });
 }
 
-sub home_team {
-    my ($self, $home_team) = @_;
-    return $self->search(
-            { 'home_team.name' => $home_team },
-            { prefetch => [qw/ home_team /] },
-        );
-}
-
 sub team {
     my ($self, $team) = @_;
-    return $self->search(
-            { -or => [
-                { 'home_team.name' => $team },
-                { 'away_team.name' => $team },
-              ],
-            },
-            { prefetch => [qw/ home_team away_team /] },
+    return $self->teams->search(
+            { 'team.name' => $team },
+            { prefetch => [qw/ team /] },
         );
 }
 
 sub has_ended {
     my ($self, $has_ended) = @_;
     return $self->search({ has_ended => $has_ended });
-}
-
-sub with_scores {
-    my ($self) = @_;
-    # TODO: add { -as => 'home_team_score' } into the +select line somehow
-    # http://search.cpan.org/~abraxxa/DBIx-Class-0.08127/lib/DBIx/Class/ResultSet.pm#select
-    return $self->search(undef,
-        {
-            '+select' => [
-               'home_team_goals * 6 + home_team_behinds',
-               'away_team_goals * 6 + away_team_behinds',
-            ],
-            '+as' => [qw/ home_team_score away_team_score /],
-        }
-    );
 }
 
 1;

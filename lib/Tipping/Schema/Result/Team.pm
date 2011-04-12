@@ -27,18 +27,14 @@ __PACKAGE__->add_unique_constraint([ qw/ name / ]);
 __PACKAGE__->add_unique_constraint([ qw/ nickname / ]);
 
 __PACKAGE__->has_many(
-    home_games => 'Tipping::Schema::Result::Game',
-    'home_team_id',
+    game_teams => 'Tipping::Schema::Result::Game_Team',
+    'team_id',
 );
-__PACKAGE__->has_many(
-    away_games => 'Tipping::Schema::Result::Game',
-    'away_team_id',
+__PACKAGE__->many_to_many(
+    games => 'game_teams',
+    'game',
 );
-__PACKAGE__->has_many(
-    games => 'Tipping::Schema::Result::Game',
-    [ { 'foreign_key.home_team_id' => 'self.team_id' },
-      { 'foreign_key.away_team_id' => 'self.team_id' } ]
-);
+
 __PACKAGE__->has_many(
     supporters => 'Tipping::Schema::Result::Team_Supporter',
     'team_id'

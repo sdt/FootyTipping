@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Thu Apr  7 17:07:38 2011
+-- Created on Tue Apr 12 10:44:16 2011
 -- 
 ;
 --
@@ -56,6 +56,21 @@ CREATE TABLE "tbl_venue" (
 
 ;
 --
+-- Table: tbl_game
+--
+CREATE TABLE "tbl_game" (
+  "game_id" serial NOT NULL,
+  "season" integer NOT NULL,
+  "round" integer NOT NULL,
+  "venue_id" integer NOT NULL,
+  "start_time_utc" timestamp NOT NULL,
+  "has_ended" boolean DEFAULT '0' NOT NULL,
+  PRIMARY KEY ("game_id")
+);
+CREATE INDEX "tbl_game_idx_venue_id" on "tbl_game" ("venue_id");
+
+;
+--
 -- Table: tbl_venue_sponsorname
 --
 CREATE TABLE "tbl_venue_sponsorname" (
@@ -86,31 +101,6 @@ CREATE INDEX "tbl_competition_user_idx_user_id" on "tbl_competition_user" ("user
 
 ;
 --
--- Table: tbl_game
---
-CREATE TABLE "tbl_game" (
-  "game_id" serial NOT NULL,
-  "season" integer NOT NULL,
-  "round" integer NOT NULL,
-  "home_team_id" integer NOT NULL,
-  "away_team_id" integer NOT NULL,
-  "venue_id" integer NOT NULL,
-  "start_time_utc" timestamp NOT NULL,
-  "home_team_goals" integer DEFAULT 0 NOT NULL,
-  "home_team_behinds" integer DEFAULT 0 NOT NULL,
-  "away_team_goals" integer DEFAULT 0 NOT NULL,
-  "away_team_behinds" integer DEFAULT 0 NOT NULL,
-  "has_ended" boolean DEFAULT '0' NOT NULL,
-  PRIMARY KEY ("game_id"),
-  CONSTRAINT "tbl_game_season_round_away_team_id" UNIQUE ("season", "round", "away_team_id"),
-  CONSTRAINT "tbl_game_season_round_home_team_id" UNIQUE ("season", "round", "home_team_id")
-);
-CREATE INDEX "tbl_game_idx_away_team_id" on "tbl_game" ("away_team_id");
-CREATE INDEX "tbl_game_idx_home_team_id" on "tbl_game" ("home_team_id");
-CREATE INDEX "tbl_game_idx_venue_id" on "tbl_game" ("venue_id");
-
-;
---
 -- Table: tbl_team_supporter
 --
 CREATE TABLE "tbl_team_supporter" (
@@ -121,6 +111,22 @@ CREATE TABLE "tbl_team_supporter" (
 );
 CREATE INDEX "tbl_team_supporter_idx_user_id" on "tbl_team_supporter" ("user_id");
 CREATE INDEX "tbl_team_supporter_idx_team_id" on "tbl_team_supporter" ("team_id");
+
+;
+--
+-- Table: tbl_game_team
+--
+CREATE TABLE "tbl_game_team" (
+  "game_id" integer NOT NULL,
+  "behinds" integer DEFAULT 0 NOT NULL,
+  "is_home_team" boolean NOT NULL,
+  "team_id" integer NOT NULL,
+  "goals" integer DEFAULT 0 NOT NULL,
+  PRIMARY KEY ("game_id", "team_id"),
+  CONSTRAINT "tbl_game_team_game_id_is_home_team" UNIQUE ("game_id", "is_home_team")
+);
+CREATE INDEX "tbl_game_team_idx_game_id" on "tbl_game_team" ("game_id");
+CREATE INDEX "tbl_game_team_idx_team_id" on "tbl_game_team" ("team_id");
 
 ;
 --
@@ -146,6 +152,10 @@ CREATE INDEX "tbl_tip_idx_tipper_id" on "tbl_tip" ("tipper_id");
 --
 
 ;
+ALTER TABLE "tbl_game" ADD FOREIGN KEY ("venue_id")
+  REFERENCES "tbl_venue" ("venue_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
+
+;
 ALTER TABLE "tbl_venue_sponsorname" ADD FOREIGN KEY ("venue_id")
   REFERENCES "tbl_venue" ("venue_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
 
@@ -158,23 +168,19 @@ ALTER TABLE "tbl_competition_user" ADD FOREIGN KEY ("user_id")
   REFERENCES "tbl_user" ("user_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
 
 ;
-ALTER TABLE "tbl_game" ADD FOREIGN KEY ("away_team_id")
-  REFERENCES "tbl_team" ("team_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
-
-;
-ALTER TABLE "tbl_game" ADD FOREIGN KEY ("home_team_id")
-  REFERENCES "tbl_team" ("team_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
-
-;
-ALTER TABLE "tbl_game" ADD FOREIGN KEY ("venue_id")
-  REFERENCES "tbl_venue" ("venue_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
-
-;
 ALTER TABLE "tbl_team_supporter" ADD FOREIGN KEY ("user_id")
   REFERENCES "tbl_user" ("user_id") ON DELETE CASCADE DEFERRABLE;
 
 ;
 ALTER TABLE "tbl_team_supporter" ADD FOREIGN KEY ("team_id")
+  REFERENCES "tbl_team" ("team_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
+
+;
+ALTER TABLE "tbl_game_team" ADD FOREIGN KEY ("game_id")
+  REFERENCES "tbl_game" ("game_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
+
+;
+ALTER TABLE "tbl_game_team" ADD FOREIGN KEY ("team_id")
   REFERENCES "tbl_team" ("team_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
 
 ;

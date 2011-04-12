@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Thu Apr  7 17:07:38 2011
+-- Created on Tue Apr 12 10:44:16 2011
 -- 
 ;
 SET foreign_key_checks=0;
@@ -49,6 +49,20 @@ CREATE TABLE `tbl_venue` (
   UNIQUE `tbl_venue_name` (`name`)
 ) ENGINE=InnoDB;
 --
+-- Table: `tbl_game`
+--
+CREATE TABLE `tbl_game` (
+  `game_id` integer NOT NULL auto_increment,
+  `season` integer NOT NULL,
+  `round` integer NOT NULL,
+  `venue_id` integer NOT NULL,
+  `start_time_utc` timestamp NOT NULL,
+  `has_ended` enum('0','1') NOT NULL DEFAULT '0',
+  INDEX `tbl_game_idx_venue_id` (`venue_id`),
+  PRIMARY KEY (`game_id`),
+  CONSTRAINT `tbl_game_fk_venue_id` FOREIGN KEY (`venue_id`) REFERENCES `tbl_venue` (`venue_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+--
 -- Table: `tbl_venue_sponsorname`
 --
 CREATE TABLE `tbl_venue_sponsorname` (
@@ -78,32 +92,6 @@ CREATE TABLE `tbl_competition_user` (
   CONSTRAINT `tbl_competition_user_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 --
--- Table: `tbl_game`
---
-CREATE TABLE `tbl_game` (
-  `game_id` integer NOT NULL auto_increment,
-  `season` integer NOT NULL,
-  `round` integer NOT NULL,
-  `home_team_id` integer NOT NULL,
-  `away_team_id` integer NOT NULL,
-  `venue_id` integer NOT NULL,
-  `start_time_utc` timestamp NOT NULL,
-  `home_team_goals` integer NOT NULL DEFAULT 0,
-  `home_team_behinds` integer NOT NULL DEFAULT 0,
-  `away_team_goals` integer NOT NULL DEFAULT 0,
-  `away_team_behinds` integer NOT NULL DEFAULT 0,
-  `has_ended` enum('0','1') NOT NULL DEFAULT '0',
-  INDEX `tbl_game_idx_away_team_id` (`away_team_id`),
-  INDEX `tbl_game_idx_home_team_id` (`home_team_id`),
-  INDEX `tbl_game_idx_venue_id` (`venue_id`),
-  PRIMARY KEY (`game_id`),
-  UNIQUE `tbl_game_season_round_away_team_id` (`season`, `round`, `away_team_id`),
-  UNIQUE `tbl_game_season_round_home_team_id` (`season`, `round`, `home_team_id`),
-  CONSTRAINT `tbl_game_fk_away_team_id` FOREIGN KEY (`away_team_id`) REFERENCES `tbl_team` (`team_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `tbl_game_fk_home_team_id` FOREIGN KEY (`home_team_id`) REFERENCES `tbl_team` (`team_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `tbl_game_fk_venue_id` FOREIGN KEY (`venue_id`) REFERENCES `tbl_venue` (`venue_id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB;
---
 -- Table: `tbl_team_supporter`
 --
 CREATE TABLE `tbl_team_supporter` (
@@ -115,6 +103,22 @@ CREATE TABLE `tbl_team_supporter` (
   UNIQUE `tbl_team_supporter_user_id` (`user_id`),
   CONSTRAINT `tbl_team_supporter_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`user_id`) ON DELETE CASCADE,
   CONSTRAINT `tbl_team_supporter_fk_team_id` FOREIGN KEY (`team_id`) REFERENCES `tbl_team` (`team_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+--
+-- Table: `tbl_game_team`
+--
+CREATE TABLE `tbl_game_team` (
+  `game_id` integer NOT NULL,
+  `behinds` integer NOT NULL DEFAULT 0,
+  `is_home_team` enum('0','1') NOT NULL,
+  `team_id` integer NOT NULL,
+  `goals` integer NOT NULL DEFAULT 0,
+  INDEX `tbl_game_team_idx_game_id` (`game_id`),
+  INDEX `tbl_game_team_idx_team_id` (`team_id`),
+  PRIMARY KEY (`game_id`, `team_id`),
+  UNIQUE `tbl_game_team_game_id_is_home_team` (`game_id`, `is_home_team`),
+  CONSTRAINT `tbl_game_team_fk_game_id` FOREIGN KEY (`game_id`) REFERENCES `tbl_game` (`game_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tbl_game_team_fk_team_id` FOREIGN KEY (`team_id`) REFERENCES `tbl_team` (`team_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 --
 -- Table: `tbl_tip`
