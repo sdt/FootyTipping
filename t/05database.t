@@ -33,9 +33,9 @@ my $venues = $schema->resultset('Venue');
 my $comps = $schema->resultset('Competition');
 my $users = $schema->resultset('User');
 
-is($games->count, 187, '187 games in 2011');
+is($games->count, 187, '187 games');
 is($games->search_related('game_teams', {},
-    { prefetch => 'team', group_by => 'team.name' })->count, 17, '17 teams');
+    { prefetch => 'team', group_by => 'team.name' })->count, 17, 'Seventeen teams');
 
 is($games->round(3)->count, 8, 'Eight games in round 3');
 
@@ -62,19 +62,29 @@ while (my $row = $rs->next) {
 }
 =cut
 
-=pod
 
-my @hfcggames = $games->team('Hawthorn')->search(undef,
-    { prefetch => [qw/ venue /] });
-is(scalar @hfcggames, 22, 'Twenty-two Hawthorn games');
+my $game_teams = $schema->resultset('Game_Team');
+$rs = $game_teams->search(
+        {
+            'game.season'  => 2011,
+            'team.name'    => 'Hawthorn',
+            'venue.name'   => 'MCG',
+            'is_home_team' => 1,
+        },
+        {
+            prefetch => [qw/ team game /, { game => 'venue' } ],
+        }
+    );
+is($rs->count, 7, 'Seven Hawthorn games at the MCG');
 
 my $mcg = $venues->find({name => 'MCG'});
 is($mcg->sponsor_name(2011), undef, 'No sponsor name for MCG');
 
 my $docklands = $venues->find({ name => { 'like' => '%Docklands%' }});
 is($docklands->sponsor_name(2011), 'Etihad Stadium', 'Docklands Stadium is Etihad Stadium in 2011');
-is($docklands->sponsor_name(2008), 'Telstra Dome', 'Docklands Stadium is Telstra Dome in 2008');
+is($docklands->sponsor_name(2008), 'Telstra Dome', 'Docklands Stadium was Telstra Dome in 2008');
 
+=pod
 my $num_comps = 3;
 for my $id (1 .. $num_comps) {
     $comps->create({
@@ -95,23 +105,38 @@ for my $id (1 .. $num_users) {
         $user->add_to_competitions($comps->find({ name => "comp$compid" }));
     }
 }
+=cut
 
-my $home_team_winners = $games->has_ended(1)->search(
-        {
-            home_team_goals => { '>' =>
-                \'(away_team_goals*6 + away_team_behinds - home_team_behinds)/6'
-            },
-        },
-        {
-            '+select' => [ 'home_team.name', { count => '*'} ],
-            '+as'     => [qw/ winner  num_wins /],
-            prefetch  => [qw/ home_team      /],
-            group_by  => [qw/ home_team_id /],
-            order_by  => [ { -desc => [qw/ num_wins /] } ],
-        },
-    );
-while (my $game = $home_team_winners->next) {
-    say STDERR $game->get_column('winner'), ' ', $game->get_column('num_wins');
+my $finished_games = $game_teams->search(
+    {
+        'game.has_ended' => 1,
+    },
+    {
+        prefetch => [qw/ game /],
+    }
+);
+is($finished_games->count, 3 * 8 * 2, 'Completed 3 rounds, 8 games, 2 teams');
+
+my $inject_scores = $finished_games->search(undef,
+    {
+        '+select' => [ { max => \'goals * 6 + behinds', -as => 'points' } ],
+        '+as'     => [qw/ score /],
+        group_by => [qw/ me.game_id me.team_id /],
+    }
+);
+is($inject_scores->count, 3 * 8 * 2, 'Completed 3 rounds, 8 games, 2 teams');
+
+=pod Trying to figure out how to compute a ladder
+my $winners = $inject_scores->search({},
+    {
+        '+select' => [ { max => 'goals' } ],
+        '+as'     => [qw/ max_goals /],
+        group_by => [qw/ me.game_id /],
+        prefetch => [qw/ team /],
+    },
+);
+while (my $row = $winners->next) {
+    say STDERR join(" ", $row->team->name, $row->goals, $row->behinds, $row->score, 'max:', $row->get_column('max_goals'));
 }
 =cut
 
