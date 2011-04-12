@@ -37,6 +37,21 @@ sub populate {
         my $db_row = $resultset->find($row->{search}, $data->{attr});
         $db_row->set_columns($row->{update});
         $db_row->update;
+
+        # And an optional third one, related rows to update
+        if (my $related = $row->{update_related}) {
+            my $relation = $related->{relation};
+            $db_row->$relation->set_columns($related->{values});
+            $db_row->$relation->update;
+        }
+    }
+
+    for my $row (@{ $data->{create_and_add_many} }) {
+        my $db_row = $resultset->create($row->{create});
+        my $add_related = 'add_to_' . $row->{add_many}->{relation};
+        for my $related (@{ $row->{add_many}->{values} }) {
+            $db_row->$add_related($related->{search}, $related->{extra});
+        }
     }
 
     return;

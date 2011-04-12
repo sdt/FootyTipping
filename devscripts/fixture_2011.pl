@@ -31,7 +31,7 @@ open my $out, '>', $outfile;
 
 
 say {$out} 'table: Game';
-say {$out} 'create:';
+say {$out} 'create_and_add_many:';
 
 while (<DATA>) {
     chomp;
@@ -138,16 +138,23 @@ sub _emit_round {
     }
     $dt->set_time_zone('UTC');
 
-    say {$out} '  -';
-    say {$out} "    season: 2011";
-    say {$out} "    round: $round";
-    say {$out} "    home_team:";
-    say {$out} "      name: $home_team";
-    say {$out} "    away_team:";
-    say {$out} "      name: $away_team";
-    say {$out} "    venue:";
-    say {$out} "      name: $venue";
-    say {$out} "    start_time_utc: $dt";
+    say {$out} '  - create:';
+    say {$out} '      season: 2011';
+    say {$out} "      round: $round";
+    say {$out} '      venue:';
+    say {$out} "        name: $venue";
+    say {$out} "      start_time_utc: $dt";
+    say {$out} '    add_many:';
+    say {$out} '      relation: teams';
+    say {$out} '      values:';
+    say {$out} '        - search:';
+    say {$out} "            name: $home_team";
+    say {$out} '          extra:';
+    say {$out} '            is_home_team: 1';
+    say {$out} '        - search:';
+    say {$out} "            name: $away_team";
+    say {$out} '          extra:';
+    say {$out} '            is_home_team: 0';
 
     $dt->set_time_zone('Australia/Melbourne');
 }

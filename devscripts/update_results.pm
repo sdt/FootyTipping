@@ -25,9 +25,9 @@ sub parse_file {
 
     my ($season, $round, $game);
     my $yaml = {
-            table   => 'Game',
+            table   => 'Game_Team',
             attr    => {
-                prefetch => [qw/ home_team away_team /],
+                prefetch => [qw/ team game /],
             }
         };
 
@@ -41,11 +41,9 @@ sub parse_file {
 
             when (m{^<table\s+.*<b>.*?Round\s+(\d+)</td>}) {
                 $round = $1;
-                $game = { search => { season => $season, round => $round } };
-            }
-
-            when (m{Venue:}) {
-                parse_home_game_line($game, $line);
+                $game = { search =>
+                        { 'game.season' => $season, 'game.round' => $round }
+                    };
             }
 
             when (m{^<tr.*<a href="../teams/.*?.html">(.*?)</a>.*Bye}) {
@@ -55,30 +53,27 @@ sub parse_file {
             when (m{^<tr.*<a\shref="../teams/.*?.html">(.*?)</a>
                      .*?(\d+)\.(\d+)\)?\s+</tt>}x) {
 
-                $game->{search}->{'away_team.name'}  = fix_team($1);
-                $game->{update}->{away_team_goals}   = $2;
-                $game->{update}->{away_team_behinds} = $3;
-                $game->{update}->{has_ended}         = 1;
+                $game->{search}->{'team.name'}  = fix_team($1);
+                $game->{update}->{goals}   = $2;
+                $game->{update}->{behinds} = $3;
+                #$game->{update}->{has_ended}         = 1;
 
                 push(@{ $yaml->{update} }, $game);
-                #print Dump($game);
-                $game = { search => { season => $season, round => $round } };
+                $game = {
+                    search => {
+                        'game.season' => $season,
+                        'game.round' => $round,
+                    },
+                    update_related => {
+                        relation => 'game',
+                        values => { has_ended => 1 },
+                    },
+                };
             }
         }
     }
 
     return $yaml;
-}
-
-sub parse_home_game_line {
-    my ($game, $line) = @_;
-
-    my ($team) = ($line =~ m{<a href="../teams/.*?\.html">(.*?)</a>});
-    my ($goals, $behinds) = ($line =~ m{(\d+)\.(\d+)\)?\s+</tt>});
-
-    $game->{search}->{'home_team.name'}  = fix_team($team);
-    $game->{update}->{home_team_goals}   = $goals;
-    $game->{update}->{home_team_behinds} = $behinds;
 }
 
 my $year = DateTime->now->year;

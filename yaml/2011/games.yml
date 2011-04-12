@@ -1,1872 +1,3181 @@
 table: Game
-create:
-  -
-    season: 2011
-    round: 1
-    home_team:
-      name: Carlton
-    away_team:
-      name: Richmond
-    venue:
-      name: MCG
-    start_time_utc: 2011-03-24T07:10:00
-  -
-    season: 2011
-    round: 1
-    home_team:
-      name: Geelong
-    away_team:
-      name: St Kilda
-    venue:
-      name: MCG
-    start_time_utc: 2011-03-25T07:40:00
-  -
-    season: 2011
-    round: 1
-    home_team:
-      name: Collingwood
-    away_team:
-      name: Port Adelaide
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-03-26T02:10:00
-  -
-    season: 2011
-    round: 1
-    home_team:
-      name: Adelaide
-    away_team:
-      name: Hawthorn
-    venue:
-      name: Football Park
-    start_time_utc: 2011-03-26T08:40:00
-  -
-    season: 2011
-    round: 1
-    home_team:
-      name: Brisbane
-    away_team:
-      name: Fremantle
-    venue:
-      name: Gabba
-    start_time_utc: 2011-03-26T08:10:00
-  -
-    season: 2011
-    round: 1
-    home_team:
-      name: Essendon
-    away_team:
-      name: Western Bulldogs
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-03-27T01:10:00
-  -
-    season: 2011
-    round: 1
-    home_team:
-      name: Melbourne
-    away_team:
-      name: Sydney
-    venue:
-      name: MCG
-    start_time_utc: 2011-03-27T02:10:00
-  -
-    season: 2011
-    round: 1
-    home_team:
-      name: West Coast
-    away_team:
-      name: North Melbourne
-    venue:
-      name: Subiaco Oval
-    start_time_utc: 2011-03-27T07:10:00
-  -
-    season: 2011
-    round: 2
-    home_team:
-      name: St Kilda
-    away_team:
-      name: Richmond
-    venue:
-      name: MCG
-    start_time_utc: 2011-04-01T07:40:00
-  -
-    season: 2011
-    round: 2
-    home_team:
-      name: North Melbourne
-    away_team:
-      name: Collingwood
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-04-02T02:10:00
-  -
-    season: 2011
-    round: 2
-    home_team:
-      name: Port Adelaide
-    away_team:
-      name: West Coast
-    venue:
-      name: Football Park
-    start_time_utc: 2011-04-02T03:10:00
-  -
-    season: 2011
-    round: 2
-    home_team:
-      name: Gold Coast
-    away_team:
-      name: Carlton
-    venue:
-      name: Gabba
-    start_time_utc: 2011-04-02T07:40:00
-  -
-    season: 2011
-    round: 2
-    home_team:
-      name: Fremantle
-    away_team:
-      name: Geelong
-    venue:
-      name: Subiaco Oval
-    start_time_utc: 2011-04-02T08:40:00
-  -
-    season: 2011
-    round: 2
-    home_team:
-      name: Western Bulldogs
-    away_team:
-      name: Brisbane
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-04-03T03:10:00
-  -
-    season: 2011
-    round: 2
-    home_team:
-      name: Sydney
-    away_team:
-      name: Essendon
-    venue:
-      name: Stadium Australia
-    start_time_utc: 2011-04-03T04:10:00
-  -
-    season: 2011
-    round: 2
-    home_team:
-      name: Hawthorn
-    away_team:
-      name: Melbourne
-    venue:
-      name: MCG
-    start_time_utc: 2011-04-03T06:40:00
-  -
-    season: 2011
-    round: 3
-    home_team:
-      name: Collingwood
-    away_team:
-      name: Carlton
-    venue:
-      name: MCG
-    start_time_utc: 2011-04-08T09:40:00
-  -
-    season: 2011
-    round: 3
-    home_team:
-      name: Western Bulldogs
-    away_team:
-      name: Gold Coast
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-04-09T04:10:00
-  -
-    season: 2011
-    round: 3
-    home_team:
-      name: Adelaide
-    away_team:
-      name: Fremantle
-    venue:
-      name: Football Park
-    start_time_utc: 2011-04-09T05:10:00
-  -
-    season: 2011
-    round: 3
-    home_team:
-      name: Richmond
-    away_team:
-      name: Hawthorn
-    venue:
-      name: MCG
-    start_time_utc: 2011-04-09T09:10:00
-  -
-    season: 2011
-    round: 3
-    home_team:
-      name: West Coast
-    away_team:
-      name: Sydney
-    venue:
-      name: Subiaco Oval
-    start_time_utc: 2011-04-09T09:40:00
-  -
-    season: 2011
-    round: 3
-    home_team:
-      name: Melbourne
-    away_team:
-      name: Brisbane
-    venue:
-      name: MCG
-    start_time_utc: 2011-04-10T03:10:00
-  -
-    season: 2011
-    round: 3
-    home_team:
-      name: Geelong
-    away_team:
-      name: Port Adelaide
-    venue:
-      name: Kardinia Park
-    start_time_utc: 2011-04-10T04:10:00
-  -
-    season: 2011
-    round: 3
-    home_team:
-      name: St Kilda
-    away_team:
-      name: Essendon
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-04-10T06:40:00
-  -
-    season: 2011
-    round: 4
-    home_team:
-      name: Richmond
-    away_team:
-      name: Collingwood
-    venue:
-      name: MCG
-    start_time_utc: 2011-04-15T09:40:00
-  -
-    season: 2011
-    round: 4
-    home_team:
-      name: Hawthorn
-    away_team:
-      name: West Coast
-    venue:
-      name: York Park
-    start_time_utc: 2011-04-16T04:10:00
-  -
-    season: 2011
-    round: 4
-    home_team:
-      name: Carlton
-    away_team:
-      name: Essendon
-    venue:
-      name: MCG
-    start_time_utc: 2011-04-16T04:10:00
-  -
-    season: 2011
-    round: 4
-    home_team:
-      name: Sydney
-    away_team:
-      name: Geelong
-    venue:
-      name: SCG
-    start_time_utc: 2011-04-16T09:10:00
-  -
-    season: 2011
-    round: 4
-    home_team:
-      name: Port Adelaide
-    away_team:
-      name: Adelaide
-    venue:
-      name: Football Park
-    start_time_utc: 2011-04-16T09:40:00
-  -
-    season: 2011
-    round: 4
-    home_team:
-      name: Gold Coast
-    away_team:
-      name: Melbourne
-    venue:
-      name: Gabba
-    start_time_utc: 2011-04-17T04:10:00
-  -
-    season: 2011
-    round: 4
-    home_team:
-      name: Fremantle
-    away_team:
-      name: North Melbourne
-    venue:
-      name: Subiaco Oval
-    start_time_utc: 2011-04-17T06:40:00
-  -
-    season: 2011
-    round: 5
-    home_team:
-      name: Brisbane
-    away_team:
-      name: St Kilda
-    venue:
-      name: Gabba
-    start_time_utc: 2011-04-21T09:40:00
-  -
-    season: 2011
-    round: 5
-    home_team:
-      name: Port Adelaide
-    away_team:
-      name: Gold Coast
-    venue:
-      name: Football Park
-    start_time_utc: 2011-04-23T05:10:00
-  -
-    season: 2011
-    round: 5
-    home_team:
-      name: Carlton
-    away_team:
-      name: Adelaide
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-04-23T09:10:00
-  -
-    season: 2011
-    round: 5
-    home_team:
-      name: North Melbourne
-    away_team:
-      name: Richmond
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-04-24T06:40:00
-  -
-    season: 2011
-    round: 5
-    home_team:
-      name: Essendon
-    away_team:
-      name: Collingwood
-    venue:
-      name: MCG
-    start_time_utc: 2011-04-25T04:40:00
-  -
-    season: 2011
-    round: 5
-    home_team:
-      name: Fremantle
-    away_team:
-      name: Western Bulldogs
-    venue:
-      name: Subiaco Oval
-    start_time_utc: 2011-04-25T10:40:00
-  -
-    season: 2011
-    round: 5
-    home_team:
-      name: Hawthorn
-    away_team:
-      name: Geelong
-    venue:
-      name: MCG
-    start_time_utc: 2011-04-26T04:40:00
-  -
-    season: 2011
-    round: 6
-    home_team:
-      name: West Coast
-    away_team:
-      name: Melbourne
-    venue:
-      name: Subiaco Oval
-    start_time_utc: 2011-04-28T10:40:00
-  -
-    season: 2011
-    round: 6
-    home_team:
-      name: Sydney
-    away_team:
-      name: Carlton
-    venue:
-      name: SCG
-    start_time_utc: 2011-04-29T09:40:00
-  -
-    season: 2011
-    round: 6
-    home_team:
-      name: North Melbourne
-    away_team:
-      name: Port Adelaide
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-04-30T04:10:00
-  -
-    season: 2011
-    round: 6
-    home_team:
-      name: Richmond
-    away_team:
-      name: Brisbane
-    venue:
-      name: MCG
-    start_time_utc: 2011-04-30T09:10:00
-  -
-    season: 2011
-    round: 6
-    home_team:
-      name: Adelaide
-    away_team:
-      name: St Kilda
-    venue:
-      name: Football Park
-    start_time_utc: 2011-04-30T09:40:00
-  -
-    season: 2011
-    round: 6
-    home_team:
-      name: Essendon
-    away_team:
-      name: Gold Coast
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-05-01T03:10:00
-  -
-    season: 2011
-    round: 6
-    home_team:
-      name: Collingwood
-    away_team:
-      name: Western Bulldogs
-    venue:
-      name: MCG
-    start_time_utc: 2011-05-01T06:40:00
-  -
-    season: 2011
-    round: 7
-    home_team:
-      name: Port Adelaide
-    away_team:
-      name: Hawthorn
-    venue:
-      name: Football Park
-    start_time_utc: 2011-05-06T10:40:00
-  -
-    season: 2011
-    round: 7
-    home_team:
-      name: Western Bulldogs
-    away_team:
-      name: Sydney
-    venue:
-      name: Manuka Oval
-    start_time_utc: 2011-05-07T03:10:00
-  -
-    season: 2011
-    round: 7
-    home_team:
-      name: Geelong
-    away_team:
-      name: North Melbourne
-    venue:
-      name: Kardinia Park
-    start_time_utc: 2011-05-07T04:10:00
-  -
-    season: 2011
-    round: 7
-    home_team:
-      name: Richmond
-    away_team:
-      name: Fremantle
-    venue:
-      name: MCG
-    start_time_utc: 2011-05-07T06:10:00
-  -
-    season: 2011
-    round: 7
-    home_team:
-      name: Gold Coast
-    away_team:
-      name: Brisbane
-    venue:
-      name: Gabba
-    start_time_utc: 2011-05-07T09:10:00
-  -
-    season: 2011
-    round: 7
-    home_team:
-      name: Essendon
-    away_team:
-      name: West Coast
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-05-08T03:10:00
-  -
-    season: 2011
-    round: 7
-    home_team:
-      name: Melbourne
-    away_team:
-      name: Adelaide
-    venue:
-      name: MCG
-    start_time_utc: 2011-05-08T04:10:00
-  -
-    season: 2011
-    round: 7
-    home_team:
-      name: St Kilda
-    away_team:
-      name: Carlton
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-05-09T09:20:00
-  -
-    season: 2011
-    round: 8
-    home_team:
-      name: Geelong
-    away_team:
-      name: Collingwood
-    venue:
-      name: MCG
-    start_time_utc: 2011-05-13T09:40:00
-  -
-    season: 2011
-    round: 8
-    home_team:
-      name: North Melbourne
-    away_team:
-      name: Melbourne
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-05-14T04:10:00
-  -
-    season: 2011
-    round: 8
-    home_team:
-      name: Adelaide
-    away_team:
-      name: Gold Coast
-    venue:
-      name: Football Park
-    start_time_utc: 2011-05-14T05:10:00
-  -
-    season: 2011
-    round: 8
-    home_team:
-      name: Brisbane
-    away_team:
-      name: Essendon
-    venue:
-      name: Gabba
-    start_time_utc: 2011-05-14T09:10:00
-  -
-    season: 2011
-    round: 8
-    home_team:
-      name: Sydney
-    away_team:
-      name: Port Adelaide
-    venue:
-      name: SCG
-    start_time_utc: 2011-05-14T09:10:00
-  -
-    season: 2011
-    round: 8
-    home_team:
-      name: Hawthorn
-    away_team:
-      name: St Kilda
-    venue:
-      name: MCG
-    start_time_utc: 2011-05-15T03:10:00
-  -
-    season: 2011
-    round: 8
-    home_team:
-      name: Western Bulldogs
-    away_team:
-      name: Richmond
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-05-15T04:10:00
-  -
-    season: 2011
-    round: 8
-    home_team:
-      name: West Coast
-    away_team:
-      name: Fremantle
-    venue:
-      name: Subiaco Oval
-    start_time_utc: 2011-05-15T06:40:00
-  -
-    season: 2011
-    round: 9
-    home_team:
-      name: Carlton
-    away_team:
-      name: Geelong
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-05-20T09:40:00
-  -
-    season: 2011
-    round: 9
-    home_team:
-      name: St Kilda
-    away_team:
-      name: Melbourne
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-05-21T04:10:00
-  -
-    season: 2011
-    round: 9
-    home_team:
-      name: Port Adelaide
-    away_team:
-      name: Fremantle
-    venue:
-      name: Football Park
-    start_time_utc: 2011-05-21T05:10:00
-  -
-    season: 2011
-    round: 9
-    home_team:
-      name: Brisbane
-    away_team:
-      name: North Melbourne
-    venue:
-      name: Gabba
-    start_time_utc: 2011-05-21T09:10:00
-  -
-    season: 2011
-    round: 9
-    home_team:
-      name: Richmond
-    away_team:
-      name: Essendon
-    venue:
-      name: MCG
-    start_time_utc: 2011-05-21T09:40:00
-  -
-    season: 2011
-    round: 9
-    home_team:
-      name: Collingwood
-    away_team:
-      name: Adelaide
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-05-22T03:10:00
-  -
-    season: 2011
-    round: 9
-    home_team:
-      name: Sydney
-    away_team:
-      name: Hawthorn
-    venue:
-      name: SCG
-    start_time_utc: 2011-05-22T04:10:00
-  -
-    season: 2011
-    round: 9
-    home_team:
-      name: West Coast
-    away_team:
-      name: Western Bulldogs
-    venue:
-      name: Subiaco Oval
-    start_time_utc: 2011-05-22T06:40:00
-  -
-    season: 2011
-    round: 10
-    home_team:
-      name: Melbourne
-    away_team:
-      name: Carlton
-    venue:
-      name: MCG
-    start_time_utc: 2011-05-27T09:40:00
-  -
-    season: 2011
-    round: 10
-    home_team:
-      name: North Melbourne
-    away_team:
-      name: Sydney
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-05-28T04:10:00
-  -
-    season: 2011
-    round: 10
-    home_team:
-      name: Fremantle
-    away_team:
-      name: St Kilda
-    venue:
-      name: Subiaco Oval
-    start_time_utc: 2011-05-28T05:10:00
-  -
-    season: 2011
-    round: 10
-    home_team:
-      name: Gold Coast
-    away_team:
-      name: Geelong
-    venue:
-      name: Gold Coast Stadium
-    start_time_utc: 2011-05-28T09:10:00
-  -
-    season: 2011
-    round: 10
-    home_team:
-      name: Richmond
-    away_team:
-      name: Port Adelaide
-    venue:
-      name: Marrara Oval
-    start_time_utc: 2011-05-28T10:40:00
-  -
-    season: 2011
-    round: 10
-    home_team:
-      name: Adelaide
-    away_team:
-      name: Brisbane
-    venue:
-      name: Football Park
-    start_time_utc: 2011-05-29T03:10:00
-  -
-    season: 2011
-    round: 10
-    home_team:
-      name: Collingwood
-    away_team:
-      name: West Coast
-    venue:
-      name: MCG
-    start_time_utc: 2011-05-29T04:10:00
-  -
-    season: 2011
-    round: 10
-    home_team:
-      name: Western Bulldogs
-    away_team:
-      name: Hawthorn
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-05-29T06:40:00
-  -
-    season: 2011
-    round: 11
-    home_team:
-      name: Essendon
-    away_team:
-      name: Melbourne
-    venue:
-      name: MCG
-    start_time_utc: 2011-06-03T09:40:00
-  -
-    season: 2011
-    round: 11
-    home_team:
-      name: Geelong
-    away_team:
-      name: Western Bulldogs
-    venue:
-      name: Kardinia Park
-    start_time_utc: 2011-06-04T04:10:00
-  -
-    season: 2011
-    round: 11
-    home_team:
-      name: West Coast
-    away_team:
-      name: Gold Coast
-    venue:
-      name: Subiaco Oval
-    start_time_utc: 2011-06-04T05:10:00
-  -
-    season: 2011
-    round: 11
-    home_team:
-      name: Brisbane
-    away_team:
-      name: Sydney
-    venue:
-      name: Gabba
-    start_time_utc: 2011-06-04T09:10:00
-  -
-    season: 2011
-    round: 11
-    home_team:
-      name: Collingwood
-    away_team:
-      name: St Kilda
-    venue:
-      name: MCG
-    start_time_utc: 2011-06-04T09:10:00
-  -
-    season: 2011
-    round: 11
-    home_team:
-      name: Hawthorn
-    away_team:
-      name: Fremantle
-    venue:
-      name: MCG
-    start_time_utc: 2011-06-05T03:10:00
-  -
-    season: 2011
-    round: 11
-    home_team:
-      name: North Melbourne
-    away_team:
-      name: Adelaide
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-06-05T04:10:00
-  -
-    season: 2011
-    round: 11
-    home_team:
-      name: Port Adelaide
-    away_team:
-      name: Carlton
-    venue:
-      name: Football Park
-    start_time_utc: 2011-06-05T06:40:00
-  -
-    season: 2011
-    round: 12
-    home_team:
-      name: St Kilda
-    away_team:
-      name: Western Bulldogs
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-06-10T09:40:00
-  -
-    season: 2011
-    round: 12
-    home_team:
-      name: Adelaide
-    away_team:
-      name: West Coast
-    venue:
-      name: Football Park
-    start_time_utc: 2011-06-11T05:10:00
-  -
-    season: 2011
-    round: 12
-    home_team:
-      name: Gold Coast
-    away_team:
-      name: North Melbourne
-    venue:
-      name: Gold Coast Stadium
-    start_time_utc: 2011-06-11T09:10:00
-  -
-    season: 2011
-    round: 12
-    home_team:
-      name: Geelong
-    away_team:
-      name: Hawthorn
-    venue:
-      name: MCG
-    start_time_utc: 2011-06-11T09:10:00
-  -
-    season: 2011
-    round: 12
-    home_team:
-      name: Carlton
-    away_team:
-      name: Brisbane
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-06-12T03:10:00
-  -
-    season: 2011
-    round: 12
-    home_team:
-      name: Sydney
-    away_team:
-      name: Richmond
-    venue:
-      name: SCG
-    start_time_utc: 2011-06-12T04:10:00
-  -
-    season: 2011
-    round: 12
-    home_team:
-      name: Fremantle
-    away_team:
-      name: Essendon
-    venue:
-      name: Subiaco Oval
-    start_time_utc: 2011-06-12T06:40:00
-  -
-    season: 2011
-    round: 12
-    home_team:
-      name: Melbourne
-    away_team:
-      name: Collingwood
-    venue:
-      name: MCG
-    start_time_utc: 2011-06-13T04:10:00
-  -
-    season: 2011
-    round: 13
-    home_team:
-      name: Western Bulldogs
-    away_team:
-      name: Adelaide
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-06-17T09:40:00
-  -
-    season: 2011
-    round: 13
-    home_team:
-      name: Hawthorn
-    away_team:
-      name: Gold Coast
-    venue:
-      name: York Park
-    start_time_utc: 2011-06-18T04:10:00
-  -
-    season: 2011
-    round: 13
-    home_team:
-      name: Essendon
-    away_team:
-      name: North Melbourne
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-06-18T04:10:00
-  -
-    season: 2011
-    round: 13
-    home_team:
-      name: Brisbane
-    away_team:
-      name: Richmond
-    venue:
-      name: Gabba
-    start_time_utc: 2011-06-18T09:10:00
-  -
-    season: 2011
-    round: 13
-    home_team:
-      name: St Kilda
-    away_team:
-      name: Geelong
-    venue:
-      name: MCG
-    start_time_utc: 2011-06-18T09:10:00
-  -
-    season: 2011
-    round: 13
-    home_team:
-      name: Melbourne
-    away_team:
-      name: Fremantle
-    venue:
-      name: MCG
-    start_time_utc: 2011-06-19T03:10:00
-  -
-    season: 2011
-    round: 13
-    home_team:
-      name: Carlton
-    away_team:
-      name: Sydney
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-06-19T04:10:00
-  -
-    season: 2011
-    round: 13
-    home_team:
-      name: West Coast
-    away_team:
-      name: Port Adelaide
-    venue:
-      name: Subiaco Oval
-    start_time_utc: 2011-06-19T06:40:00
-  -
-    season: 2011
-    round: 14
-    home_team:
-      name: Hawthorn
-    away_team:
-      name: Essendon
-    venue:
-      name: MCG
-    start_time_utc: 2011-06-24T09:40:00
-  -
-    season: 2011
-    round: 14
-    home_team:
-      name: Gold Coast
-    away_team:
-      name: Western Bulldogs
-    venue:
-      name: Gold Coast Stadium
-    start_time_utc: 2011-06-25T04:10:00
-  -
-    season: 2011
-    round: 14
-    home_team:
-      name: Richmond
-    away_team:
-      name: Melbourne
-    venue:
-      name: MCG
-    start_time_utc: 2011-06-25T04:10:00
-  -
-    season: 2011
-    round: 14
-    home_team:
-      name: Sydney
-    away_team:
-      name: Collingwood
-    venue:
-      name: Stadium Australia
-    start_time_utc: 2011-06-25T09:10:00
-  -
-    season: 2011
-    round: 14
-    home_team:
-      name: Fremantle
-    away_team:
-      name: Brisbane
-    venue:
-      name: Subiaco Oval
-    start_time_utc: 2011-06-25T09:40:00
-  -
-    season: 2011
-    round: 14
-    home_team:
-      name: Geelong
-    away_team:
-      name: Adelaide
-    venue:
-      name: Kardinia Park
-    start_time_utc: 2011-06-26T03:10:00
-  -
-    season: 2011
-    round: 14
-    home_team:
-      name: Carlton
-    away_team:
-      name: West Coast
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-06-26T04:10:00
-  -
-    season: 2011
-    round: 14
-    home_team:
-      name: Port Adelaide
-    away_team:
-      name: North Melbourne
-    venue:
-      name: Football Park
-    start_time_utc: 2011-06-26T06:40:00
-  -
-    season: 2011
-    round: 15
-    home_team:
-      name: Western Bulldogs
-    away_team:
-      name: Melbourne
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-07-01T09:40:00
-  -
-    season: 2011
-    round: 15
-    home_team:
-      name: Richmond
-    away_team:
-      name: Carlton
-    venue:
-      name: MCG
-    start_time_utc: 2011-07-02T04:10:00
-  -
-    season: 2011
-    round: 15
-    home_team:
-      name: Fremantle
-    away_team:
-      name: Gold Coast
-    venue:
-      name: Subiaco Oval
-    start_time_utc: 2011-07-02T05:10:00
-  -
-    season: 2011
-    round: 15
-    home_team:
-      name: Essendon
-    away_team:
-      name: Geelong
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-07-02T09:10:00
-  -
-    season: 2011
-    round: 15
-    home_team:
-      name: Adelaide
-    away_team:
-      name: Sydney
-    venue:
-      name: Football Park
-    start_time_utc: 2011-07-02T09:40:00
-  -
-    season: 2011
-    round: 15
-    home_team:
-      name: Brisbane
-    away_team:
-      name: Port Adelaide
-    venue:
-      name: Gabba
-    start_time_utc: 2011-07-03T03:10:00
-  -
-    season: 2011
-    round: 15
-    home_team:
-      name: Collingwood
-    away_team:
-      name: Hawthorn
-    venue:
-      name: MCG
-    start_time_utc: 2011-07-03T04:10:00
-  -
-    season: 2011
-    round: 15
-    home_team:
-      name: North Melbourne
-    away_team:
-      name: St Kilda
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-07-03T06:40:00
-  -
-    season: 2011
-    round: 16
-    home_team:
-      name: West Coast
-    away_team:
-      name: Geelong
-    venue:
-      name: Subiaco Oval
-    start_time_utc: 2011-07-08T10:40:00
-  -
-    season: 2011
-    round: 16
-    home_team:
-      name: Hawthorn
-    away_team:
-      name: Brisbane
-    venue:
-      name: York Park
-    start_time_utc: 2011-07-09T04:10:00
-  -
-    season: 2011
-    round: 16
-    home_team:
-      name: Gold Coast
-    away_team:
-      name: Sydney
-    venue:
-      name: Gold Coast Stadium
-    start_time_utc: 2011-07-09T09:10:00
-  -
-    season: 2011
-    round: 16
-    home_team:
-      name: Essendon
-    away_team:
-      name: Richmond
-    venue:
-      name: MCG
-    start_time_utc: 2011-07-09T09:10:00
-  -
-    season: 2011
-    round: 16
-    home_team:
-      name: Collingwood
-    away_team:
-      name: North Melbourne
-    venue:
-      name: MCG
-    start_time_utc: 2011-07-10T03:10:00
-  -
-    season: 2011
-    round: 16
-    home_team:
-      name: Port Adelaide
-    away_team:
-      name: St Kilda
-    venue:
-      name: Football Park
-    start_time_utc: 2011-07-10T05:10:00
-  -
-    season: 2011
-    round: 16
-    home_team:
-      name: Western Bulldogs
-    away_team:
-      name: Carlton
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-07-10T06:40:00
-  -
-    season: 2011
-    round: 17
-    home_team:
-      name: Adelaide
-    away_team:
-      name: Essendon
-    venue:
-      name: Football Park
-    start_time_utc: 2011-07-15T10:40:00
-  -
-    season: 2011
-    round: 17
-    home_team:
-      name: Richmond
-    away_team:
-      name: Gold Coast
-    venue:
-      name: Cazaly's Stadium
-    start_time_utc: 2011-07-16T04:10:00
-  -
-    season: 2011
-    round: 17
-    home_team:
-      name: Carlton
-    away_team:
-      name: Collingwood
-    venue:
-      name: MCG
-    start_time_utc: 2011-07-16T04:10:00
-  -
-    season: 2011
-    round: 17
-    home_team:
-      name: St Kilda
-    away_team:
-      name: West Coast
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-07-16T09:10:00
-  -
-    season: 2011
-    round: 17
-    home_team:
-      name: Melbourne
-    away_team:
-      name: Port Adelaide
-    venue:
-      name: Marrara Oval
-    start_time_utc: 2011-07-16T10:40:00
-  -
-    season: 2011
-    round: 17
-    home_team:
-      name: Sydney
-    away_team:
-      name: Fremantle
-    venue:
-      name: SCG
-    start_time_utc: 2011-07-17T03:10:00
-  -
-    season: 2011
-    round: 17
-    home_team:
-      name: Brisbane
-    away_team:
-      name: Geelong
-    venue:
-      name: Gabba
-    start_time_utc: 2011-07-17T04:10:00
-  -
-    season: 2011
-    round: 17
-    home_team:
-      name: North Melbourne
-    away_team:
-      name: Western Bulldogs
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-07-17T06:40:00
-  -
-    season: 2011
-    round: 18
-    home_team:
-      name: St Kilda
-    away_team:
-      name: Adelaide
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-07-22T09:40:00
-  -
-    season: 2011
-    round: 18
-    home_team:
-      name: North Melbourne
-    away_team:
-      name: Brisbane
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-07-23T04:10:00
-  -
-    season: 2011
-    round: 18
-    home_team:
-      name: Sydney
-    away_team:
-      name: Western Bulldogs
-    venue:
-      name: SCG
-    start_time_utc: 2011-07-23T04:10:00
-  -
-    season: 2011
-    round: 18
-    home_team:
-      name: Gold Coast
-    away_team:
-      name: Collingwood
-    venue:
-      name: Gold Coast Stadium
-    start_time_utc: 2011-07-23T09:10:00
-  -
-    season: 2011
-    round: 18
-    home_team:
-      name: Essendon
-    away_team:
-      name: Carlton
-    venue:
-      name: MCG
-    start_time_utc: 2011-07-23T09:10:00
-  -
-    season: 2011
-    round: 18
-    home_team:
-      name: Geelong
-    away_team:
-      name: Richmond
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-07-24T03:10:00
-  -
-    season: 2011
-    round: 18
-    home_team:
-      name: Melbourne
-    away_team:
-      name: Hawthorn
-    venue:
-      name: MCG
-    start_time_utc: 2011-07-24T04:10:00
-  -
-    season: 2011
-    round: 18
-    home_team:
-      name: Fremantle
-    away_team:
-      name: West Coast
-    venue:
-      name: Subiaco Oval
-    start_time_utc: 2011-07-24T06:40:00
-  -
-    season: 2011
-    round: 19
-    home_team:
-      name: North Melbourne
-    away_team:
-      name: Carlton
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-07-29T09:40:00
-  -
-    season: 2011
-    round: 19
-    home_team:
-      name: Western Bulldogs
-    away_team:
-      name: West Coast
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-07-30T04:10:00
-  -
-    season: 2011
-    round: 19
-    home_team:
-      name: Geelong
-    away_team:
-      name: Melbourne
-    venue:
-      name: Kardinia Park
-    start_time_utc: 2011-07-30T04:10:00
-  -
-    season: 2011
-    round: 19
-    home_team:
-      name: Gold Coast
-    away_team:
-      name: St Kilda
-    venue:
-      name: Gold Coast Stadium
-    start_time_utc: 2011-07-30T09:10:00
-  -
-    season: 2011
-    round: 19
-    home_team:
-      name: Fremantle
-    away_team:
-      name: Hawthorn
-    venue:
-      name: Subiaco Oval
-    start_time_utc: 2011-07-30T09:40:00
-  -
-    season: 2011
-    round: 19
-    home_team:
-      name: Collingwood
-    away_team:
-      name: Essendon
-    venue:
-      name: MCG
-    start_time_utc: 2011-07-31T04:10:00
-  -
-    season: 2011
-    round: 19
-    home_team:
-      name: Adelaide
-    away_team:
-      name: Port Adelaide
-    venue:
-      name: Football Park
-    start_time_utc: 2011-07-31T06:40:00
-  -
-    season: 2011
-    round: 20
-    home_team:
-      name: St Kilda
-    away_team:
-      name: Fremantle
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-08-05T09:40:00
-  -
-    season: 2011
-    round: 20
-    home_team:
-      name: Carlton
-    away_team:
-      name: Melbourne
-    venue:
-      name: MCG
-    start_time_utc: 2011-08-06T04:10:00
-  -
-    season: 2011
-    round: 20
-    home_team:
-      name: Geelong
-    away_team:
-      name: Gold Coast
-    venue:
-      name: Kardinia Park
-    start_time_utc: 2011-08-06T04:10:00
-  -
-    season: 2011
-    round: 20
-    home_team:
-      name: Essendon
-    away_team:
-      name: Sydney
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-08-06T09:10:00
-  -
-    season: 2011
-    round: 20
-    home_team:
-      name: Port Adelaide
-    away_team:
-      name: Collingwood
-    venue:
-      name: Football Park
-    start_time_utc: 2011-08-06T09:40:00
-  -
-    season: 2011
-    round: 20
-    home_team:
-      name: Brisbane
-    away_team:
-      name: Adelaide
-    venue:
-      name: Gabba
-    start_time_utc: 2011-08-07T03:10:00
-  -
-    season: 2011
-    round: 20
-    home_team:
-      name: Hawthorn
-    away_team:
-      name: North Melbourne
-    venue:
-      name: York Park
-    start_time_utc: 2011-08-07T04:10:00
-  -
-    season: 2011
-    round: 20
-    home_team:
-      name: West Coast
-    away_team:
-      name: Richmond
-    venue:
-      name: Subiaco Oval
-    start_time_utc: 2011-08-07T06:40:00
-  -
-    season: 2011
-    round: 21
-    home_team:
-      name: St Kilda
-    away_team:
-      name: Collingwood
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-08-12T09:40:00
-  -
-    season: 2011
-    round: 21
-    home_team:
-      name: Hawthorn
-    away_team:
-      name: Port Adelaide
-    venue:
-      name: MCG
-    start_time_utc: 2011-08-13T04:10:00
-  -
-    season: 2011
-    round: 21
-    home_team:
-      name: Fremantle
-    away_team:
-      name: Carlton
-    venue:
-      name: Subiaco Oval
-    start_time_utc: 2011-08-13T05:10:00
-  -
-    season: 2011
-    round: 21
-    home_team:
-      name: Western Bulldogs
-    away_team:
-      name: Essendon
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-08-13T09:10:00
-  -
-    season: 2011
-    round: 21
-    home_team:
-      name: Brisbane
-    away_team:
-      name: Gold Coast
-    venue:
-      name: Gabba
-    start_time_utc: 2011-08-13T09:10:00
-  -
-    season: 2011
-    round: 21
-    home_team:
-      name: Melbourne
-    away_team:
-      name: West Coast
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-08-14T03:10:00
-  -
-    season: 2011
-    round: 21
-    home_team:
-      name: Richmond
-    away_team:
-      name: Sydney
-    venue:
-      name: MCG
-    start_time_utc: 2011-08-14T04:10:00
-  -
-    season: 2011
-    round: 21
-    home_team:
-      name: Adelaide
-    away_team:
-      name: Geelong
-    venue:
-      name: Football Park
-    start_time_utc: 2011-08-14T06:40:00
-  -
-    season: 2011
-    round: 22
-    home_team:
-      name: Carlton
-    away_team:
-      name: Hawthorn
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-08-19T09:40:00
-  -
-    season: 2011
-    round: 22
-    home_team:
-      name: Gold Coast
-    away_team:
-      name: Adelaide
-    venue:
-      name: Gold Coast Stadium
-    start_time_utc: 2011-08-20T04:10:00
-  -
-    season: 2011
-    round: 22
-    home_team:
-      name: West Coast
-    away_team:
-      name: Essendon
-    venue:
-      name: Subiaco Oval
-    start_time_utc: 2011-08-20T05:10:00
-  -
-    season: 2011
-    round: 22
-    home_team:
-      name: North Melbourne
-    away_team:
-      name: Fremantle
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-08-20T09:10:00
-  -
-    season: 2011
-    round: 22
-    home_team:
-      name: Collingwood
-    away_team:
-      name: Brisbane
-    venue:
-      name: MCG
-    start_time_utc: 2011-08-20T09:10:00
-  -
-    season: 2011
-    round: 22
-    home_team:
-      name: Sydney
-    away_team:
-      name: St Kilda
-    venue:
-      name: Stadium Australia
-    start_time_utc: 2011-08-21T03:10:00
-  -
-    season: 2011
-    round: 22
-    home_team:
-      name: Port Adelaide
-    away_team:
-      name: Western Bulldogs
-    venue:
-      name: Football Park
-    start_time_utc: 2011-08-21T05:10:00
-  -
-    season: 2011
-    round: 22
-    home_team:
-      name: Melbourne
-    away_team:
-      name: Richmond
-    venue:
-      name: MCG
-    start_time_utc: 2011-08-21T06:40:00
-  -
-    season: 2011
-    round: 23
-    home_team:
-      name: Fremantle
-    away_team:
-      name: Collingwood
-    venue:
-      name: Subiaco Oval
-    start_time_utc: 2011-08-26T10:40:00
-  -
-    season: 2011
-    round: 23
-    home_team:
-      name: Hawthorn
-    away_team:
-      name: Western Bulldogs
-    venue:
-      name: MCG
-    start_time_utc: 2011-08-27T04:10:00
-  -
-    season: 2011
-    round: 23
-    home_team:
-      name: Geelong
-    away_team:
-      name: Sydney
-    venue:
-      name: Kardinia Park
-    start_time_utc: 2011-08-27T04:10:00
-  -
-    season: 2011
-    round: 23
-    home_team:
-      name: St Kilda
-    away_team:
-      name: North Melbourne
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-08-27T09:10:00
-  -
-    season: 2011
-    round: 23
-    home_team:
-      name: Brisbane
-    away_team:
-      name: West Coast
-    venue:
-      name: Gabba
-    start_time_utc: 2011-08-27T09:10:00
-  -
-    season: 2011
-    round: 23
-    home_team:
-      name: Adelaide
-    away_team:
-      name: Richmond
-    venue:
-      name: Football Park
-    start_time_utc: 2011-08-28T03:10:00
-  -
-    season: 2011
-    round: 23
-    home_team:
-      name: Melbourne
-    away_team:
-      name: Gold Coast
-    venue:
-      name: MCG
-    start_time_utc: 2011-08-28T04:10:00
-  -
-    season: 2011
-    round: 23
-    home_team:
-      name: Essendon
-    away_team:
-      name: Port Adelaide
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-08-28T06:40:00
-  -
-    season: 2011
-    round: 24
-    home_team:
-      name: Carlton
-    away_team:
-      name: St Kilda
-    venue:
-      name: MCG
-    start_time_utc: 2011-09-02T00:00:00
-  -
-    season: 2011
-    round: 24
-    home_team:
-      name: Port Adelaide
-    away_team:
-      name: Melbourne
-    venue:
-      name: Football Park
-    start_time_utc: 2011-09-02T00:00:00
-  -
-    season: 2011
-    round: 24
-    home_team:
-      name: Western Bulldogs
-    away_team:
-      name: Fremantle
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-09-02T00:00:00
-  -
-    season: 2011
-    round: 24
-    home_team:
-      name: Sydney
-    away_team:
-      name: Brisbane
-    venue:
-      name: SCG
-    start_time_utc: 2011-09-02T00:00:00
-  -
-    season: 2011
-    round: 24
-    home_team:
-      name: West Coast
-    away_team:
-      name: Adelaide
-    venue:
-      name: Subiaco Oval
-    start_time_utc: 2011-09-02T00:00:00
-  -
-    season: 2011
-    round: 24
-    home_team:
-      name: Collingwood
-    away_team:
-      name: Geelong
-    venue:
-      name: MCG
-    start_time_utc: 2011-09-02T00:00:00
-  -
-    season: 2011
-    round: 24
-    home_team:
-      name: Richmond
-    away_team:
-      name: North Melbourne
-    venue:
-      name: Docklands Stadium
-    start_time_utc: 2011-09-02T00:00:00
-  -
-    season: 2011
-    round: 24
-    home_team:
-      name: Gold Coast
-    away_team:
-      name: Hawthorn
-    venue:
-      name: Gold Coast Stadium
-    start_time_utc: 2011-09-02T00:00:00
+create_and_add_many:
+  - create:
+      season: 2011
+      round: 1
+      venue:
+        name: MCG
+      start_time_utc: 2011-03-24T07:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Carlton
+          extra:
+            is_home_team: 1
+        - search:
+            name: Richmond
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 1
+      venue:
+        name: MCG
+      start_time_utc: 2011-03-25T07:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Geelong
+          extra:
+            is_home_team: 1
+        - search:
+            name: St Kilda
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 1
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-03-26T02:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Collingwood
+          extra:
+            is_home_team: 1
+        - search:
+            name: Port Adelaide
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 1
+      venue:
+        name: Football Park
+      start_time_utc: 2011-03-26T08:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Adelaide
+          extra:
+            is_home_team: 1
+        - search:
+            name: Hawthorn
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 1
+      venue:
+        name: Gabba
+      start_time_utc: 2011-03-26T08:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Brisbane
+          extra:
+            is_home_team: 1
+        - search:
+            name: Fremantle
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 1
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-03-27T01:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Essendon
+          extra:
+            is_home_team: 1
+        - search:
+            name: Western Bulldogs
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 1
+      venue:
+        name: MCG
+      start_time_utc: 2011-03-27T02:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Melbourne
+          extra:
+            is_home_team: 1
+        - search:
+            name: Sydney
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 1
+      venue:
+        name: Subiaco Oval
+      start_time_utc: 2011-03-27T07:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: West Coast
+          extra:
+            is_home_team: 1
+        - search:
+            name: North Melbourne
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 2
+      venue:
+        name: MCG
+      start_time_utc: 2011-04-01T07:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: St Kilda
+          extra:
+            is_home_team: 1
+        - search:
+            name: Richmond
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 2
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-04-02T02:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: North Melbourne
+          extra:
+            is_home_team: 1
+        - search:
+            name: Collingwood
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 2
+      venue:
+        name: Football Park
+      start_time_utc: 2011-04-02T03:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Port Adelaide
+          extra:
+            is_home_team: 1
+        - search:
+            name: West Coast
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 2
+      venue:
+        name: Gabba
+      start_time_utc: 2011-04-02T07:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Gold Coast
+          extra:
+            is_home_team: 1
+        - search:
+            name: Carlton
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 2
+      venue:
+        name: Subiaco Oval
+      start_time_utc: 2011-04-02T08:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Fremantle
+          extra:
+            is_home_team: 1
+        - search:
+            name: Geelong
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 2
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-04-03T03:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Western Bulldogs
+          extra:
+            is_home_team: 1
+        - search:
+            name: Brisbane
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 2
+      venue:
+        name: Stadium Australia
+      start_time_utc: 2011-04-03T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Sydney
+          extra:
+            is_home_team: 1
+        - search:
+            name: Essendon
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 2
+      venue:
+        name: MCG
+      start_time_utc: 2011-04-03T06:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Hawthorn
+          extra:
+            is_home_team: 1
+        - search:
+            name: Melbourne
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 3
+      venue:
+        name: MCG
+      start_time_utc: 2011-04-08T09:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Collingwood
+          extra:
+            is_home_team: 1
+        - search:
+            name: Carlton
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 3
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-04-09T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Western Bulldogs
+          extra:
+            is_home_team: 1
+        - search:
+            name: Gold Coast
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 3
+      venue:
+        name: Football Park
+      start_time_utc: 2011-04-09T05:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Adelaide
+          extra:
+            is_home_team: 1
+        - search:
+            name: Fremantle
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 3
+      venue:
+        name: MCG
+      start_time_utc: 2011-04-09T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Richmond
+          extra:
+            is_home_team: 1
+        - search:
+            name: Hawthorn
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 3
+      venue:
+        name: Subiaco Oval
+      start_time_utc: 2011-04-09T09:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: West Coast
+          extra:
+            is_home_team: 1
+        - search:
+            name: Sydney
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 3
+      venue:
+        name: MCG
+      start_time_utc: 2011-04-10T03:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Melbourne
+          extra:
+            is_home_team: 1
+        - search:
+            name: Brisbane
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 3
+      venue:
+        name: Kardinia Park
+      start_time_utc: 2011-04-10T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Geelong
+          extra:
+            is_home_team: 1
+        - search:
+            name: Port Adelaide
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 3
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-04-10T06:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: St Kilda
+          extra:
+            is_home_team: 1
+        - search:
+            name: Essendon
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 4
+      venue:
+        name: MCG
+      start_time_utc: 2011-04-15T09:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Richmond
+          extra:
+            is_home_team: 1
+        - search:
+            name: Collingwood
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 4
+      venue:
+        name: York Park
+      start_time_utc: 2011-04-16T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Hawthorn
+          extra:
+            is_home_team: 1
+        - search:
+            name: West Coast
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 4
+      venue:
+        name: MCG
+      start_time_utc: 2011-04-16T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Carlton
+          extra:
+            is_home_team: 1
+        - search:
+            name: Essendon
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 4
+      venue:
+        name: SCG
+      start_time_utc: 2011-04-16T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Sydney
+          extra:
+            is_home_team: 1
+        - search:
+            name: Geelong
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 4
+      venue:
+        name: Football Park
+      start_time_utc: 2011-04-16T09:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Port Adelaide
+          extra:
+            is_home_team: 1
+        - search:
+            name: Adelaide
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 4
+      venue:
+        name: Gabba
+      start_time_utc: 2011-04-17T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Gold Coast
+          extra:
+            is_home_team: 1
+        - search:
+            name: Melbourne
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 4
+      venue:
+        name: Subiaco Oval
+      start_time_utc: 2011-04-17T06:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Fremantle
+          extra:
+            is_home_team: 1
+        - search:
+            name: North Melbourne
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 5
+      venue:
+        name: Gabba
+      start_time_utc: 2011-04-21T09:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Brisbane
+          extra:
+            is_home_team: 1
+        - search:
+            name: St Kilda
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 5
+      venue:
+        name: Football Park
+      start_time_utc: 2011-04-23T05:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Port Adelaide
+          extra:
+            is_home_team: 1
+        - search:
+            name: Gold Coast
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 5
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-04-23T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Carlton
+          extra:
+            is_home_team: 1
+        - search:
+            name: Adelaide
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 5
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-04-24T06:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: North Melbourne
+          extra:
+            is_home_team: 1
+        - search:
+            name: Richmond
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 5
+      venue:
+        name: MCG
+      start_time_utc: 2011-04-25T04:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Essendon
+          extra:
+            is_home_team: 1
+        - search:
+            name: Collingwood
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 5
+      venue:
+        name: Subiaco Oval
+      start_time_utc: 2011-04-25T10:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Fremantle
+          extra:
+            is_home_team: 1
+        - search:
+            name: Western Bulldogs
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 5
+      venue:
+        name: MCG
+      start_time_utc: 2011-04-26T04:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Hawthorn
+          extra:
+            is_home_team: 1
+        - search:
+            name: Geelong
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 6
+      venue:
+        name: Subiaco Oval
+      start_time_utc: 2011-04-28T10:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: West Coast
+          extra:
+            is_home_team: 1
+        - search:
+            name: Melbourne
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 6
+      venue:
+        name: SCG
+      start_time_utc: 2011-04-29T09:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Sydney
+          extra:
+            is_home_team: 1
+        - search:
+            name: Carlton
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 6
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-04-30T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: North Melbourne
+          extra:
+            is_home_team: 1
+        - search:
+            name: Port Adelaide
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 6
+      venue:
+        name: MCG
+      start_time_utc: 2011-04-30T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Richmond
+          extra:
+            is_home_team: 1
+        - search:
+            name: Brisbane
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 6
+      venue:
+        name: Football Park
+      start_time_utc: 2011-04-30T09:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Adelaide
+          extra:
+            is_home_team: 1
+        - search:
+            name: St Kilda
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 6
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-05-01T03:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Essendon
+          extra:
+            is_home_team: 1
+        - search:
+            name: Gold Coast
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 6
+      venue:
+        name: MCG
+      start_time_utc: 2011-05-01T06:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Collingwood
+          extra:
+            is_home_team: 1
+        - search:
+            name: Western Bulldogs
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 7
+      venue:
+        name: Football Park
+      start_time_utc: 2011-05-06T10:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Port Adelaide
+          extra:
+            is_home_team: 1
+        - search:
+            name: Hawthorn
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 7
+      venue:
+        name: Manuka Oval
+      start_time_utc: 2011-05-07T03:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Western Bulldogs
+          extra:
+            is_home_team: 1
+        - search:
+            name: Sydney
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 7
+      venue:
+        name: Kardinia Park
+      start_time_utc: 2011-05-07T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Geelong
+          extra:
+            is_home_team: 1
+        - search:
+            name: North Melbourne
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 7
+      venue:
+        name: MCG
+      start_time_utc: 2011-05-07T06:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Richmond
+          extra:
+            is_home_team: 1
+        - search:
+            name: Fremantle
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 7
+      venue:
+        name: Gabba
+      start_time_utc: 2011-05-07T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Gold Coast
+          extra:
+            is_home_team: 1
+        - search:
+            name: Brisbane
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 7
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-05-08T03:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Essendon
+          extra:
+            is_home_team: 1
+        - search:
+            name: West Coast
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 7
+      venue:
+        name: MCG
+      start_time_utc: 2011-05-08T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Melbourne
+          extra:
+            is_home_team: 1
+        - search:
+            name: Adelaide
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 7
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-05-09T09:20:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: St Kilda
+          extra:
+            is_home_team: 1
+        - search:
+            name: Carlton
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 8
+      venue:
+        name: MCG
+      start_time_utc: 2011-05-13T09:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Geelong
+          extra:
+            is_home_team: 1
+        - search:
+            name: Collingwood
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 8
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-05-14T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: North Melbourne
+          extra:
+            is_home_team: 1
+        - search:
+            name: Melbourne
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 8
+      venue:
+        name: Football Park
+      start_time_utc: 2011-05-14T05:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Adelaide
+          extra:
+            is_home_team: 1
+        - search:
+            name: Gold Coast
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 8
+      venue:
+        name: Gabba
+      start_time_utc: 2011-05-14T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Brisbane
+          extra:
+            is_home_team: 1
+        - search:
+            name: Essendon
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 8
+      venue:
+        name: SCG
+      start_time_utc: 2011-05-14T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Sydney
+          extra:
+            is_home_team: 1
+        - search:
+            name: Port Adelaide
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 8
+      venue:
+        name: MCG
+      start_time_utc: 2011-05-15T03:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Hawthorn
+          extra:
+            is_home_team: 1
+        - search:
+            name: St Kilda
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 8
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-05-15T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Western Bulldogs
+          extra:
+            is_home_team: 1
+        - search:
+            name: Richmond
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 8
+      venue:
+        name: Subiaco Oval
+      start_time_utc: 2011-05-15T06:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: West Coast
+          extra:
+            is_home_team: 1
+        - search:
+            name: Fremantle
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 9
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-05-20T09:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Carlton
+          extra:
+            is_home_team: 1
+        - search:
+            name: Geelong
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 9
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-05-21T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: St Kilda
+          extra:
+            is_home_team: 1
+        - search:
+            name: Melbourne
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 9
+      venue:
+        name: Football Park
+      start_time_utc: 2011-05-21T05:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Port Adelaide
+          extra:
+            is_home_team: 1
+        - search:
+            name: Fremantle
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 9
+      venue:
+        name: Gabba
+      start_time_utc: 2011-05-21T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Brisbane
+          extra:
+            is_home_team: 1
+        - search:
+            name: North Melbourne
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 9
+      venue:
+        name: MCG
+      start_time_utc: 2011-05-21T09:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Richmond
+          extra:
+            is_home_team: 1
+        - search:
+            name: Essendon
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 9
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-05-22T03:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Collingwood
+          extra:
+            is_home_team: 1
+        - search:
+            name: Adelaide
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 9
+      venue:
+        name: SCG
+      start_time_utc: 2011-05-22T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Sydney
+          extra:
+            is_home_team: 1
+        - search:
+            name: Hawthorn
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 9
+      venue:
+        name: Subiaco Oval
+      start_time_utc: 2011-05-22T06:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: West Coast
+          extra:
+            is_home_team: 1
+        - search:
+            name: Western Bulldogs
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 10
+      venue:
+        name: MCG
+      start_time_utc: 2011-05-27T09:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Melbourne
+          extra:
+            is_home_team: 1
+        - search:
+            name: Carlton
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 10
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-05-28T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: North Melbourne
+          extra:
+            is_home_team: 1
+        - search:
+            name: Sydney
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 10
+      venue:
+        name: Subiaco Oval
+      start_time_utc: 2011-05-28T05:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Fremantle
+          extra:
+            is_home_team: 1
+        - search:
+            name: St Kilda
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 10
+      venue:
+        name: Gold Coast Stadium
+      start_time_utc: 2011-05-28T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Gold Coast
+          extra:
+            is_home_team: 1
+        - search:
+            name: Geelong
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 10
+      venue:
+        name: Marrara Oval
+      start_time_utc: 2011-05-28T10:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Richmond
+          extra:
+            is_home_team: 1
+        - search:
+            name: Port Adelaide
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 10
+      venue:
+        name: Football Park
+      start_time_utc: 2011-05-29T03:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Adelaide
+          extra:
+            is_home_team: 1
+        - search:
+            name: Brisbane
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 10
+      venue:
+        name: MCG
+      start_time_utc: 2011-05-29T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Collingwood
+          extra:
+            is_home_team: 1
+        - search:
+            name: West Coast
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 10
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-05-29T06:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Western Bulldogs
+          extra:
+            is_home_team: 1
+        - search:
+            name: Hawthorn
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 11
+      venue:
+        name: MCG
+      start_time_utc: 2011-06-03T09:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Essendon
+          extra:
+            is_home_team: 1
+        - search:
+            name: Melbourne
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 11
+      venue:
+        name: Kardinia Park
+      start_time_utc: 2011-06-04T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Geelong
+          extra:
+            is_home_team: 1
+        - search:
+            name: Western Bulldogs
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 11
+      venue:
+        name: Subiaco Oval
+      start_time_utc: 2011-06-04T05:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: West Coast
+          extra:
+            is_home_team: 1
+        - search:
+            name: Gold Coast
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 11
+      venue:
+        name: Gabba
+      start_time_utc: 2011-06-04T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Brisbane
+          extra:
+            is_home_team: 1
+        - search:
+            name: Sydney
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 11
+      venue:
+        name: MCG
+      start_time_utc: 2011-06-04T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Collingwood
+          extra:
+            is_home_team: 1
+        - search:
+            name: St Kilda
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 11
+      venue:
+        name: MCG
+      start_time_utc: 2011-06-05T03:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Hawthorn
+          extra:
+            is_home_team: 1
+        - search:
+            name: Fremantle
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 11
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-06-05T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: North Melbourne
+          extra:
+            is_home_team: 1
+        - search:
+            name: Adelaide
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 11
+      venue:
+        name: Football Park
+      start_time_utc: 2011-06-05T06:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Port Adelaide
+          extra:
+            is_home_team: 1
+        - search:
+            name: Carlton
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 12
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-06-10T09:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: St Kilda
+          extra:
+            is_home_team: 1
+        - search:
+            name: Western Bulldogs
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 12
+      venue:
+        name: Football Park
+      start_time_utc: 2011-06-11T05:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Adelaide
+          extra:
+            is_home_team: 1
+        - search:
+            name: West Coast
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 12
+      venue:
+        name: Gold Coast Stadium
+      start_time_utc: 2011-06-11T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Gold Coast
+          extra:
+            is_home_team: 1
+        - search:
+            name: North Melbourne
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 12
+      venue:
+        name: MCG
+      start_time_utc: 2011-06-11T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Geelong
+          extra:
+            is_home_team: 1
+        - search:
+            name: Hawthorn
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 12
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-06-12T03:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Carlton
+          extra:
+            is_home_team: 1
+        - search:
+            name: Brisbane
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 12
+      venue:
+        name: SCG
+      start_time_utc: 2011-06-12T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Sydney
+          extra:
+            is_home_team: 1
+        - search:
+            name: Richmond
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 12
+      venue:
+        name: Subiaco Oval
+      start_time_utc: 2011-06-12T06:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Fremantle
+          extra:
+            is_home_team: 1
+        - search:
+            name: Essendon
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 12
+      venue:
+        name: MCG
+      start_time_utc: 2011-06-13T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Melbourne
+          extra:
+            is_home_team: 1
+        - search:
+            name: Collingwood
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 13
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-06-17T09:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Western Bulldogs
+          extra:
+            is_home_team: 1
+        - search:
+            name: Adelaide
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 13
+      venue:
+        name: York Park
+      start_time_utc: 2011-06-18T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Hawthorn
+          extra:
+            is_home_team: 1
+        - search:
+            name: Gold Coast
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 13
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-06-18T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Essendon
+          extra:
+            is_home_team: 1
+        - search:
+            name: North Melbourne
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 13
+      venue:
+        name: Gabba
+      start_time_utc: 2011-06-18T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Brisbane
+          extra:
+            is_home_team: 1
+        - search:
+            name: Richmond
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 13
+      venue:
+        name: MCG
+      start_time_utc: 2011-06-18T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: St Kilda
+          extra:
+            is_home_team: 1
+        - search:
+            name: Geelong
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 13
+      venue:
+        name: MCG
+      start_time_utc: 2011-06-19T03:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Melbourne
+          extra:
+            is_home_team: 1
+        - search:
+            name: Fremantle
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 13
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-06-19T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Carlton
+          extra:
+            is_home_team: 1
+        - search:
+            name: Sydney
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 13
+      venue:
+        name: Subiaco Oval
+      start_time_utc: 2011-06-19T06:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: West Coast
+          extra:
+            is_home_team: 1
+        - search:
+            name: Port Adelaide
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 14
+      venue:
+        name: MCG
+      start_time_utc: 2011-06-24T09:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Hawthorn
+          extra:
+            is_home_team: 1
+        - search:
+            name: Essendon
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 14
+      venue:
+        name: Gold Coast Stadium
+      start_time_utc: 2011-06-25T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Gold Coast
+          extra:
+            is_home_team: 1
+        - search:
+            name: Western Bulldogs
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 14
+      venue:
+        name: MCG
+      start_time_utc: 2011-06-25T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Richmond
+          extra:
+            is_home_team: 1
+        - search:
+            name: Melbourne
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 14
+      venue:
+        name: Stadium Australia
+      start_time_utc: 2011-06-25T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Sydney
+          extra:
+            is_home_team: 1
+        - search:
+            name: Collingwood
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 14
+      venue:
+        name: Subiaco Oval
+      start_time_utc: 2011-06-25T09:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Fremantle
+          extra:
+            is_home_team: 1
+        - search:
+            name: Brisbane
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 14
+      venue:
+        name: Kardinia Park
+      start_time_utc: 2011-06-26T03:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Geelong
+          extra:
+            is_home_team: 1
+        - search:
+            name: Adelaide
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 14
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-06-26T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Carlton
+          extra:
+            is_home_team: 1
+        - search:
+            name: West Coast
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 14
+      venue:
+        name: Football Park
+      start_time_utc: 2011-06-26T06:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Port Adelaide
+          extra:
+            is_home_team: 1
+        - search:
+            name: North Melbourne
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 15
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-07-01T09:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Western Bulldogs
+          extra:
+            is_home_team: 1
+        - search:
+            name: Melbourne
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 15
+      venue:
+        name: MCG
+      start_time_utc: 2011-07-02T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Richmond
+          extra:
+            is_home_team: 1
+        - search:
+            name: Carlton
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 15
+      venue:
+        name: Subiaco Oval
+      start_time_utc: 2011-07-02T05:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Fremantle
+          extra:
+            is_home_team: 1
+        - search:
+            name: Gold Coast
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 15
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-07-02T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Essendon
+          extra:
+            is_home_team: 1
+        - search:
+            name: Geelong
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 15
+      venue:
+        name: Football Park
+      start_time_utc: 2011-07-02T09:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Adelaide
+          extra:
+            is_home_team: 1
+        - search:
+            name: Sydney
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 15
+      venue:
+        name: Gabba
+      start_time_utc: 2011-07-03T03:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Brisbane
+          extra:
+            is_home_team: 1
+        - search:
+            name: Port Adelaide
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 15
+      venue:
+        name: MCG
+      start_time_utc: 2011-07-03T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Collingwood
+          extra:
+            is_home_team: 1
+        - search:
+            name: Hawthorn
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 15
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-07-03T06:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: North Melbourne
+          extra:
+            is_home_team: 1
+        - search:
+            name: St Kilda
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 16
+      venue:
+        name: Subiaco Oval
+      start_time_utc: 2011-07-08T10:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: West Coast
+          extra:
+            is_home_team: 1
+        - search:
+            name: Geelong
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 16
+      venue:
+        name: York Park
+      start_time_utc: 2011-07-09T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Hawthorn
+          extra:
+            is_home_team: 1
+        - search:
+            name: Brisbane
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 16
+      venue:
+        name: Gold Coast Stadium
+      start_time_utc: 2011-07-09T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Gold Coast
+          extra:
+            is_home_team: 1
+        - search:
+            name: Sydney
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 16
+      venue:
+        name: MCG
+      start_time_utc: 2011-07-09T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Essendon
+          extra:
+            is_home_team: 1
+        - search:
+            name: Richmond
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 16
+      venue:
+        name: MCG
+      start_time_utc: 2011-07-10T03:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Collingwood
+          extra:
+            is_home_team: 1
+        - search:
+            name: North Melbourne
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 16
+      venue:
+        name: Football Park
+      start_time_utc: 2011-07-10T05:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Port Adelaide
+          extra:
+            is_home_team: 1
+        - search:
+            name: St Kilda
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 16
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-07-10T06:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Western Bulldogs
+          extra:
+            is_home_team: 1
+        - search:
+            name: Carlton
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 17
+      venue:
+        name: Football Park
+      start_time_utc: 2011-07-15T10:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Adelaide
+          extra:
+            is_home_team: 1
+        - search:
+            name: Essendon
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 17
+      venue:
+        name: Cazaly's Stadium
+      start_time_utc: 2011-07-16T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Richmond
+          extra:
+            is_home_team: 1
+        - search:
+            name: Gold Coast
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 17
+      venue:
+        name: MCG
+      start_time_utc: 2011-07-16T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Carlton
+          extra:
+            is_home_team: 1
+        - search:
+            name: Collingwood
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 17
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-07-16T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: St Kilda
+          extra:
+            is_home_team: 1
+        - search:
+            name: West Coast
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 17
+      venue:
+        name: Marrara Oval
+      start_time_utc: 2011-07-16T10:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Melbourne
+          extra:
+            is_home_team: 1
+        - search:
+            name: Port Adelaide
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 17
+      venue:
+        name: SCG
+      start_time_utc: 2011-07-17T03:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Sydney
+          extra:
+            is_home_team: 1
+        - search:
+            name: Fremantle
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 17
+      venue:
+        name: Gabba
+      start_time_utc: 2011-07-17T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Brisbane
+          extra:
+            is_home_team: 1
+        - search:
+            name: Geelong
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 17
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-07-17T06:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: North Melbourne
+          extra:
+            is_home_team: 1
+        - search:
+            name: Western Bulldogs
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 18
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-07-22T09:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: St Kilda
+          extra:
+            is_home_team: 1
+        - search:
+            name: Adelaide
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 18
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-07-23T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: North Melbourne
+          extra:
+            is_home_team: 1
+        - search:
+            name: Brisbane
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 18
+      venue:
+        name: SCG
+      start_time_utc: 2011-07-23T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Sydney
+          extra:
+            is_home_team: 1
+        - search:
+            name: Western Bulldogs
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 18
+      venue:
+        name: Gold Coast Stadium
+      start_time_utc: 2011-07-23T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Gold Coast
+          extra:
+            is_home_team: 1
+        - search:
+            name: Collingwood
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 18
+      venue:
+        name: MCG
+      start_time_utc: 2011-07-23T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Essendon
+          extra:
+            is_home_team: 1
+        - search:
+            name: Carlton
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 18
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-07-24T03:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Geelong
+          extra:
+            is_home_team: 1
+        - search:
+            name: Richmond
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 18
+      venue:
+        name: MCG
+      start_time_utc: 2011-07-24T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Melbourne
+          extra:
+            is_home_team: 1
+        - search:
+            name: Hawthorn
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 18
+      venue:
+        name: Subiaco Oval
+      start_time_utc: 2011-07-24T06:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Fremantle
+          extra:
+            is_home_team: 1
+        - search:
+            name: West Coast
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 19
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-07-29T09:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: North Melbourne
+          extra:
+            is_home_team: 1
+        - search:
+            name: Carlton
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 19
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-07-30T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Western Bulldogs
+          extra:
+            is_home_team: 1
+        - search:
+            name: West Coast
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 19
+      venue:
+        name: Kardinia Park
+      start_time_utc: 2011-07-30T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Geelong
+          extra:
+            is_home_team: 1
+        - search:
+            name: Melbourne
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 19
+      venue:
+        name: Gold Coast Stadium
+      start_time_utc: 2011-07-30T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Gold Coast
+          extra:
+            is_home_team: 1
+        - search:
+            name: St Kilda
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 19
+      venue:
+        name: Subiaco Oval
+      start_time_utc: 2011-07-30T09:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Fremantle
+          extra:
+            is_home_team: 1
+        - search:
+            name: Hawthorn
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 19
+      venue:
+        name: MCG
+      start_time_utc: 2011-07-31T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Collingwood
+          extra:
+            is_home_team: 1
+        - search:
+            name: Essendon
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 19
+      venue:
+        name: Football Park
+      start_time_utc: 2011-07-31T06:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Adelaide
+          extra:
+            is_home_team: 1
+        - search:
+            name: Port Adelaide
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 20
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-08-05T09:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: St Kilda
+          extra:
+            is_home_team: 1
+        - search:
+            name: Fremantle
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 20
+      venue:
+        name: MCG
+      start_time_utc: 2011-08-06T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Carlton
+          extra:
+            is_home_team: 1
+        - search:
+            name: Melbourne
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 20
+      venue:
+        name: Kardinia Park
+      start_time_utc: 2011-08-06T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Geelong
+          extra:
+            is_home_team: 1
+        - search:
+            name: Gold Coast
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 20
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-08-06T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Essendon
+          extra:
+            is_home_team: 1
+        - search:
+            name: Sydney
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 20
+      venue:
+        name: Football Park
+      start_time_utc: 2011-08-06T09:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Port Adelaide
+          extra:
+            is_home_team: 1
+        - search:
+            name: Collingwood
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 20
+      venue:
+        name: Gabba
+      start_time_utc: 2011-08-07T03:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Brisbane
+          extra:
+            is_home_team: 1
+        - search:
+            name: Adelaide
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 20
+      venue:
+        name: York Park
+      start_time_utc: 2011-08-07T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Hawthorn
+          extra:
+            is_home_team: 1
+        - search:
+            name: North Melbourne
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 20
+      venue:
+        name: Subiaco Oval
+      start_time_utc: 2011-08-07T06:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: West Coast
+          extra:
+            is_home_team: 1
+        - search:
+            name: Richmond
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 21
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-08-12T09:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: St Kilda
+          extra:
+            is_home_team: 1
+        - search:
+            name: Collingwood
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 21
+      venue:
+        name: MCG
+      start_time_utc: 2011-08-13T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Hawthorn
+          extra:
+            is_home_team: 1
+        - search:
+            name: Port Adelaide
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 21
+      venue:
+        name: Subiaco Oval
+      start_time_utc: 2011-08-13T05:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Fremantle
+          extra:
+            is_home_team: 1
+        - search:
+            name: Carlton
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 21
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-08-13T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Western Bulldogs
+          extra:
+            is_home_team: 1
+        - search:
+            name: Essendon
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 21
+      venue:
+        name: Gabba
+      start_time_utc: 2011-08-13T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Brisbane
+          extra:
+            is_home_team: 1
+        - search:
+            name: Gold Coast
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 21
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-08-14T03:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Melbourne
+          extra:
+            is_home_team: 1
+        - search:
+            name: West Coast
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 21
+      venue:
+        name: MCG
+      start_time_utc: 2011-08-14T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Richmond
+          extra:
+            is_home_team: 1
+        - search:
+            name: Sydney
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 21
+      venue:
+        name: Football Park
+      start_time_utc: 2011-08-14T06:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Adelaide
+          extra:
+            is_home_team: 1
+        - search:
+            name: Geelong
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 22
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-08-19T09:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Carlton
+          extra:
+            is_home_team: 1
+        - search:
+            name: Hawthorn
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 22
+      venue:
+        name: Gold Coast Stadium
+      start_time_utc: 2011-08-20T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Gold Coast
+          extra:
+            is_home_team: 1
+        - search:
+            name: Adelaide
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 22
+      venue:
+        name: Subiaco Oval
+      start_time_utc: 2011-08-20T05:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: West Coast
+          extra:
+            is_home_team: 1
+        - search:
+            name: Essendon
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 22
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-08-20T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: North Melbourne
+          extra:
+            is_home_team: 1
+        - search:
+            name: Fremantle
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 22
+      venue:
+        name: MCG
+      start_time_utc: 2011-08-20T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Collingwood
+          extra:
+            is_home_team: 1
+        - search:
+            name: Brisbane
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 22
+      venue:
+        name: Stadium Australia
+      start_time_utc: 2011-08-21T03:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Sydney
+          extra:
+            is_home_team: 1
+        - search:
+            name: St Kilda
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 22
+      venue:
+        name: Football Park
+      start_time_utc: 2011-08-21T05:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Port Adelaide
+          extra:
+            is_home_team: 1
+        - search:
+            name: Western Bulldogs
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 22
+      venue:
+        name: MCG
+      start_time_utc: 2011-08-21T06:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Melbourne
+          extra:
+            is_home_team: 1
+        - search:
+            name: Richmond
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 23
+      venue:
+        name: Subiaco Oval
+      start_time_utc: 2011-08-26T10:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Fremantle
+          extra:
+            is_home_team: 1
+        - search:
+            name: Collingwood
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 23
+      venue:
+        name: MCG
+      start_time_utc: 2011-08-27T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Hawthorn
+          extra:
+            is_home_team: 1
+        - search:
+            name: Western Bulldogs
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 23
+      venue:
+        name: Kardinia Park
+      start_time_utc: 2011-08-27T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Geelong
+          extra:
+            is_home_team: 1
+        - search:
+            name: Sydney
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 23
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-08-27T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: St Kilda
+          extra:
+            is_home_team: 1
+        - search:
+            name: North Melbourne
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 23
+      venue:
+        name: Gabba
+      start_time_utc: 2011-08-27T09:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Brisbane
+          extra:
+            is_home_team: 1
+        - search:
+            name: West Coast
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 23
+      venue:
+        name: Football Park
+      start_time_utc: 2011-08-28T03:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Adelaide
+          extra:
+            is_home_team: 1
+        - search:
+            name: Richmond
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 23
+      venue:
+        name: MCG
+      start_time_utc: 2011-08-28T04:10:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Melbourne
+          extra:
+            is_home_team: 1
+        - search:
+            name: Gold Coast
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 23
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-08-28T06:40:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Essendon
+          extra:
+            is_home_team: 1
+        - search:
+            name: Port Adelaide
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 24
+      venue:
+        name: MCG
+      start_time_utc: 2011-09-02T00:00:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Carlton
+          extra:
+            is_home_team: 1
+        - search:
+            name: St Kilda
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 24
+      venue:
+        name: Football Park
+      start_time_utc: 2011-09-02T00:00:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Port Adelaide
+          extra:
+            is_home_team: 1
+        - search:
+            name: Melbourne
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 24
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-09-02T00:00:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Western Bulldogs
+          extra:
+            is_home_team: 1
+        - search:
+            name: Fremantle
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 24
+      venue:
+        name: SCG
+      start_time_utc: 2011-09-02T00:00:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Sydney
+          extra:
+            is_home_team: 1
+        - search:
+            name: Brisbane
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 24
+      venue:
+        name: Subiaco Oval
+      start_time_utc: 2011-09-02T00:00:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: West Coast
+          extra:
+            is_home_team: 1
+        - search:
+            name: Adelaide
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 24
+      venue:
+        name: MCG
+      start_time_utc: 2011-09-02T00:00:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Collingwood
+          extra:
+            is_home_team: 1
+        - search:
+            name: Geelong
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 24
+      venue:
+        name: Docklands Stadium
+      start_time_utc: 2011-09-02T00:00:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Richmond
+          extra:
+            is_home_team: 1
+        - search:
+            name: North Melbourne
+          extra:
+            is_home_team: 0
+  - create:
+      season: 2011
+      round: 24
+      venue:
+        name: Gold Coast Stadium
+      start_time_utc: 2011-09-02T00:00:00
+    add_many:
+      relation: teams
+      values:
+        - search:
+            name: Gold Coast
+          extra:
+            is_home_team: 1
+        - search:
+            name: Hawthorn
+          extra:
+            is_home_team: 0
