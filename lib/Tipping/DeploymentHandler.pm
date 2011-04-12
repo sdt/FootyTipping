@@ -62,15 +62,15 @@ sub prepare {
     my $trans = SQL::Translator->new(
         parser        => 'SQL::Translator::Parser::DBIx::Class',
         parser_args   => { package => $self->schema },
-        producer      => 'Diagram',
+        producer      => 'GraphViz',
         producer_args => {
             out_file         => 'sql/diagram-v' . $version . '.png',
             show_constraints => 1,
             show_datatypes   => 1,
             show_sizes       => 1,
-            show_fk_only     => 0,
             skip_tables      => [qw/ dbix_class_deploymenthandler_versions /],
-            add_color        => 1,
+            layout           => 'neato',
+            #directed         => 0,
         } );
 
     $trans->translate;
