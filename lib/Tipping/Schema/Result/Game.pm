@@ -59,14 +59,6 @@ __PACKAGE__->has_many(
     'game_id'
 );
 
-sub set_home_team {
-    my ($self, $team_name) = @_;
-
-    my $team = $self->schema->resultset('Team')->find({ name => $team_name });
-    $self->add_to_teams($team, { is_home_team => 1 });
-    return;
-}
-
 1;
 
 __END__

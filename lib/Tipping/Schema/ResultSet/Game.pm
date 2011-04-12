@@ -15,7 +15,7 @@ sub round {
 
 sub team {
     my ($self, $team) = @_;
-    return $self->teams->search(
+    return $self->search(
             { 'team.name' => $team },
             { prefetch => [qw/ team /] },
         );
