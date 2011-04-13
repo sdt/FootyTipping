@@ -49,6 +49,11 @@ __PACKAGE__->belongs_to(
     'team_id'
 );
 
+sub score {
+    my ($self) = @_;
+    return $self->goals * 6 + $self->behinds;
+}
+
 1;
 
 __END__

@@ -126,6 +126,67 @@ my $inject_scores = $finished_games->search(undef,
 );
 is($inject_scores->count, 3 * 8 * 2, 'Completed 3 rounds, 8 games, 2 teams');
 
+sub compute_ladder {
+    my $rs = $game_teams->search(
+            {
+                season           => 2011,
+                'game.has_ended' => 1,
+            },
+            {
+                prefetch => [qw/ team game      /],
+                order_by => [qw/ me.game_id     /],
+            }
+        );
+
+    my (%played, %points_for, %points_against, %premiership_points, %opponent);
+    while (my $game_team = $rs->next) {
+
+        $points_for{$game_team->team->name} += $game_team->score;
+        $played{$game_team->team->name}++;
+
+        my $opp_team = delete $opponent{$game_team->game->game_id};
+
+        if (defined $opp_team) {
+            $points_against{$game_team->team->name} += $opp_team->score;
+            $points_against{$opp_team->team->name} += $game_team->score;
+
+            if ($game_team->score > $opp_team->score) {
+                $premiership_points{$game_team->team->name} += 4;
+            }
+            elsif ($game_team->score < $opp_team->score) {
+                $premiership_points{$opp_team->team->name}  += 4;
+            }
+            else {
+                $premiership_points{$game_team->team->name} += 2;
+                $premiership_points{$opp_team->team->name}  += 2;
+            }
+        }
+        else {
+            $opponent{$game_team->game->game_id} = $game_team;
+            die if scalar keys %opponent > 1;
+        }
+    }
+
+    say STDERR "";
+
+    my %percentage;
+    for my $team (keys %points_for) {
+        $percentage{$team} = 100 * $points_for{$team} / $points_against{$team};
+        $premiership_points{$team} //= 0;
+    }
+
+    my @ladder = reverse sort {
+        ($premiership_points{$a} <=> $premiership_points{$b}) ||
+        ($percentage{$a} <=> $percentage{$b})
+    } keys %points_for;
+
+    for my $team (@ladder) {
+        printf STDERR ("%-16s %2d %5.1f%%\n", $team, $premiership_points{$team}, $percentage{$team});
+    }
+}
+
+&compute_ladder;
+
 =pod Trying to figure out how to compute a ladder
 my $winners = $inject_scores->search({},
     {
