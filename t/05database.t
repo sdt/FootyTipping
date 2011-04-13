@@ -138,32 +138,26 @@ sub compute_ladder {
             }
         );
 
-    my (%played, %points_for, %points_against, %premiership_points, %opponent);
-    while (my $game_team = $rs->next) {
+    my (%played, %points_for, %points_against, %premiership_points);
 
-        $points_for{$game_team->team->name} += $game_team->score;
-        $played{$game_team->team->name}++;
+    while (my $home = $rs->next) {
+        my $away = $rs->next;
 
-        my $opp_team = delete $opponent{$game_team->game->game_id};
+        my %opponent = (
+            $home => $away,
+            $away => $home,
+        );
+        for my $a ($home, $away) {
 
-        if (defined $opp_team) {
-            $points_against{$game_team->team->name} += $opp_team->score;
-            $points_against{$opp_team->team->name} += $game_team->score;
+            my $b = $opponent{$a};
 
-            if ($game_team->score > $opp_team->score) {
-                $premiership_points{$game_team->team->name} += 4;
-            }
-            elsif ($game_team->score < $opp_team->score) {
-                $premiership_points{$opp_team->team->name}  += 4;
-            }
-            else {
-                $premiership_points{$game_team->team->name} += 2;
-                $premiership_points{$opp_team->team->name}  += 2;
-            }
-        }
-        else {
-            $opponent{$game_team->game->game_id} = $game_team;
-            die if scalar keys %opponent > 1;
+            my $name = $a->team->name;
+
+            $played{$name}++;
+            $points_for{$name}         += $a->score;
+            $points_against{$name}     += $b->score;
+            $premiership_points{$name} += 2 * ( $a->score >  $b->score );
+            $premiership_points{$name} += 2 * ( $a->score >= $b->score );
         }
     }
 
@@ -172,7 +166,6 @@ sub compute_ladder {
     my %percentage;
     for my $team (keys %points_for) {
         $percentage{$team} = 100 * $points_for{$team} / $points_against{$team};
-        $premiership_points{$team} //= 0;
     }
 
     my @ladder = reverse sort {
