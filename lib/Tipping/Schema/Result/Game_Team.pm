@@ -80,6 +80,12 @@ possibility of directly representing byes.
 Originally the game table held two team_id fields, but this caused overly
 cumbersome queries.
 
+=head1 METHODS
+
+=head2 score
+
+Computes the total score from goals and behinds
+
 =head1 AUTHOR
 
 Stephen Thirlwall <sdt@dr.com>

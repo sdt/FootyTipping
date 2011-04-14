@@ -2,3 +2,6 @@ exclude = RequireUseStrict RequireUseWarnings RequireRcsKeywords RequirePodSecti
 
 [ControlStructures::ProhibitPostfixControls]
 flowcontrol = die say croak
+
+[ValuesAndExpressions::ProhibitMagicNumbers]
+allowed_values = 0 1 2 6

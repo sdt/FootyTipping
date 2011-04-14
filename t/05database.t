@@ -143,14 +143,9 @@ sub compute_ladder {
     while (my $home = $rs->next) {
         my $away = $rs->next;
 
-        my %opponent = (
-            $home => $away,
-            $away => $home,
-        );
         for my $a ($home, $away) {
 
-            my $b = $opponent{$a};
-
+            my $b = ($a == $home) ? $away : $home;
             my $name = $a->team->name;
 
             $played{$name}++;
@@ -163,35 +158,20 @@ sub compute_ladder {
 
     say STDERR "";
 
-    my %percentage;
-    for my $team (keys %points_for) {
-        $percentage{$team} = 100 * $points_for{$team} / $points_against{$team};
-    }
+    my %percentage = map { $_ => 100 * $points_for{$_} / $points_against{$_} }
+                     keys %played;
 
     my @ladder = reverse sort {
         ($premiership_points{$a} <=> $premiership_points{$b}) ||
         ($percentage{$a} <=> $percentage{$b})
-    } keys %points_for;
+    } keys %played;
 
     for my $team (@ladder) {
-        printf STDERR ("%-16s %2d %5.1f%%\n", $team, $premiership_points{$team}, $percentage{$team});
+        say STDERR sprintf('%-16s %2d %5.1f%%',
+            $team, $premiership_points{$team}, $percentage{$team});
     }
 }
 
 &compute_ladder;
-
-=pod Trying to figure out how to compute a ladder
-my $winners = $inject_scores->search({},
-    {
-        '+select' => [ { max => 'goals' } ],
-        '+as'     => [qw/ max_goals /],
-        group_by => [qw/ me.game_id /],
-        prefetch => [qw/ team /],
-    },
-);
-while (my $row = $winners->next) {
-    say STDERR join(" ", $row->team->name, $row->goals, $row->behinds, $row->score, 'max:', $row->get_column('max_goals'));
-}
-=cut
 
 done_testing();
