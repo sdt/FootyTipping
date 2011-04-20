@@ -521,3 +521,153 @@ update:
       relation: game
       values:
         has_ended: 1
+  - search:
+      game.round: 4
+      game.season: 2011
+      team.name: Richmond
+    update:
+      behinds: 12
+      goals: 13
+  - search:
+      game.round: 4
+      game.season: 2011
+      team.name: Collingwood
+    update:
+      behinds: 17
+      goals: 24
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 4
+      game.season: 2011
+      team.name: Carlton
+    update:
+      behinds: 13
+      goals: 11
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 4
+      game.season: 2011
+      team.name: Essendon
+    update:
+      behinds: 13
+      goals: 11
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 4
+      game.season: 2011
+      team.name: Hawthorn
+    update:
+      behinds: 12
+      goals: 10
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 4
+      game.season: 2011
+      team.name: West Coast
+    update:
+      behinds: 11
+      goals: 9
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 4
+      game.season: 2011
+      team.name: Port Adelaide
+    update:
+      behinds: 14
+      goals: 14
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 4
+      game.season: 2011
+      team.name: Adelaide
+    update:
+      behinds: 12
+      goals: 9
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 4
+      game.season: 2011
+      team.name: Sydney
+    update:
+      behinds: 12
+      goals: 7
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 4
+      game.season: 2011
+      team.name: Geelong
+    update:
+      behinds: 15
+      goals: 11
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 4
+      game.season: 2011
+      team.name: Gold Coast
+    update:
+      behinds: 15
+      goals: 9
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 4
+      game.season: 2011
+      team.name: Melbourne
+    update:
+      behinds: 21
+      goals: 23
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 4
+      game.season: 2011
+      team.name: Fremantle
+    update:
+      behinds: 19
+      goals: 18
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 4
+      game.season: 2011
+      team.name: North Melbourne
+    update:
+      behinds: 14
+      goals: 14
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
