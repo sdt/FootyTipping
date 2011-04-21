@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Thu Apr 21 21:11:16 2011
+-- Created on Thu Apr 21 22:13:10 2011
 -- 
 ;
 --
@@ -44,13 +44,13 @@ CREATE TABLE "tbl_team" (
 --
 CREATE TABLE "tbl_user" (
   "user_id" serial NOT NULL,
-  "user_name" character varying NOT NULL,
+  "username" character varying NOT NULL,
   "password" character varying NOT NULL,
   "real_name" character varying NOT NULL,
   "email" character varying NOT NULL,
   PRIMARY KEY ("user_id"),
   CONSTRAINT "tbl_user_real_name" UNIQUE ("real_name"),
-  CONSTRAINT "tbl_user_user_name" UNIQUE ("user_name")
+  CONSTRAINT "tbl_user_username" UNIQUE ("username")
 );
 
 ;

@@ -24,10 +24,10 @@ my $schema = Tipping::Schema->connect;
 $schema->txn_do(sub {
 
     my $user = $schema->resultset('User')->create({
-            user_name       => $username,
-            password        => $password,
-            real_name       => $realname,
-            email           => $email,
+            username  => $username,
+            password  => $password,
+            real_name => $realname,
+            email     => $email,
         });
 
     if (defined $team) {

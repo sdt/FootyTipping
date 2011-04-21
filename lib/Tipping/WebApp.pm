@@ -24,6 +24,8 @@ use Catalyst qw/
     Session::State::Cookie
     Session::Store::DBIC
     Static::Simple
+
+    +CatalystX::SimpleLogin
 /;
 
 extends 'Catalyst';
@@ -63,11 +65,15 @@ __PACKAGE__->config(
     },
 
     session => {
-        dbic_class  => 'DB::Session',
-        expires     => 60 * 60,
-        id_field    => 'session_id',
-        data_field  => 'session_data',
+        dbic_class      => 'DB::Session',
+        expires         => 60 * 60,
+        id_field        => 'session_id',
+        data_field      => 'session_data',
+        flash_to_stash  => 1,
     },
+
+    #'Controller::Login' => { traits => 'Login::WithRedirect', },
+    #'Contoller::Login' => { traits => 'Login::WithRedirect' }
 );
     # Finally, load up the config file stuff
 __PACKAGE__->config( Tipping::Config->config );

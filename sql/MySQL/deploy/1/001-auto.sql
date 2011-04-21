@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Thu Apr 21 21:11:16 2011
+-- Created on Thu Apr 21 22:13:11 2011
 -- 
 ;
 SET foreign_key_checks=0;
@@ -39,13 +39,13 @@ CREATE TABLE `tbl_team` (
 --
 CREATE TABLE `tbl_user` (
   `user_id` integer NOT NULL auto_increment,
-  `user_name` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `real_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE `tbl_user_real_name` (`real_name`),
-  UNIQUE `tbl_user_user_name` (`user_name`)
+  UNIQUE `tbl_user_username` (`username`)
 ) ENGINE=InnoDB;
 --
 -- Table: `tbl_venue`

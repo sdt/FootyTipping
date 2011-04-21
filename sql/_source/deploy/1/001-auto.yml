@@ -804,9 +804,9 @@ schema:
         - deferrable: 1
           expression: ''
           fields:
-            - user_name
+            - username
           match_type: ''
-          name: tbl_user_user_name
+          name: tbl_user_username
           on_delete: ''
           on_update: ''
           options: []
@@ -855,13 +855,13 @@ schema:
           order: 1
           size:
             - 0
-        user_name:
+        username:
           data_type: varchar
           default_value: ~
           is_nullable: 0
           is_primary_key: 0
           is_unique: 1
-          name: user_name
+          name: username
           order: 2
           size:
             - 0
@@ -1516,13 +1516,13 @@ translator:
               data_type: integer
               is_auto_increment: 1
               is_nullable: 0
-            user_name:
+            username:
               data_type: varchar
               is_nullable: 0
           _columns_info_loaded: 0
           _ordered_columns:
             - user_id
-            - user_name
+            - username
             - password
             - real_name
             - email
@@ -1573,8 +1573,8 @@ translator:
             primary: *10
             tbl_user_real_name:
               - real_name
-            tbl_user_user_name:
-              - user_name
+            tbl_user_username:
+              - username
           name: tbl_user
           result_class: Tipping::Schema::Result::User
           resultset_attributes: {}

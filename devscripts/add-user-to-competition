@@ -18,7 +18,7 @@ my $schema = Tipping::Schema->connect;
 $schema->txn_do(sub {
 
     my $user = $schema->resultset('User')->find({
-            user_name => $username
+            username => $username
         });
 
     my $competition = $schema->resultset('Competition')->find({

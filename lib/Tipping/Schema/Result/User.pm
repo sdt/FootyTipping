@@ -17,7 +17,7 @@ __PACKAGE__->add_columns(
         is_nullable         => 0,
     },
 
-    user_name => $string,
+    username  => $string,
     password  => $string,
     real_name => $string,
     email     => $string,
@@ -25,7 +25,7 @@ __PACKAGE__->add_columns(
 
 __PACKAGE__->set_primary_key('user_id');
 
-__PACKAGE__->add_unique_constraint([ qw/ user_name / ]);
+__PACKAGE__->add_unique_constraint([ qw/ username  / ]);
 __PACKAGE__->add_unique_constraint([ qw/ real_name / ]);
 
 __PACKAGE__->has_many(

@@ -3,7 +3,7 @@ use Modern::Perl;
 use Moose;
 use namespace::autoclean;
 
-BEGIN { extends 'Catalyst::Controller' }
+BEGIN { extends 'Catalyst::Controller::ActionRole' }
 
 #
 # Sets the actions in this controller to be registered with no prefix
@@ -56,6 +56,28 @@ Attempt to render a view, if needed.
 =cut
 
 sub end : ActionClass('RenderView') {}
+
+=head2 hello_user
+
+Login stub test thingy
+
+=cut
+
+sub hello_user : Local Does('NeedsLogin') {
+    my ( $self, $c ) = @_;
+    $c->response->body('<h2>Hello, ' . $c->user->real_name . '!</h2>');
+}
+
+=head2 hello_user
+
+Login stub test thingy
+
+=cut
+
+sub hello_user2 : Local Does('NeedsLogin') {
+    my ( $self, $c ) = @_;
+    $c->response->body('<h2>Hello2, ' . $c->user->real_name . '!</h2>');
+}
 
 =head1 AUTHOR
 
