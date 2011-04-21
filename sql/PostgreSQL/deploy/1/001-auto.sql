@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Tue Apr 12 10:44:16 2011
+-- Created on Thu Apr 21 21:11:16 2011
 -- 
 ;
 --
@@ -12,6 +12,17 @@ CREATE TABLE "tbl_competition" (
   "password" character varying,
   PRIMARY KEY ("competition_id"),
   CONSTRAINT "tbl_competition_name" UNIQUE ("name")
+);
+
+;
+--
+-- Table: tbl_session
+--
+CREATE TABLE "tbl_session" (
+  "session_id" character(72) NOT NULL,
+  "session_data" text,
+  "expires" integer,
+  PRIMARY KEY ("session_id")
 );
 
 ;

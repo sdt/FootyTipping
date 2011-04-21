@@ -192,7 +192,7 @@ schema:
           type: NORMAL
       name: tbl_competition_user
       options: []
-      order: 7
+      order: 8
     tbl_game:
       constraints:
         - deferrable: 1
@@ -290,7 +290,7 @@ schema:
           type: NORMAL
       name: tbl_game
       options: []
-      order: 5
+      order: 6
     tbl_game_team:
       constraints:
         - deferrable: 1
@@ -409,7 +409,56 @@ schema:
           type: NORMAL
       name: tbl_game_team
       options: []
-      order: 9
+      order: 10
+    tbl_session:
+      constraints:
+        - deferrable: 1
+          expression: ''
+          fields:
+            - session_id
+          match_type: ''
+          name: ''
+          on_delete: ''
+          on_update: ''
+          options: []
+          reference_fields: []
+          reference_table: ''
+          type: PRIMARY KEY
+      fields:
+        expires:
+          data_type: integer
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: expires
+          order: 3
+          size:
+            - 0
+        session_data:
+          data_type: text
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: session_data
+          order: 2
+          size:
+            - 0
+        session_id:
+          data_type: char
+          default_value: ~
+          is_nullable: 0
+          is_primary_key: 1
+          is_unique: 0
+          name: session_id
+          order: 1
+          size:
+            - 72
+      indices: []
+      name: tbl_session
+      options: []
+      order: 2
     tbl_team:
       constraints:
         - deferrable: 1
@@ -483,7 +532,7 @@ schema:
       indices: []
       name: tbl_team
       options: []
-      order: 2
+      order: 3
     tbl_team_supporter:
       constraints:
         - deferrable: 1
@@ -571,7 +620,7 @@ schema:
           type: NORMAL
       name: tbl_team_supporter
       options: []
-      order: 8
+      order: 9
     tbl_tip:
       constraints:
         - deferrable: 1
@@ -725,7 +774,7 @@ schema:
           type: NORMAL
       name: tbl_tip
       options: []
-      order: 10
+      order: 11
     tbl_user:
       constraints:
         - deferrable: 1
@@ -819,7 +868,7 @@ schema:
       indices: []
       name: tbl_user
       options: []
-      order: 3
+      order: 4
     tbl_venue:
       constraints:
         - deferrable: 1
@@ -881,7 +930,7 @@ schema:
       indices: []
       name: tbl_venue
       options: []
-      order: 4
+      order: 5
     tbl_venue_sponsorname:
       constraints:
         - deferrable: 1
@@ -960,7 +1009,7 @@ schema:
           type: NORMAL
       name: tbl_venue_sponsorname
       options: []
-      order: 6
+      order: 7
   triggers: {}
   views: {}
 translator:
@@ -975,6 +1024,7 @@ translator:
         Tipping::Schema::Result::Competition_User: Competition_User
         Tipping::Schema::Result::Game: Game
         Tipping::Schema::Result::Game_Team: Game_Team
+        Tipping::Schema::Result::Session: Session
         Tipping::Schema::Result::Team: Team
         Tipping::Schema::Result::Team_Supporter: Team_Supporter
         Tipping::Schema::Result::Tip: Tip
@@ -1233,6 +1283,35 @@ translator:
           schema: *1
           source_name: Game_Team
           sqlt_deploy_callback: default_sqlt_deploy_hook
+        Session: !!perl/hash:DBIx::Class::ResultSource::Table
+          _columns:
+            expires:
+              data_type: integer
+              is_nullable: 1
+            session_data:
+              data_type: text
+              is_nullable: 1
+            session_id:
+              data_type: char
+              is_nullable: 0
+              size: 72
+          _columns_info_loaded: 0
+          _ordered_columns:
+            - session_id
+            - session_data
+            - expires
+          _primaries: &6
+            - session_id
+          _relationships: {}
+          _unique_constraints:
+            primary: *6
+          name: tbl_session
+          result_class: Tipping::Schema::Result::Session
+          resultset_attributes: {}
+          resultset_class: DBIx::Class::ResultSet
+          schema: *1
+          source_name: Session
+          sqlt_deploy_callback: default_sqlt_deploy_hook
         Team: !!perl/hash:DBIx::Class::ResultSource::Table
           _columns:
             name:
@@ -1250,7 +1329,7 @@ translator:
             - team_id
             - name
             - nickname
-          _primaries: &6
+          _primaries: &7
             - team_id
           _relationships:
             game_teams:
@@ -1274,7 +1353,7 @@ translator:
                 foreign.team_id: self.team_id
               source: Tipping::Schema::Result::Team_Supporter
           _unique_constraints:
-            primary: *6
+            primary: *7
             tbl_team_name:
               - name
             tbl_team_nickname:
@@ -1298,7 +1377,7 @@ translator:
           _ordered_columns:
             - user_id
             - team_id
-          _primaries: &7
+          _primaries: &8
             - user_id
             - team_id
           _relationships:
@@ -1325,7 +1404,7 @@ translator:
                 foreign.team_id: self.team_id
               source: Tipping::Schema::Result::Team
           _unique_constraints:
-            primary: *7
+            primary: *8
             tbl_team_supporter_user_id:
               - user_id
           name: tbl_team_supporter
@@ -1363,7 +1442,7 @@ translator:
             - game_id
             - home_team_to_win
             - timestamp
-          _primaries: &8
+          _primaries: &9
             - tipper_id
             - competition_id
             - game_id
@@ -1414,7 +1493,7 @@ translator:
                 foreign.user_id: self.tipper_id
               source: Tipping::Schema::Result::User
           _unique_constraints:
-            primary: *8
+            primary: *9
           name: tbl_tip
           result_class: Tipping::Schema::Result::Tip
           resultset_attributes: {}
@@ -1447,7 +1526,7 @@ translator:
             - password
             - real_name
             - email
-          _primaries: &9
+          _primaries: &10
             - user_id
           _relationships:
             competition_users:
@@ -1491,7 +1570,7 @@ translator:
                 foreign.tipper_id: self.user_id
               source: Tipping::Schema::Result::Tip
           _unique_constraints:
-            primary: *9
+            primary: *10
             tbl_user_real_name:
               - real_name
             tbl_user_user_name:
@@ -1520,7 +1599,7 @@ translator:
             - venue_id
             - name
             - time_zone
-          _primaries: &10
+          _primaries: &11
             - venue_id
           _relationships:
             games:
@@ -1544,7 +1623,7 @@ translator:
                 foreign.venue_id: self.venue_id
               source: Tipping::Schema::Result::Venue_SponsorName
           _unique_constraints:
-            primary: *10
+            primary: *11
             tbl_venue_name:
               - name
           name: tbl_venue
@@ -1575,7 +1654,7 @@ translator:
             - name
             - start_year
             - end_year
-          _primaries: &11
+          _primaries: &12
             - venue_id
             - name
           _relationships:
@@ -1591,7 +1670,7 @@ translator:
                 foreign.venue_id: self.venue_id
               source: Tipping::Schema::Result::Venue
           _unique_constraints:
-            primary: *11
+            primary: *12
           name: tbl_venue_sponsorname
           result_class: Tipping::Schema::Result::Venue_SponsorName
           resultset_attributes: {}
@@ -1619,13 +1698,13 @@ translator:
             - version
             - ddl
             - upgrade_sql
-          _primaries: &12
+          _primaries: &13
             - id
           _relationships: {}
           _unique_constraints:
             dbix_class_deploymenthandler_versions_version:
               - version
-            primary: *12
+            primary: *13
           name: dbix_class_deploymenthandler_versions
           result_class: DBIx::Class::DeploymentHandler::VersionStorage::Standard::VersionResult
           resultset_attributes: {}
@@ -1642,12 +1721,12 @@ translator:
           - dbi:SQLite:sqlite.db
           - ~
           - ~
-          - &13
+          - &14
             AutoCommit: 1
             PrintError: 0
             RaiseError: 1
             ShowErrorStatement: 1
-        _dbic_connect_attributes: *13
+        _dbic_connect_attributes: *14
         _in_dbh_do: 0
         _sql_maker: ~
         _sql_maker_opts: {}
@@ -1661,10 +1740,11 @@ translator:
       - Competition_User
       - User
       - Game
+      - Session
       - Game_Team
-      - Team_Supporter
       - Tip
       - Venue_SponsorName
+      - Team_Supporter
   parser_type: SQL::Translator::Parser::DBIx::Class
   producer_args: {}
   producer_type: SQL::Translator::Producer::YAML

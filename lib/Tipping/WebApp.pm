@@ -20,6 +20,9 @@ use Tipping::Config ();
 
 use Catalyst qw/
     Authentication
+    Session
+    Session::State::Cookie
+    Session::Store::DBIC
     Static::Simple
 /;
 
@@ -59,9 +62,15 @@ __PACKAGE__->config(
         },
     },
 
-    # Finally, load up the config file stuff
-    { Tipping::Config->config }
+    session => {
+        dbic_class  => 'DB::Session',
+        expires     => 60 * 60,
+        id_field    => 'session_id',
+        data_field  => 'session_data',
+    },
 );
+    # Finally, load up the config file stuff
+__PACKAGE__->config( Tipping::Config->config );
 
 # Start the application
 __PACKAGE__->setup();

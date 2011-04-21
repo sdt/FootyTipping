@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Tue Apr 12 10:44:16 2011
+-- Created on Thu Apr 21 21:11:16 2011
 -- 
 ;
 SET foreign_key_checks=0;
@@ -14,6 +14,15 @@ CREATE TABLE `tbl_competition` (
   PRIMARY KEY (`competition_id`),
   UNIQUE `tbl_competition_name` (`name`)
 ) ENGINE=InnoDB;
+--
+-- Table: `tbl_session`
+--
+CREATE TABLE `tbl_session` (
+  `session_id` char(72) NOT NULL,
+  `session_data` text,
+  `expires` integer,
+  PRIMARY KEY (`session_id`)
+);
 --
 -- Table: `tbl_team`
 --
