@@ -19,6 +19,7 @@ use Tipping::Config ();
 #                 directory
 
 use Catalyst qw/
+    Authentication
     Static::Simple
 /;
 
@@ -36,19 +37,35 @@ our $VERSION = '0.01';
 # local deployment.
 
 __PACKAGE__->config(
-    Tipping::Config->config
-);
-
-__PACKAGE__->config(
     name => 'Tipping',
+
     # Disable deprecated behavior needed by old applications
     disable_component_resolution_regex_fallback => 1,
+
+    authentication => {
+        default_realm => 'database',
+        realms => {
+            database => {
+                credential => {
+                    class => 'Password',
+                    password_field => 'password',
+                    password_type => 'clear', #TODO: sha-1
+                },
+                store => {
+                    class => 'DBIx::Class',
+                    user_model => 'DB::User',
+                },
+            },
+        },
+    },
+
+    # Finally, load up the config file stuff
+    { Tipping::Config->config }
 );
 
 # Start the application
 __PACKAGE__->setup();
 
-__PACKAGE__->meta->make_immutable;
 1;
 
 __END__

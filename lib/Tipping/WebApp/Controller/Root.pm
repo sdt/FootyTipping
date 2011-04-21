@@ -30,8 +30,16 @@ The root page (/)
 sub index :Path :Args(0) {      ## no critic (ProhibitBuiltinHomonyms)
     my ( $self, $c ) = @_;
 
-    # Hello World
-    $c->response->body( $c->welcome_message );
+    if ($c->authenticate({
+            user_name => 'user00',
+            password => 'pass00'
+        })) {
+        $c->response->body('Hello, ' . $c->user->real_name);
+    }
+    else {
+        # Hello World
+        $c->response->body( $c->welcome_message );
+    }
     return;
 }
 
