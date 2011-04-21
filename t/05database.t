@@ -109,22 +109,14 @@ for my $id (1 .. $num_users) {
 
 my $finished_games = $game_teams->search(
     {
+        'game.round' => { '<=' => 3 },
         'game.has_ended' => 1,
     },
     {
         prefetch => [qw/ game /],
     }
 );
-is($finished_games->count, 3 * 8 * 2, 'Completed 3 rounds, 8 games, 2 teams');
-
-my $inject_scores = $finished_games->search(undef,
-    {
-        '+select' => [ { max => \'goals * 6 + behinds', -as => 'points' } ],
-        '+as'     => [qw/ score /],
-        group_by => [qw/ me.game_id me.team_id /],
-    }
-);
-is($inject_scores->count, 3 * 8 * 2, 'Completed 3 rounds, 8 games, 2 teams');
+is($finished_games->count, 3 * 8 * 2, 'Completed 4 rounds, 8 games, 2 teams');
 
 sub compute_ladder {
     my $rs = $game_teams->search(

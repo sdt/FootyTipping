@@ -66,7 +66,7 @@ __PACKAGE__->config(
 
     session => {
         dbic_class      => 'DB::Session',
-        expires         => 60 * 60,
+        expires         => 60 * 60,         ## no critic (ProhibitMagicNumbers)
         id_field        => 'session_id',
         data_field      => 'session_data',
         flash_to_stash  => 1,

@@ -66,9 +66,10 @@ Login stub test thingy
 sub hello_user : Local Does('NeedsLogin') {
     my ( $self, $c ) = @_;
     $c->response->body('<h2>Hello, ' . $c->user->real_name . '!</h2>');
+    return;
 }
 
-=head2 hello_user
+=head2 hello_user2
 
 Login stub test thingy
 
@@ -77,6 +78,7 @@ Login stub test thingy
 sub hello_user2 : Local Does('NeedsLogin') {
     my ( $self, $c ) = @_;
     $c->response->body('<h2>Hello2, ' . $c->user->real_name . '!</h2>');
+    return;
 }
 
 =head1 AUTHOR
