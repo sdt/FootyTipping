@@ -1,7 +1,6 @@
 package Tipping::WebApp::View::HTML;
 
-use strict;
-use warnings;
+use Modern::Perl;
 
 use base 'Catalyst::View::TT';
 
