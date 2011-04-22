@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Thu Apr 21 22:13:09 2011
+-- Created on Fri Apr 22 13:24:27 2011
 -- 
 
 ;
@@ -39,9 +39,9 @@ CREATE UNIQUE INDEX tbl_team_nickname ON tbl_team (nickname);
 CREATE TABLE tbl_user (
   user_id INTEGER PRIMARY KEY NOT NULL,
   username varchar NOT NULL,
-  password varchar NOT NULL,
   real_name varchar NOT NULL,
-  email varchar NOT NULL
+  email varchar NOT NULL,
+  password char(50)
 );
 CREATE UNIQUE INDEX tbl_user_real_name ON tbl_user (real_name);
 CREATE UNIQUE INDEX tbl_user_username ON tbl_user (username);

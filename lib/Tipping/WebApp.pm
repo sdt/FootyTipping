@@ -52,12 +52,12 @@ __PACKAGE__->config(
         realms => {
             database => {
                 credential => {
-                    class => 'Password',
+                    class          => 'Password',
                     password_field => 'password',
-                    password_type => 'clear', #TODO: sha-1
+                    password_type  => 'self_check',
                 },
                 store => {
-                    class => 'DBIx::Class',
+                    class      => 'DBIx::Class',
                     user_model => 'DB::User',
                 },
             },

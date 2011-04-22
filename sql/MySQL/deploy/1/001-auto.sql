@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Thu Apr 21 22:13:11 2011
+-- Created on Fri Apr 22 13:24:28 2011
 -- 
 ;
 SET foreign_key_checks=0;
@@ -40,9 +40,9 @@ CREATE TABLE `tbl_team` (
 CREATE TABLE `tbl_user` (
   `user_id` integer NOT NULL auto_increment,
   `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
   `real_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `password` char(50),
   PRIMARY KEY (`user_id`),
   UNIQUE `tbl_user_real_name` (`real_name`),
   UNIQUE `tbl_user_username` (`username`)

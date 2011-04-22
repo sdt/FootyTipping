@@ -8,7 +8,7 @@ my $string = {
     is_nullable         => 0,
 };
 
-__PACKAGE__->load_components('Core');
+__PACKAGE__->load_components(qw/ EncodedColumn Core /);
 __PACKAGE__->table('tbl_user');
 __PACKAGE__->add_columns(
     user_id => {
@@ -18,9 +18,23 @@ __PACKAGE__->add_columns(
     },
 
     username  => $string,
-    password  => $string,
     real_name => $string,
     email     => $string,
+
+    password => {
+        data_type           => 'char',
+        size                => 50,
+        is_nullable         => 0,
+
+        encode_column       => 1,
+        encode_class        => 'Digest',
+        encode_check_method => 'check_password',
+        encode_args         => {
+            algorithm   => 'SHA-1',
+            format      => 'hex',
+            salt_length => 10
+        },
+    },
 );
 
 __PACKAGE__->set_primary_key('user_id');
