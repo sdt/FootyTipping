@@ -6,7 +6,13 @@ use warnings;
 use base 'Catalyst::View::TT';
 
 __PACKAGE__->config(
+    INCLUDE_PATH => [
+        Tipping::WebApp->path_to('root', 'src'),
+    ],
+
     TEMPLATE_EXTENSION => '.tt',
+    WRAPPER => 'wrapper.tt',
+
     render_die => 1,
 );
 
