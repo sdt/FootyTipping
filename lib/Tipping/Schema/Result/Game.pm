@@ -59,6 +59,18 @@ __PACKAGE__->has_many(
     'game_id'
 );
 
+__PACKAGE__->has_one(
+    home => 'Tipping::Schema::Result::Game_Team',
+    'game_id',
+    { where => { 'is_home_team' => 1 } },
+);
+
+__PACKAGE__->has_one(
+    away => 'Tipping::Schema::Result::Game_Team',
+    'game_id',
+    { where => { 'is_home_team' => 0 } },
+);
+
 1;
 
 __END__
