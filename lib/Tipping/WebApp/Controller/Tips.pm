@@ -17,18 +17,11 @@ sub tips :Chained('/') :PathPath('tips') :CaptureArgs(2) {
 sub games :Chained('tips') :PathPart('') :CaptureArgs(0) {
     my ($self, $c) = @_;
 
-    my $game_rs = $c->model('DB::Game')->search(
+    my $game_rs = $c->model('DB::Game')->games->search(
         {
             'season' => $c->stash->{season},
             'round'  => $c->stash->{round},
-            'home.is_home_team' => 1,
-            'away.is_home_team' => 0,
-        },
-        {
-            prefetch => [qw/ venue /, { home => 'team' }, { away => 'team' }],
-            join     => [qw/ venue home away /],
-        },
-    );
+        });
     my @games;
     while (my $game = $game_rs->next) {
         push(@games, {

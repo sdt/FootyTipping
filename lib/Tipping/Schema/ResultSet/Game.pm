@@ -13,12 +13,18 @@ sub round {
     return $self->search({ round => $round });
 }
 
-sub team {
-    my ($self, $team) = @_;
+sub games {
+    my ($self) = @_;
     return $self->search(
-            { 'team.name' => $team },
-            { prefetch => [qw/ team /] },
-        );
+        {
+            'home.is_home_team' => 1,
+            'away.is_home_team' => 0,
+        },
+        {
+            prefetch => [qw/ venue /, { home => 'team' }, { away => 'team' }],
+            join     => [qw/ venue home away /],
+        },
+    );
 }
 
 sub has_ended {
@@ -48,9 +54,10 @@ Filter the game table by season.
 
 Filter the game table by round.
 
-=head2 home_team ($home_team_name)
+=head2 games
 
-Filter the game table by home team's name.
+Do the necessary joins and prefetches to get the home and away teams included.
+Populates the home and away relationships on game.
 
 =head2 team ($team_name)
 
@@ -59,11 +66,6 @@ Filter the game table by team name - finds both home and away games.
 =head2 has_ended ($bool)
 
 Filter the game table by games which have ended (or not).
-
-=head2 with_scores ()
-
-Injects two extra virtual columns into the resultset - home_team_score and
-away_team_score.
 
 =head1 AUTHOR
 
