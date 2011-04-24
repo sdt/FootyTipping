@@ -5,7 +5,15 @@
         <link rel="stylesheet" href="/static/style.css" media="all">
     </head>
     <body>
-<h1>[% page.title %]</h1>
+
+<div id="header">
+[% IF c.user; %]
+    Hello, [% c.user.username %]. <a href="[% c.uri_for('/logout') %]">Log Out</a>
+[% END; %]
+</div>
+
+<div id="content">
 [% content %]
+</div>
     </body>
 </html>

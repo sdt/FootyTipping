@@ -5,6 +5,7 @@ use Test::More;
 
 use Catalyst::Test 'Tipping::WebApp';
 
-ok( request('/')->is_success, 'Request should succeed' );
+ok( request('/')->is_redirect,      'Root request should redirect' );
+ok( request('/login')->is_success,  'Login request should succeed' );
 
 done_testing();

@@ -30,7 +30,9 @@ The root page (/)
 sub index :Path :Args(0) {      ## no critic (ProhibitBuiltinHomonyms)
     my ( $self, $c ) = @_;
 
-    # Hello World
+    if (not $c->user_exists) {
+        $c->response->redirect($c->uri_for('/login'));
+    }
     $c->response->body( $c->welcome_message );
 
     return;
@@ -56,30 +58,6 @@ Attempt to render a view, if needed.
 =cut
 
 sub end : ActionClass('RenderView') {}
-
-=head2 hello_user
-
-Login stub test thingy
-
-=cut
-
-sub hello_user : Local Does('NeedsLogin') {
-    my ( $self, $c ) = @_;
-    $c->response->body('<h2>Hello, ' . $c->user->real_name . '!</h2>');
-    return;
-}
-
-=head2 hello_user2
-
-Login stub test thingy
-
-=cut
-
-sub hello_user2 : Local Does('NeedsLogin') {
-    my ( $self, $c ) = @_;
-    $c->response->body('<h2>Hello2, ' . $c->user->real_name . '!</h2>');
-    return;
-}
 
 =head1 AUTHOR
 

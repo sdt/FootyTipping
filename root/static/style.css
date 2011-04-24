@@ -10,3 +10,7 @@ body {
     border-color: red;
     border-style: inset;
 }
+
+#rounds li {
+    display: inline;
+}
