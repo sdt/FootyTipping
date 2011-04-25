@@ -15,15 +15,5 @@ GetOptions(-autohelp => sub {
     });
 
 my $schema = Tipping::Schema->connect;
-$schema->txn_do(sub {
-
-    my $user = $schema->resultset('User')->find({
-            username => $username
-        });
-
-    my $competition = $schema->resultset('Competition')->find({
-            name => $compname
-        });
-
-    $user->add_to_competitions($competition);
-});
+$schema->resultset('User')->find({ username => $username})
+                          ->add_to_competitions({ name => $compname });

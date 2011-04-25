@@ -1,0 +1,46 @@
+#!/bin/bash
+
+set -e
+
+# First up, reset/create the database
+
+if grep -q dbi:SQLite tipping.yml; then
+
+    rm -f sqlite.db
+
+elif grep -q dbi:Pg tipping.yml; then
+
+    export PGUSER=tipping
+    export PGPASSWORD=tipping
+    dropdb -h localhost tipping
+    createdb -h localhost -E utf8 tipping
+    #psql -h localhost tipping "ALTER USER tipping SET Client_min_messages='warning'"
+
+elif grep -q dbi:mysql tipping.yml; then
+
+    mysqladmin -f -u tipping --password=tipping drop tipping
+    mysqladmin -u tipping --password=tipping create tipping
+
+else
+    echo Cannot determine database
+    exit 1
+fi
+
+# Deploy the schema
+./script/tipping_db_update.pl
+
+create_user() {
+    local i=$1
+    ./devscripts/create-user --username user$i --password pass$i --email user$i@nftatips.org --realname "User $i"
+}
+
+# Now add some extra stuff
+for i in `seq 0 1`; do
+    ./devscripts/create-competition --name comp0$i
+done
+for i in `seq -w 0 9`; do
+    create_user $i
+    for j in `seq 0 1`; do
+        ./devscripts/add-user-to-competition --username user$i --compname comp0$j
+    done
+done
