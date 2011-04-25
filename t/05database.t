@@ -118,6 +118,28 @@ my $finished_games = $game_teams->search(
 );
 is($finished_games->count, 3 * 8 * 2, 'Completed 4 rounds, 8 games, 2 teams');
 
+my $round1_expected = [
+    [ 'Carlton',     'Richmond',         'MCG' ],
+    [ 'Geelong',     'St Kilda',         'MCG' ],
+    [ 'Collingwood', 'Port Adelaide',    'Docklands Stadium' ],
+    [ 'Brisbane',    'Fremantle',        'Gabba' ],
+    [ 'Adelaide',    'Hawthorn',         'Football Park' ],
+    [ 'Essendon',    'Western Bulldogs', 'Docklands Stadium' ],
+    [ 'Melbourne',   'Sydney',           'MCG' ],
+    [ 'West Coast',  'North Melbourne',  'Subiaco Oval' ],
+];
+my @round1_got = ();
+my $round1_rs = $games->round(1)->games;
+while (my $game = $round1_rs->next) {
+    push(@round1_got, [
+            $game->home->team->name,
+            $game->away->team->name,
+            $game->venue->name,
+        ]);
+}
+eq_or_diff($round1_expected, \@round1_got, 'Round 1 2011 is correct');
+
+=pod
 sub compute_ladder {
     my $rs = $game_teams->search(
             {
@@ -165,5 +187,6 @@ sub compute_ladder {
 }
 
 &compute_ladder;
+=cut
 
 done_testing();

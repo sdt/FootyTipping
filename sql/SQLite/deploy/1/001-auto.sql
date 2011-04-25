@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Sun Apr 24 10:14:22 2011
+-- Created on Mon Apr 25 09:04:54 2011
 -- 
 
 ;
@@ -62,7 +62,7 @@ CREATE TABLE tbl_game (
   season integer NOT NULL,
   round integer NOT NULL,
   venue_id integer NOT NULL,
-  start_time_utc timestamp NOT NULL,
+  start_time_utc datetime NOT NULL,
   has_ended boolean NOT NULL DEFAULT '0'
 );
 CREATE INDEX tbl_game_idx_venue_id ON tbl_game (venue_id);
@@ -126,7 +126,7 @@ CREATE TABLE tbl_tip (
   competition_id integer NOT NULL,
   game_id integer NOT NULL,
   home_team_to_win boolean NOT NULL,
-  timestamp timestamp NOT NULL,
+  timestamp datetime NOT NULL,
   PRIMARY KEY (tipper_id, competition_id, game_id, timestamp)
 );
 CREATE INDEX tbl_tip_idx_competition_id ON tbl_tip (competition_id);

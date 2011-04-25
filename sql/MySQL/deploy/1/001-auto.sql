@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Sun Apr 24 10:14:23 2011
+-- Created on Mon Apr 25 09:04:55 2011
 -- 
 ;
 SET foreign_key_checks=0;
@@ -65,7 +65,7 @@ CREATE TABLE `tbl_game` (
   `season` integer NOT NULL,
   `round` integer NOT NULL,
   `venue_id` integer NOT NULL,
-  `start_time_utc` timestamp NOT NULL,
+  `start_time_utc` datetime NOT NULL,
   `has_ended` enum('0','1') NOT NULL DEFAULT '0',
   INDEX `tbl_game_idx_venue_id` (`venue_id`),
   PRIMARY KEY (`game_id`),
@@ -126,7 +126,7 @@ CREATE TABLE `tbl_game_team` (
   INDEX `tbl_game_team_idx_team_id` (`team_id`),
   PRIMARY KEY (`game_id`, `team_id`),
   UNIQUE `tbl_game_team_game_id_is_home_team` (`game_id`, `is_home_team`),
-  CONSTRAINT `tbl_game_team_fk_game_id` FOREIGN KEY (`game_id`) REFERENCES `tbl_game` (`game_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tbl_game_team_fk_game_id` FOREIGN KEY (`game_id`) REFERENCES `tbl_game` (`game_id`) ON DELETE CASCADE,
   CONSTRAINT `tbl_game_team_fk_team_id` FOREIGN KEY (`team_id`) REFERENCES `tbl_team` (`team_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 --
@@ -138,7 +138,7 @@ CREATE TABLE `tbl_tip` (
   `competition_id` integer NOT NULL,
   `game_id` integer NOT NULL,
   `home_team_to_win` enum('0','1') NOT NULL,
-  `timestamp` timestamp NOT NULL,
+  `timestamp` datetime NOT NULL,
   INDEX `tbl_tip_idx_competition_id` (`competition_id`),
   INDEX `tbl_tip_idx_game_id` (`game_id`),
   INDEX `tbl_tip_idx_submitter_id` (`submitter_id`),

@@ -8,7 +8,7 @@ my $foreign_key = {
     is_nullable         => 0,
 };
 
-__PACKAGE__->load_components('Core');
+__PACKAGE__->load_components(qw/ TimeStamp Core /);
 __PACKAGE__->table('tbl_tip');
 __PACKAGE__->add_columns(
     tipper_id        => $foreign_key,
@@ -21,7 +21,7 @@ __PACKAGE__->add_columns(
         is_nullable => 0,
     },
     timestamp        => {
-        data_type       => 'timestamp',
+        data_type       => 'datetime',
         set_on_create   => 1,
     },
 );

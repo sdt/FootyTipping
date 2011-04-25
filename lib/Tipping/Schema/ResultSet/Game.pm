@@ -23,6 +23,7 @@ sub games {
         {
             prefetch => [qw/ venue /, { home => 'team' }, { away => 'team' }],
             join     => [qw/ venue home away /],
+            order_by => [qw/ me.start_time_utc /],
         },
     );
 }

@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Sun Apr 24 10:14:22 2011
+-- Created on Mon Apr 25 09:04:55 2011
 -- 
 ;
 --
@@ -188,7 +188,7 @@ ALTER TABLE "tbl_team_supporter" ADD FOREIGN KEY ("team_id")
 
 ;
 ALTER TABLE "tbl_game_team" ADD FOREIGN KEY ("game_id")
-  REFERENCES "tbl_game" ("game_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
+  REFERENCES "tbl_game" ("game_id") ON DELETE CASCADE DEFERRABLE;
 
 ;
 ALTER TABLE "tbl_game_team" ADD FOREIGN KEY ("team_id")

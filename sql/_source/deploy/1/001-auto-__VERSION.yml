@@ -223,11 +223,11 @@ translator:
               data_type: integer
               is_nullable: 0
             start_time_utc:
-              _ic_dt_method: timestamp
+              _ic_dt_method: datetime
               _inflate_info:
                 deflate: !!perl/code '{ "DUMMY" }'
                 inflate: !!perl/code '{ "DUMMY" }'
-              data_type: timestamp
+              data_type: datetime
               is_nullable: 0
             venue_id:
               data_type: integer
@@ -243,12 +243,34 @@ translator:
           _primaries: &4
             - game_id
           _relationships:
+            away:
+              attrs:
+                accessor: single
+                cascade_delete: 1
+                cascade_update: 1
+                where:
+                  is_home_team: 0
+              class: Tipping::Schema::Result::Game_Team
+              cond:
+                foreign.game_id: self.game_id
+              source: Tipping::Schema::Result::Game_Team
             game_teams:
               attrs:
                 accessor: multi
                 cascade_copy: 1
                 cascade_delete: 1
                 join_type: LEFT
+              class: Tipping::Schema::Result::Game_Team
+              cond:
+                foreign.game_id: self.game_id
+              source: Tipping::Schema::Result::Game_Team
+            home:
+              attrs:
+                accessor: single
+                cascade_delete: 1
+                cascade_update: 1
+                where:
+                  is_home_team: 1
               class: Tipping::Schema::Result::Game_Team
               cond:
                 foreign.game_id: self.game_id
@@ -493,8 +515,12 @@ translator:
               data_type: integer
               is_nullable: 0
             timestamp:
-              data_type: timestamp
-              set_on_create: 1
+              _ic_dt_method: datetime
+              _inflate_info:
+                deflate: !!perl/code '{ "DUMMY" }'
+                inflate: !!perl/code '{ "DUMMY" }'
+              data_type: datetime
+              dynamic_default_on_create: get_timestamp
             tipper_id:
               data_type: integer
               is_nullable: 0

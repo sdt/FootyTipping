@@ -24,7 +24,7 @@ __PACKAGE__->add_columns(
         is_nullable         => 0,
     },
     start_time_utc => {
-        data_type           => 'timestamp',
+        data_type           => 'datetime',
         is_nullable         => 0,
     },
     has_ended   => {
