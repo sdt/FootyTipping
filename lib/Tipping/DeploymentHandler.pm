@@ -30,7 +30,7 @@ sub _build__deployment_handler { ## no critic (ProhibitUnusedPrivateSubroutines)
     my $dh = DBIx::Class::DeploymentHandler->new( {
         schema              => $self->schema,
         databases           => [qw/ SQLite PostgreSQL MySQL /],
-        sql_translator_args => { add_drop_table => 1, },
+        sql_translator_args => { add_drop_table => 0 },
         force_overwrite     => 1,
         #script_directory    => module_dir('Tipping::DeploymentHandler'),
     } );

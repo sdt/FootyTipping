@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Mon Apr 25 20:22:18 2011
+-- Created on Mon Apr 25 20:47:05 2011
 -- 
 
 ;
@@ -8,7 +8,6 @@ BEGIN TRANSACTION;
 --
 -- Table: dbix_class_deploymenthandler_versions
 --
-DROP TABLE dbix_class_deploymenthandler_versions;
 CREATE TABLE dbix_class_deploymenthandler_versions (
   id INTEGER PRIMARY KEY NOT NULL,
   version varchar(50) NOT NULL,

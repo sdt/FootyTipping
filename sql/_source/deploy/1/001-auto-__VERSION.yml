@@ -77,7 +77,7 @@ schema:
   triggers: {}
   views: {}
 translator:
-  add_drop_table: 1
+  add_drop_table: 0
   filename: ~
   no_comments: 0
   parser_args:
@@ -812,18 +812,24 @@ translator:
           sqlt_deploy_callback: default_sqlt_deploy_hook
       storage: !!perl/hash:DBIx::Class::Storage::DBI
         _connect_info:
-          - dsn: dbi:SQLite:sqlite.db
+          - AutoCommit: 1
+            RaiseError: 1
+            dsn: dbi:Pg:dbname=tipping;host=localhost
+            password: tipping
+            pg_enable_utf8: 1
+            user: tipping
         _dbh_details: {}
         _dbh_gen: 0
         _dbi_connect_info:
-          - dbi:SQLite:sqlite.db
-          - ~
-          - ~
+          - dbi:Pg:dbname=tipping;host=localhost
+          - tipping
+          - tipping
           - &14
             AutoCommit: 1
             PrintError: 0
             RaiseError: 1
             ShowErrorStatement: 1
+            pg_enable_utf8: 1
         _dbic_connect_attributes: *14
         _in_dbh_do: 0
         _sql_maker: ~

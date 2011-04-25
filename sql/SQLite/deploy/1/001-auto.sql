@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Mon Apr 25 20:22:17 2011
+-- Created on Mon Apr 25 20:47:04 2011
 -- 
 
 ;
@@ -8,7 +8,6 @@ BEGIN TRANSACTION;
 --
 -- Table: tbl_competition
 --
-DROP TABLE tbl_competition;
 CREATE TABLE tbl_competition (
   competition_id INTEGER PRIMARY KEY NOT NULL,
   name varchar NOT NULL,
@@ -18,7 +17,6 @@ CREATE UNIQUE INDEX tbl_competition_name ON tbl_competition (name);
 --
 -- Table: tbl_session
 --
-DROP TABLE tbl_session;
 CREATE TABLE tbl_session (
   session_id char(72) NOT NULL,
   session_data text,
@@ -28,7 +26,6 @@ CREATE TABLE tbl_session (
 --
 -- Table: tbl_team
 --
-DROP TABLE tbl_team;
 CREATE TABLE tbl_team (
   team_id INTEGER PRIMARY KEY NOT NULL,
   name varchar NOT NULL,
@@ -39,7 +36,6 @@ CREATE UNIQUE INDEX tbl_team_nickname ON tbl_team (nickname);
 --
 -- Table: tbl_user
 --
-DROP TABLE tbl_user;
 CREATE TABLE tbl_user (
   user_id INTEGER PRIMARY KEY NOT NULL,
   username varchar NOT NULL,
@@ -52,7 +48,6 @@ CREATE UNIQUE INDEX tbl_user_username ON tbl_user (username);
 --
 -- Table: tbl_venue
 --
-DROP TABLE tbl_venue;
 CREATE TABLE tbl_venue (
   venue_id INTEGER PRIMARY KEY NOT NULL,
   name varchar NOT NULL,
@@ -62,7 +57,6 @@ CREATE UNIQUE INDEX tbl_venue_name ON tbl_venue (name);
 --
 -- Table: tbl_game
 --
-DROP TABLE tbl_game;
 CREATE TABLE tbl_game (
   game_id INTEGER PRIMARY KEY NOT NULL,
   season integer NOT NULL,
@@ -75,7 +69,6 @@ CREATE INDEX tbl_game_idx_venue_id ON tbl_game (venue_id);
 --
 -- Table: tbl_venue_sponsorname
 --
-DROP TABLE tbl_venue_sponsorname;
 CREATE TABLE tbl_venue_sponsorname (
   venue_id integer NOT NULL,
   name varchar NOT NULL,
@@ -87,7 +80,6 @@ CREATE INDEX tbl_venue_sponsorname_idx_venue_id ON tbl_venue_sponsorname (venue_
 --
 -- Table: tbl_competition_user
 --
-DROP TABLE tbl_competition_user;
 CREATE TABLE tbl_competition_user (
   user_id integer NOT NULL,
   competition_id integer NOT NULL,
@@ -103,7 +95,6 @@ CREATE UNIQUE INDEX tbl_competition_user_competition_id_screen_name ON tbl_compe
 --
 -- Table: tbl_team_supporter
 --
-DROP TABLE tbl_team_supporter;
 CREATE TABLE tbl_team_supporter (
   user_id integer NOT NULL,
   team_id integer NOT NULL,
@@ -115,7 +106,6 @@ CREATE UNIQUE INDEX tbl_team_supporter_user_id ON tbl_team_supporter (user_id);
 --
 -- Table: tbl_game_team
 --
-DROP TABLE tbl_game_team;
 CREATE TABLE tbl_game_team (
   game_id integer NOT NULL,
   behinds integer NOT NULL DEFAULT 0,
@@ -130,7 +120,6 @@ CREATE UNIQUE INDEX tbl_game_team_game_id_is_home_team ON tbl_game_team (game_id
 --
 -- Table: tbl_tip
 --
-DROP TABLE tbl_tip;
 CREATE TABLE tbl_tip (
   tipper_id integer NOT NULL,
   submitter_id integer NOT NULL,

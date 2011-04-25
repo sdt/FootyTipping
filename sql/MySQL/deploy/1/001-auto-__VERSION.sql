@@ -1,10 +1,9 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Mon Apr 25 20:22:19 2011
+-- Created on Mon Apr 25 20:47:05 2011
 -- 
 ;
 SET foreign_key_checks=0;
-DROP TABLE IF EXISTS `dbix_class_deploymenthandler_versions`;
 --
 -- Table: `dbix_class_deploymenthandler_versions`
 --
