@@ -77,7 +77,7 @@ schema:
   triggers: {}
   views: {}
 translator:
-  add_drop_table: 0
+  add_drop_table: 1
   filename: ~
   no_comments: 0
   parser_args:

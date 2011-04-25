@@ -1,11 +1,12 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Mon Apr 25 09:04:55 2011
+-- Created on Mon Apr 25 20:22:18 2011
 -- 
 ;
 --
 -- Table: tbl_competition
 --
+DROP TABLE "tbl_competition" CASCADE;
 CREATE TABLE "tbl_competition" (
   "competition_id" serial NOT NULL,
   "name" character varying NOT NULL,
@@ -18,6 +19,7 @@ CREATE TABLE "tbl_competition" (
 --
 -- Table: tbl_session
 --
+DROP TABLE "tbl_session" CASCADE;
 CREATE TABLE "tbl_session" (
   "session_id" character(72) NOT NULL,
   "session_data" text,
@@ -29,6 +31,7 @@ CREATE TABLE "tbl_session" (
 --
 -- Table: tbl_team
 --
+DROP TABLE "tbl_team" CASCADE;
 CREATE TABLE "tbl_team" (
   "team_id" serial NOT NULL,
   "name" character varying NOT NULL,
@@ -42,6 +45,7 @@ CREATE TABLE "tbl_team" (
 --
 -- Table: tbl_user
 --
+DROP TABLE "tbl_user" CASCADE;
 CREATE TABLE "tbl_user" (
   "user_id" serial NOT NULL,
   "username" character varying NOT NULL,
@@ -57,6 +61,7 @@ CREATE TABLE "tbl_user" (
 --
 -- Table: tbl_venue
 --
+DROP TABLE "tbl_venue" CASCADE;
 CREATE TABLE "tbl_venue" (
   "venue_id" serial NOT NULL,
   "name" character varying NOT NULL,
@@ -69,6 +74,7 @@ CREATE TABLE "tbl_venue" (
 --
 -- Table: tbl_game
 --
+DROP TABLE "tbl_game" CASCADE;
 CREATE TABLE "tbl_game" (
   "game_id" serial NOT NULL,
   "season" integer NOT NULL,
@@ -84,6 +90,7 @@ CREATE INDEX "tbl_game_idx_venue_id" on "tbl_game" ("venue_id");
 --
 -- Table: tbl_venue_sponsorname
 --
+DROP TABLE "tbl_venue_sponsorname" CASCADE;
 CREATE TABLE "tbl_venue_sponsorname" (
   "venue_id" serial NOT NULL,
   "name" character varying NOT NULL,
@@ -97,6 +104,7 @@ CREATE INDEX "tbl_venue_sponsorname_idx_venue_id" on "tbl_venue_sponsorname" ("v
 --
 -- Table: tbl_competition_user
 --
+DROP TABLE "tbl_competition_user" CASCADE;
 CREATE TABLE "tbl_competition_user" (
   "user_id" integer NOT NULL,
   "competition_id" integer NOT NULL,
@@ -114,6 +122,7 @@ CREATE INDEX "tbl_competition_user_idx_user_id" on "tbl_competition_user" ("user
 --
 -- Table: tbl_team_supporter
 --
+DROP TABLE "tbl_team_supporter" CASCADE;
 CREATE TABLE "tbl_team_supporter" (
   "user_id" integer NOT NULL,
   "team_id" integer NOT NULL,
@@ -127,6 +136,7 @@ CREATE INDEX "tbl_team_supporter_idx_team_id" on "tbl_team_supporter" ("team_id"
 --
 -- Table: tbl_game_team
 --
+DROP TABLE "tbl_game_team" CASCADE;
 CREATE TABLE "tbl_game_team" (
   "game_id" integer NOT NULL,
   "behinds" integer DEFAULT 0 NOT NULL,
@@ -143,6 +153,7 @@ CREATE INDEX "tbl_game_team_idx_team_id" on "tbl_game_team" ("team_id");
 --
 -- Table: tbl_tip
 --
+DROP TABLE "tbl_tip" CASCADE;
 CREATE TABLE "tbl_tip" (
   "tipper_id" integer NOT NULL,
   "submitter_id" integer NOT NULL,

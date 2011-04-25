@@ -1,9 +1,10 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Mon Apr 25 09:04:55 2011
+-- Created on Mon Apr 25 20:22:18 2011
 -- 
 ;
 SET foreign_key_checks=0;
+DROP TABLE IF EXISTS `tbl_competition`;
 --
 -- Table: `tbl_competition`
 --
@@ -14,6 +15,7 @@ CREATE TABLE `tbl_competition` (
   PRIMARY KEY (`competition_id`),
   UNIQUE `tbl_competition_name` (`name`)
 ) ENGINE=InnoDB;
+DROP TABLE IF EXISTS `tbl_session`;
 --
 -- Table: `tbl_session`
 --
@@ -23,6 +25,7 @@ CREATE TABLE `tbl_session` (
   `expires` integer,
   PRIMARY KEY (`session_id`)
 );
+DROP TABLE IF EXISTS `tbl_team`;
 --
 -- Table: `tbl_team`
 --
@@ -34,6 +37,7 @@ CREATE TABLE `tbl_team` (
   UNIQUE `tbl_team_name` (`name`),
   UNIQUE `tbl_team_nickname` (`nickname`)
 ) ENGINE=InnoDB;
+DROP TABLE IF EXISTS `tbl_user`;
 --
 -- Table: `tbl_user`
 --
@@ -47,6 +51,7 @@ CREATE TABLE `tbl_user` (
   UNIQUE `tbl_user_real_name` (`real_name`),
   UNIQUE `tbl_user_username` (`username`)
 ) ENGINE=InnoDB;
+DROP TABLE IF EXISTS `tbl_venue`;
 --
 -- Table: `tbl_venue`
 --
@@ -57,6 +62,7 @@ CREATE TABLE `tbl_venue` (
   PRIMARY KEY (`venue_id`),
   UNIQUE `tbl_venue_name` (`name`)
 ) ENGINE=InnoDB;
+DROP TABLE IF EXISTS `tbl_game`;
 --
 -- Table: `tbl_game`
 --
@@ -71,6 +77,7 @@ CREATE TABLE `tbl_game` (
   PRIMARY KEY (`game_id`),
   CONSTRAINT `tbl_game_fk_venue_id` FOREIGN KEY (`venue_id`) REFERENCES `tbl_venue` (`venue_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
+DROP TABLE IF EXISTS `tbl_venue_sponsorname`;
 --
 -- Table: `tbl_venue_sponsorname`
 --
@@ -83,6 +90,7 @@ CREATE TABLE `tbl_venue_sponsorname` (
   PRIMARY KEY (`venue_id`, `name`),
   CONSTRAINT `tbl_venue_sponsorname_fk_venue_id` FOREIGN KEY (`venue_id`) REFERENCES `tbl_venue` (`venue_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
+DROP TABLE IF EXISTS `tbl_competition_user`;
 --
 -- Table: `tbl_competition_user`
 --
@@ -100,6 +108,7 @@ CREATE TABLE `tbl_competition_user` (
   CONSTRAINT `tbl_competition_user_fk_competition_id` FOREIGN KEY (`competition_id`) REFERENCES `tbl_competition` (`competition_id`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `tbl_competition_user_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
+DROP TABLE IF EXISTS `tbl_team_supporter`;
 --
 -- Table: `tbl_team_supporter`
 --
@@ -113,6 +122,7 @@ CREATE TABLE `tbl_team_supporter` (
   CONSTRAINT `tbl_team_supporter_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`user_id`) ON DELETE CASCADE,
   CONSTRAINT `tbl_team_supporter_fk_team_id` FOREIGN KEY (`team_id`) REFERENCES `tbl_team` (`team_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
+DROP TABLE IF EXISTS `tbl_game_team`;
 --
 -- Table: `tbl_game_team`
 --
@@ -129,6 +139,7 @@ CREATE TABLE `tbl_game_team` (
   CONSTRAINT `tbl_game_team_fk_game_id` FOREIGN KEY (`game_id`) REFERENCES `tbl_game` (`game_id`) ON DELETE CASCADE,
   CONSTRAINT `tbl_game_team_fk_team_id` FOREIGN KEY (`team_id`) REFERENCES `tbl_team` (`team_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
+DROP TABLE IF EXISTS `tbl_tip`;
 --
 -- Table: `tbl_tip`
 --
