@@ -5,7 +5,7 @@ use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller::ActionRole'; }
 
-sub tips :Chained('/') :PathPath('tips') :CaptureArgs(2) {
+sub tips :Chained('/login/required') :PathPath('tips') :CaptureArgs(2) {
     my ($self, $c, $season, $round) = @_;
 
     $c->stash(season => $season);
@@ -50,7 +50,7 @@ sub games :Chained('tips') :PathPart('') :CaptureArgs(0) {
     return;
 }
 
-sub view :Chained('games') :PathPath('view') :Args(2) :Does('NeedsLogin') {
+sub view :Chained('games') :PathPath('view') :Args(2) {
     my ($self, $c, $comp_id, $user_id) = @_;
 
     return;
