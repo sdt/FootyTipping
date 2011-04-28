@@ -7,7 +7,7 @@ name 'Tipping';
 all_from 'lib/Tipping/WebApp.pm';
 
 requires 'Catalyst::Runtime' => '5.80032';
-requires 'Catalyst::Plugin::Session::Store::DBIC';
+requires 'Catalyst::Plugin::Session::Store::FastMMap';
 requires 'Catalyst::Plugin::Static::Simple';
 requires 'Catalyst::Authentication::Store::DBIx::Class';
 requires 'Catalyst::Restarter';
