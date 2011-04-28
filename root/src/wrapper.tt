@@ -7,7 +7,7 @@
     <body>
 
 <div id="header">
-[% IF c.user; %]
+[% IF c.user_exists; %]
     Hello, [% c.user.username %]. <a href="[% c.uri_for('/logout') %]">Log Out</a>
 [% END; %]
 </div>
