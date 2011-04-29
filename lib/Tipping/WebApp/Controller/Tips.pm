@@ -1,6 +1,7 @@
 package Tipping::WebApp::Controller::Tips;
 use Modern::Perl;
 use Moose;
+use Try::Tiny;
 use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller::ActionRole'; }
@@ -52,6 +53,45 @@ sub games :Chained('tips') :PathPart('') :CaptureArgs(0) {
 
 sub view :Chained('games') :PathPath('view') :Args(2) {
     my ($self, $c, $comp_id, $user_id) = @_;
+
+    # User A can view user B's competition C tips if:
+    # - user A is superuser, or
+    # - user A is also in competition C, and
+    #   - that round has finished, or
+    #   - user A has can_submit_tips_for_others in competition C
+    try {
+        my $user = ($c->user->id == $user_id) ? $c->user
+                 : $c->model('DB::User')->find( { user_id => $user_id });
+        die "Unknown user id $user_id" unless $user;
+
+        my $competition = $user->competitions->find({ competition_id => $comp_id });
+        die 'User ' . $user->username . " is not a member of comp $comp_id"
+            unless $competition;
+
+        if ($user_id != $c->user->id) {
+            if (! $c->user->competitions->find($competition)) {
+                die 'User ' . $c->user->username . " is not a member of comp $comp_id"
+            }
+
+#            if (! round_has_finished($c->stash{season}, $c->stash->{round})) {
+#
+#            }
+        }
+=pod
+    my $user = $c->user;
+            $user = $c->model('DB::User')->find( { user_id => $user_id } );
+            die "$user_id not found" unless $user;
+        }
+
+        $user->is_member_of_competition( { competition_id => $comp_id } );
+        $user->is_member_of_competition( $c->model('DB::Competition')->find(
+            { competition_id => $comp_id } ));
+=cut
+    }
+    catch {
+        say STDERR $_;
+        $c->detach('/default');
+    };
 
     return;
 }
