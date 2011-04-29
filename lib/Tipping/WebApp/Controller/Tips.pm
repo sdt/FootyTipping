@@ -69,24 +69,15 @@ sub view :Chained('games') :PathPath('view') :Args(2) {
             unless $competition;
 
         if ($user_id != $c->user->id) {
-            if (! $c->user->competitions->find($competition)) {
-                die 'User ' . $c->user->username . " is not a member of comp $comp_id"
+            if (!$c->user->can_view_tips({
+                    other_user  => $user,
+                    competition => $competition,
+                    season      => $c->stash->{season},
+                    round       => $c->stash->{round},
+                })) {
+                die 'User does not have permission to view tips';
             }
-
-#            if (! round_has_finished($c->stash{season}, $c->stash->{round})) {
-#
-#            }
         }
-=pod
-    my $user = $c->user;
-            $user = $c->model('DB::User')->find( { user_id => $user_id } );
-            die "$user_id not found" unless $user;
-        }
-
-        $user->is_member_of_competition( { competition_id => $comp_id } );
-        $user->is_member_of_competition( $c->model('DB::Competition')->find(
-            { competition_id => $comp_id } ));
-=cut
     }
     catch {
         say STDERR $_;

@@ -2,6 +2,7 @@ package Tipping::Schema::Result::User;
 use parent 'DBIx::Class';
 
 use Modern::Perl;
+use Params::Validate (qw/ validate :types /);
 
 my $string = {
     data_type           => 'varchar',
@@ -65,6 +66,39 @@ __PACKAGE__->might_have(
     'user_id'
 );
 
+sub can_view_tips {
+    my $self = shift;
+    my %args = validate(@_, {
+            other_user  => { isa => 'Tipping::Schema::Result::User' },
+            competition => { isa => 'Tipping::Schema::Result::Competition' },
+            season      => { type => SCALAR },
+            round       => { type => SCALAR },
+        });
+
+    # User A can view user B's competition C tips if:
+    # - user A is superuser, or
+    # - user A is also in competition C, and
+    #   - that round has finished, or
+    #   - user A has can_submit_tips_for_others in competition C
+
+    if (!$self->competitions->find({
+            competition_id => $args{competition}->id})) {
+        return;
+    }
+
+    my $games = $self->result_source->schema->resultset('Game');
+    if ($games->season($args{season})->round($args{round})->all_ended) {
+        return 1;
+    }
+
+    my $comp_id = $args{competition}->id;
+    if ($self->competition_users->find({ competition_id => $comp_id })
+                                 ->can_submit_tips_for_others) {
+        return 1;
+    }
+
+    return;
+}
 
 1;
 

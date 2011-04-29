@@ -33,6 +33,11 @@ sub has_ended {
     return $self->search({ has_ended => $has_ended });
 }
 
+sub all_ended {
+    my ($self) = @_;
+    return $self->has_ended(0)->count == 0;
+}
+
 1;
 
 =pod
