@@ -120,6 +120,13 @@ A user can be a member of zero or more competitions.
 A user has a set of capabilites per competition. By default a user has no
 special capabilities.
 
+=head1 METHODS
+
+=head2 can_view_tips
+
+Determines whether the current user can view another users tips for a given
+competition.
+
 =head1 AUTHOR
 
 Stephen Thirlwall <sdt@dr.com>

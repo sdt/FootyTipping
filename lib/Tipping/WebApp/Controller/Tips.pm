@@ -62,11 +62,11 @@ sub view :Chained('games') :PathPath('view') :Args(2) {
     try {
         my $user = ($c->user->id == $user_id) ? $c->user
                  : $c->model('DB::User')->find( { user_id => $user_id });
-        die "Unknown user id $user_id" unless $user;
+        die "Unknown user id $user_id" if not $user;
 
         my $competition = $user->competitions->find({ competition_id => $comp_id });
         die 'User ' . $user->username . " is not a member of comp $comp_id"
-            unless $competition;
+            if not $competition;
 
         if ($user_id != $c->user->id) {
             if (!$c->user->can_view_tips({

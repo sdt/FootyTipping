@@ -73,6 +73,10 @@ Filter the game table by team name - finds both home and away games.
 
 Filter the game table by games which have ended (or not).
 
+=head2 all_ended
+
+Determine whether all the games in the current resultset have ended.
+
 =head1 AUTHOR
 
 Stephen Thirlwall <sdt@dr.com>
