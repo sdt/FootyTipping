@@ -1,16 +1,61 @@
 body {
-    font-family: "Ubuntu Beta",UbuntuBeta,Ubuntu,"Bitstream Vera Sans","DejaVu Sans",Tahoma,sans-serif;
-    background-color: #d2d3d4;
+  font-family: "Ubuntu Beta",UbuntuBeta,Ubuntu,"Bitstream Vera Sans","DejaVu Sans",Tahoma,sans-serif;
+  background-color: #d2d3d4;
+}
+
+#container {
+  background-color: #d9dAdB;
+  width: 760px;
+  margin: 0 auto;
+}
+
+#header {
+  background-color: #c9cAcB;
+  text-align: right;
+  font-size: 66%;
+}
+
+/* navbar items are the tabs at the top of the page */
+#navbar ul {
+  list-style: none outside none;
+  padding:0;
+  margin:0;
+}
+
+#navbar li {
+  float: left;
+  border: 1px solid;
+  border-bottom-width: 0;
+  margin: 0 0.5em 0 0;
+  border-color: #bbbbbb;
+}
+
+#navbar li a {
+  padding: 0 1em;
+  text-decoration: none;
+}
+
+#navbar #selected {
+  position: relative;
+  top: 1px;
+  background: #d9dAdB;
+  border-color: black;
+}
+
+/* content is the main page body */
+#content {
+  border: 1px solid;
+  clear: both;
 }
 
 .main_fieldset {
-    background-color: white;
-    text-transform: lowercase;
-    border-width: 2px;
-    border-color: red;
-    border-style: inset;
+  background-color: white;
+  text-transform: lowercase;
+  border-width: 2px;
+  border-color: red;
+  border-style: inset;
 }
 
 #rounds li {
-    display: inline;
+  display: inline;
 }

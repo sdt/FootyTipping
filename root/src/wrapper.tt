@@ -1,19 +1,41 @@
 <!doctype html public "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
-    <head>
-        <title>[% page.title || "Your default title goes here" %]</title>
-        <link rel="stylesheet" href="/static/style.css" media="all">
-    </head>
-    <body>
+<head>
+  <title>[% page.title || "Your default title goes here" %]</title>
+  <link rel="stylesheet" href="/static/style.css" media="all">
+</head>
+
+<body>
+
+[% selected_tab = "Games" %]
+
+<div id="container">
 
 <div id="header">
-[% IF c.user_exists; %]
+[% IF c.user_exists; -%]
     Hello, [% c.user.username %]. <a href="[% c.uri_for('/logout') %]">Log Out</a>
-[% END; %]
+[%- END; %]
+</div>
+
+<div id="navbar">
+[% BLOCK tab;
+      selected = (selected_tab == tab_text) ? ' id="selected"' : ''; -%]
+  <li[% selected %]><a href="#">[% tab_text %]</a></li>
+[%- END %]
+  <ul>
+    [% INCLUDE tab tab_text = "Ladder" %]
+    [% INCLUDE tab tab_text = "Games" %]
+    [% INCLUDE tab tab_text = "Options" %]
+  </ul>
 </div>
 
 <div id="content">
 [% content %]
 </div>
-    </body>
+
+<div id="footer>
+</div>
+
+</div>
+</body>
 </html>

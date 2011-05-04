@@ -1,10 +1,10 @@
-Season [% season %], round [% round %]. [% wow %]
-
 <ul id="rounds">
 [% FOR round = rounds; %]
 <li> [% round %] </li>
 [% END; %]
 </ul>
+
+<h1>Season [% season %], round [% round %]. [% wow %]</h1>
 
 <ul id="games">
 [% FOR game = games; %]
