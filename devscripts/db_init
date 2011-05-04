@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -e
+#set -e
 
 # First up, reset/create the database
 
@@ -35,12 +35,20 @@ create_user() {
 }
 
 # Now add some extra stuff
-for i in `seq -f '%02.f' 1 2`; do
-    ./devscripts/create-competition --name comp$i
+for c in `seq -f '%02.f' 1 2`; do
+    ./devscripts/create-competition --name comp$c
 done
-for i in `seq -f '%02.f' 1 9`; do
-    create_user $i
-    for j in `seq -f '%02.f' 1 2`; do
-        ./devscripts/add-user-to-competition --username user$i --compname comp$j
+for u in `seq -f '%02.f' 1 4`; do
+    create_user $u
+    for c in `seq -f '%02.f' 1 2`; do
+        ./devscripts/add-user-to-competition --username user$u --compname comp$c
+        for r in `seq 1 4`; do
+            for t in Hawthorn Essendon Richmond Melbourne Collingwood Sydney Brisbane Fremantle; do
+                ./devscripts/enter-tip --username user$u --compname comp$c \
+                                       --round $r --season 2011 --team $t
+                echo ./devscripts/enter-tip --username user$u --compname comp$c \
+                                       --round $r --season 2011 --team $t
+            done
+        done
     done
 done
