@@ -34,7 +34,7 @@ __PACKAGE__->set_primary_key(qw/ user_id competition_id /);
 __PACKAGE__->add_unique_constraint([ qw/ competition_id screen_name / ]);
 
 __PACKAGE__->belongs_to(
-    user => 'Tipping::Schema::Result::User',
+    member => 'Tipping::Schema::Result::User',
     'user_id'
 );
 __PACKAGE__->belongs_to(

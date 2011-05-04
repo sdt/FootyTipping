@@ -1119,7 +1119,7 @@ translator:
               cond:
                 foreign.competition_id: self.competition_id
               source: Tipping::Schema::Result::Competition
-            user:
+            member:
               attrs:
                 accessor: single
                 fk_columns:
