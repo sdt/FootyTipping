@@ -75,6 +75,10 @@ sub can_view_tips {
             round       => { type => SCALAR },
         });
 
+    if ($self == $args{other_user}) {
+        return 1;
+    }
+
     # User A can view user B's competition C tips if:
     # - user A is superuser, or
     # - user A is also in competition C, and
@@ -89,6 +93,34 @@ sub can_view_tips {
     my $games = $self->result_source->schema->resultset('Game');
     if ($games->season($args{season})->round($args{round})->all_ended) {
         return 1;
+    }
+
+    my $comp_id = $args{competition}->id;
+    if ($self->competition_users->find({ competition_id => $comp_id })
+                                 ->can_submit_tips_for_others) {
+        return 1;
+    }
+
+    return;
+}
+
+sub can_edit_tips {
+    my $self = shift;
+    my %args = validate(@_, {
+            other_user  => { isa => 'Tipping::Schema::Result::User' },
+            competition => { isa => 'Tipping::Schema::Result::Competition' },
+            season      => { type => SCALAR },
+            round       => { type => SCALAR },
+        });
+
+    # User A can edit user B's competition C tips if:
+    # - user A is superuser, or
+    # - user A is also in competition C, and
+    #   - user A has can_submit_tips_for_others in competition C
+
+    if (!$self->competitions->find({
+            competition_id => $args{competition}->id})) {
+        return;
     }
 
     my $comp_id = $args{competition}->id;
@@ -125,7 +157,12 @@ special capabilities.
 =head2 can_view_tips
 
 Determines whether the current user can view another users tips for a given
-competition.
+competition and round.
+
+=head2 can_edit_tips
+
+Determines whether the current user can view another users tips for a given
+competition and round.
 
 =head1 AUTHOR
 

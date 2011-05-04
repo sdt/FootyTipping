@@ -26,9 +26,11 @@ sub games :Chained('tips') :PathPart('') :CaptureArgs(0) {
     my @games;
     while (my $game = $game_rs->next) {
         push(@games, {
-                home_team => $game->home->team->name,
-                away_team => $game->away->team->name,
-                venue     => $game->venue->name,
+                tips        => $game->tips->search_rs,
+                home_team   => $game->home->team->name,
+                away_team   => $game->away->team->name,
+                venue       => $game->venue->name,
+                time        => $game->start_time_utc->clone->set_time_zone('Australia/Melbourne')->strftime('%A %B %d %I:%M%P'),
             });
     }
 
@@ -54,29 +56,33 @@ sub games :Chained('tips') :PathPart('') :CaptureArgs(0) {
 sub view :Chained('games') :PathPath('view') :Args(2) {
     my ($self, $c, $comp_id, $user_id) = @_;
 
-    # User A can view user B's competition C tips if:
-    # - user A is superuser, or
-    # - user A is also in competition C, and
-    #   - that round has finished, or
-    #   - user A has can_submit_tips_for_others in competition C
     try {
-        my $user = ($c->user->id == $user_id) ? $c->user
+        my $user = ($c->user->id == $user_id) ? $c->user->get_object
                  : $c->model('DB::User')->find( { user_id => $user_id });
-        die "Unknown user id $user_id" if not $user;
-
         my $competition = $user->competitions->find({ competition_id => $comp_id });
-        die 'User ' . $user->username . " is not a member of comp $comp_id"
-            if not $competition;
 
-        if ($user_id != $c->user->id) {
-            if (!$c->user->can_view_tips({
-                    other_user  => $user,
-                    competition => $competition,
-                    season      => $c->stash->{season},
-                    round       => $c->stash->{round},
-                })) {
-                die 'User does not have permission to view tips';
-            }
+        if (!$c->user->can_view_tips({
+                other_user  => $user,
+                competition => $competition,
+                season      => $c->stash->{season},
+                round       => $c->stash->{round},
+            })) {
+            die 'User does not have permission to view tips';
+        }
+
+        for my $game (@{ $c->stash->{games} }) {
+            my $tip = $game->{tips}->search(
+                {
+                    tipper_id      => $user_id,
+                    competition_id => $comp_id,
+                },
+                {
+                    order_by  => { '-desc' => 'timestamp' },
+                    rows      => 1,
+                }
+            )->first;
+            $game->{tip} = $tip;
+            delete $game->{tips};
         }
     }
     catch {

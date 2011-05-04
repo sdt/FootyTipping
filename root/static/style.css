@@ -59,3 +59,13 @@ body {
 #rounds li {
   display: inline;
 }
+
+#games .tipped {
+  font-weight: bold;
+}
+
+#games .venue,
+#games .time {
+  font-size: 70%;
+}
+

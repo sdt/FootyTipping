@@ -1,13 +1,19 @@
 <ul id="rounds">
-[% FOR round = rounds; %]
-<li> [% round %] </li>
-[% END; %]
+[% FOR round = rounds; %] <li>[% round %]</li>[% END; %]
 </ul>
 
 <h1>Season [% season %], round [% round %]. [% wow %]</h1>
 
-<ul id="games">
+<table id="games">
 [% FOR game = games; %]
-<li> [% game.home_team %] vs [% game.away_team %] at [% game.venue %] </li>
-[% END; %]
-</ul>
+<tr>
+<td[% IF game.tip AND game.tip.home_team_to_win; ' class="tipped"'; END; %]>
+[%- game.home_team %]</td>
+<td>vs</td>
+<td[% IF game.tip AND NOT game.tip.home_team_to_win; ' class="tipped"'; END; %]>
+[%- game.away_team %]</td>
+<td class="venue">[% game.venue %]</td>
+<td class="time">[% game.time %]</td>
+</tr>
+[% END %]
+</table>
