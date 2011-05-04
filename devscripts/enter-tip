@@ -20,11 +20,11 @@ GetOptions(-autohelp => sub {
 my $schema = Tipping::Schema->connect;
 my $entry = $schema->resultset('Competition_User')->find(
     {
-        'user.username'    => $username,
+        'member.username'    => $username,
         'competition.name' => $compname,
     },
     {
-        prefetch => [qw/ competition user /],
+        prefetch => [qw/ competition member /],
     }
 );
 if (not $entry) {
