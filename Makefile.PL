@@ -16,12 +16,14 @@ requires 'CatalystX::SimpleLogin';
 
 requires 'Config::ZOMG';
 requires 'Data::Dumper::Concise';
+requires 'DateTime::Format::Pg';
 requires 'DBD::Pg';
 requires 'DBIx::Class::DeploymentHandler';
 requires 'DBIx::Class::EncodedColumn';
 requires 'DBIx::Class::TimeStamp';
 requires 'File::Slurp';
 requires 'Getopt::Lazy';
+requires 'GraphViz';
 requires 'Hash::MoreUtils';
 requires 'Modern::Perl';
 requires 'YAML::XS';
