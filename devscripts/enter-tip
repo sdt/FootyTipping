@@ -1,0 +1,57 @@
+#!/usr/bin/env perl
+use Modern::Perl;
+
+use Getopt::Lazy
+    'username=s'     => 'Login name                 (required)',
+    'compname=s'     => 'Competition name           (required)',
+    'season=n'       => 'Season                     (required)',
+    'round=n'        => 'Round                      (required)',
+    'team=s'         => 'Team                       (required)',
+    -summary => 'Enter a tip for a user',
+    -usage => '%c %o',
+    ;
+
+use Tipping::Schema ();
+
+GetOptions(-autohelp => sub {
+        grep { !defined } ($username, $compname, $season, $round, $team)
+    });
+
+my $schema = Tipping::Schema->connect;
+my $entry = $schema->resultset('Competition_User')->find(
+    {
+        'user.username'    => $username,
+        'competition.name' => $compname,
+    },
+    {
+        prefetch => [qw/ competition user /],
+    }
+);
+if (not $entry) {
+    if (not $schema->resultset('User')->find({ username => $username })) {
+        die "User $username not found\n";
+    }
+    if (not $schema->resultset('Competition')->find({ name => $compname })) {
+        die "Competition $compname not found\n";
+    }
+    die "User $username is not a member of competition $compname\n";
+}
+
+my $gt = $schema->resultset('Game_Team')->find(
+    {
+        'game.season'   => $season,
+        'game.round'    => $round,
+        'team.name'     => $team,
+    },
+    {
+        prefetch => [qw/ game team /],
+    }
+);
+
+$schema->resultset('Tip')->create({
+    tipper_id        => $entry->user_id,
+    submitter_id     => $entry->user_id,
+    competition_id   => $entry->competition_id,
+    game_id          => $gt->game_id,
+    home_team_to_win => $gt->is_home_team,
+});
