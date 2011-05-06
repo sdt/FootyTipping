@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Wed May  4 22:11:53 2011
+-- Created on Fri May  6 10:55:37 2011
 -- 
 ;
 SET foreign_key_checks=0;
@@ -62,7 +62,6 @@ CREATE TABLE `tbl_venue` (
 --
 CREATE TABLE `tbl_game` (
   `game_id` integer NOT NULL auto_increment,
-  `season` integer NOT NULL,
   `round` integer NOT NULL,
   `venue_id` integer NOT NULL,
   `start_time_utc` datetime NOT NULL,

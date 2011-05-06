@@ -6,10 +6,9 @@ use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller::ActionRole'; }
 
-sub tips :Chained('/login/required') :PathPath('tips') :CaptureArgs(2) {
-    my ($self, $c, $season, $round) = @_;
+sub tips :Chained('/login/required') :PathPath('tips') :CaptureArgs(1) {
+    my ($self, $c, $round) = @_;
 
-    $c->stash(season => $season);
     $c->stash(round  => $round);
 
     return;
@@ -20,7 +19,6 @@ sub games :Chained('tips') :PathPart('') :CaptureArgs(0) {
 
     my $game_rs = $c->model('DB::Game')->games->search(
         {
-            'season' => $c->stash->{season},
             'round'  => $c->stash->{round},
         });
     my @games;
@@ -41,7 +39,6 @@ sub games :Chained('tips') :PathPart('') :CaptureArgs(0) {
 
     my $rounds_rs = $c->model('DB::Game')->search(
         {
-            season => $c->stash->{season},
         },
         {
             order_by => [qw/ round /],
@@ -64,7 +61,6 @@ sub view :Chained('games') :PathPath('view') :Args(2) {
         if (!$c->user->can_view_tips({
                 other_user  => $user,
                 competition => $competition,
-                season      => $c->stash->{season},
                 round       => $c->stash->{round},
             })) {
             die 'User does not have permission to view tips';

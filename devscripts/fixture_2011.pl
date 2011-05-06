@@ -139,7 +139,6 @@ sub _emit_round {
     $dt->set_time_zone('UTC');
 
     say {$out} '  - create:';
-    say {$out} '      season: 2011';
     say {$out} "      round: $round";
     say {$out} '      venue:';
     say {$out} "        name: $venue";

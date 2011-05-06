@@ -3,11 +3,6 @@ use parent 'DBIx::Class::ResultSet';
 
 use Modern::Perl;
 
-sub season {
-    my ($self, $season) = @_;
-    return $self->search({ season => $season });
-}
-
 sub round {
     my ($self, $round) = @_;
     return $self->search({ round => $round });
@@ -51,10 +46,6 @@ Tipping::Schema::ResultSet::Game - DBIx::Class ResultSet class
 Pre-defined gam searches. Really just a proof-of-concept to see what's possible.
 
 =head1 METHODS
-
-=head2 season ($season)
-
-Filter the game table by season.
 
 =head2 round ($round)
 

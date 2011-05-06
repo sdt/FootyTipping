@@ -1,4 +1,4 @@
-exclude = RequireUseStrict RequireUseWarnings RequireRcsKeywords RequirePodSections RequireVersionVar RequireArgUnpacking RequirePodLinksIncludeText ProhibitEmptyQuotes ProhibitNoisyQuotes RequireCarping
+exclude = RequireUseStrict RequireUseWarnings RequireRcsKeywords RequirePodSections RequireVersionVar RequireArgUnpacking RequirePodLinksIncludeText ProhibitEmptyQuotes ProhibitNoisyQuotes RequireCarping ProhibitLongChainsOfMethodCalls
 
 [ControlStructures::ProhibitPostfixControls]
 flowcontrol = die say croak

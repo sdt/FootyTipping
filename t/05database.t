@@ -28,7 +28,7 @@ catch {
 lives_ok { Tipping::DeploymentHandler->new->update } 'Deploy database';
 
 my $schema = Tipping::Schema->connect;
-my $games = $schema->resultset('Game')->season(2011);
+my $games = $schema->resultset('Game');
 my $venues = $schema->resultset('Venue');
 my $comps = $schema->resultset('Competition');
 my $users = $schema->resultset('User');
@@ -66,7 +66,6 @@ while (my $row = $rs->next) {
 my $game_teams = $schema->resultset('Game_Team');
 $rs = $game_teams->search(
         {
-            'game.season'  => 2011,
             'team.name'    => 'Hawthorn',
             'venue.name'   => 'MCG',
             'is_home_team' => 1,
@@ -143,7 +142,6 @@ eq_or_diff($round1_expected, \@round1_got, 'Round 1 2011 is correct');
 sub compute_ladder {
     my $rs = $game_teams->search(
             {
-                season           => 2011,
                 'game.has_ended' => 1,
             },
             {

@@ -23,7 +23,7 @@ sub fix_team {
 sub parse_file {
     my ($fh) = @_;
 
-    my ($season, $round, $game);
+    my ($round, $game);
     my $yaml = {
             table   => 'Game_Team',
             attr    => {
@@ -36,13 +36,13 @@ sub parse_file {
         given ($line) {
 
             when (m{<h1>\s+(\d{4})\s+Season Scores and Results</h1>}) {
-                $season = $1;
+                # $season = $1;
             }
 
             when (m{^<table\s+.*<b>.*?Round\s+(\d+)</td>}) {
                 $round = $1;
                 $game = { search =>
-                        { 'game.season' => $season, 'game.round' => $round }
+                        { 'game.round' => $round }
                     };
             }
 
@@ -61,7 +61,6 @@ sub parse_file {
                 push(@{ $yaml->{update} }, $game);
                 $game = {
                     search => {
-                        'game.season' => $season,
                         'game.round' => $round,
                     },
                     update_related => {

@@ -1,8 +1,8 @@
 <ul id="rounds">
-[% FOR round = rounds; %] <li>[% round %]</li>[% END; %]
+[% FOR r = rounds; %] <li>[% r %]</li>[% END; %]
 </ul>
 
-<h1>Season [% season %], round [% round %]. [% wow %]</h1>
+<h1>Round [% round %].</h1>
 
 <table id="games">
 [% FOR game = games; %]

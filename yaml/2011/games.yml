@@ -1,7 +1,6 @@
 table: Game
 create_and_add_many:
   - create:
-      season: 2011
       round: 1
       venue:
         name: MCG
@@ -18,7 +17,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 1
       venue:
         name: MCG
@@ -35,7 +33,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 1
       venue:
         name: Docklands Stadium
@@ -52,7 +49,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 1
       venue:
         name: Football Park
@@ -69,7 +65,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 1
       venue:
         name: Gabba
@@ -86,7 +81,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 1
       venue:
         name: Docklands Stadium
@@ -103,7 +97,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 1
       venue:
         name: MCG
@@ -120,7 +113,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 1
       venue:
         name: Subiaco Oval
@@ -137,7 +129,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 2
       venue:
         name: MCG
@@ -154,7 +145,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 2
       venue:
         name: Docklands Stadium
@@ -171,7 +161,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 2
       venue:
         name: Football Park
@@ -188,7 +177,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 2
       venue:
         name: Gabba
@@ -205,7 +193,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 2
       venue:
         name: Subiaco Oval
@@ -222,7 +209,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 2
       venue:
         name: Docklands Stadium
@@ -239,7 +225,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 2
       venue:
         name: Stadium Australia
@@ -256,7 +241,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 2
       venue:
         name: MCG
@@ -273,7 +257,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 3
       venue:
         name: MCG
@@ -290,7 +273,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 3
       venue:
         name: Docklands Stadium
@@ -307,7 +289,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 3
       venue:
         name: Football Park
@@ -324,7 +305,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 3
       venue:
         name: MCG
@@ -341,7 +321,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 3
       venue:
         name: Subiaco Oval
@@ -358,7 +337,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 3
       venue:
         name: MCG
@@ -375,7 +353,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 3
       venue:
         name: Kardinia Park
@@ -392,7 +369,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 3
       venue:
         name: Docklands Stadium
@@ -409,7 +385,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 4
       venue:
         name: MCG
@@ -426,7 +401,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 4
       venue:
         name: York Park
@@ -443,7 +417,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 4
       venue:
         name: MCG
@@ -460,7 +433,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 4
       venue:
         name: SCG
@@ -477,7 +449,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 4
       venue:
         name: Football Park
@@ -494,7 +465,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 4
       venue:
         name: Gabba
@@ -511,7 +481,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 4
       venue:
         name: Subiaco Oval
@@ -528,7 +497,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 5
       venue:
         name: Gabba
@@ -545,7 +513,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 5
       venue:
         name: Football Park
@@ -562,7 +529,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 5
       venue:
         name: Docklands Stadium
@@ -579,7 +545,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 5
       venue:
         name: Docklands Stadium
@@ -596,7 +561,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 5
       venue:
         name: MCG
@@ -613,7 +577,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 5
       venue:
         name: Subiaco Oval
@@ -630,7 +593,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 5
       venue:
         name: MCG
@@ -647,7 +609,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 6
       venue:
         name: Subiaco Oval
@@ -664,7 +625,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 6
       venue:
         name: SCG
@@ -681,7 +641,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 6
       venue:
         name: Docklands Stadium
@@ -698,7 +657,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 6
       venue:
         name: MCG
@@ -715,7 +673,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 6
       venue:
         name: Football Park
@@ -732,7 +689,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 6
       venue:
         name: Docklands Stadium
@@ -749,7 +705,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 6
       venue:
         name: MCG
@@ -766,7 +721,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 7
       venue:
         name: Football Park
@@ -783,7 +737,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 7
       venue:
         name: Manuka Oval
@@ -800,7 +753,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 7
       venue:
         name: Kardinia Park
@@ -817,7 +769,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 7
       venue:
         name: MCG
@@ -834,7 +785,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 7
       venue:
         name: Gabba
@@ -851,7 +801,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 7
       venue:
         name: Docklands Stadium
@@ -868,7 +817,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 7
       venue:
         name: MCG
@@ -885,7 +833,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 7
       venue:
         name: Docklands Stadium
@@ -902,7 +849,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 8
       venue:
         name: MCG
@@ -919,7 +865,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 8
       venue:
         name: Docklands Stadium
@@ -936,7 +881,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 8
       venue:
         name: Football Park
@@ -953,7 +897,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 8
       venue:
         name: Gabba
@@ -970,7 +913,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 8
       venue:
         name: SCG
@@ -987,7 +929,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 8
       venue:
         name: MCG
@@ -1004,7 +945,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 8
       venue:
         name: Docklands Stadium
@@ -1021,7 +961,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 8
       venue:
         name: Subiaco Oval
@@ -1038,7 +977,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 9
       venue:
         name: Docklands Stadium
@@ -1055,7 +993,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 9
       venue:
         name: Docklands Stadium
@@ -1072,7 +1009,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 9
       venue:
         name: Football Park
@@ -1089,7 +1025,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 9
       venue:
         name: Gabba
@@ -1106,7 +1041,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 9
       venue:
         name: MCG
@@ -1123,7 +1057,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 9
       venue:
         name: Docklands Stadium
@@ -1140,7 +1073,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 9
       venue:
         name: SCG
@@ -1157,7 +1089,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 9
       venue:
         name: Subiaco Oval
@@ -1174,7 +1105,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 10
       venue:
         name: MCG
@@ -1191,7 +1121,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 10
       venue:
         name: Docklands Stadium
@@ -1208,7 +1137,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 10
       venue:
         name: Subiaco Oval
@@ -1225,7 +1153,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 10
       venue:
         name: Gold Coast Stadium
@@ -1242,7 +1169,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 10
       venue:
         name: Marrara Oval
@@ -1259,7 +1185,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 10
       venue:
         name: Football Park
@@ -1276,7 +1201,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 10
       venue:
         name: MCG
@@ -1293,7 +1217,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 10
       venue:
         name: Docklands Stadium
@@ -1310,7 +1233,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 11
       venue:
         name: MCG
@@ -1327,7 +1249,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 11
       venue:
         name: Kardinia Park
@@ -1344,7 +1265,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 11
       venue:
         name: Subiaco Oval
@@ -1361,7 +1281,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 11
       venue:
         name: Gabba
@@ -1378,7 +1297,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 11
       venue:
         name: MCG
@@ -1395,7 +1313,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 11
       venue:
         name: MCG
@@ -1412,7 +1329,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 11
       venue:
         name: Docklands Stadium
@@ -1429,7 +1345,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 11
       venue:
         name: Football Park
@@ -1446,7 +1361,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 12
       venue:
         name: Docklands Stadium
@@ -1463,7 +1377,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 12
       venue:
         name: Football Park
@@ -1480,7 +1393,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 12
       venue:
         name: Gold Coast Stadium
@@ -1497,7 +1409,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 12
       venue:
         name: MCG
@@ -1514,7 +1425,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 12
       venue:
         name: Docklands Stadium
@@ -1531,7 +1441,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 12
       venue:
         name: SCG
@@ -1548,7 +1457,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 12
       venue:
         name: Subiaco Oval
@@ -1565,7 +1473,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 12
       venue:
         name: MCG
@@ -1582,7 +1489,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 13
       venue:
         name: Docklands Stadium
@@ -1599,7 +1505,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 13
       venue:
         name: York Park
@@ -1616,7 +1521,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 13
       venue:
         name: Docklands Stadium
@@ -1633,7 +1537,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 13
       venue:
         name: Gabba
@@ -1650,7 +1553,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 13
       venue:
         name: MCG
@@ -1667,7 +1569,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 13
       venue:
         name: MCG
@@ -1684,7 +1585,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 13
       venue:
         name: Docklands Stadium
@@ -1701,7 +1601,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 13
       venue:
         name: Subiaco Oval
@@ -1718,7 +1617,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 14
       venue:
         name: MCG
@@ -1735,7 +1633,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 14
       venue:
         name: Gold Coast Stadium
@@ -1752,7 +1649,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 14
       venue:
         name: MCG
@@ -1769,7 +1665,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 14
       venue:
         name: Stadium Australia
@@ -1786,7 +1681,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 14
       venue:
         name: Subiaco Oval
@@ -1803,7 +1697,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 14
       venue:
         name: Kardinia Park
@@ -1820,7 +1713,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 14
       venue:
         name: Docklands Stadium
@@ -1837,7 +1729,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 14
       venue:
         name: Football Park
@@ -1854,7 +1745,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 15
       venue:
         name: Docklands Stadium
@@ -1871,7 +1761,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 15
       venue:
         name: MCG
@@ -1888,7 +1777,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 15
       venue:
         name: Subiaco Oval
@@ -1905,7 +1793,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 15
       venue:
         name: Docklands Stadium
@@ -1922,7 +1809,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 15
       venue:
         name: Football Park
@@ -1939,7 +1825,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 15
       venue:
         name: Gabba
@@ -1956,7 +1841,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 15
       venue:
         name: MCG
@@ -1973,7 +1857,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 15
       venue:
         name: Docklands Stadium
@@ -1990,7 +1873,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 16
       venue:
         name: Subiaco Oval
@@ -2007,7 +1889,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 16
       venue:
         name: York Park
@@ -2024,7 +1905,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 16
       venue:
         name: Gold Coast Stadium
@@ -2041,7 +1921,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 16
       venue:
         name: MCG
@@ -2058,7 +1937,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 16
       venue:
         name: MCG
@@ -2075,7 +1953,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 16
       venue:
         name: Football Park
@@ -2092,7 +1969,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 16
       venue:
         name: Docklands Stadium
@@ -2109,7 +1985,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 17
       venue:
         name: Football Park
@@ -2126,7 +2001,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 17
       venue:
         name: Cazaly's Stadium
@@ -2143,7 +2017,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 17
       venue:
         name: MCG
@@ -2160,7 +2033,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 17
       venue:
         name: Docklands Stadium
@@ -2177,7 +2049,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 17
       venue:
         name: Marrara Oval
@@ -2194,7 +2065,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 17
       venue:
         name: SCG
@@ -2211,7 +2081,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 17
       venue:
         name: Gabba
@@ -2228,7 +2097,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 17
       venue:
         name: Docklands Stadium
@@ -2245,7 +2113,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 18
       venue:
         name: Docklands Stadium
@@ -2262,7 +2129,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 18
       venue:
         name: Docklands Stadium
@@ -2279,7 +2145,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 18
       venue:
         name: SCG
@@ -2296,7 +2161,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 18
       venue:
         name: Gold Coast Stadium
@@ -2313,7 +2177,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 18
       venue:
         name: MCG
@@ -2330,7 +2193,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 18
       venue:
         name: Docklands Stadium
@@ -2347,7 +2209,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 18
       venue:
         name: MCG
@@ -2364,7 +2225,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 18
       venue:
         name: Subiaco Oval
@@ -2381,7 +2241,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 19
       venue:
         name: Docklands Stadium
@@ -2398,7 +2257,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 19
       venue:
         name: Docklands Stadium
@@ -2415,7 +2273,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 19
       venue:
         name: Kardinia Park
@@ -2432,7 +2289,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 19
       venue:
         name: Gold Coast Stadium
@@ -2449,7 +2305,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 19
       venue:
         name: Subiaco Oval
@@ -2466,7 +2321,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 19
       venue:
         name: MCG
@@ -2483,7 +2337,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 19
       venue:
         name: Football Park
@@ -2500,7 +2353,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 20
       venue:
         name: Docklands Stadium
@@ -2517,7 +2369,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 20
       venue:
         name: MCG
@@ -2534,7 +2385,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 20
       venue:
         name: Kardinia Park
@@ -2551,7 +2401,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 20
       venue:
         name: Docklands Stadium
@@ -2568,7 +2417,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 20
       venue:
         name: Football Park
@@ -2585,7 +2433,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 20
       venue:
         name: Gabba
@@ -2602,7 +2449,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 20
       venue:
         name: York Park
@@ -2619,7 +2465,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 20
       venue:
         name: Subiaco Oval
@@ -2636,7 +2481,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 21
       venue:
         name: Docklands Stadium
@@ -2653,7 +2497,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 21
       venue:
         name: MCG
@@ -2670,7 +2513,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 21
       venue:
         name: Subiaco Oval
@@ -2687,7 +2529,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 21
       venue:
         name: Docklands Stadium
@@ -2704,7 +2545,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 21
       venue:
         name: Gabba
@@ -2721,7 +2561,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 21
       venue:
         name: Docklands Stadium
@@ -2738,7 +2577,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 21
       venue:
         name: MCG
@@ -2755,7 +2593,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 21
       venue:
         name: Football Park
@@ -2772,7 +2609,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 22
       venue:
         name: Docklands Stadium
@@ -2789,7 +2625,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 22
       venue:
         name: Gold Coast Stadium
@@ -2806,7 +2641,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 22
       venue:
         name: Subiaco Oval
@@ -2823,7 +2657,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 22
       venue:
         name: Docklands Stadium
@@ -2840,7 +2673,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 22
       venue:
         name: MCG
@@ -2857,7 +2689,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 22
       venue:
         name: Stadium Australia
@@ -2874,7 +2705,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 22
       venue:
         name: Football Park
@@ -2891,7 +2721,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 22
       venue:
         name: MCG
@@ -2908,7 +2737,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 23
       venue:
         name: Subiaco Oval
@@ -2925,7 +2753,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 23
       venue:
         name: MCG
@@ -2942,7 +2769,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 23
       venue:
         name: Kardinia Park
@@ -2959,7 +2785,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 23
       venue:
         name: Docklands Stadium
@@ -2976,7 +2801,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 23
       venue:
         name: Gabba
@@ -2993,7 +2817,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 23
       venue:
         name: Football Park
@@ -3010,7 +2833,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 23
       venue:
         name: MCG
@@ -3027,7 +2849,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 23
       venue:
         name: Docklands Stadium
@@ -3044,7 +2865,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 24
       venue:
         name: MCG
@@ -3061,7 +2881,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 24
       venue:
         name: Football Park
@@ -3078,7 +2897,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 24
       venue:
         name: Docklands Stadium
@@ -3095,7 +2913,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 24
       venue:
         name: SCG
@@ -3112,7 +2929,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 24
       venue:
         name: Subiaco Oval
@@ -3129,7 +2945,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 24
       venue:
         name: MCG
@@ -3146,7 +2961,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 24
       venue:
         name: Docklands Stadium
@@ -3163,7 +2977,6 @@ create_and_add_many:
           extra:
             is_home_team: 0
   - create:
-      season: 2011
       round: 24
       venue:
         name: Gold Coast Stadium

@@ -7,14 +7,12 @@ table: Game_Team
 update:
   - search:
       game.round: 1
-      game.season: 2011
       team.name: Carlton
     update:
       behinds: 20
       goals: 14
   - search:
       game.round: 1
-      game.season: 2011
       team.name: Richmond
     update:
       behinds: 6
@@ -25,7 +23,6 @@ update:
         has_ended: 1
   - search:
       game.round: 1
-      game.season: 2011
       team.name: Geelong
     update:
       behinds: 12
@@ -36,7 +33,6 @@ update:
         has_ended: 1
   - search:
       game.round: 1
-      game.season: 2011
       team.name: St Kilda
     update:
       behinds: 11
@@ -47,7 +43,6 @@ update:
         has_ended: 1
   - search:
       game.round: 1
-      game.season: 2011
       team.name: Collingwood
     update:
       behinds: 11
@@ -58,7 +53,6 @@ update:
         has_ended: 1
   - search:
       game.round: 1
-      game.season: 2011
       team.name: Port Adelaide
     update:
       behinds: 8
@@ -69,7 +63,6 @@ update:
         has_ended: 1
   - search:
       game.round: 1
-      game.season: 2011
       team.name: Adelaide
     update:
       behinds: 9
@@ -80,7 +73,6 @@ update:
         has_ended: 1
   - search:
       game.round: 1
-      game.season: 2011
       team.name: Hawthorn
     update:
       behinds: 13
@@ -91,7 +83,6 @@ update:
         has_ended: 1
   - search:
       game.round: 1
-      game.season: 2011
       team.name: Brisbane
     update:
       behinds: 8
@@ -102,7 +93,6 @@ update:
         has_ended: 1
   - search:
       game.round: 1
-      game.season: 2011
       team.name: Fremantle
     update:
       behinds: 16
@@ -113,7 +103,6 @@ update:
         has_ended: 1
   - search:
       game.round: 1
-      game.season: 2011
       team.name: Essendon
     update:
       behinds: 17
@@ -124,7 +113,6 @@ update:
         has_ended: 1
   - search:
       game.round: 1
-      game.season: 2011
       team.name: Western Bulldogs
     update:
       behinds: 10
@@ -135,7 +123,6 @@ update:
         has_ended: 1
   - search:
       game.round: 1
-      game.season: 2011
       team.name: Melbourne
     update:
       behinds: 18
@@ -146,7 +133,6 @@ update:
         has_ended: 1
   - search:
       game.round: 1
-      game.season: 2011
       team.name: Sydney
     update:
       behinds: 18
@@ -157,7 +143,6 @@ update:
         has_ended: 1
   - search:
       game.round: 1
-      game.season: 2011
       team.name: West Coast
     update:
       behinds: 14
@@ -168,7 +153,6 @@ update:
         has_ended: 1
   - search:
       game.round: 1
-      game.season: 2011
       team.name: North Melbourne
     update:
       behinds: 10
@@ -179,14 +163,12 @@ update:
         has_ended: 1
   - search:
       game.round: 2
-      game.season: 2011
       team.name: St Kilda
     update:
       behinds: 17
       goals: 13
   - search:
       game.round: 2
-      game.season: 2011
       team.name: Richmond
     update:
       behinds: 11
@@ -197,7 +179,6 @@ update:
         has_ended: 1
   - search:
       game.round: 2
-      game.season: 2011
       team.name: North Melbourne
     update:
       behinds: 14
@@ -208,7 +189,6 @@ update:
         has_ended: 1
   - search:
       game.round: 2
-      game.season: 2011
       team.name: Collingwood
     update:
       behinds: 17
@@ -219,7 +199,6 @@ update:
         has_ended: 1
   - search:
       game.round: 2
-      game.season: 2011
       team.name: Port Adelaide
     update:
       behinds: 8
@@ -230,7 +209,6 @@ update:
         has_ended: 1
   - search:
       game.round: 2
-      game.season: 2011
       team.name: West Coast
     update:
       behinds: 20
@@ -241,7 +219,6 @@ update:
         has_ended: 1
   - search:
       game.round: 2
-      game.season: 2011
       team.name: Fremantle
     update:
       behinds: 18
@@ -252,7 +229,6 @@ update:
         has_ended: 1
   - search:
       game.round: 2
-      game.season: 2011
       team.name: Geelong
     update:
       behinds: 11
@@ -263,7 +239,6 @@ update:
         has_ended: 1
   - search:
       game.round: 2
-      game.season: 2011
       team.name: Gold Coast
     update:
       behinds: 10
@@ -274,7 +249,6 @@ update:
         has_ended: 1
   - search:
       game.round: 2
-      game.season: 2011
       team.name: Carlton
     update:
       behinds: 15
@@ -285,7 +259,6 @@ update:
         has_ended: 1
   - search:
       game.round: 2
-      game.season: 2011
       team.name: Western Bulldogs
     update:
       behinds: 9
@@ -296,7 +269,6 @@ update:
         has_ended: 1
   - search:
       game.round: 2
-      game.season: 2011
       team.name: Brisbane
     update:
       behinds: 9
@@ -307,7 +279,6 @@ update:
         has_ended: 1
   - search:
       game.round: 2
-      game.season: 2011
       team.name: Sydney
     update:
       behinds: 14
@@ -318,7 +289,6 @@ update:
         has_ended: 1
   - search:
       game.round: 2
-      game.season: 2011
       team.name: Essendon
     update:
       behinds: 15
@@ -329,7 +299,6 @@ update:
         has_ended: 1
   - search:
       game.round: 2
-      game.season: 2011
       team.name: Hawthorn
     update:
       behinds: 26
@@ -340,7 +309,6 @@ update:
         has_ended: 1
   - search:
       game.round: 2
-      game.season: 2011
       team.name: Melbourne
     update:
       behinds: 5
@@ -351,14 +319,12 @@ update:
         has_ended: 1
   - search:
       game.round: 3
-      game.season: 2011
       team.name: Collingwood
     update:
       behinds: 12
       goals: 15
   - search:
       game.round: 3
-      game.season: 2011
       team.name: Carlton
     update:
       behinds: 8
@@ -369,7 +335,6 @@ update:
         has_ended: 1
   - search:
       game.round: 3
-      game.season: 2011
       team.name: Western Bulldogs
     update:
       behinds: 14
@@ -380,7 +345,6 @@ update:
         has_ended: 1
   - search:
       game.round: 3
-      game.season: 2011
       team.name: Gold Coast
     update:
       behinds: 9
@@ -391,7 +355,6 @@ update:
         has_ended: 1
   - search:
       game.round: 3
-      game.season: 2011
       team.name: Adelaide
     update:
       behinds: 12
@@ -402,7 +365,6 @@ update:
         has_ended: 1
   - search:
       game.round: 3
-      game.season: 2011
       team.name: Fremantle
     update:
       behinds: 13
@@ -413,7 +375,6 @@ update:
         has_ended: 1
   - search:
       game.round: 3
-      game.season: 2011
       team.name: West Coast
     update:
       behinds: 10
@@ -424,7 +385,6 @@ update:
         has_ended: 1
   - search:
       game.round: 3
-      game.season: 2011
       team.name: Sydney
     update:
       behinds: 11
@@ -435,7 +395,6 @@ update:
         has_ended: 1
   - search:
       game.round: 3
-      game.season: 2011
       team.name: Richmond
     update:
       behinds: 16
@@ -446,7 +405,6 @@ update:
         has_ended: 1
   - search:
       game.round: 3
-      game.season: 2011
       team.name: Hawthorn
     update:
       behinds: 13
@@ -457,7 +415,6 @@ update:
         has_ended: 1
   - search:
       game.round: 3
-      game.season: 2011
       team.name: Melbourne
     update:
       behinds: 10
@@ -468,7 +425,6 @@ update:
         has_ended: 1
   - search:
       game.round: 3
-      game.season: 2011
       team.name: Brisbane
     update:
       behinds: 5
@@ -479,7 +435,6 @@ update:
         has_ended: 1
   - search:
       game.round: 3
-      game.season: 2011
       team.name: Geelong
     update:
       behinds: 20
@@ -490,7 +445,6 @@ update:
         has_ended: 1
   - search:
       game.round: 3
-      game.season: 2011
       team.name: Port Adelaide
     update:
       behinds: 7
@@ -501,7 +455,6 @@ update:
         has_ended: 1
   - search:
       game.round: 3
-      game.season: 2011
       team.name: St Kilda
     update:
       behinds: 12
@@ -512,7 +465,6 @@ update:
         has_ended: 1
   - search:
       game.round: 3
-      game.season: 2011
       team.name: Essendon
     update:
       behinds: 10
@@ -523,14 +475,12 @@ update:
         has_ended: 1
   - search:
       game.round: 4
-      game.season: 2011
       team.name: Richmond
     update:
       behinds: 12
       goals: 13
   - search:
       game.round: 4
-      game.season: 2011
       team.name: Collingwood
     update:
       behinds: 17
@@ -541,7 +491,6 @@ update:
         has_ended: 1
   - search:
       game.round: 4
-      game.season: 2011
       team.name: Carlton
     update:
       behinds: 13
@@ -552,7 +501,6 @@ update:
         has_ended: 1
   - search:
       game.round: 4
-      game.season: 2011
       team.name: Essendon
     update:
       behinds: 13
@@ -563,7 +511,6 @@ update:
         has_ended: 1
   - search:
       game.round: 4
-      game.season: 2011
       team.name: Hawthorn
     update:
       behinds: 12
@@ -574,7 +521,6 @@ update:
         has_ended: 1
   - search:
       game.round: 4
-      game.season: 2011
       team.name: West Coast
     update:
       behinds: 11
@@ -585,7 +531,6 @@ update:
         has_ended: 1
   - search:
       game.round: 4
-      game.season: 2011
       team.name: Port Adelaide
     update:
       behinds: 14
@@ -596,7 +541,6 @@ update:
         has_ended: 1
   - search:
       game.round: 4
-      game.season: 2011
       team.name: Adelaide
     update:
       behinds: 12
@@ -607,7 +551,6 @@ update:
         has_ended: 1
   - search:
       game.round: 4
-      game.season: 2011
       team.name: Sydney
     update:
       behinds: 12
@@ -618,7 +561,6 @@ update:
         has_ended: 1
   - search:
       game.round: 4
-      game.season: 2011
       team.name: Geelong
     update:
       behinds: 15
@@ -629,7 +571,6 @@ update:
         has_ended: 1
   - search:
       game.round: 4
-      game.season: 2011
       team.name: Gold Coast
     update:
       behinds: 15
@@ -640,7 +581,6 @@ update:
         has_ended: 1
   - search:
       game.round: 4
-      game.season: 2011
       team.name: Melbourne
     update:
       behinds: 21
@@ -651,7 +591,6 @@ update:
         has_ended: 1
   - search:
       game.round: 4
-      game.season: 2011
       team.name: Fremantle
     update:
       behinds: 19
@@ -662,7 +601,6 @@ update:
         has_ended: 1
   - search:
       game.round: 4
-      game.season: 2011
       team.name: North Melbourne
     update:
       behinds: 14
@@ -673,14 +611,12 @@ update:
         has_ended: 1
   - search:
       game.round: 5
-      game.season: 2011
       team.name: Brisbane
     update:
       behinds: 10
       goals: 11
   - search:
       game.round: 5
-      game.season: 2011
       team.name: St Kilda
     update:
       behinds: 11
@@ -691,7 +627,6 @@ update:
         has_ended: 1
   - search:
       game.round: 5
-      game.season: 2011
       team.name: Port Adelaide
     update:
       behinds: 11
@@ -702,7 +637,6 @@ update:
         has_ended: 1
   - search:
       game.round: 5
-      game.season: 2011
       team.name: Gold Coast
     update:
       behinds: 14
@@ -713,7 +647,6 @@ update:
         has_ended: 1
   - search:
       game.round: 5
-      game.season: 2011
       team.name: Carlton
     update:
       behinds: 19
@@ -724,7 +657,6 @@ update:
         has_ended: 1
   - search:
       game.round: 5
-      game.season: 2011
       team.name: Adelaide
     update:
       behinds: 7
@@ -735,7 +667,6 @@ update:
         has_ended: 1
   - search:
       game.round: 5
-      game.season: 2011
       team.name: North Melbourne
     update:
       behinds: 19
@@ -746,7 +677,6 @@ update:
         has_ended: 1
   - search:
       game.round: 5
-      game.season: 2011
       team.name: Richmond
     update:
       behinds: 10
@@ -757,7 +687,6 @@ update:
         has_ended: 1
   - search:
       game.round: 5
-      game.season: 2011
       team.name: Essendon
     update:
       behinds: 11
@@ -768,7 +697,6 @@ update:
         has_ended: 1
   - search:
       game.round: 5
-      game.season: 2011
       team.name: Collingwood
     update:
       behinds: 11
@@ -779,7 +707,6 @@ update:
         has_ended: 1
   - search:
       game.round: 5
-      game.season: 2011
       team.name: Fremantle
     update:
       behinds: 13
@@ -790,7 +717,6 @@ update:
         has_ended: 1
   - search:
       game.round: 5
-      game.season: 2011
       team.name: Western Bulldogs
     update:
       behinds: 12
@@ -801,7 +727,6 @@ update:
         has_ended: 1
   - search:
       game.round: 5
-      game.season: 2011
       team.name: Hawthorn
     update:
       behinds: 8
@@ -812,7 +737,6 @@ update:
         has_ended: 1
   - search:
       game.round: 5
-      game.season: 2011
       team.name: Geelong
     update:
       behinds: 15
@@ -823,14 +747,12 @@ update:
         has_ended: 1
   - search:
       game.round: 6
-      game.season: 2011
       team.name: West Coast
     update:
       behinds: 16
       goals: 15
   - search:
       game.round: 6
-      game.season: 2011
       team.name: Melbourne
     update:
       behinds: 16
@@ -841,7 +763,6 @@ update:
         has_ended: 1
   - search:
       game.round: 6
-      game.season: 2011
       team.name: Sydney
     update:
       behinds: 11
@@ -852,7 +773,6 @@ update:
         has_ended: 1
   - search:
       game.round: 6
-      game.season: 2011
       team.name: Carlton
     update:
       behinds: 15
@@ -863,7 +783,6 @@ update:
         has_ended: 1
   - search:
       game.round: 6
-      game.season: 2011
       team.name: North Melbourne
     update:
       behinds: 25
@@ -874,7 +793,6 @@ update:
         has_ended: 1
   - search:
       game.round: 6
-      game.season: 2011
       team.name: Port Adelaide
     update:
       behinds: 13
@@ -885,7 +803,6 @@ update:
         has_ended: 1
   - search:
       game.round: 6
-      game.season: 2011
       team.name: Adelaide
     update:
       behinds: 12
@@ -896,7 +813,6 @@ update:
         has_ended: 1
   - search:
       game.round: 6
-      game.season: 2011
       team.name: St Kilda
     update:
       behinds: 17
@@ -907,7 +823,6 @@ update:
         has_ended: 1
   - search:
       game.round: 6
-      game.season: 2011
       team.name: Richmond
     update:
       behinds: 16
@@ -918,7 +833,6 @@ update:
         has_ended: 1
   - search:
       game.round: 6
-      game.season: 2011
       team.name: Brisbane
     update:
       behinds: 14
@@ -929,7 +843,6 @@ update:
         has_ended: 1
   - search:
       game.round: 6
-      game.season: 2011
       team.name: Essendon
     update:
       behinds: 11
@@ -940,7 +853,6 @@ update:
         has_ended: 1
   - search:
       game.round: 6
-      game.season: 2011
       team.name: Gold Coast
     update:
       behinds: 10
@@ -951,7 +863,6 @@ update:
         has_ended: 1
   - search:
       game.round: 6
-      game.season: 2011
       team.name: Collingwood
     update:
       behinds: 15
@@ -962,7 +873,6 @@ update:
         has_ended: 1
   - search:
       game.round: 6
-      game.season: 2011
       team.name: Western Bulldogs
     update:
       behinds: 9

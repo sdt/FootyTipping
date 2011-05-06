@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Wed May  4 22:11:52 2011
+-- Created on Fri May  6 10:55:36 2011
 -- 
 
 ;
@@ -59,7 +59,6 @@ CREATE UNIQUE INDEX tbl_venue_name ON tbl_venue (name);
 --
 CREATE TABLE tbl_game (
   game_id INTEGER PRIMARY KEY NOT NULL,
-  season integer NOT NULL,
   round integer NOT NULL,
   venue_id integer NOT NULL,
   start_time_utc datetime NOT NULL,

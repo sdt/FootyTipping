@@ -71,7 +71,6 @@ sub can_view_tips {
     my %args = validate(@_, {
             other_user  => { isa => 'Tipping::Schema::Result::User' },
             competition => { isa => 'Tipping::Schema::Result::Competition' },
-            season      => { type => SCALAR },
             round       => { type => SCALAR },
         });
 
@@ -91,7 +90,7 @@ sub can_view_tips {
     }
 
     my $games = $self->result_source->schema->resultset('Game');
-    if ($games->season($args{season})->round($args{round})->all_ended) {
+    if ($games->round($args{round})->all_ended) {
         return 1;
     }
 
@@ -109,7 +108,6 @@ sub can_edit_tips {
     my %args = validate(@_, {
             other_user  => { isa => 'Tipping::Schema::Result::User' },
             competition => { isa => 'Tipping::Schema::Result::Competition' },
-            season      => { type => SCALAR },
             round       => { type => SCALAR },
         });
 

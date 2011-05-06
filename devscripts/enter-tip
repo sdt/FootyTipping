@@ -4,7 +4,6 @@ use Modern::Perl;
 use Getopt::Lazy
     'username=s'     => 'Login name                 (required)',
     'compname=s'     => 'Competition name           (required)',
-    'season=n'       => 'Season                     (required)',
     'round=n'        => 'Round                      (required)',
     'team=s'         => 'Team                       (required)',
     -summary => 'Enter a tip for a user',
@@ -14,7 +13,7 @@ use Getopt::Lazy
 use Tipping::Schema ();
 
 GetOptions(-autohelp => sub {
-        grep { !defined } ($username, $compname, $season, $round, $team)
+        grep { !defined } ($username, $compname, $round, $team)
     });
 
 my $schema = Tipping::Schema->connect;
@@ -39,7 +38,6 @@ if (not $entry) {
 
 my $gt = $schema->resultset('Game_Team')->find(
     {
-        'game.season'   => $season,
         'game.round'    => $round,
         'team.name'     => $team,
     },
