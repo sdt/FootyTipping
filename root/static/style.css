@@ -60,8 +60,7 @@ body {
   display: inline;
 }
 
-table {
-  /* TODO: this should be #games ! */
+table#games {
   width: 100%;
 }
 
