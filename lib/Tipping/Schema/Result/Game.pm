@@ -21,6 +21,7 @@ __PACKAGE__->add_columns(
     },
     start_time_utc => {
         data_type           => 'datetime',
+        timezone            => 'UTC',
         is_nullable         => 0,
     },
     has_ended   => {

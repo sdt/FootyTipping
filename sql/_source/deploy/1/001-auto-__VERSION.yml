@@ -226,6 +226,7 @@ translator:
                 inflate: !!perl/code '{ "DUMMY" }'
               data_type: datetime
               is_nullable: 0
+              timezone: UTC
             venue_id:
               data_type: integer
               is_nullable: 0
@@ -517,6 +518,7 @@ translator:
                 inflate: !!perl/code '{ "DUMMY" }'
               data_type: datetime
               dynamic_default_on_create: get_timestamp
+              timezone: UTC
             tipper_id:
               data_type: integer
               is_nullable: 0

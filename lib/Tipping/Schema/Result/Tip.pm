@@ -22,6 +22,7 @@ __PACKAGE__->add_columns(
     },
     timestamp        => {
         data_type       => 'datetime',
+        timezone        => 'UTC',
         set_on_create   => 1,
     },
 );
