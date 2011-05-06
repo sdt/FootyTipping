@@ -7,20 +7,24 @@ use namespace::autoclean;
 BEGIN { extends 'Catalyst::Controller::ActionRole'; }
 
 sub tips :Chained('/login/required') :PathPath('tips') :CaptureArgs(1) {
-    my ($self, $c, $round) = @_;
+    my ($self, $c, $comp_id) = @_;
 
-    $c->stash(round  => $round);
+    $c->stash->{round} = $c->request->params->{round} //
+                         $c->model('DB::Game')->current_round;
+    $c->stash->{user} = $c->request->params->{user}
+                      ? $c->model('DB::User')->find(
+                            { user_id => $c->request->params->{user} })
+                      : $c->user->get_object;
+    $c->stash->{comp} = $c->model('DB::Competition')->find(
+                            { competition_id => $comp_id });
 
     return;
 }
 
-sub games :Chained('tips') :PathPart('') :CaptureArgs(0) {
+sub games :Private {
     my ($self, $c) = @_;
 
-    my $game_rs = $c->model('DB::Game')->games->search(
-        {
-            'round'  => $c->stash->{round},
-        });
+    my $game_rs = $c->model('DB::Game')->games->round($c->stash->{round});
     my @games;
     while (my $game = $game_rs->next) {
         push(@games, {
@@ -28,7 +32,7 @@ sub games :Chained('tips') :PathPart('') :CaptureArgs(0) {
                 home_team   => $game->home->team->name,
                 away_team   => $game->away->team->name,
                 venue       => $game->venue->name,
-                time        => $game->start_time_utc->clone->set_time_zone('Australia/Melbourne')->strftime('%A %B %d %I:%M%P'),
+                time        => $game->start_time_utc->clone->set_time_zone('Australia/Melbourne')->strftime('%A %B %d %I:%M%P %Z'),
             });
     }
 
@@ -37,20 +41,40 @@ sub games :Chained('tips') :PathPart('') :CaptureArgs(0) {
     }
     $c->stash(games => \@games);
 
-    my $rounds_rs = $c->model('DB::Game')->search(
-        {
-        },
-        {
-            order_by => [qw/ round /],
-            distinct => 1,
-        },
-    );
-    $c->stash(rounds => [ $rounds_rs->get_column('round')->all ]);
+    return;
+}
+
+sub view :Chained('tips') :PathPart('view') :Args(0) {
+    my ($self, $c) = @_;
+
+    $c->forward('games');
+
+    $c->stash(rounds => [ $c->model('DB::Game')->rounds ]);
+
+    my $user_id = $c->stash->{user}->id;
+    my $comp_id = $c->stash->{comp}->id;
+
+    for my $game (@{ $c->stash->{games} }) {
+        my $tip = $game->{tips}->search(
+            {
+                tipper_id      => $user_id,
+                competition_id => $comp_id,
+            },
+            {
+                order_by  => { '-desc' => 'timestamp' },
+                rows      => 1,
+            }
+        )->first;
+        $game->{tip} = $tip;
+        delete $game->{tips};
+    }
 
     return;
 }
 
-sub view :Chained('games') :PathPath('view') :Args(2) {
+=pod
+
+sub vXiew :Chained('games') :PathPath('view') :Args(2) {
     my ($self, $c, $comp_id, $user_id) = @_;
 
     try {
@@ -88,9 +112,12 @@ sub view :Chained('games') :PathPath('view') :Args(2) {
 
     return;
 }
+=cut
 
+__PACKAGE__->meta->make_immutable;
 1;
 
+__END__
 =pod
 
 =head1 NAME
@@ -119,6 +146,3 @@ This library is free software. You can redistribute it and/or modify
 it under the same terms as Perl itself.
 
 =cut
-
-__PACKAGE__->meta->make_immutable;
-1;

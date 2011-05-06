@@ -18,7 +18,7 @@ sub games {
         {
             prefetch => [qw/ venue /, { home => 'team' }, { away => 'team' }],
             join     => [qw/ venue home away /],
-            order_by => [qw/ me.start_time_utc /],
+            order_by => [qw/ me.start_time_utc venue.name /],
         },
     );
 }
@@ -33,6 +33,44 @@ sub all_ended {
     return $self->has_ended(0)->count == 0;
 }
 
+sub rounds {
+    my ($self) = @_;
+
+    return $self->search(undef,
+        {
+            order_by => [qw/ round /],
+            distinct => 1,
+        },
+    )->get_column('round')->all;
+}
+
+sub current_round {
+    my ($self) = @_;
+
+    my $now = DateTime->now;
+
+    my $next_game = $self->search(
+        {
+            start_time_utc => { '>=', $now }
+        },
+        {
+            columns => [qw/ round /],
+            order_by => { '-asc' => 'start_time_utc' },
+            rows => 1,
+        }
+    )->first;
+    return $next_game->round if $next_game;
+
+    my $final_game = $self->search(undef,
+        {
+            columns => [qw/ round /],
+            order_by => { '-desc' => 'start_time_utc' },
+            rows => 1,
+        }
+    )->first;
+    return $final_game->round;
+}
+
 1;
 
 =pod
@@ -43,7 +81,7 @@ Tipping::Schema::ResultSet::Game - DBIx::Class ResultSet class
 
 =head1 DESCRIPTION
 
-Pre-defined gam searches. Really just a proof-of-concept to see what's possible.
+Pre-defined game searches.
 
 =head1 METHODS
 
@@ -67,6 +105,14 @@ Filter the game table by games which have ended (or not).
 =head2 all_ended
 
 Determine whether all the games in the current resultset have ended.
+
+=head2 rounds
+
+Returns a list of the rounds for this season
+
+=head2 current_round
+
+Find the current round.
 
 =head1 AUTHOR
 
