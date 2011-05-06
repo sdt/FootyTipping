@@ -45,9 +45,7 @@ for u in `seq -f '%02.f' 1 4`; do
         for r in `seq 1 4`; do
             for t in Hawthorn Essendon Richmond Melbourne Collingwood Sydney Brisbane Fremantle; do
                 ./devscripts/enter-tip --username user$u --compname comp$c \
-                                       --round $r --team $t
-                echo ./devscripts/enter-tip --username user$u --compname comp$c \
-                                       --round $r --team $t
+                                       --round $r --team $t || echo $t has bye...
             done
         done
     done
