@@ -1,19 +1,29 @@
+[%- BLOCK round_link -%]
+  [%- IF round == r -%]
+    [%- r -%]
+  [%- ELSE -%]
+<a href="[% c.req.uri_with({ 'round' => r }) %]">[% r %]</a>
+  [%- END -%]
+[%- END -%]
 <ul id="rounds">
-[% FOR r = rounds; %] <li>[% r %]</li>[% END; %]
+[% FOR r = rounds; %]  <li>[%- INCLUDE round_link -%]</li>
+[% END; -%]
 </ul>
 
-<h1>Round [% round %].</h1>
+<h1>Round [% round %]</h1>
 
 <table id="games">
+<tbody>
 [% FOR game = games; %]
-<tr>
-<td[% IF game.tip AND game.tip.home_team_to_win; ' class="tipped"'; END; %]>
-[%- game.home_team %]</td>
-<td>vs</td>
-<td[% IF game.tip AND NOT game.tip.home_team_to_win; ' class="tipped"'; END; %]>
-[%- game.away_team %]</td>
-<td class="venue">[% game.venue %]</td>
-<td class="time">[% game.time %]</td>
-</tr>
+  <tr>
+  <td class="home_team[% IF game.tip AND game.tip.home_team_to_win; ' tipped'; END; %]">
+  [%- game.home_team %]</td>
+  <td class="vs">vs</td>
+  <td class="away_team[% IF game.tip AND NOT game.tip.home_team_to_win; ' tipped'; END; %]">
+  [%- game.away_team %]</td>
+  <td class="venue">[% game.venue %]</td>
+  <td class="time">[% game.time %]</td>
+  </tr>
 [% END %]
+</tbody>
 </table>

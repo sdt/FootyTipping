@@ -60,8 +60,25 @@ body {
   display: inline;
 }
 
+table {
+  /* TODO: this should be #games ! */
+  width: 100%;
+}
+
 #games .tipped {
   font-weight: bold;
+}
+
+#games .home_team {
+  text-align: right;
+}
+
+#games .away_team {
+  text-align: left;
+}
+
+#games .vs {
+  text-align: center;
 }
 
 #games .venue,
@@ -69,3 +86,6 @@ body {
   font-size: 70%;
 }
 
+#games .time {
+  text-align: right;
+}
