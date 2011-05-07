@@ -27,6 +27,7 @@ requires 'GraphViz';
 requires 'Hash::MoreUtils';
 requires 'Modern::Perl';
 requires 'YAML::XS';
+requires 'WWW::Mechanize';
 
 test_requires 'Test::Pod::Coverage';
 test_requires 'Test::Perl::Critic';
