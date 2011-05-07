@@ -1,0 +1,70 @@
+#!/usr/bin/env perl
+use Modern::Perl;
+
+use IO::String;
+use WWW::Mechanize;
+
+sub get_url_fh {
+    my ($url) = @_;
+    return IO::String->new(WWW::Mechanize->new->get($url)->content);
+}
+
+sub parse_game_urls {
+    my ($fh) = @_;
+
+    my %urls;
+
+    while (my $line = <$fh>) {
+        given ($line) {
+
+            when (m{<a href="game(\d).php" rel="#iframe"(?: class="selected")?>([A-Z]{3}) v ([A-Z]{3})</a></li>}) {
+                my ($rel, $home, $away) = ($1, $2, $3);
+                $urls{lc $home} = $rel;
+                $urls{lc $away} = $rel;
+            }
+        }
+    }
+
+    return %urls;
+}
+
+sub parse_score_urls {
+    my ($fh) = @_;
+
+    my (@home, @away, $status);
+
+    while (my $line = <$fh>) {
+        given ($line) {
+            when (m{<div class="scores".*>(.*)</div>}) {
+                push(@home, $1);
+            }
+            when (m{<div class="scores-away".*>(.*)</div>}) {
+                push(@away, $1);
+            }
+            when (m{^<b>(Upcoming)</b>}) {
+                $status = $1;
+            }
+            when (m{^<b>(.*)</b><br />(.+)}) {
+                $status = "$1 $2";
+            }
+            when (m{^<b>(.*)</b>}) {
+                $status = $1;
+            }
+        }
+    }
+
+    say join(" ", @home);
+    say join(" ", @away);
+    say $status;
+}
+
+my $base_url = 'http://www.aflonline.com.au/livescores/2011/';
+my %urls = parse_game_urls(get_url_fh($base_url));
+
+die 'Teams: ' . join(',', sort keys %urls) unless @ARGV;
+
+my $team = shift @ARGV;
+my $url = $urls{substr(lc $team, 0, 3)}
+    or die "Can't find $team.\n\nTeams: " . join(',', sort keys %urls);
+
+parse_score_urls(get_url_fh($base_url . 'g' . $url . '.php'));
