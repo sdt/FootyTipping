@@ -1,0 +1,5 @@
+Add is_superuser column to user table
+Take a look at 'user' naming. Maybe only refer to user in terms of users
+themselves and consider competition 'members', team 'supporters' etc
+
+
