@@ -41,6 +41,7 @@ body {
   position: relative;
   top: 1px;
   border-color: black;
+  background-color: white;
 }
 
 /* content is the main page body */
