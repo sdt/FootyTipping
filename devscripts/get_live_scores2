@@ -1,0 +1,75 @@
+#!/usr/bin/env perl
+use Modern::Perl;
+
+use IO::String;
+use WWW::Mechanize;
+
+sub get_url_fh {
+    my ($url) = @_;
+    return IO::String->new(WWW::Mechanize->new->get($url)->content);
+}
+
+sub parse_score {
+    my ($score) = @_;
+
+    my ($goals, $behinds, $total) = $score =~ m{(\d+)\.(\d+)\s+\((\d+)\)};
+    die unless $total = $goals * 6 + $behinds;
+    return ($goals, $behinds);
+}
+
+sub parse_scores {
+    my ($fh) = @_;
+
+    my $in = 0;
+    my @games;
+    my $game;
+    my $tk;
+
+    while (my $line = <$fh>) {
+
+        given ($line) {
+
+            when (m{<div class="scoresection afl clearfix">}) {
+                $in = 1;
+            }
+
+            when (m{<div class="scoresection afl upcoming clearfix">}) {
+                $in = 0;
+            }
+
+            when (m{<span class="time-date">(.*)</span>}) {
+                if ($in) {
+                    $game = { date => $1 };
+                    push(@games, $game);
+                    $tk = 'home';
+                }
+            }
+
+            when (m{<span class="status">(.*)</span>}) {
+                $game->{status} = $1 if $in;
+            }
+
+            when (m{<td class="team">.*</span>(.*)</a></td>}) {
+                $game->{$tk}->{name} = $1 if $in;
+            }
+
+            when (m{<td class="current">(.*)</td>}) {
+                if ($in) {
+                    my ($g, $b) = parse_score($1);
+                    $game->{$tk}->{goals} = $g;
+                    $game->{$tk}->{behinds} = $b;
+                    $tk = 'away';
+                }
+            }
+        }
+    }
+    return \@games;
+}
+
+my $url = 'http://au.sports.yahoo.com/afl/live-scores/';
+my $www = WWW::Mechanize->new;
+$www->get($url);
+my $games = parse_scores(IO::String->new($www->content));
+
+use Data::Dumper::Concise;
+say Dumper($games);
