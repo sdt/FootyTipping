@@ -70,7 +70,7 @@ sub can_view_tips {
     my $self = shift;
     my %args = validate(@_, {
             other_user  => { isa => 'Tipping::Schema::Result::User' },
-            competition => { isa => 'Tipping::Schema::Result::Competition' },
+            comp_id     => { type => SCALAR },
             round       => { type => SCALAR },
         });
 
@@ -85,7 +85,7 @@ sub can_view_tips {
     #   - user A has can_submit_tips_for_others in competition C
 
     if (!$self->competitions->find({
-            competition_id => $args{competition}->id})) {
+            competition_id => $args{comp_id}})) {
         return;
     }
 
@@ -94,9 +94,9 @@ sub can_view_tips {
         return 1;
     }
 
-    my $comp_id = $args{competition}->id;
-    if ($self->competition_users->find({ competition_id => $comp_id })
-                                 ->can_submit_tips_for_others) {
+    if ($self->competition_users
+              ->find({ competition_id => $args{comp_id} })
+              ->can_submit_tips_for_others) {
         return 1;
     }
 

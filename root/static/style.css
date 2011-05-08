@@ -4,13 +4,15 @@ body {
 }
 
 #container {
-  background-color: #d9dAdB;
+  background-color: white;
   width: 760px;
   margin: 0 auto;
+  padding-left:   5px;
+  padding-right:  5px;
+  padding-bottom: 5px;
 }
 
 #header {
-  background-color: #c9cAcB;
   text-align: right;
   font-size: 66%;
 }
@@ -38,7 +40,6 @@ body {
 #navbar #selected {
   position: relative;
   top: 1px;
-  background: #d9dAdB;
   border-color: black;
 }
 

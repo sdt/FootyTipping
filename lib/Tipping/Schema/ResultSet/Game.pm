@@ -8,7 +8,7 @@ sub round {
     return $self->search({ round => $round });
 }
 
-sub games {
+sub inflate_games {
     my ($self) = @_;
     return $self->search(
         {
@@ -89,7 +89,7 @@ Pre-defined game searches.
 
 Filter the game table by round.
 
-=head2 games
+=head2 inflate_games
 
 Do the necessary joins and prefetches to get the home and away teams included.
 Populates the home and away relationships on game.

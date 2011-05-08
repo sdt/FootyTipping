@@ -15,26 +15,28 @@ sub tips :Chained('/login/required') :PathPath('tips') :CaptureArgs(1) {
                       ? $c->model('DB::User')->find(
                             { user_id => $c->request->params->{user} })
                       : $c->user->get_object;
-    $c->stash->{comp} = $c->model('DB::Competition')->find(
-                            { competition_id => $comp_id });
+    $c->stash->{comp_id} = $comp_id;
 
     return;
 }
 
+# Stash a list of the rounds for this season
+sub rounds: Private {
+    my ($self, $c) = @_;
+
+    $c->stash(rounds => [ $c->model('DB::Game')->rounds ]);
+
+    return;
+}
+
+# Stash a list of the games for this round
 sub games :Private {
     my ($self, $c) = @_;
 
-    my $game_rs = $c->model('DB::Game')->games->round($c->stash->{round});
-    my @games;
-    while (my $game = $game_rs->next) {
-        push(@games, {
-                tips        => $game->tips->search_rs,
-                home_team   => $game->home->team->name,
-                away_team   => $game->away->team->name,
-                venue       => $game->venue->name,
-                time        => $game->start_time_utc->clone->set_time_zone('Australia/Melbourne')->strftime('%A %B %d %I:%M%P %Z'),
-            });
-    }
+    my @games = $c->model('DB::Game')
+                  ->round($c->stash->{round})
+                  ->inflate_games
+                  ->all;
 
     if (not @games) {
         $c->detach('/default');
@@ -44,65 +46,40 @@ sub games :Private {
     return;
 }
 
-sub view :Chained('tips') :PathPart('view') :Args(0) {
+# Annotate the stashed games with tips for the stashed user
+sub game_tips :Private {
     my ($self, $c) = @_;
 
-    $c->forward('games');
+    # Grab all the relevant tips, don't bother removing ones which
+    # have been superceded - there won't be many of these anyway.
+    my $tip_rs = $c->model('DB::Tip')
+                   ->round($c->stash->{round})
+                   ->user($c->stash->{user}->id)
+                   ->competition($c->stash->{comp_id})
+                   ->order_by_date;
 
-    $c->stash(rounds => [ $c->model('DB::Game')->rounds ]);
+    # Create a lookup hash for the games
+    my %game = map { $_->game_id => $_ } @{ $c->stash->{games} };
 
-    my $user_id = $c->stash->{user}->id;
-    my $comp_id = $c->stash->{comp}->id;
-
-    for my $game (@{ $c->stash->{games} }) {
-        my $tip = $game->{tips}->search(
-            {
-                tipper_id      => $user_id,
-                competition_id => $comp_id,
-            },
-            {
-                order_by  => { '-desc' => 'timestamp' },
-                rows      => 1,
-            }
-        )->first;
-        $game->{tip} = $tip;
-        delete $game->{tips};
+    # The tips are ordered from oldest to newest. Just enter them as
+    # we get them. Newer ones will overwrite older ones.
+    while (my $tip = $tip_rs->next) {
+        $game{$tip->game_id}->{tip} = $tip;
     }
 
     return;
 }
 
-=pod
-
-sub vXiew :Chained('games') :PathPath('view') :Args(2) {
-    my ($self, $c, $comp_id, $user_id) = @_;
+sub view :Chained('tips') :PathPart('view') :Args(0) {
+    my ($self, $c) = @_;
 
     try {
-        my $user = ($c->user->id == $user_id) ? $c->user->get_object
-                 : $c->model('DB::User')->find( { user_id => $user_id });
-        my $competition = $user->competitions->find({ competition_id => $comp_id });
-
         if (!$c->user->can_view_tips({
-                other_user  => $user,
-                competition => $competition,
+                other_user  => $c->stash->{user},
+                comp_id     => $c->stash->{comp_id},
                 round       => $c->stash->{round},
             })) {
             die 'User does not have permission to view tips';
-        }
-
-        for my $game (@{ $c->stash->{games} }) {
-            my $tip = $game->{tips}->search(
-                {
-                    tipper_id      => $user_id,
-                    competition_id => $comp_id,
-                },
-                {
-                    order_by  => { '-desc' => 'timestamp' },
-                    rows      => 1,
-                }
-            )->first;
-            $game->{tip} = $tip;
-            delete $game->{tips};
         }
     }
     catch {
@@ -110,9 +87,20 @@ sub vXiew :Chained('games') :PathPath('view') :Args(2) {
         $c->detach('/default');
     };
 
+    $c->forward('rounds');
+    $c->forward('games');
+    $c->forward('game_tips');
+
+    $c->stash->{start_time} = sub {
+            my ($game) = @_;
+            my $tz = 'Australia/Melbourne'; #TODO: get from user
+            my $fmt = '%A %B %d %I:%M%P %Z';
+            my $start_time = $game->start_time_utc->clone;
+            return $start_time->set_time_zone($tz)->strftime($fmt);
+        };
+
     return;
 }
-=cut
 
 __PACKAGE__->meta->make_immutable;
 1;
@@ -132,7 +120,11 @@ Catalyst controller for viewing and editing tips.
 
 =head2 tips
 
+=head2 rounds
+
 =head2 games
+
+=head2 game_tips
 
 =head2 view
 

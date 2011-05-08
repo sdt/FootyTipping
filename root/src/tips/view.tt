@@ -17,12 +17,32 @@
 [% FOR game = games; %]
   <tr>
   <td class="home_team[% IF game.tip AND game.tip.home_team_to_win; ' tipped'; END; %]">
-  [%- game.home_team %]</td>
-  <td class="vs">vs</td>
+  [%- game.home.team.name %]</td>
+  <td>[% IF game.has_ended;
+        game.home.goals _ '.' _
+        game.home.behinds _ '&nbsp;' _
+        game.home.score; END %]</td>
+  <td class="vs">
+  [% IF game.has_ended;
+        IF game.home.score > game.away.score;
+            "defeated";
+        ELSIF game.home.score < game.away.score;
+            "lost to";
+        ELSE;
+            "drew&nbsp;with";
+        END;
+     ELSE;
+        "vs";
+     END %]
+  </td>
   <td class="away_team[% IF game.tip AND NOT game.tip.home_team_to_win; ' tipped'; END; %]">
-  [%- game.away_team %]</td>
-  <td class="venue">[% game.venue %]</td>
-  <td class="time">[% game.time %]</td>
+  [%- game.away.team.name %]</td>
+  <td>[% IF game.has_ended;
+        game.away.goals _ '.' _
+        game.away.behinds _ '&nbsp;' _
+        game.away.score; END %]</td>
+  <td class="venue">[% game.venue.name %]</td>
+  <td class="time">[% start_time(game) %]</td>
   </tr>
 [% END %]
 </tbody>
