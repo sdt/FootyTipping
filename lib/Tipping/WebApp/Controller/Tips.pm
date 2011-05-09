@@ -6,8 +6,8 @@ use namespace::autoclean;
 
 BEGIN { extends 'Catalyst::Controller::ActionRole'; }
 
-sub tips :Chained('/login/required') :PathPath('tips') :CaptureArgs(1) {
-    my ($self, $c, $comp_id) = @_;
+sub tips :Chained('/login/required') :PathPath('tips') :CaptureArgs(0) {
+    my ($self, $c) = @_;
 
     $c->stash->{round} = $c->request->params->{round} //
                          $c->model('DB::Game')->current_round;
@@ -15,7 +15,9 @@ sub tips :Chained('/login/required') :PathPath('tips') :CaptureArgs(1) {
                       ? $c->model('DB::User')->find(
                             { user_id => $c->request->params->{user} })
                       : $c->user->get_object;
-    $c->stash->{comp_id} = $comp_id;
+    $c->stash->{comp_id} = $c->request->params->{comp_id} //
+                           $c->stash->{user}->competitions
+                                            ->first->competition_id;
 
     return;
 }
