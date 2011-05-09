@@ -16,7 +16,7 @@ sub tips :Chained('/login/required') :PathPath('tips') :CaptureArgs(0) {
                             { user_id => $c->request->params->{user} })
                       : $c->user->get_object;
     $c->stash->{comp_id} = $c->request->params->{comp_id} //
-                           $c->stash->{user}->competitions
+                           $c->stash->{user}->competition_users
                                             ->first->competition_id;
 
     return;
@@ -75,19 +75,13 @@ sub game_tips :Private {
 sub view :Chained('tips') :PathPart('view') :Args(0) {
     my ($self, $c) = @_;
 
-    try {
-        if (!$c->user->can_view_tips({
-                other_user  => $c->stash->{user},
-                comp_id     => $c->stash->{comp_id},
-                round       => $c->stash->{round},
-            })) {
-            die 'User does not have permission to view tips';
-        }
-    }
-    catch {
-        say STDERR $_;
+    if (not $c->user->can_view_tips(
+            other_user  => $c->stash->{user},
+            comp_id     => $c->stash->{comp_id},
+            round       => $c->stash->{round},
+         )) {
         $c->detach('/default');
-    };
+    }
 
     $c->forward('rounds');
     $c->forward('games');
@@ -100,6 +94,12 @@ sub view :Chained('tips') :PathPart('view') :Args(0) {
             my $start_time = $game->start_time_utc->clone;
             return $start_time->set_time_zone($tz)->strftime($fmt);
         };
+
+    $c->stash->{can_edit} = $c->user->can_edit_tips(
+                other_user  => $c->stash->{user},
+                comp_id     => $c->stash->{comp_id},
+                round       => $c->stash->{round},
+            );
 
     return;
 }

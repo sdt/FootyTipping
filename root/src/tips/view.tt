@@ -47,3 +47,7 @@
 [% END %]
 </tbody>
 </table>
+
+[% IF can_edit %]
+<a href="[% c.req.uri_with({ edit => 1 }) %]">Edit tips</a>
+[% END %]

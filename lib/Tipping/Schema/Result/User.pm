@@ -74,60 +74,69 @@ sub can_view_tips {
             round       => { type => SCALAR },
         });
 
-    if ($self == $args{other_user}) {
-        return 1;
-    }
-
     # User A can view user B's competition C tips if:
     # - user A is superuser, or
     # - user A is also in competition C, and
     #   - that round has finished, or
     #   - user A has can_submit_tips_for_others in competition C
 
-    if (!$self->competitions->find({
+    my $comp_entry = $self->competition_users->find(
+            { competition_id => $args{comp_id} }
+        ) or return;    # user is not in competition
+
+    if ($self == $args{other_user}) {
+        return 1;   # can always view your own tips
+    }
+
+    if (!$args{other_user}->competition_users->find({
             competition_id => $args{comp_id}})) {
-        return;
+        return;     # other user is not in competition
     }
 
-    my $games = $self->result_source->schema->resultset('Game');
-    if ($games->round($args{round})->all_ended) {
-        return 1;
+    if ($comp_entry->can_submit_tips_for_others) {
+        return 1;   # can view/change tips for others
     }
 
-    if ($self->competition_users
-              ->find({ competition_id => $args{comp_id} })
-              ->can_submit_tips_for_others) {
-        return 1;
-    }
-
-    return;
+    # can view tips for others in your own comp if all games have ended
+    return $self->result_source->schema->resultset('Game')
+                ->round($args{round})->all_ended;
 }
 
+# TODO: can_edit_tips and can_view_tips need to share query results so as
+#       to not double-up on queries
+#       1. pass comp_entry as a parameter
+#       2. pre-check if both in C (ie assume so in this code)
 sub can_edit_tips {
     my $self = shift;
     my %args = validate(@_, {
             other_user  => { isa => 'Tipping::Schema::Result::User' },
-            competition => { isa => 'Tipping::Schema::Result::Competition' },
+            comp_id     => { type => SCALAR },
             round       => { type => SCALAR },
         });
 
     # User A can edit user B's competition C tips if:
-    # - user A is superuser, or
-    # - user A is also in competition C, and
-    #   - user A has can_submit_tips_for_others in competition C
+    # - user A and user B are both in competition C, -and-
+    # - games have not all started, or A can_change_closed_tips, -and-
+    # - user A is user B, or A can_submit_tips_for_others, -and-
+    # - user A is user B and not all games have ended
 
-    if (!$self->competitions->find({
-            competition_id => $args{competition}->id})) {
-        return;
+    my $comp_search = { competition_id => $args{comp_id} };
+    my $comp_entry = $self->competition_users->find($comp_search)
+        or return;    # this user is not in competition
+
+    if ($self != $args{other_user}) {
+        # Check that can submit tips for others, -and-
+        # other user is also in competition.
+        if ((not $comp_entry->can_submit_tips_for_others) or
+            (not $args{other_user}->competitions->find($comp_search))) {
+            return;
+        }
     }
 
-    my $comp_id = $args{competition}->id;
-    if ($self->competition_users->find({ competition_id => $comp_id })
-                                 ->can_submit_tips_for_others) {
-        return 1;
-    }
-
-    return;
+    my $all_games_started = $self->result_source->schema->resultset('Game')
+                                 ->round($args{round})->all_started;
+    return (not $all_games_started)
+        or $comp_entry->can_change_closed_tips;
 }
 
 1;

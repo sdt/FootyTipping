@@ -23,14 +23,26 @@ sub inflate_games {
     );
 }
 
-sub has_ended {
+sub have_started {
+    my ($self, $has_started) = @_;
+    my $now = DateTime->now( time_zone => 'UTC' );
+    my $op = $has_started ? '<=' : '>';
+    return $self->search({ start_time_utc => { $op => $now } });
+}
+
+sub all_started {
+    my ($self) = @_;
+    return $self->have_started(0)->count == 0;
+}
+
+sub have_ended {
     my ($self, $has_ended) = @_;
     return $self->search({ has_ended => $has_ended });
 }
 
 sub all_ended {
     my ($self) = @_;
-    return $self->has_ended(0)->count == 0;
+    return $self->have_ended(0)->count == 0;
 }
 
 sub rounds {
@@ -49,7 +61,9 @@ sub rounds {
 sub current_round {
     my ($self) = @_;
 
-    my $now = DateTime->now;
+    #TODO: Subtracting three hours from now is a bit of a hack meaning we
+    #      consider a game must have finished three hours after it started.
+    my $now = DateTime->now( time_zone => 'UTC' )->subtract( hours => 3 );
 
     my $next_game = $self->search(
         {
@@ -100,7 +114,15 @@ Populates the home and away relationships on game.
 
 Filter the game table by team name - finds both home and away games.
 
-=head2 has_ended ($bool)
+=head2 have_started ($bool)
+
+Filter the game table by games which have started (or not).
+
+=head2 all_started
+
+Determine whether all the games in the current resultset have started.
+
+=head2 have_ended ($bool)
 
 Filter the game table by games which have ended (or not).
 
