@@ -36,12 +36,14 @@ sub all_ended {
 sub rounds {
     my ($self) = @_;
 
-    return $self->search(undef,
-        {
-            order_by => [qw/ round /],
-            distinct => 1,
-        },
-    )->get_column('round')->all;
+    # Cache this list - it won't be changing mid-season.
+    state $rounds = [ $self->search(undef,
+            {
+                order_by => [qw/ round /],
+                distinct => 1,
+            }
+        )->get_column('round')->all ];
+    return @{ $rounds };
 }
 
 sub current_round {
