@@ -33,7 +33,7 @@ sub index :Path :Args(0) {      ## no critic (ProhibitBuiltinHomonyms)
     if (not $c->user_exists) {
         $c->response->redirect($c->uri_for('/login'));
     }
-    $c->response->body( $c->welcome_message );
+    $c->response->redirect($c->uri_for('/tips/view'));
 
     return;
 }
