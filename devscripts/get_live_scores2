@@ -29,7 +29,7 @@ sub parse_scores {
 
         given ($line) {
 
-            when (m{<div class="scoresection afl clearfix">}) {
+            when (m{<div class="scoresection afl (?:in-progress )?clearfix">}) {
                 $in = 1;
             }
 
