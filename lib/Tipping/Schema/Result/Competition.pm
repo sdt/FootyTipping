@@ -26,12 +26,12 @@ __PACKAGE__->set_primary_key('competition_id');
 __PACKAGE__->add_unique_constraint([ qw/ name / ]);
 
 __PACKAGE__->has_many(
-    competition_users => 'Tipping::Schema::Result::Competition_User',
+    memberships => 'Tipping::Schema::Result::Competition_User',
     'competition_id'
 );
 __PACKAGE__->many_to_many(
-    users => 'competition_users',
-    'user'  # GOTCHA!: user, not user_id
+    members => 'memberships',
+    'member'
 );
 
 1;
@@ -46,8 +46,8 @@ Tipping::Schema::Result::Competition - DBIx::Class result source
 
 =head1 DESCRIPTION
 
-A tipping competition has many users. There is only one type of user, but
-with different capabilities.
+A tipping competition has a name, many members, and an optional password that
+users must provide in order to join.
 
 =head1 AUTHOR
 

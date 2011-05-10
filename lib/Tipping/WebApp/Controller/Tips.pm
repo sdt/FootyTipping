@@ -16,7 +16,7 @@ sub tips :Chained('/login/required') :PathPath('tips') :CaptureArgs(0) {
                             { user_id => $c->request->params->{user} })
                       : $c->user->get_object;
     $c->stash->{comp_id} = $c->request->params->{comp_id} //
-                           $c->stash->{user}->competition_users
+                           $c->stash->{user}->memberships
                                             ->first->competition_id;
 
     return;

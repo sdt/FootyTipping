@@ -53,11 +53,11 @@ __PACKAGE__->has_many(
 );
 
 __PACKAGE__->has_many(
-    competition_users => 'Tipping::Schema::Result::Competition_User',
+    memberships => 'Tipping::Schema::Result::Competition_User',
     'user_id'
 );
 __PACKAGE__->many_to_many(
-    competitions => 'competition_users',
+    competitions => 'memberships',
     'competition'   # GOTCHA!: competition, not competition_id!
 );
 
@@ -80,7 +80,7 @@ sub can_view_tips {
     #   - that round has finished, or
     #   - user A has can_submit_tips_for_others in competition C
 
-    my $comp_entry = $self->competition_users->find(
+    my $membership = $self->memberships->find(
             { competition_id => $args{comp_id} }
         ) or return;    # user is not in competition
 
@@ -88,12 +88,12 @@ sub can_view_tips {
         return 1;   # can always view your own tips
     }
 
-    if (!$args{other_user}->competition_users->find({
+    if (!$args{other_user}->memberships->find({
             competition_id => $args{comp_id}})) {
         return;     # other user is not in competition
     }
 
-    if ($comp_entry->can_submit_tips_for_others) {
+    if ($membership->can_submit_tips_for_others) {
         return 1;   # can view/change tips for others
     }
 
@@ -104,7 +104,7 @@ sub can_view_tips {
 
 # TODO: can_edit_tips and can_view_tips need to share query results so as
 #       to not double-up on queries
-#       1. pass comp_entry as a parameter
+#       1. pass membership as a parameter
 #       2. pre-check if both in C (ie assume so in this code)
 sub can_edit_tips {
     my $self = shift;
@@ -121,13 +121,13 @@ sub can_edit_tips {
     # - user A is user B and not all games have ended
 
     my $comp_search = { competition_id => $args{comp_id} };
-    my $comp_entry = $self->competition_users->find($comp_search)
+    my $membership = $self->memberships->find($comp_search)
         or return;    # this user is not in competition
 
     if ($self != $args{other_user}) {
         # Check that can submit tips for others, -and-
         # other user is also in competition.
-        if ((not $comp_entry->can_submit_tips_for_others) or
+        if ((not $membership->can_submit_tips_for_others) or
             (not $args{other_user}->competitions->find($comp_search))) {
             return;
         }
@@ -136,7 +136,7 @@ sub can_edit_tips {
     my $all_games_started = $self->result_source->schema->resultset('Game')
                                  ->round($args{round})->all_started;
     return (not $all_games_started)
-        or $comp_entry->can_change_closed_tips;
+        or $membership->can_change_closed_tips;
 }
 
 1;
@@ -152,12 +152,7 @@ Tipping::Schema::Result::User - DBix:Class result source
 =head1 DESCRIPTION
 
 A user has a username, password, email address and a real name.
-A user has a screen name, but this is per competition.
-
 A user can be a member of zero or more competitions.
-
-A user has a set of capabilites per competition. By default a user has no
-special capabilities.
 
 =head1 METHODS
 

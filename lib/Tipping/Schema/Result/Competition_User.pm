@@ -55,12 +55,10 @@ Tipping::Schema::Result::Competition_User - DBIx::Class result source
 =head1 DESCRIPTION
 
 A user can be a member of zero or more competitions. A competition has zero
-or more users.
+or more members.
 
-There is only one type of user, but they have differing capabilities. A users
-capabilities can vary between competitions.
-
-A user has an optional screen name associated with each competition.
+A membership in a competition includes capabilities for the user in that
+competition. A user has an optional screen name for use in that competition.
 
 =head1 AUTHOR
 
