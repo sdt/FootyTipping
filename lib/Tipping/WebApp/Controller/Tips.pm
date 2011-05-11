@@ -205,6 +205,8 @@ Catalyst controller for viewing and editing tips.
 
 =head2 game_tips
 
+=head2 save_tips
+
 =head2 view
 
 =head1 AUTHOR

@@ -89,6 +89,13 @@ Tipping::Schema::Result::Game - DBIx::Class result source
 A game for a given round takes place between two teams at a venue at a given
 start time. Once it has ended we flag it as such.
 
+=head1 METHODS
+
+=head2 has_started ( $now? )
+
+True if the game has already started. Optional now parameter can be passed if
+you already have a 'now' object, otherwise one is created internally.
+
 =head1 AUTHOR
 
 Stephen Thirlwall <sdt@dr.com>
