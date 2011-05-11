@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Tue May 10 09:58:16 2011
+-- Created on Wed May 11 10:31:46 2011
 -- 
 ;
 SET foreign_key_checks=0;
@@ -43,6 +43,7 @@ CREATE TABLE `tbl_user` (
   `real_name` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `password` char(50) NOT NULL,
+  `is_superuser` enum('0','1') NOT NULL DEFAULT '0',
   PRIMARY KEY (`user_id`),
   UNIQUE `tbl_user_real_name` (`real_name`),
   UNIQUE `tbl_user_username` (`username`)

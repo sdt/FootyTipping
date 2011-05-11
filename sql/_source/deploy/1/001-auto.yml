@@ -814,6 +814,16 @@ schema:
           order: 4
           size:
             - 0
+        is_superuser:
+          data_type: boolean
+          default_value: 0
+          is_nullable: 0
+          is_primary_key: 0
+          is_unique: 0
+          name: is_superuser
+          order: 6
+          size:
+            - 0
         password:
           data_type: char
           default_value: ~
@@ -1520,6 +1530,10 @@ translator:
             email:
               data_type: varchar
               is_nullable: 0
+            is_superuser:
+              data_type: boolean
+              default_value: 0
+              is_nullable: 0
             password:
               data_type: char
               encode_args:
@@ -1548,6 +1562,7 @@ translator:
             - real_name
             - email
             - password
+            - is_superuser
           _primaries: &10
             - user_id
           _relationships:
@@ -1762,16 +1777,16 @@ translator:
         schema: *1
         transaction_depth: 0
     sources:
-      - Competition
       - Venue
       - Team
+      - Competition
       - Competition_User
       - User
       - Game
       - Game_Team
       - Session
-      - Venue_SponsorName
       - Team_Supporter
+      - Venue_SponsorName
       - Tip
   parser_type: SQL::Translator::Parser::DBIx::Class
   producer_args: {}

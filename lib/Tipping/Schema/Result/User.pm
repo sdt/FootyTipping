@@ -36,6 +36,12 @@ __PACKAGE__->add_columns(
             salt_length => 10
         },
     },
+
+    is_superuser => {
+        data_type           => 'boolean',
+        is_nullable         => 0,
+        default_value       => 0,
+    }
 );
 
 __PACKAGE__->set_primary_key('user_id');

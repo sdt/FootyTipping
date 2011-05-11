@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Tue May 10 09:58:16 2011
+-- Created on Wed May 11 10:31:45 2011
 -- 
 
 ;
@@ -41,7 +41,8 @@ CREATE TABLE tbl_user (
   username varchar NOT NULL,
   real_name varchar NOT NULL,
   email varchar NOT NULL,
-  password char(50) NOT NULL
+  password char(50) NOT NULL,
+  is_superuser boolean NOT NULL DEFAULT '0'
 );
 CREATE UNIQUE INDEX tbl_user_real_name ON tbl_user (real_name);
 CREATE UNIQUE INDEX tbl_user_username ON tbl_user (username);

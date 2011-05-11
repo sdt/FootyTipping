@@ -594,6 +594,10 @@ translator:
             email:
               data_type: varchar
               is_nullable: 0
+            is_superuser:
+              data_type: boolean
+              default_value: 0
+              is_nullable: 0
             password:
               data_type: char
               encode_args:
@@ -622,6 +626,7 @@ translator:
             - real_name
             - email
             - password
+            - is_superuser
           _primaries: &10
             - user_id
           _relationships:

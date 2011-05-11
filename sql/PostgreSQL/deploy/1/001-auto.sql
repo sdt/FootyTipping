@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Tue May 10 09:58:16 2011
+-- Created on Wed May 11 10:31:46 2011
 -- 
 ;
 --
@@ -48,6 +48,7 @@ CREATE TABLE "tbl_user" (
   "real_name" character varying NOT NULL,
   "email" character varying NOT NULL,
   "password" character(50) NOT NULL,
+  "is_superuser" boolean DEFAULT '0' NOT NULL,
   PRIMARY KEY ("user_id"),
   CONSTRAINT "tbl_user_real_name" UNIQUE ("real_name"),
   CONSTRAINT "tbl_user_username" UNIQUE ("username")
