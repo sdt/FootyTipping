@@ -9,16 +9,38 @@ BEGIN { extends 'Catalyst::Controller::ActionRole'; }
 sub tips :Chained('/login/required') :PathPath('tips') :CaptureArgs(0) {
     my ($self, $c) = @_;
 
-    $c->stash->{round} = $c->request->params->{round} //
+    $c->stash->{round} = $c->req->params->{round} //
                          $c->model('DB::Game')->current_round;
-    $c->stash->{user} = $c->request->params->{user}
-                      ? $c->model('DB::User')->find(
-                            { user_id => $c->request->params->{user} })
-                      : $c->user->get_object;
-    $c->stash->{comp_id} = $c->request->params->{comp_id} //
-                           $c->stash->{user}->memberships
-                                            ->first->competition_id;
 
+    if (my $tipper_id = $c->req->params->{tipper}) {
+        # Check that the specified tipper exists
+        $c->stash->{tipper} = $c->model('DB::User')
+                                ->find( { user_id => $tipper_id } )
+            or $c->detach('/default'); # tipper is not member of comp
+    }
+    else {
+        $c->stash->{tipper} = $c->user->obj;
+    }
+
+    if (my $comp_id = $c->req->params->{comp_id}) {
+        # Check that the tipper is a member of the specified competition
+        if (ref $comp_id) {
+            $comp_id = $comp_id->[-1];
+        }
+        if (!$c->stash->{tipper}->memberships->find(
+                { competition_id => $comp_id }
+            )) {
+            $c->detach('/default'); # tipper is not member of comp
+        }
+        $c->stash->{comp_id} = $comp_id;
+    }
+    else {
+        $c->stash->{comp_id} = $c->stash->{tipper}->memberships
+                                 ->first->competition_id;
+    }
+
+    # At this point we know the tipper exists, the comp exists and the
+    # tipper is a member of the comp.
     return;
 }
 
@@ -35,14 +57,10 @@ sub rounds: Private {
 sub games :Private {
     my ($self, $c) = @_;
 
-    my @games = $c->model('DB::Game')
-                  ->round($c->stash->{round})
-                  ->inflate_games
-                  ->all;
+    my @games = $c->model('DB::Game')->round($c->stash->{round})
+                  ->inflate_games->all
+        or $c->detach('/default');
 
-    if (not @games) {
-        $c->detach('/default');
-    }
     $c->stash(games => \@games);
 
     return;
@@ -56,7 +74,7 @@ sub game_tips :Private {
     # have been superceded - there won't be many of these anyway.
     my $tip_rs = $c->model('DB::Tip')
                    ->round($c->stash->{round})
-                   ->user($c->stash->{user}->id)
+                   ->tipper($c->stash->{tipper}->id)
                    ->competition($c->stash->{comp_id})
                    ->order_by_date;
 
@@ -75,12 +93,29 @@ sub game_tips :Private {
 sub view :Chained('tips') :PathPart('view') :Args(0) {
     my ($self, $c) = @_;
 
-    if (not $c->user->can_view_tips(
-            other_user  => $c->stash->{user},
-            comp_id     => $c->stash->{comp_id},
-            round       => $c->stash->{round},
-         )) {
-        $c->detach('/default');
+    if ($c->user->is_superuser) {
+        $c->stash->{can_edit} = 1;
+    }
+    else {
+        my $membership = $c->user->memberships->find(
+                { competition_id => $c->stash->{comp_id} }
+            );
+
+        my $games_rs = $c->model('DB::Game')->round($c->stash->{round});
+
+        if (not $c->user->can_view_tips(
+                tipper     => $c->stash->{tipper},
+                membership => $membership,
+                games_rs   => $games_rs,
+            )) {
+            $c->detach('/default');
+        }
+
+        $c->stash->{can_edit} = $c->user->can_edit_tips(
+                tipper      => $c->stash->{tipper},
+                membership  => $membership,
+                games_rs    => $games_rs,
+            );
     }
 
     $c->forward('rounds');
@@ -94,12 +129,6 @@ sub view :Chained('tips') :PathPart('view') :Args(0) {
             my $start_time = $game->start_time_utc->clone;
             return $start_time->set_time_zone($tz)->strftime($fmt);
         };
-
-    $c->stash->{can_edit} = $c->user->can_edit_tips(
-                other_user  => $c->stash->{user},
-                comp_id     => $c->stash->{comp_id},
-                round       => $c->stash->{round},
-            );
 
     return;
 }

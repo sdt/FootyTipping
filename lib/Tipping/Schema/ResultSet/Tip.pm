@@ -11,10 +11,9 @@ sub round {
         );
 }
 
-sub user {
+sub tipper {
     my ($self, $user_id) = @_;
     return $self->search({ tipper_id => $user_id });
-
 }
 
 sub competition {
@@ -45,9 +44,9 @@ Pre-defined tip searches.
 
 Filter the tips table by round.
 
-=head2 user ($round)
+=head2 tipper ($round)
 
-Filter the tips table by user.
+Filter the tips table by tipper.
 
 =head2 competition ($round)
 

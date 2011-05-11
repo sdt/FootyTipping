@@ -74,75 +74,62 @@ __PACKAGE__->might_have(
 
 sub can_view_tips {
     my $self = shift;
+    my $ns = 'Tipping::Schema::';
     my %args = validate(@_, {
-            other_user  => { isa => 'Tipping::Schema::Result::User' },
-            comp_id     => { type => SCALAR },
-            round       => { type => SCALAR },
+            tipper     => { isa => $ns . 'Result::User' },
+            membership => { isa => $ns . 'Result::Competition_User' },
+            games_rs   => { isa => $ns . 'ResultSet::Game' },
         });
 
+    # We already know that:
+    # - user is normal user (not superuser)
+    # - user and tipper are both members of membership->competition
+
     # User A can view user B's competition C tips if:
-    # - user A is superuser, or
-    # - user A is also in competition C, and
-    #   - that round has finished, or
-    #   - user A has can_submit_tips_for_others in competition C
+    # - that round has completely finished, or
+    # - user A has can_submit_tips_for_others in competition C
 
-    my $membership = $self->memberships->find(
-            { competition_id => $args{comp_id} }
-        ) or return;    # user is not in competition
-
-    if ($self == $args{other_user}) {
+    if ($self->user_id == $args{tipper}->user_id) {
         return 1;   # can always view your own tips
     }
 
-    if (!$args{other_user}->memberships->find({
-            competition_id => $args{comp_id}})) {
-        return;     # other user is not in competition
-    }
-
-    if ($membership->can_submit_tips_for_others) {
+    if ($args{membership}->can_submit_tips_for_others) {
         return 1;   # can view/change tips for others
     }
 
     # can view tips for others in your own comp if all games have ended
-    return $self->result_source->schema->resultset('Game')
-                ->round($args{round})->all_ended;
+    return $args{games_rs}->all_ended;
 }
 
-# TODO: can_edit_tips and can_view_tips need to share query results so as
-#       to not double-up on queries
-#       1. pass membership as a parameter
-#       2. pre-check if both in C (ie assume so in this code)
 sub can_edit_tips {
     my $self = shift;
+    my $ns = 'Tipping::Schema::';
     my %args = validate(@_, {
-            other_user  => { isa => 'Tipping::Schema::Result::User' },
-            comp_id     => { type => SCALAR },
-            round       => { type => SCALAR },
+            tipper     => { isa => $ns . 'Result::User' },
+            membership => { isa => $ns . 'Result::Competition_User' },
+            games_rs   => { isa => $ns . 'ResultSet::Game' },
         });
 
+    # We already know that:
+    # - user is normal user (not superuser)
+    # - user and tipper are both members of membership->competition
+
     # User A can edit user B's competition C tips if:
-    # - user A and user B are both in competition C, -and-
-    # - games have not all started, or A can_change_closed_tips, -and-
     # - user A is user B, or A can_submit_tips_for_others, -and-
-    # - user A is user B and not all games have ended
+    # - games have not all started, or A can_change_closed_tips
 
-    my $comp_search = { competition_id => $args{comp_id} };
-    my $membership = $self->memberships->find($comp_search)
-        or return;    # this user is not in competition
-
-    if ($self != $args{other_user}) {
-        # Check that can submit tips for others, -and-
-        # other user is also in competition.
-        if ((not $membership->can_submit_tips_for_others) or
-            (not $args{other_user}->competitions->find($comp_search))) {
-            return;
-        }
+    if (($self->user_id != $args{tipper}->id) and
+        (not $args{membership}->can_submit_tips_for_others)) {
+        return; # can't submit tips for other users
     }
 
-    my $all_games_started = $self->result_source->schema->resultset('Game')
-                                 ->round($args{round})->all_started;
-    return (not $all_games_started)
-        or $membership->can_change_closed_tips;
+    if ($args{membership}->can_change_closed_tips) {
+        # Don't bother checking the games - this user can edit tips
+        return 1;
+    }
+
+    # Tipper can edit tips if some of the games are yet to start
+    return not $args{games_rs}->all_started;
 }
 
 1;
