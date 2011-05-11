@@ -90,37 +90,85 @@ sub game_tips :Private {
     return;
 }
 
+sub save_tips :Private {
+    my ($self, $c, $membership) = @_;
+
+    $c->model('DB')->schema->txn_do(sub{
+        for my $game (@{ $c->stash->{games} }) {
+            my $new_tip = $c->req->body_params->{'game_' . $game->game_id};
+            if ((defined $new_tip) and
+                ((not exists $game->{tip}) or
+                 ($game->{tip}->home_team_to_win != $new_tip))) {
+
+                if (not ($c->user->is_superuser or $c->user->can_edit_tips(
+                        tipper      => $c->stash->{tipper},
+                        membership  => $membership,
+                        games       => [ $game ],
+                    ))) {
+                    $game->{tip_failed} = 1;
+                    next;
+                }
+
+                # The tip has changed for this game, so save it.
+                # TODO: check that this is allowed
+                $game->{tip} = $c->model('DB::Tip')->create({
+                        game_id          => $game->game_id,
+                        competition_id   => $c->stash->{comp_id},
+                        tipper_id        => $c->stash->{tipper}->user_id,
+                        submitter_id     => $c->user->user_id,
+                        home_team_to_win => $new_tip,
+                    });
+                $game->{tip_saved} = 1;
+            }
+        }
+    });
+
+    return;
+}
+
 sub view :Chained('tips') :PathPart('view') :Args(0) {
     my ($self, $c) = @_;
 
-    if ($c->user->is_superuser) {
-        $c->stash->{can_edit} = 1;
-    }
-    else {
-        my $membership = $c->user->memberships->find(
-                { competition_id => $c->stash->{comp_id} }
-            );
-
-        my $games_rs = $c->model('DB::Game')->round($c->stash->{round});
-
-        if (not $c->user->can_view_tips(
-                tipper     => $c->stash->{tipper},
-                membership => $membership,
-                games_rs   => $games_rs,
-            )) {
-            $c->detach('/default');
-        }
-
-        $c->stash->{can_edit} = $c->user->can_edit_tips(
-                tipper      => $c->stash->{tipper},
-                membership  => $membership,
-                games_rs    => $games_rs,
-            );
-    }
+    my $membership = $c->user->memberships->find(
+            { competition_id => $c->stash->{comp_id} }
+        );
 
     $c->forward('rounds');
     $c->forward('games');
     $c->forward('game_tips');
+
+    if ($c->req->method eq 'POST') {
+        $c->forward('save_tips', [ $membership ]);
+    }
+
+    $c->stash->{edit_mode} = $c->req->params->{edit};
+
+    if ($c->user->is_superuser) {
+        $c->stash->{can_edit} = 1;
+        for my $game (@{ $c->stash->{games} }) {
+            $game->{can_edit} = 1;
+        }
+    }
+    else {
+        if (not $c->user->can_view_tips(
+                tipper     => $c->stash->{tipper},
+                membership => $membership,
+                games      => $c->stash->{games},
+            )) {
+            $c->detach('/default');
+        }
+
+        my $can_edit = 0;
+        for my $game (@{ $c->stash->{games} }) {
+            $game->{can_edit} = $c->user->can_edit_tips(
+                tipper      => $c->stash->{tipper},
+                membership  => $membership,
+                games       => [ $game ],
+            );
+            $can_edit ||= $game->{can_edit};
+        }
+        $c->stash->{can_edit} = $can_edit;
+    }
 
     $c->stash->{start_time} = sub {
             my ($game) = @_;

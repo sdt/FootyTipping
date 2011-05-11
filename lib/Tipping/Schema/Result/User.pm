@@ -2,6 +2,7 @@ package Tipping::Schema::Result::User;
 use parent 'DBIx::Class';
 
 use Modern::Perl;
+use List::MoreUtils (qw/ all any /);
 use Params::Validate (qw/ validate :types /);
 
 my $string = {
@@ -78,7 +79,7 @@ sub can_view_tips {
     my %args = validate(@_, {
             tipper     => { isa => $ns . 'Result::User' },
             membership => { isa => $ns . 'Result::Competition_User' },
-            games_rs   => { isa => $ns . 'ResultSet::Game' },
+            games      => { type => ARRAYREF },
         });
 
     # We already know that:
@@ -98,7 +99,7 @@ sub can_view_tips {
     }
 
     # can view tips for others in your own comp if all games have ended
-    return $args{games_rs}->all_ended;
+    return all { $_->has_ended } @{ $args{games} };
 }
 
 sub can_edit_tips {
@@ -107,7 +108,7 @@ sub can_edit_tips {
     my %args = validate(@_, {
             tipper     => { isa => $ns . 'Result::User' },
             membership => { isa => $ns . 'Result::Competition_User' },
-            games_rs   => { isa => $ns . 'ResultSet::Game' },
+            games      => { type => ARRAYREF },
         });
 
     # We already know that:
@@ -129,7 +130,8 @@ sub can_edit_tips {
     }
 
     # Tipper can edit tips if some of the games are yet to start
-    return not $args{games_rs}->all_started;
+    my $now = DateTime->now( time_zone => 'UTC' );
+    return not all { $_->has_started($now) } @{ $args{games} };
 }
 
 1;

@@ -1,29 +1,21 @@
-[%- BLOCK round_link -%]
-  [%- IF round == r -%]
-    [%- r -%]
-  [%- ELSE -%]
+[%- BLOCK round_link;
+      IF round == r;
+        r;
+      ELSE; -%]
 <a href="[% c.req.uri_with({ 'round' => r }) %]">[% r %]</a>
-  [%- END -%]
-[%- END -%]
-<ul id="rounds">
-[% FOR r = rounds; %]  <li>[%- INCLUDE round_link -%]</li>
-[% END; -%]
-</ul>
+[%-   END;
+    END -%]
 
-<h1>Round [% round %]</h1>
+[%- BLOCK score;
+      IF game.has_ended;
+        team.goals _ '.' _
+        team.behinds _ '&nbsp;' _
+        team.score;
+      END;
+    END -%]
 
-<table id="games">
-<tbody>
-[% FOR game = games; %]
-  <tr>
-  <td class="home_team[% IF game.tip AND game.tip.home_team_to_win; ' tipped'; END; %]">
-  [%- game.home.team.name %]</td>
-  <td>[% IF game.has_ended;
-        game.home.goals _ '.' _
-        game.home.behinds _ '&nbsp;' _
-        game.home.score; END %]</td>
-  <td class="vs">
-  [% IF game.has_ended;
+[%- BLOCK result;
+      IF game.has_ended;
         IF game.home.score > game.away.score;
             "defeated";
         ELSIF game.home.score < game.away.score;
@@ -31,16 +23,44 @@
         ELSE;
             "drew&nbsp;with";
         END;
-     ELSE;
+      ELSE;
         "vs";
-     END %]
-  </td>
+      END;
+    END -%]
+
+[%- BLOCK tip;
+      IF game.can_edit; %]
+<input type="radio" name="game_[% game.game_id %]" value="[% team.is_home_team %]"
+        [% IF game.tip AND (team.is_home_team == game.tip.home_team_to_win) %]
+           checked="checked"
+        [% END %]
+/>
+  [%  END;
+    END -%]
+
+<ul id="rounds">
+[% FOR r = rounds; %]  <li>[%- INCLUDE round_link -%]</li>
+[% END; -%]
+</ul>
+
+<h1>Round [% round %]</h1>
+
+[% IF edit_mode; %]
+<form name="tips" action="[% c.req.uri %]" method="POST">
+[% END %]
+<table id="games">
+<tbody>
+[% FOR game = games; %]
+  <tr>
+  <td class="home_team[% IF game.tip AND game.tip.home_team_to_win; ' tipped'; END; %]">
+  [%- game.home.team.name %]</td>
+  <td class="score">[% INCLUDE score team=game.home; %]</td>
+  <td class="tip">[% INCLUDE tip team=game.home; %]</td>
+  <td class="vs">[% INCLUDE result; %]</td>
+  <td class="tip">[% INCLUDE tip team=game.away; %]</td>
   <td class="away_team[% IF game.tip AND NOT game.tip.home_team_to_win; ' tipped'; END; %]">
   [%- game.away.team.name %]</td>
-  <td>[% IF game.has_ended;
-        game.away.goals _ '.' _
-        game.away.behinds _ '&nbsp;' _
-        game.away.score; END %]</td>
+  <td class="score">[% INCLUDE score team=game.away; %]</td>
   <td class="venue">[% game.venue.name %]</td>
   <td class="time">[% start_time(game) %]</td>
   </tr>
@@ -48,6 +68,11 @@
 </tbody>
 </table>
 
-[% IF can_edit %]
+[% IF edit_mode; %]
+<input type="submit" value="Save tips!" />
+</form>
+[% END %]
+
+[% IF can_edit && NOT edit_mode %]
 <a href="[% c.req.uri_with({ edit => 1 }) %]">Edit tips</a>
 [% END %]

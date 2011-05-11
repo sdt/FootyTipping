@@ -68,6 +68,12 @@ __PACKAGE__->has_one(
     { where => { 'is_home_team' => 0 } },
 );
 
+sub has_started {
+    my ($self, $now) = @_;
+    $now //= DateTime->now( time_zone => 'UTC' );
+    return $self->start_time_utc < $now;
+}
+
 1;
 
 __END__
