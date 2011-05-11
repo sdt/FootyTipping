@@ -1,3 +1,7 @@
+[% META title = "NFTA Tipping"
+        hide_navbar = 1
+%]
+
 [%- BLOCK round_link;
       IF round == r;
         r;

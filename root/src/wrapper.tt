@@ -1,12 +1,15 @@
 <!doctype html public "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head>
-  <title>[% page.title || "Your default title goes here" %]</title>
+  <title>[% template.title || "NFTA Tipping" %]</title>
   <link rel="stylesheet" href="/static/style.css" media="all">
 </head>
 
 <body>
 
+[% IF no_wrapper OR template.no_wrapper; content; ELSE %]
+
+[% #TODO - hack %]
 [% selected_tab = "Games" %]
 
 <div id="container">
@@ -16,6 +19,8 @@
     Hello, [% c.user.username %]. <a href="[% c.uri_for('/logout') %]">Log Out</a>
 [%- END; %]
 </div>
+
+[% IF (NOT template.hide_navbar) AND (NOT template.name.match('input text')) %]
 
 <div id="navbar">
 [% BLOCK tab;
@@ -28,6 +33,7 @@
     [% INCLUDE tab tab_text = "Options" %]
   </ul>
 </div>
+[% END; %]
 
 <div id="content">
 [% content %]
@@ -37,5 +43,8 @@
 </div>
 
 </div>
+
+[% END %]
+
 </body>
 </html>

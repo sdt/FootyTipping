@@ -52,10 +52,7 @@ body {
 
 .main_fieldset {
   background-color: white;
-  text-transform: lowercase;
-  border-width: 2px;
-  border-color: red;
-  border-style: inset;
+  border: 0;
 }
 
 #rounds li {
