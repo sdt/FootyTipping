@@ -83,7 +83,6 @@ my $docklands = $venues->find({ name => { 'like' => '%Docklands%' }});
 is($docklands->sponsor_name(2011), 'Etihad Stadium', 'Docklands Stadium is Etihad Stadium in 2011');
 is($docklands->sponsor_name(2008), 'Telstra Dome', 'Docklands Stadium was Telstra Dome in 2008');
 
-=pod
 my $num_comps = 3;
 for my $id (1 .. $num_comps) {
     $comps->create({
@@ -94,7 +93,7 @@ for my $id (1 .. $num_comps) {
 my $num_users = 10;
 for my $id (1 .. $num_users) {
     my $user = $users->create({
-        user_name => "user$id",
+        username  => "user$id",
         real_name => "User $id",
         email     => "user$id\@nftatips.org",
         password  => "pass$id",
@@ -104,7 +103,9 @@ for my $id (1 .. $num_users) {
         $user->add_to_competitions($comps->find({ name => "comp$compid" }));
     }
 }
-=cut
+
+is($users->find({ username => 'user1' })
+         ->competitions->search({ name => [qw/comp1 comp2/]})->count, 2);
 
 my $finished_games = $game_teams->search(
     {
