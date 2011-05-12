@@ -107,6 +107,31 @@ for my $id (1 .. $num_users) {
 is($users->find({ username => 'user1' })
          ->competitions->search({ name => [qw/comp1 comp2/]})->count, 2);
 
+# These next three generate the same SQL
+is($users->search(
+            {
+                username => 'user1',
+                'competition.name' => [qw/comp1 comp2/],
+            },
+            {
+                join => { memberships => 'competition' },
+            })->count, 2);
+
+is($users->search({ username => 'user1' })
+         ->search_related('memberships',
+            {
+                'competition.name' => [qw/comp1 comp2/]
+            },
+            {
+                join => [qw/ competition /],
+            })->count, 2);
+
+is($users->search({ username => 'user1' })
+         ->search_related('memberships')
+         ->search_related('competition', { 'name' => [qw/comp1 comp2/] })
+         ->count, 2);
+
+
 my $finished_games = $game_teams->search(
     {
         'game.round' => { '<=' => 3 },
