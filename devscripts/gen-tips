@@ -1,0 +1,51 @@
+#!/usr/bin/env perl
+use Modern::Perl;
+
+use Getopt::Lazy
+    'username=s'     => 'Login name                 (required)',
+    'compname=s'     => 'Competition name           (required)',
+    'firstround=i'   => 'First round                (required)',
+    'lastround=i'    => 'Last round                           ',
+    -summary => 'Add a user to a competition',
+    -usage => '%c %o',
+    ;
+
+use Tipping::Schema ();
+
+GetOptions(-autohelp => sub {
+        not (defined $username and defined $compname and defined $firstround)
+    });
+
+my $schema = Tipping::Schema->connect;
+my $user = $schema->resultset('User')->find({ username => $username})
+    or die "Can't find user $username";
+my $comp = $user->competitions->find({ name => $compname })
+    or die "Can't find comp $compname";
+
+$lastround //= $firstround;
+
+my @games = $schema->resultset('Game')->search(
+        {
+            -and => [
+                round => { '>=' => $firstround },
+                round => { '<=' => $lastround  },
+            ],
+        },
+        {
+            order_by => 'game_id',
+        })->get_column('game_id')->all;
+
+my %base_tip = (
+    tipper_id       => $user->id,
+    submitter_id    => $user->id,
+    competition_id  => $comp->id,
+    timestamp       => DateTime->now( time_zone => 'UTC' ),
+);
+
+$schema->resultset('Tip')->populate([ map {
+        {
+            %base_tip,
+            game_id => $_,
+            home_team_to_win => int(rand(256))&1,
+        }
+    } @games ] );
