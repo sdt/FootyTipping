@@ -6,7 +6,9 @@ use WWW::Mechanize;
 
 sub get_url_fh {
     my ($url) = @_;
-    return IO::String->new(WWW::Mechanize->new->get($url)->content);
+    my $www = WWW::Mechanize->new;
+    return unless $www->get($url);
+    return IO::String->new($www->content);
 }
 
 sub parse_game_urls {
@@ -19,8 +21,7 @@ sub parse_game_urls {
 
             when (m{<a href="game(\d).php" rel="#iframe"(?: class="selected")?>([A-Z]{3}) v ([A-Z]{3})</a></li>}) {
                 my ($rel, $home, $away) = ($1, $2, $3);
-                $urls{lc $home} = $rel;
-                $urls{lc $away} = $rel;
+                $urls{$rel} = "$home vs $away";
             }
         }
     }
@@ -59,12 +60,16 @@ sub parse_score_urls {
 }
 
 my $base_url = 'http://www.aflonline.com.au/livescores/2011/';
+my $game = shift @ARGV;
+if (defined $game) {
+    if (my $fh = get_url_fh($base_url . 'g' . $game . '.php')) {
+        parse_score_urls($fh);
+        exit 0;
+    }
+}
+
 my %urls = parse_game_urls(get_url_fh($base_url));
-
-die 'Teams: ' . join(',', sort keys %urls) unless @ARGV;
-
-my $team = shift @ARGV;
-my $url = $urls{substr(lc $team, 0, 3)}
-    or die "Can't find $team.\n\nTeams: " . join(',', sort keys %urls);
-
-parse_score_urls(get_url_fh($base_url . 'g' . $url . '.php'));
+for my $gameid (sort keys %urls) {
+    my $teams = $urls{$gameid};
+    say "Game $gameid: $teams";
+}

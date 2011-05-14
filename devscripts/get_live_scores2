@@ -13,7 +13,7 @@ sub parse_score {
     my ($score) = @_;
 
     my ($goals, $behinds, $total) = $score =~ m{(\d+)\.(\d+)\s+\((\d+)\)};
-    die unless $total = $goals * 6 + $behinds;
+    die unless $total == $goals * 6 + $behinds;
     return ($goals, $behinds);
 }
 
