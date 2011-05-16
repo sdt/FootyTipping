@@ -1,6 +1,8 @@
 #!/bin/sh
 # Automated testing
 
+make distclean > /dev/null 2> /dev/null
+
 # Bail out as soon as something fails
 set -e
 
@@ -24,9 +26,7 @@ done
 # Finally, do a Devel::Cover run
 squeak 33 Building coverage database
 perl Makefile.PL > /dev/null
-cover -delete
-HARNESS_PERL_SWITCHES=-MDevel::Cover=+ignore,^$HOME/perl5,^t/ make test > /dev/null
-cover > /dev/null
+cover -delete -test 2> /dev/null
 make distclean > /dev/null 2> /dev/null
 
 squeak 32 All done
