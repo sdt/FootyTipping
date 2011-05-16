@@ -1,5 +1,5 @@
 package Tipping::WebApp::Controller::Tips;
-use Modern::Perl;
+use Modern::Perl::5_14;
 use Moose;
 use Try::Tiny;
 use namespace::autoclean;

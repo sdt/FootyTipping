@@ -1,7 +1,7 @@
 package Tipping::Schema::Result::User;
 use parent 'DBIx::Class';
 
-use Modern::Perl;
+use Modern::Perl::5_14;
 use List::MoreUtils (qw/ all any /);
 use Params::Validate (qw/ validate :types /);
 

@@ -1,6 +1,6 @@
 package Tipping::WebApp::Model::DB;
 
-use Modern::Perl;
+use Modern::Perl::5_14;
 use base 'Catalyst::Model::DBIC::Schema';
 
 use Tipping::Config;

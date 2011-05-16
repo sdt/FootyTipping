@@ -1,6 +1,6 @@
 package Tipping::WebApp::View::HTML;
 
-use Modern::Perl;
+use Modern::Perl::5_14;
 
 use base 'Catalyst::View::TT';
 

@@ -1,7 +1,7 @@
 package Tipping::Schema::Result::Game;
 use parent 'DBIx::Class';
 
-use Modern::Perl;
+use Modern::Perl::5_14;
 
 __PACKAGE__->load_components(qw/Core InflateColumn::DateTime/);
 __PACKAGE__->table('tbl_game');

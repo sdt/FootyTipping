@@ -1,7 +1,7 @@
 package Tipping::Schema::ResultSet::Game;
 use parent 'DBIx::Class::ResultSet';
 
-use Modern::Perl;
+use Modern::Perl::5_14;
 
 sub round {
     my ($self, $round) = @_;

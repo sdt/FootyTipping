@@ -1,7 +1,7 @@
 package Tipping::Schema::Result::Competition_User;
 use parent 'DBIx::Class';
 
-use Modern::Perl;
+use Modern::Perl::5_14;
 
 my $foreign_key = {
     data_type           => 'integer',

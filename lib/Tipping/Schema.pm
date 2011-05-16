@@ -1,5 +1,5 @@
 package Tipping::Schema;
-use Modern::Perl;
+use Modern::Perl::5_14;
 
 use base qw/DBIx::Class::Schema/;
 our $VERSION = "1";

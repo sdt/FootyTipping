@@ -1,6 +1,6 @@
 package Tipping::Populator;
 
-use Modern::Perl;
+use Modern::Perl::5_14;
 
 use Data::Dumper::Concise (qw/ Dumper /);
 use List::MoreUtils (qw/ zip /);
