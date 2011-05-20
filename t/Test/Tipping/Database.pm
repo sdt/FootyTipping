@@ -9,7 +9,7 @@ sub install {
     given ($driver) {
 
         when ('Pg') {
-            use Test::postgresql ();
+            require Test::postgresql;
             my $pg = $config->{test_database} = Test::postgresql->new()
                 or croak $Test::postgresql::errstr;
             my $dsn = $config->{database}->{dsn} = $pg->dsn;
@@ -21,7 +21,7 @@ sub install {
         }
 
         when ('mysql') {
-            use Test::mysqld ();
+            require Test::mysqld;
             $ENV{PATH} .= ':/usr/sbin';
             my $sqlite = $config->{test_database} = Test::mysqld->new(
                         my_cnf => { 'skip-networking' => '' }
