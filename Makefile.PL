@@ -10,6 +10,7 @@ requires 'Catalyst::Runtime' => '5.80032';
 requires 'Catalyst::Plugin::Session::Store::FastMmap';
 requires 'Catalyst::Plugin::Static::Simple';
 requires 'Catalyst::Authentication::Store::DBIx::Class';
+requires 'Catalyst::Model::Adaptor';
 requires 'Catalyst::Restarter';
 
 requires 'CatalystX::SimpleLogin';
