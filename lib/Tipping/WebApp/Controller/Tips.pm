@@ -57,8 +57,9 @@ sub rounds: Private {
 sub games :Private {
     my ($self, $c) = @_;
 
-    my @games = $c->model('DB::Game')->round($c->stash->{round})
-                  ->inflate_games->all
+    my @games = $c->model('DB::Game')
+                  ->round($c->stash->{round})
+                  ->with_teams->all
         or $c->detach('/default');
 
     $c->stash(games => \@games);
@@ -76,7 +77,7 @@ sub game_tips :Private {
                    ->round($c->stash->{round})
                    ->tipper($c->stash->{tipper}->id)
                    ->competition($c->stash->{comp_id})
-                   ->order_by_date;
+                   ->oldest_first;
 
     # Create a lookup hash for the games
     my %game = map { $_->game_id => $_ } @{ $c->stash->{games} };
@@ -113,8 +114,7 @@ sub save_tips :Private {
                 # TODO: check that this is allowed
                 $game->{tip} = $c->model('DB::Tip')->create({
                         game_id          => $game->game_id,
-                        competition_id   => $c->stash->{comp_id},
-                        tipper_id        => $c->stash->{tipper}->user_id,
+                        membership_id    => $membership->membership_id,
                         submitter_id     => $c->user->user_id,
                         home_team_to_win => $new_tip,
                     });

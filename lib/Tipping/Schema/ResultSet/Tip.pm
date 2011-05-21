@@ -13,17 +13,28 @@ sub round {
 
 sub tipper {
     my ($self, $user_id) = @_;
-    return $self->search({ tipper_id => $user_id });
+    return $self->search(
+            { 'membership.user_id' => $user_id },
+            { prefetch => [qw/ membership /] },
+        );
 }
 
 sub competition {
     my ($self, $comp_id) = @_;
-    return $self->search({ competition_id => $comp_id });
+    return $self->search(
+            { 'membership.competition_id' => $comp_id },
+            { prefetch => [qw/ membership /] },
+        );
 }
 
-sub order_by_date {
+sub oldest_first {
     my ($self) = @_;
-    return $self->search(undef, { order_by => 'timestamp' });
+    return $self->search(undef, { order_by => { -asc => 'timestamp' } });
+}
+
+sub newest_first {
+    my ($self) = @_;
+    return $self->search(undef, { order_by => { -desc => 'timestamp' } });
 }
 
 1;
@@ -52,9 +63,13 @@ Filter the tips table by tipper.
 
 Filter the tips table by competition.
 
-=head2 order_by_date
+=head2 oldest_first
 
 Order the search by timestamp (oldest->newest)
+
+=head2 newest_first
+
+Order the search by timestamp (newest->oldest)
 
 =head1 AUTHOR
 

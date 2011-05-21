@@ -73,7 +73,7 @@ sub can_view_tips {
     my $ns = 'Tipping::Schema::';
     my %args = validate(@_, {
             tipper     => { isa => $ns . 'Result::User' },
-            membership => { isa => $ns . 'Result::Competition_User' },
+            membership => { isa => $ns . 'Result::Membership' },
             games      => { type => ARRAYREF },
         });
 
@@ -102,7 +102,7 @@ sub can_edit_tips {
     my $ns = 'Tipping::Schema::';
     my %args = validate(@_, {
             tipper     => { isa => $ns . 'Result::User' },
-            membership => { isa => $ns . 'Result::Competition_User' },
+            membership => { isa => $ns . 'Result::Membership' },
             games      => { type => ARRAYREF },
         });
 

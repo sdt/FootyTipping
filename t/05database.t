@@ -154,7 +154,7 @@ my $round1_expected = [
     [ 'West Coast',  'North Melbourne',  'Subiaco Oval' ],
 ];
 my @round1_got = ();
-my $round1_rs = $games->round(1)->inflate_games;
+my $round1_rs = $games->round(1)->with_teams;
 while (my $game = $round1_rs->next) {
     push(@round1_got, [
             $game->home->team->name,
