@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Wed May 11 10:31:46 2011
+-- Created on Sat May 21 16:07:04 2011
 -- 
 ;
 SET foreign_key_checks=0;
@@ -14,15 +14,6 @@ CREATE TABLE `tbl_competition` (
   PRIMARY KEY (`competition_id`),
   UNIQUE `tbl_competition_name` (`name`)
 ) ENGINE=InnoDB;
---
--- Table: `tbl_session`
---
-CREATE TABLE `tbl_session` (
-  `session_id` char(72) NOT NULL,
-  `session_data` text,
-  `expires` integer,
-  PRIMARY KEY (`session_id`)
-);
 --
 -- Table: `tbl_team`
 --
@@ -84,21 +75,23 @@ CREATE TABLE `tbl_venue_sponsorname` (
   CONSTRAINT `tbl_venue_sponsorname_fk_venue_id` FOREIGN KEY (`venue_id`) REFERENCES `tbl_venue` (`venue_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 --
--- Table: `tbl_competition_user`
+-- Table: `tbl_membership`
 --
-CREATE TABLE `tbl_competition_user` (
+CREATE TABLE `tbl_membership` (
+  `membership_id` integer NOT NULL auto_increment,
   `user_id` integer NOT NULL,
   `competition_id` integer NOT NULL,
   `can_submit_tips_for_others` enum('0','1') NOT NULL DEFAULT '0',
   `can_change_closed_tips` enum('0','1') NOT NULL DEFAULT '0',
   `can_grant_powers` enum('0','1') NOT NULL DEFAULT '0',
   `screen_name` varchar(255),
-  INDEX `tbl_competition_user_idx_competition_id` (`competition_id`),
-  INDEX `tbl_competition_user_idx_user_id` (`user_id`),
-  PRIMARY KEY (`user_id`, `competition_id`),
-  UNIQUE `tbl_competition_user_competition_id_screen_name` (`competition_id`, `screen_name`),
-  CONSTRAINT `tbl_competition_user_fk_competition_id` FOREIGN KEY (`competition_id`) REFERENCES `tbl_competition` (`competition_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `tbl_competition_user_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  INDEX `tbl_membership_idx_competition_id` (`competition_id`),
+  INDEX `tbl_membership_idx_user_id` (`user_id`),
+  PRIMARY KEY (`membership_id`),
+  UNIQUE `tbl_membership_competition_id_screen_name` (`competition_id`, `screen_name`),
+  UNIQUE `tbl_membership_user_id_competition_id` (`user_id`, `competition_id`),
+  CONSTRAINT `tbl_membership_fk_competition_id` FOREIGN KEY (`competition_id`) REFERENCES `tbl_competition` (`competition_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tbl_membership_fk_user_id` FOREIGN KEY (`user_id`) REFERENCES `tbl_user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 --
 -- Table: `tbl_team_supporter`
@@ -133,20 +126,17 @@ CREATE TABLE `tbl_game_team` (
 -- Table: `tbl_tip`
 --
 CREATE TABLE `tbl_tip` (
-  `tipper_id` integer NOT NULL,
+  `membership_id` integer NOT NULL,
   `submitter_id` integer NOT NULL,
-  `competition_id` integer NOT NULL,
   `game_id` integer NOT NULL,
   `home_team_to_win` enum('0','1') NOT NULL,
   `timestamp` datetime NOT NULL,
-  INDEX `tbl_tip_idx_competition_id` (`competition_id`),
   INDEX `tbl_tip_idx_game_id` (`game_id`),
+  INDEX `tbl_tip_idx_membership_id` (`membership_id`),
   INDEX `tbl_tip_idx_submitter_id` (`submitter_id`),
-  INDEX `tbl_tip_idx_tipper_id` (`tipper_id`),
-  PRIMARY KEY (`tipper_id`, `competition_id`, `game_id`, `timestamp`),
-  CONSTRAINT `tbl_tip_fk_competition_id` FOREIGN KEY (`competition_id`) REFERENCES `tbl_competition` (`competition_id`),
+  PRIMARY KEY (`membership_id`, `game_id`, `timestamp`),
   CONSTRAINT `tbl_tip_fk_game_id` FOREIGN KEY (`game_id`) REFERENCES `tbl_game` (`game_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `tbl_tip_fk_submitter_id` FOREIGN KEY (`submitter_id`) REFERENCES `tbl_user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `tbl_tip_fk_tipper_id` FOREIGN KEY (`tipper_id`) REFERENCES `tbl_user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
+  CONSTRAINT `tbl_tip_fk_membership_id` FOREIGN KEY (`membership_id`) REFERENCES `tbl_membership` (`membership_id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  CONSTRAINT `tbl_tip_fk_submitter_id` FOREIGN KEY (`submitter_id`) REFERENCES `tbl_user` (`user_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 SET foreign_key_checks=1

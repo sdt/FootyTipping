@@ -18,7 +18,7 @@ GetOptions(-autohelp => sub {
     });
 
 my $schema = Tipping::Schema->connect;
-my $entry = $schema->resultset('Competition_User')->find(
+my $membership = $schema->resultset('Membership')->find(
     {
         'member.username'    => $username,
         'competition.name' => $compname,
@@ -27,7 +27,7 @@ my $entry = $schema->resultset('Competition_User')->find(
         prefetch => [qw/ competition member /],
     }
 );
-if (not $entry) {
+if (not $membership) {
     if (not $schema->resultset('User')->find({ username => $username })) {
         die "User $username not found\n";
     }
@@ -52,9 +52,8 @@ do {
     $done = 1;
     try {
         $schema->resultset('Tip')->create({
-            tipper_id        => $entry->user_id,
-            submitter_id     => $entry->user_id,
-            competition_id   => $entry->competition_id,
+            membership_id    => $membership->membership_id,
+            submitter_id     => $membership->user_id,
             game_id          => $gt->game_id,
             home_team_to_win => $gt->is_home_team,
         });

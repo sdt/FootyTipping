@@ -51,16 +51,11 @@ __PACKAGE__->add_unique_constraint([ qw/ username  / ]);
 __PACKAGE__->add_unique_constraint([ qw/ real_name / ]);
 
 __PACKAGE__->has_many(
-    tips => 'Tipping::Schema::Result::Tip',
-    'tipper_id'
-);
-__PACKAGE__->has_many(
     submitted_tips => 'Tipping::Schema::Result::Tip',
     'submitter_id'
 );
-
 __PACKAGE__->has_many(
-    memberships => 'Tipping::Schema::Result::Competition_User',
+    memberships => 'Tipping::Schema::Result::Membership',
     'user_id'
 );
 __PACKAGE__->many_to_many(

@@ -1,4 +1,4 @@
-package Tipping::Schema::Result::Competition_User;
+package Tipping::Schema::Result::Membership;
 use parent 'DBIx::Class';
 
 use Modern::Perl::5_14;
@@ -15,8 +15,15 @@ my $user_capability = {
 };
 
 __PACKAGE__->load_components('Core');
-__PACKAGE__->table('tbl_competition_user');
+__PACKAGE__->table('tbl_membership');
 __PACKAGE__->add_columns(
+
+    membership_id => {
+        data_type               => 'integer',
+        is_auto_increment       => 1,
+        is_nullable             => 0,
+    },
+
     user_id                     => $foreign_key,
     competition_id              => $foreign_key,
 
@@ -30,8 +37,9 @@ __PACKAGE__->add_columns(
     },
 );
 
-__PACKAGE__->set_primary_key(qw/ user_id competition_id /);
-__PACKAGE__->add_unique_constraint([ qw/ competition_id screen_name / ]);
+__PACKAGE__->set_primary_key(qw/ membership_id /);
+__PACKAGE__->add_unique_constraint([qw/ user_id competition_id /]);
+__PACKAGE__->add_unique_constraint([qw/ competition_id screen_name /]);
 
 __PACKAGE__->belongs_to(
     member => 'Tipping::Schema::Result::User',
@@ -40,6 +48,10 @@ __PACKAGE__->belongs_to(
 __PACKAGE__->belongs_to(
     competition => 'Tipping::Schema::Result::Competition',
     'competition_id'
+);
+__PACKAGE__->has_many(
+    tips => 'Tipping::Schema::Result::Tip',
+    'membership_id'
 );
 
 1;
@@ -50,7 +62,7 @@ __END__
 
 =head1 NAME
 
-Tipping::Schema::Result::Competition_User - DBIx::Class result source
+Tipping::Schema::Result::Membership - DBIx::Class result source
 
 =head1 DESCRIPTION
 

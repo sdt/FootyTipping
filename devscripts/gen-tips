@@ -17,10 +17,15 @@ GetOptions(-autohelp => sub {
     });
 
 my $schema = Tipping::Schema->connect;
-my $user = $schema->resultset('User')->find({ username => $username})
-    or die "Can't find user $username";
-my $comp = $user->competitions->find({ name => $compname })
-    or die "Can't find comp $compname";
+my $membership = $schema->resultset('Membership')->search(
+        {
+            'member.username' => $username,
+            'competition.name' => $compname
+        },
+        {
+            prefetch => [qw/ member competition /],
+        })->single
+    or die "Can't find membership for $username in comp $compname";
 
 $lastround //= $firstround;
 
@@ -36,9 +41,8 @@ my @games = $schema->resultset('Game')->search(
         })->get_column('game_id')->all;
 
 my %base_tip = (
-    tipper_id       => $user->id,
-    submitter_id    => $user->id,
-    competition_id  => $comp->id,
+    membership_id   => $membership->membership_id,
+    submitter_id    => $membership->member->user_id,
     timestamp       => DateTime->now( time_zone => 'UTC' ),
 );
 

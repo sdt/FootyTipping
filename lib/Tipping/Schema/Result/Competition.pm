@@ -26,7 +26,7 @@ __PACKAGE__->set_primary_key('competition_id');
 __PACKAGE__->add_unique_constraint([ qw/ name / ]);
 
 __PACKAGE__->has_many(
-    memberships => 'Tipping::Schema::Result::Competition_User',
+    memberships => 'Tipping::Schema::Result::Membership',
     'competition_id'
 );
 __PACKAGE__->many_to_many(

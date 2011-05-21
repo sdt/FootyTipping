@@ -11,9 +11,8 @@ my $foreign_key = {
 __PACKAGE__->load_components(qw/ TimeStamp Core /);
 __PACKAGE__->table('tbl_tip');
 __PACKAGE__->add_columns(
-    tipper_id        => $foreign_key,
+    membership_id    => $foreign_key,
     submitter_id     => $foreign_key,
-    competition_id   => $foreign_key,
     game_id          => $foreign_key,
 
     home_team_to_win => {
@@ -27,23 +26,19 @@ __PACKAGE__->add_columns(
     },
 );
 
-__PACKAGE__->set_primary_key(qw/ tipper_id competition_id game_id timestamp /);
+__PACKAGE__->set_primary_key(qw/ membership_id game_id timestamp /);
 
 __PACKAGE__->belongs_to(
-    tipper => 'Tipping::Schema::Result::User',
-    'tipper_id'
-);
-__PACKAGE__->belongs_to(
-    submitter => 'Tipping::Schema::Result::User',
-    'submitter_id'
+    membership => 'Tipping::Schema::Result::Membership',
+    'membership_id'
 );
 __PACKAGE__->belongs_to(
     game => 'Tipping::Schema::Result::Game',
     'game_id'
 );
 __PACKAGE__->belongs_to(
-    competition => 'Tipping::Schema::Result::Competition',
-    'competition_id'
+    submitter => 'Tipping::Schema::Result::User',
+    'submitter_id'
 );
 
 1;

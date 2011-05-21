@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Wed May 11 10:31:46 2011
+-- Created on Sat May 21 16:07:03 2011
 -- 
 ;
 --
@@ -12,17 +12,6 @@ CREATE TABLE "tbl_competition" (
   "password" character varying,
   PRIMARY KEY ("competition_id"),
   CONSTRAINT "tbl_competition_name" UNIQUE ("name")
-);
-
-;
---
--- Table: tbl_session
---
-CREATE TABLE "tbl_session" (
-  "session_id" character(72) NOT NULL,
-  "session_data" text,
-  "expires" integer,
-  PRIMARY KEY ("session_id")
 );
 
 ;
@@ -95,20 +84,22 @@ CREATE INDEX "tbl_venue_sponsorname_idx_venue_id" on "tbl_venue_sponsorname" ("v
 
 ;
 --
--- Table: tbl_competition_user
+-- Table: tbl_membership
 --
-CREATE TABLE "tbl_competition_user" (
+CREATE TABLE "tbl_membership" (
+  "membership_id" serial NOT NULL,
   "user_id" integer NOT NULL,
   "competition_id" integer NOT NULL,
   "can_submit_tips_for_others" boolean DEFAULT '0' NOT NULL,
   "can_change_closed_tips" boolean DEFAULT '0' NOT NULL,
   "can_grant_powers" boolean DEFAULT '0' NOT NULL,
   "screen_name" character varying,
-  PRIMARY KEY ("user_id", "competition_id"),
-  CONSTRAINT "tbl_competition_user_competition_id_screen_name" UNIQUE ("competition_id", "screen_name")
+  PRIMARY KEY ("membership_id"),
+  CONSTRAINT "tbl_membership_competition_id_screen_name" UNIQUE ("competition_id", "screen_name"),
+  CONSTRAINT "tbl_membership_user_id_competition_id" UNIQUE ("user_id", "competition_id")
 );
-CREATE INDEX "tbl_competition_user_idx_competition_id" on "tbl_competition_user" ("competition_id");
-CREATE INDEX "tbl_competition_user_idx_user_id" on "tbl_competition_user" ("user_id");
+CREATE INDEX "tbl_membership_idx_competition_id" on "tbl_membership" ("competition_id");
+CREATE INDEX "tbl_membership_idx_user_id" on "tbl_membership" ("user_id");
 
 ;
 --
@@ -144,18 +135,16 @@ CREATE INDEX "tbl_game_team_idx_team_id" on "tbl_game_team" ("team_id");
 -- Table: tbl_tip
 --
 CREATE TABLE "tbl_tip" (
-  "tipper_id" integer NOT NULL,
+  "membership_id" integer NOT NULL,
   "submitter_id" integer NOT NULL,
-  "competition_id" integer NOT NULL,
   "game_id" integer NOT NULL,
   "home_team_to_win" boolean NOT NULL,
   "timestamp" timestamp NOT NULL,
-  PRIMARY KEY ("tipper_id", "competition_id", "game_id", "timestamp")
+  PRIMARY KEY ("membership_id", "game_id", "timestamp")
 );
-CREATE INDEX "tbl_tip_idx_competition_id" on "tbl_tip" ("competition_id");
 CREATE INDEX "tbl_tip_idx_game_id" on "tbl_tip" ("game_id");
+CREATE INDEX "tbl_tip_idx_membership_id" on "tbl_tip" ("membership_id");
 CREATE INDEX "tbl_tip_idx_submitter_id" on "tbl_tip" ("submitter_id");
-CREATE INDEX "tbl_tip_idx_tipper_id" on "tbl_tip" ("tipper_id");
 
 ;
 --
@@ -171,11 +160,11 @@ ALTER TABLE "tbl_venue_sponsorname" ADD FOREIGN KEY ("venue_id")
   REFERENCES "tbl_venue" ("venue_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
 
 ;
-ALTER TABLE "tbl_competition_user" ADD FOREIGN KEY ("competition_id")
+ALTER TABLE "tbl_membership" ADD FOREIGN KEY ("competition_id")
   REFERENCES "tbl_competition" ("competition_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
 
 ;
-ALTER TABLE "tbl_competition_user" ADD FOREIGN KEY ("user_id")
+ALTER TABLE "tbl_membership" ADD FOREIGN KEY ("user_id")
   REFERENCES "tbl_user" ("user_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
 
 ;
@@ -195,18 +184,14 @@ ALTER TABLE "tbl_game_team" ADD FOREIGN KEY ("team_id")
   REFERENCES "tbl_team" ("team_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
 
 ;
-ALTER TABLE "tbl_tip" ADD FOREIGN KEY ("competition_id")
-  REFERENCES "tbl_competition" ("competition_id") DEFERRABLE;
-
-;
 ALTER TABLE "tbl_tip" ADD FOREIGN KEY ("game_id")
   REFERENCES "tbl_game" ("game_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
 
 ;
-ALTER TABLE "tbl_tip" ADD FOREIGN KEY ("submitter_id")
-  REFERENCES "tbl_user" ("user_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
+ALTER TABLE "tbl_tip" ADD FOREIGN KEY ("membership_id")
+  REFERENCES "tbl_membership" ("membership_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
 
 ;
-ALTER TABLE "tbl_tip" ADD FOREIGN KEY ("tipper_id")
+ALTER TABLE "tbl_tip" ADD FOREIGN KEY ("submitter_id")
   REFERENCES "tbl_user" ("user_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
 
