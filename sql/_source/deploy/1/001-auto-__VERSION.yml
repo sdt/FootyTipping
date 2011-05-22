@@ -302,7 +302,7 @@ translator:
               data_type: boolean
               default_value: 0
               is_nullable: 0
-            can_grant_powers:
+            can_change_permissions:
               data_type: boolean
               default_value: 0
               is_nullable: 0
@@ -328,10 +328,10 @@ translator:
             - membership_id
             - user_id
             - competition_id
+            - screen_name
             - can_submit_tips_for_others
             - can_change_closed_tips
-            - can_grant_powers
-            - screen_name
+            - can_change_permissions
           _primaries: &5
             - membership_id
           _relationships:

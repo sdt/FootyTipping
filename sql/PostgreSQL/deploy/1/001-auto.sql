@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Sat May 21 16:07:03 2011
+-- Created on Mon May 23 09:29:51 2011
 -- 
 ;
 --
@@ -90,10 +90,10 @@ CREATE TABLE "tbl_membership" (
   "membership_id" serial NOT NULL,
   "user_id" integer NOT NULL,
   "competition_id" integer NOT NULL,
+  "screen_name" character varying,
   "can_submit_tips_for_others" boolean DEFAULT '0' NOT NULL,
   "can_change_closed_tips" boolean DEFAULT '0' NOT NULL,
-  "can_grant_powers" boolean DEFAULT '0' NOT NULL,
-  "screen_name" character varying,
+  "can_change_permissions" boolean DEFAULT '0' NOT NULL,
   PRIMARY KEY ("membership_id"),
   CONSTRAINT "tbl_membership_competition_id_screen_name" UNIQUE ("competition_id", "screen_name"),
   CONSTRAINT "tbl_membership_user_id_competition_id" UNIQUE ("user_id", "competition_id")

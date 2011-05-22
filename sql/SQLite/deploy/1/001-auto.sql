@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Sat May 21 16:07:02 2011
+-- Created on Mon May 23 09:29:50 2011
 -- 
 
 ;
@@ -77,10 +77,10 @@ CREATE TABLE tbl_membership (
   membership_id INTEGER PRIMARY KEY NOT NULL,
   user_id integer NOT NULL,
   competition_id integer NOT NULL,
+  screen_name varchar,
   can_submit_tips_for_others boolean NOT NULL DEFAULT '0',
   can_change_closed_tips boolean NOT NULL DEFAULT '0',
-  can_grant_powers boolean NOT NULL DEFAULT '0',
-  screen_name varchar,
+  can_change_permissions boolean NOT NULL DEFAULT '0',
   FOREIGN KEY(competition_id) REFERENCES tbl_competition(competition_id),
   FOREIGN KEY(user_id) REFERENCES tbl_user(user_id)
 );

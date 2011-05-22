@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Sat May 21 16:07:04 2011
+-- Created on Mon May 23 09:29:51 2011
 -- 
 ;
 SET foreign_key_checks=0;
@@ -81,10 +81,10 @@ CREATE TABLE `tbl_membership` (
   `membership_id` integer NOT NULL auto_increment,
   `user_id` integer NOT NULL,
   `competition_id` integer NOT NULL,
+  `screen_name` varchar(255),
   `can_submit_tips_for_others` enum('0','1') NOT NULL DEFAULT '0',
   `can_change_closed_tips` enum('0','1') NOT NULL DEFAULT '0',
-  `can_grant_powers` enum('0','1') NOT NULL DEFAULT '0',
-  `screen_name` varchar(255),
+  `can_change_permissions` enum('0','1') NOT NULL DEFAULT '0',
   INDEX `tbl_membership_idx_competition_id` (`competition_id`),
   INDEX `tbl_membership_idx_user_id` (`user_id`),
   PRIMARY KEY (`membership_id`),

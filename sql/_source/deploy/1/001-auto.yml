@@ -345,17 +345,17 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: can_change_closed_tips
-          order: 5
+          order: 6
           size:
             - 0
-        can_grant_powers:
+        can_change_permissions:
           data_type: boolean
           default_value: 0
           is_nullable: 0
           is_primary_key: 0
           is_unique: 0
-          name: can_grant_powers
-          order: 6
+          name: can_change_permissions
+          order: 7
           size:
             - 0
         can_submit_tips_for_others:
@@ -365,7 +365,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: can_submit_tips_for_others
-          order: 4
+          order: 5
           size:
             - 0
         competition_id:
@@ -396,7 +396,7 @@ schema:
           is_primary_key: 0
           is_unique: 1
           name: screen_name
-          order: 7
+          order: 4
           size:
             - 0
         user_id:
@@ -1183,7 +1183,7 @@ translator:
               data_type: boolean
               default_value: 0
               is_nullable: 0
-            can_grant_powers:
+            can_change_permissions:
               data_type: boolean
               default_value: 0
               is_nullable: 0
@@ -1209,10 +1209,10 @@ translator:
             - membership_id
             - user_id
             - competition_id
+            - screen_name
             - can_submit_tips_for_others
             - can_change_closed_tips
-            - can_grant_powers
-            - screen_name
+            - can_change_permissions
           _primaries: &5
             - membership_id
           _relationships:
@@ -1683,9 +1683,9 @@ translator:
         schema: *1
         transaction_depth: 0
     sources:
+      - Competition
       - Venue
       - Team
-      - Competition
       - User
       - Game
       - Membership

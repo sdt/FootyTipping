@@ -8,7 +8,7 @@ my $foreign_key = {
     is_nullable         => 0,
 };
 
-my $user_capability = {
+my $user_permission = {
     data_type           => 'boolean',
     is_nullable         => 0,
     default_value       => 0,
@@ -26,15 +26,14 @@ __PACKAGE__->add_columns(
 
     user_id                     => $foreign_key,
     competition_id              => $foreign_key,
-
-    can_submit_tips_for_others  => $user_capability,
-    can_change_closed_tips      => $user_capability,
-    can_grant_powers            => $user_capability,
-
     screen_name => {
-        data_type           => 'varchar',
-        is_nullable         => 1,
+        data_type               => 'varchar',
+        is_nullable             => 1,
     },
+
+    can_submit_tips_for_others  => $user_permission,
+    can_change_closed_tips      => $user_permission,
+    can_change_permissions      => $user_permission,
 );
 
 __PACKAGE__->set_primary_key(qw/ membership_id /);
@@ -69,7 +68,7 @@ Tipping::Schema::Result::Membership - DBIx::Class result source
 A user can be a member of zero or more competitions. A competition has zero
 or more members.
 
-A membership in a competition includes capabilities for the user in that
+A membership in a competition includes permissions for the user in that
 competition. A user has an optional screen name for use in that competition.
 
 =head1 AUTHOR
