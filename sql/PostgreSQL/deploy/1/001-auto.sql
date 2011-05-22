@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Mon May 23 09:29:51 2011
+-- Created on Mon May 23 09:43:06 2011
 -- 
 ;
 --
@@ -132,6 +132,18 @@ CREATE INDEX "tbl_game_team_idx_team_id" on "tbl_game_team" ("team_id");
 
 ;
 --
+-- Table: tbl_round_result
+--
+CREATE TABLE "tbl_round_result" (
+  "membership_id" integer NOT NULL,
+  "round" integer NOT NULL,
+  "score" integer NOT NULL,
+  PRIMARY KEY ("membership_id", "round")
+);
+CREATE INDEX "tbl_round_result_idx_membership_id" on "tbl_round_result" ("membership_id");
+
+;
+--
 -- Table: tbl_tip
 --
 CREATE TABLE "tbl_tip" (
@@ -182,6 +194,10 @@ ALTER TABLE "tbl_game_team" ADD FOREIGN KEY ("game_id")
 ;
 ALTER TABLE "tbl_game_team" ADD FOREIGN KEY ("team_id")
   REFERENCES "tbl_team" ("team_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
+
+;
+ALTER TABLE "tbl_round_result" ADD FOREIGN KEY ("membership_id")
+  REFERENCES "tbl_membership" ("membership_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
 
 ;
 ALTER TABLE "tbl_tip" ADD FOREIGN KEY ("game_id")

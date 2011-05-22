@@ -52,6 +52,10 @@ __PACKAGE__->has_many(
     tips => 'Tipping::Schema::Result::Tip',
     'membership_id'
 );
+__PACKAGE__->has_many(
+    round_results => 'Tipping::Schema::Result::RoundResult',
+    'membership_id'
+);
 
 1;
 

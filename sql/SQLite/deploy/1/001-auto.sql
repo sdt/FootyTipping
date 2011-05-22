@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Mon May 23 09:29:50 2011
+-- Created on Mon May 23 09:43:06 2011
 -- 
 
 ;
@@ -117,6 +117,17 @@ CREATE TABLE tbl_game_team (
 CREATE INDEX tbl_game_team_idx_game_id ON tbl_game_team (game_id);
 CREATE INDEX tbl_game_team_idx_team_id ON tbl_game_team (team_id);
 CREATE UNIQUE INDEX tbl_game_team_game_id_is_home_team ON tbl_game_team (game_id, is_home_team);
+--
+-- Table: tbl_round_result
+--
+CREATE TABLE tbl_round_result (
+  membership_id integer NOT NULL,
+  round integer NOT NULL,
+  score integer NOT NULL,
+  PRIMARY KEY (membership_id, round),
+  FOREIGN KEY(membership_id) REFERENCES tbl_membership(membership_id)
+);
+CREATE INDEX tbl_round_result_idx_membership_id ON tbl_round_result (membership_id);
 --
 -- Table: tbl_tip
 --

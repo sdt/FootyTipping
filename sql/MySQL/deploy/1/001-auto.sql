@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Mon May 23 09:29:51 2011
+-- Created on Mon May 23 09:43:06 2011
 -- 
 ;
 SET foreign_key_checks=0;
@@ -121,6 +121,17 @@ CREATE TABLE `tbl_game_team` (
   UNIQUE `tbl_game_team_game_id_is_home_team` (`game_id`, `is_home_team`),
   CONSTRAINT `tbl_game_team_fk_game_id` FOREIGN KEY (`game_id`) REFERENCES `tbl_game` (`game_id`) ON DELETE CASCADE,
   CONSTRAINT `tbl_game_team_fk_team_id` FOREIGN KEY (`team_id`) REFERENCES `tbl_team` (`team_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+--
+-- Table: `tbl_round_result`
+--
+CREATE TABLE `tbl_round_result` (
+  `membership_id` integer NOT NULL,
+  `round` integer NOT NULL,
+  `score` integer NOT NULL,
+  INDEX `tbl_round_result_idx_membership_id` (`membership_id`),
+  PRIMARY KEY (`membership_id`, `round`),
+  CONSTRAINT `tbl_round_result_fk_membership_id` FOREIGN KEY (`membership_id`) REFERENCES `tbl_membership` (`membership_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 --
 -- Table: `tbl_tip`

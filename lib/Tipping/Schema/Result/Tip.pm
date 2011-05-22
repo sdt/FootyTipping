@@ -54,17 +54,12 @@ Tipping::Schema::Result::Game - DBIx::Class result source
 =head1 DESCRIPTION
 
 A tipper may make a tip for a game in the competition they are a tipper in.
+Another user may submit this tip as well, provided they have the appropriate
+permissions. This is noted in the submitter_id column.
 
-=head1 BUGS AND LIMITATIONS
-
-Tips can be entered by a tipper, or by an administrator of that competition.
-We probably want an audit trail of who changed tips and when. In this regard
-this table should probably be extended to:
-
-    tipper, game, competition, timestamp, submitter
-
-The primary key would also take the timestamp into account. The tip which
-counts is the one with the latest timestamp.
+When a tipper changes their tip a whole new row is created with a new timestamp.
+Only the most recent tips are counted, but this leaves an audit trail of who
+changed what tips.
 
 =head1 AUTHOR
 
