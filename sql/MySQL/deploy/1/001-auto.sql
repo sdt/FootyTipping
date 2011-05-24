@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::MySQL
--- Created on Mon May 23 09:43:06 2011
+-- Created on Tue May 24 17:23:28 2011
 -- 
 ;
 SET foreign_key_checks=0;
@@ -61,6 +61,17 @@ CREATE TABLE `tbl_game` (
   INDEX `tbl_game_idx_venue_id` (`venue_id`),
   PRIMARY KEY (`game_id`),
   CONSTRAINT `tbl_game_fk_venue_id` FOREIGN KEY (`venue_id`) REFERENCES `tbl_venue` (`venue_id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB;
+--
+-- Table: `tbl_round_result_timestamp`
+--
+CREATE TABLE `tbl_round_result_timestamp` (
+  `competition_id` integer NOT NULL,
+  `round` integer NOT NULL,
+  `timestamp` datetime NOT NULL,
+  INDEX `tbl_round_result_timestamp_idx_competition_id` (`competition_id`),
+  PRIMARY KEY (`competition_id`, `round`),
+  CONSTRAINT `tbl_round_result_timestamp_fk_competition_id` FOREIGN KEY (`competition_id`) REFERENCES `tbl_competition` (`competition_id`) ON DELETE CASCADE ON UPDATE CASCADE
 ) ENGINE=InnoDB;
 --
 -- Table: `tbl_venue_sponsorname`

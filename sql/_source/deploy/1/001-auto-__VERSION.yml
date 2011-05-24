@@ -89,6 +89,7 @@ translator:
         Tipping::Schema::Result::Game_Team: Game_Team
         Tipping::Schema::Result::Membership: Membership
         Tipping::Schema::Result::RoundResult: RoundResult
+        Tipping::Schema::Result::RoundResultTimestamp: RoundResultTimestamp
         Tipping::Schema::Result::Team: Team
         Tipping::Schema::Result::Team_Supporter: Team_Supporter
         Tipping::Schema::Result::Tip: Tip
@@ -126,6 +127,16 @@ translator:
               cond:
                 foreign.competition_id: self.competition_id
               source: Tipping::Schema::Result::Membership
+            round_result_timestamps:
+              attrs:
+                accessor: multi
+                cascade_copy: 1
+                cascade_delete: 1
+                join_type: LEFT
+              class: Tipping::Schema::Result::RoundResultTimestamp
+              cond:
+                foreign.competition_id: self.competition_id
+              source: Tipping::Schema::Result::RoundResultTimestamp
           _unique_constraints:
             primary: *2
             tbl_competition_name:
@@ -429,9 +440,54 @@ translator:
           name: tbl_round_result
           result_class: Tipping::Schema::Result::RoundResult
           resultset_attributes: {}
-          resultset_class: DBIx::Class::ResultSet
+          resultset_class: Tipping::Schema::ResultSet::RoundResult
           schema: *1
           source_name: RoundResult
+          sqlt_deploy_callback: default_sqlt_deploy_hook
+        RoundResultTimestamp: !!perl/hash:DBIx::Class::ResultSource::Table
+          _columns:
+            competition_id:
+              data_type: integer
+              is_nullable: 0
+            round:
+              data_type: integer
+              is_nullable: 0
+            timestamp:
+              _ic_dt_method: datetime
+              _inflate_info:
+                deflate: !!perl/code '{ "DUMMY" }'
+                inflate: !!perl/code '{ "DUMMY" }'
+              data_type: datetime
+              is_nullable: 0
+              timezone: UTC
+          _columns_info_loaded: 0
+          _ordered_columns:
+            - competition_id
+            - round
+            - timestamp
+          _primaries: &7
+            - competition_id
+            - round
+          _relationships:
+            competition:
+              attrs:
+                accessor: single
+                fk_columns:
+                  competition_id: 1
+                is_foreign_key_constraint: 1
+                undef_on_null_fk: 1
+              class: Tipping::Schema::Result::Competition
+              cond:
+                foreign.competition_id: self.competition_id
+              source: Tipping::Schema::Result::Competition
+          _unique_constraints:
+            primary: *7
+          name: tbl_round_result_timestamp
+          result_class: Tipping::Schema::Result::RoundResultTimestamp
+          resultset_attributes: {}
+          resultset_class: DBIx::Class::ResultSet
+          schema: *1
+          source_name: RoundResultTimestamp
           sqlt_deploy_callback: default_sqlt_deploy_hook
         Team: !!perl/hash:DBIx::Class::ResultSource::Table
           _columns:
@@ -450,7 +506,7 @@ translator:
             - team_id
             - name
             - nickname
-          _primaries: &7
+          _primaries: &8
             - team_id
           _relationships:
             game_teams:
@@ -474,7 +530,7 @@ translator:
                 foreign.team_id: self.team_id
               source: Tipping::Schema::Result::Team_Supporter
           _unique_constraints:
-            primary: *7
+            primary: *8
             tbl_team_name:
               - name
             tbl_team_nickname:
@@ -498,7 +554,7 @@ translator:
           _ordered_columns:
             - user_id
             - team_id
-          _primaries: &8
+          _primaries: &9
             - user_id
             - team_id
           _relationships:
@@ -525,7 +581,7 @@ translator:
                 foreign.team_id: self.team_id
               source: Tipping::Schema::Result::Team
           _unique_constraints:
-            primary: *8
+            primary: *9
             tbl_team_supporter_user_id:
               - user_id
           name: tbl_team_supporter
@@ -564,7 +620,7 @@ translator:
             - game_id
             - home_team_to_win
             - timestamp
-          _primaries: &9
+          _primaries: &10
             - membership_id
             - game_id
             - timestamp
@@ -603,7 +659,7 @@ translator:
                 foreign.user_id: self.submitter_id
               source: Tipping::Schema::Result::User
           _unique_constraints:
-            primary: *9
+            primary: *10
           name: tbl_tip
           result_class: Tipping::Schema::Result::Tip
           resultset_attributes: {}
@@ -649,7 +705,7 @@ translator:
             - email
             - password
             - is_superuser
-          _primaries: &10
+          _primaries: &11
             - user_id
           _relationships:
             memberships:
@@ -683,7 +739,7 @@ translator:
                 foreign.user_id: self.user_id
               source: Tipping::Schema::Result::Team_Supporter
           _unique_constraints:
-            primary: *10
+            primary: *11
             tbl_user_real_name:
               - real_name
             tbl_user_username:
@@ -712,7 +768,7 @@ translator:
             - venue_id
             - name
             - time_zone
-          _primaries: &11
+          _primaries: &12
             - venue_id
           _relationships:
             games:
@@ -736,7 +792,7 @@ translator:
                 foreign.venue_id: self.venue_id
               source: Tipping::Schema::Result::Venue_SponsorName
           _unique_constraints:
-            primary: *11
+            primary: *12
             tbl_venue_name:
               - name
           name: tbl_venue
@@ -767,7 +823,7 @@ translator:
             - name
             - start_year
             - end_year
-          _primaries: &12
+          _primaries: &13
             - venue_id
             - name
           _relationships:
@@ -783,7 +839,7 @@ translator:
                 foreign.venue_id: self.venue_id
               source: Tipping::Schema::Result::Venue
           _unique_constraints:
-            primary: *12
+            primary: *13
           name: tbl_venue_sponsorname
           result_class: Tipping::Schema::Result::Venue_SponsorName
           resultset_attributes: {}
@@ -811,13 +867,13 @@ translator:
             - version
             - ddl
             - upgrade_sql
-          _primaries: &13
+          _primaries: &14
             - id
           _relationships: {}
           _unique_constraints:
             dbix_class_deploymenthandler_versions_version:
               - version
-            primary: *13
+            primary: *14
           name: dbix_class_deploymenthandler_versions
           result_class: DBIx::Class::DeploymentHandler::VersionStorage::Standard::VersionResult
           resultset_attributes: {}
@@ -839,13 +895,13 @@ translator:
           - dbi:Pg:dbname=tipping;host=localhost
           - tipping
           - tipping
-          - &14
+          - &15
             AutoCommit: 1
             PrintError: 0
             RaiseError: 1
             ShowErrorStatement: 1
             pg_enable_utf8: 1
-        _dbic_connect_attributes: *14
+        _dbic_connect_attributes: *15
         _in_do_block: 0
         _sql_maker: ~
         _sql_maker_opts: {}

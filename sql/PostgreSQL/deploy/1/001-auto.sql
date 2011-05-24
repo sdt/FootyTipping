@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Mon May 23 09:43:06 2011
+-- Created on Tue May 24 17:23:28 2011
 -- 
 ;
 --
@@ -68,6 +68,18 @@ CREATE TABLE "tbl_game" (
   PRIMARY KEY ("game_id")
 );
 CREATE INDEX "tbl_game_idx_venue_id" on "tbl_game" ("venue_id");
+
+;
+--
+-- Table: tbl_round_result_timestamp
+--
+CREATE TABLE "tbl_round_result_timestamp" (
+  "competition_id" integer NOT NULL,
+  "round" integer NOT NULL,
+  "timestamp" timestamp NOT NULL,
+  PRIMARY KEY ("competition_id", "round")
+);
+CREATE INDEX "tbl_round_result_timestamp_idx_competition_id" on "tbl_round_result_timestamp" ("competition_id");
 
 ;
 --
@@ -166,6 +178,10 @@ CREATE INDEX "tbl_tip_idx_submitter_id" on "tbl_tip" ("submitter_id");
 ;
 ALTER TABLE "tbl_game" ADD FOREIGN KEY ("venue_id")
   REFERENCES "tbl_venue" ("venue_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
+
+;
+ALTER TABLE "tbl_round_result_timestamp" ADD FOREIGN KEY ("competition_id")
+  REFERENCES "tbl_competition" ("competition_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
 
 ;
 ALTER TABLE "tbl_venue_sponsorname" ADD FOREIGN KEY ("venue_id")

@@ -1,0 +1,24 @@
+#!/usr/bin/env perl
+use Modern::Perl::5_14;
+
+use Getopt::Lazy
+    'compname=s'     => 'Competition name           (required)',
+    'round=i'        => 'Round                      (required)',
+    -summary => 'Add a user to a competition',
+    -usage => '%c %o',
+    ;
+
+use Tipping::Schema ();
+
+GetOptions(-autohelp => sub {
+        not (defined $compname and defined $round)
+    });
+
+my $schema = Tipping::Schema->connect;
+my $competition_id = $schema->resultset('Competition')
+                            ->find({ name => $compname })
+                            ->competition_id;
+$schema->resultset('RoundResult')->update_results({
+        round          => $round,
+        competition_id => $competition_id,
+    });

@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::SQLite
--- Created on Mon May 23 09:43:06 2011
+-- Created on Tue May 24 17:23:28 2011
 -- 
 
 ;
@@ -58,6 +58,17 @@ CREATE TABLE tbl_game (
   FOREIGN KEY(venue_id) REFERENCES tbl_venue(venue_id)
 );
 CREATE INDEX tbl_game_idx_venue_id ON tbl_game (venue_id);
+--
+-- Table: tbl_round_result_timestamp
+--
+CREATE TABLE tbl_round_result_timestamp (
+  competition_id integer NOT NULL,
+  round integer NOT NULL,
+  timestamp datetime NOT NULL,
+  PRIMARY KEY (competition_id, round),
+  FOREIGN KEY(competition_id) REFERENCES tbl_competition(competition_id)
+);
+CREATE INDEX tbl_round_result_timestamp_idx_competition_id ON tbl_round_result_timestamp (competition_id);
 --
 -- Table: tbl_venue_sponsorname
 --

@@ -76,7 +76,7 @@ sub scores_for_round {
 
     # For all the some-tippers, add their awarded score to the all-tippers
     for my $id (keys %{ $some }) {
-        $all->{$id} = 0; #max($some->{$id}, $awarded_score);
+        $all->{$id} = max($some->{$id}, $awarded_score);
     }
 
     return $all;
