@@ -35,12 +35,12 @@ create_user() {
 }
 
 # Now add some extra stuff
-for c in `seq -f '%02.f' 1 16`; do
+for c in `seq -f '%02.f' 1 4`; do
     ./devscripts/create-competition --name comp$c
 done
 for u in `seq -f '%02.f' 1 16`; do
     create_user $u
-    for c in `seq -f '%02.f' 1 16`; do
+    for c in `seq -f '%02.f' 1 4`; do
         ./devscripts/add-user-to-competition --username user$u --compname comp$c
         ./devscripts/gen-tips --username user$u --compname comp$c --firstround 1 --lastround 24
     done
