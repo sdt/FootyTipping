@@ -1,5 +1,5 @@
 package Test::Tipping::Database;
-use Modern::Perl;
+use Modern::Perl::5_14;
 
 use Carp            qw/ croak /;
 

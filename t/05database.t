@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 
-use Modern::Perl;
+use Modern::Perl::5_14;
 
 use FindBin ();
 use lib "$FindBin::Bin";

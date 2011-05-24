@@ -3,7 +3,7 @@
 ## Run Perl::Critic against the source code and the tests
 ## Requires TEST_CRITIC to be set
 
-use Modern::Perl;
+use Modern::Perl::5_14;
 use Test::More;
 
 eval "use Test::Perl::Critic (-severity => 2);";
