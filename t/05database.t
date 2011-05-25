@@ -13,6 +13,7 @@ use Tipping::Config;
 use Tipping::Schema;
 use Tipping::DeploymentHandler;
 use Test::Tipping::Database;
+use Test::Tipping::Fixtures;
 
 my @db_drivers = qw/ Pg SQLite mysql /;
 my $db_driver = $ENV{TIPPING_DB_DRIVER} // $db_drivers[1];
@@ -28,10 +29,13 @@ catch {
 lives_ok { Tipping::DeploymentHandler->new->update } 'Deploy database';
 
 my $schema = Tipping::Schema->connect;
+my $fixtures = Test::Tipping::Fixtures->new(schema => $schema);
+
 my $games = $schema->resultset('Game');
 my $venues = $schema->resultset('Venue');
 my $comps = $schema->resultset('Competition');
 my $users = $schema->resultset('User');
+my $memberships = $schema->resultset('Membership');
 
 is($games->count, 187, '187 games');
 is($games->search_related('game_teams', {},
@@ -83,26 +87,17 @@ my $docklands = $venues->find({ name => { 'like' => '%Docklands%' }});
 is($docklands->sponsor_name(2011), 'Etihad Stadium', 'Docklands Stadium is Etihad Stadium in 2011');
 is($docklands->sponsor_name(2008), 'Telstra Dome', 'Docklands Stadium was Telstra Dome in 2008');
 
+my $membership_count = $memberships->count;
+
 my $num_comps = 3;
-for my $id (1 .. $num_comps) {
-    $comps->create({
-            name => "comp$id",
-        });
-}
+my @comps = map { $fixtures->competition(name => "comp$_") } (1 .. $num_comps);
 
 my $num_users = 10;
-for my $id (1 .. $num_users) {
-    my $user = $users->create({
-        username  => "user$id",
-        real_name => "User $id",
-        email     => "user$id\@nftatips.org",
-        password  => "pass$id",
-    });
+my @users = map {
+        $fixtures->user(username => "user$_", competitions => \@comps )
+    } (1 .. $num_users);
 
-    for my $compid (1 .. $num_comps) {
-        $user->add_to_competitions($comps->find({ name => "comp$compid" }));
-    }
-}
+is($memberships->count, $membership_count + $num_users * $num_comps);
 
 is($users->find({ username => 'user1' })
          ->competitions->search({ name => [qw/comp1 comp2/]})->count, 2);
