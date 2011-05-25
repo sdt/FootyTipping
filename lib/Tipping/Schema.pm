@@ -7,7 +7,7 @@ our $VERSION = "1";
 use Tipping::Config ();
 
 # load all Result classes in Tipping/Schema/Result
-__PACKAGE__->load_namespaces();
+__PACKAGE__->load_namespaces( default_resultset_class => 'ResultSet' );
 
 sub connect {                           ## no critic (ProhibitBuiltinHomonyms)
     my ($class, @params) = @_;
