@@ -63,7 +63,7 @@ __END__
 
 =HEAD1 NAME
 
-Test::Tipping::Fixtures - Easy-to-create test fixures
+Test::Tipping::Fixtures - Easy-to-create test fixtures
 
 =HEAD1 DESCRIPTION
 
