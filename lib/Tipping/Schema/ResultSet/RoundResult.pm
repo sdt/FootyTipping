@@ -18,7 +18,10 @@ sub update_results {
                                    ->round($round)
                                    ->competition($competition_id)
                                    ->newest_first
-                                   ->search(undef, { rows => 1 })
+                                   ->search(undef, {
+                                        rows => 1,
+                                        columns  => [qw/ me.timestamp /],
+                                     })
                                    ->single
                                    ->get_inflated_column('timestamp');
 

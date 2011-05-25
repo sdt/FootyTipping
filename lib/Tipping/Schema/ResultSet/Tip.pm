@@ -7,7 +7,7 @@ sub round {
     my ($self, $round) = @_;
     return $self->search(
             { 'game.round' => $round },
-            { prefetch => [qw/ game /] },
+            { join => [qw/ game /] },
         );
 }
 
@@ -15,7 +15,7 @@ sub tipper {
     my ($self, $user_id) = @_;
     return $self->search(
             { 'membership.user_id' => $user_id },
-            { prefetch => [qw/ membership /] },
+            { join => [qw/ membership /] },
         );
 }
 
@@ -23,7 +23,7 @@ sub competition {
     my ($self, $comp_id) = @_;
     return $self->search(
             { 'membership.competition_id' => $comp_id },
-            { prefetch => [qw/ membership /] },
+            { join => [qw/ membership /] },
         );
 }
 
