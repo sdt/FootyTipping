@@ -56,3 +56,33 @@ sub _gen_name {
 
 __PACKAGE__->meta->make_immutable;
 1;
+
+__END__
+
+=pod
+
+=HEAD1 NAME
+
+Test::Tipping::Fixtures - Easy-to-create test fixures
+
+=HEAD1 DESCRIPTION
+
+Creates test fixture database objects. Parameters correspond to column names.
+All parameters are optional. Extra parameters may be specified which correspond
+to related objects.
+
+=HEAD1 SYNOPSIS
+
+    my $schema = ...;
+    my $fixtures = Test::Tipping::Fixtures->new(schema => $schema);
+
+    my $comp1 = $fixtures->competition;
+    my $comp2 = $fixtures->competition;
+    my $user1  = $fixtures->user( username => 'something!' );
+    my $user2  = $fixtures->user( competitions => [ $comp1, $comp2 ] );
+
+=head1 AUTHOR
+
+Stephen Thirlwall <sdt@dr.com>
+
+=cut
