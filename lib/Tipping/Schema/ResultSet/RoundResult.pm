@@ -1,5 +1,5 @@
 package Tipping::Schema::ResultSet::RoundResult;
-use parent 'DBIx::Class::ResultSet';
+use parent 'Tipping::Schema::ResultSet';
 
 use Modern::Perl::5_14;
 use Tipping::Scores;
@@ -18,10 +18,8 @@ sub update_results {
                                    ->round($round)
                                    ->competition($competition_id)
                                    ->newest_first
-                                   ->search(undef, {
-                                        rows => 1,
-                                        columns  => [qw/ me.timestamp /],
-                                     })
+                                   ->rows(1)
+                                   ->columns(qw/ me.timestamp /)
                                    ->single
                                    ->get_inflated_column('timestamp');
 

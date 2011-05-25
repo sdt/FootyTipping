@@ -59,7 +59,7 @@ sub games :Private {
 
     my @games = $c->model('DB::Game')
                   ->round($c->stash->{round})
-                  ->with_teams->all
+                  ->with_teams
         or $c->detach('/default');
 
     $c->stash(games => \@games);

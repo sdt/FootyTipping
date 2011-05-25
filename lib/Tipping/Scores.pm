@@ -14,9 +14,11 @@ has schema => (
 sub raw_scores_for_round {
     my ($self, $args) = @_;
 
-    my @members = $self->schema->resultset('Membership')->search(
-                           { competition_id => $args->{competition_id} }
-                        )->get_column('membership_id')->all;
+    my @members = $self->schema->resultset('Membership')
+                       ->search({ competition_id => $args->{competition_id} })
+                       ->columns('membership_id')
+                       ->get_column('membership_id')
+                       ->all;
 
     # For each member we keep track of the number of correct tips, and
     # the number of games tipped.

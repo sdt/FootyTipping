@@ -1,5 +1,5 @@
 package Tipping::Schema::ResultSet::Tip;
-use parent 'DBIx::Class::ResultSet';
+use parent 'Tipping::Schema::ResultSet';
 
 use Modern::Perl::5_14;
 
@@ -29,12 +29,12 @@ sub competition {
 
 sub oldest_first {
     my ($self) = @_;
-    return $self->search(undef, { order_by => { -asc => 'timestamp' } });
+    return $self->order_by({ -asc => 'timestamp' });
 }
 
 sub newest_first {
     my ($self) = @_;
-    return $self->search(undef, { order_by => { -desc => 'timestamp' } });
+    return $self->order_by({ -desc => 'timestamp' });
 }
 
 1;

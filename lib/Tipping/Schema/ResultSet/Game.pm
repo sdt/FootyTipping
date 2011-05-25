@@ -1,5 +1,5 @@
 package Tipping::Schema::ResultSet::Game;
-use parent 'DBIx::Class::ResultSet';
+use parent 'Tipping::Schema::ResultSet';
 
 use Modern::Perl::5_14;
 
@@ -17,7 +17,6 @@ sub with_teams {
         },
         {
             prefetch => [qw/ venue /, { home => 'team' }, { away => 'team' }],
-            join     => [qw/ venue home away /],
             order_by => [qw/ me.start_time_utc venue.name /],
         },
     );
@@ -64,6 +63,7 @@ sub current_round {
     #TODO: Subtracting three hours from now is a bit of a hack meaning we
     #      consider a game must have finished three hours after it started.
     my $now = DateTime->now( time_zone => 'UTC' )->subtract( hours => 3 );
+    $now = DateTime->new( time_zone => 'UTC', year=>2011, month=>11);
 
     my $next_game = $self->search(
         {
@@ -74,17 +74,8 @@ sub current_round {
             order_by => { '-asc' => 'start_time_utc' },
             rows => 1,
         }
-    )->first;
-    return $next_game->round if $next_game;
-
-    my $final_game = $self->search(undef,
-        {
-            columns => [qw/ round /],
-            order_by => { '-desc' => 'start_time_utc' },
-            rows => 1,
-        }
-    )->first;
-    return $final_game->round;
+    )->single;
+    return $next_game ? $next_game->round : scalar($self->rounds);
 }
 
 1;
