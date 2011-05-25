@@ -1,5 +1,5 @@
 package Tipping::Schema::Result::Tip;
-use parent 'DBIx::Class';
+use parent 'Tipping::Schema::Result';
 
 use Modern::Perl::5_14;
 
