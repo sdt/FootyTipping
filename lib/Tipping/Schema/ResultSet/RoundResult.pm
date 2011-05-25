@@ -14,12 +14,13 @@ sub update_results {
 
     $schema->txn_do(sub{
 
-        my $most_recent_tip = $schema->resultset('Tip')
-                                     ->round($round)
-                                     ->competition($competition_id)
-                                     ->newest_first
-                                     ->search(undef, { rows => 1 })
-                                     ->single;
+        my $tip_timestamp = $schema->resultset('Tip')
+                                   ->round($round)
+                                   ->competition($competition_id)
+                                   ->newest_first
+                                   ->search(undef, { rows => 1 })
+                                   ->single
+                                   ->get_inflated_column('timestamp');
 
         my $result_timestamp = $schema->resultset('RoundResultTimestamp')
                                       ->find({
@@ -28,7 +29,7 @@ sub update_results {
                                         });
 
         if ((not defined $result_timestamp) or
-            ($result_timestamp->timestamp < $most_recent_tip->timestamp)) {
+            ($result_timestamp->timestamp < $tip_timestamp)) {
 
             my $scores = Tipping::Scores->new( schema => $schema );
             my $round_scores = $scores->scores_for_round($args);
@@ -42,11 +43,13 @@ sub update_results {
                         });
             }
 
+            # Set the round result timestamp to be the same as the most recent
+            # tip.
             $schema->resultset('RoundResultTimestamp')
                    ->update_or_create({
                         round           => $round,
                         competition_id  => $competition_id,
-                        timestamp       => $most_recent_tip->timestamp,
+                        timestamp       => $tip_timestamp,
                 });
         }
     });
