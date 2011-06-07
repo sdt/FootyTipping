@@ -32,15 +32,16 @@
       END;
     END -%]
 
-[%- BLOCK tip;
-      IF game.can_edit; %]
+[%- BLOCK tip; %]
 <input type="radio" name="game_[% game.game_id %]" value="[% team.is_home_team %]"
         [% IF game.tip AND (team.is_home_team == game.tip.home_team_to_win) %]
            checked="checked"
         [% END %]
+        [% IF NOT edit_mode; %]
+           disabled="disabled"
+        [% END %]
 />
-  [%  END;
-    END -%]
+[% END -%]
 
 <ul id="rounds">
 [% FOR r = rounds; %]  <li>[%- INCLUDE round_link -%]</li>
@@ -50,7 +51,7 @@
 <h1>Round [% round %]</h1>
 
 [% IF edit_mode; %]
-<form name="tips" action="[% c.req.uri %]" method="POST">
+<form name="tips" action="[% c.req.uri_with(edit => 0) %]" method="POST">
 [% END %]
 <table id="games">
 <tbody>
