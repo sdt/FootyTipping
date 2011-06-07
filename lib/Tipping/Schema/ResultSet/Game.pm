@@ -63,7 +63,6 @@ sub current_round {
     #TODO: Subtracting three hours from now is a bit of a hack meaning we
     #      consider a game must have finished three hours after it started.
     my $now = DateTime->now( time_zone => 'UTC' )->subtract( hours => 3 );
-    $now = DateTime->new( time_zone => 'UTC', year=>2011, month=>11);
 
     my $next_game = $self->search(
         {
