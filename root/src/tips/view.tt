@@ -6,7 +6,7 @@
       IF round == r;
         r;
       ELSE; -%]
-<a href="[% c.req.uri_with({ 'round' => r }) %]">[% r %]</a>
+<a href="[% c.req.base _ c.req.path _ '?round=' _ r %]">[% r %]</a>
 [%-   END;
     END -%]
 
@@ -37,7 +37,7 @@
         [% IF game.tip AND (team.is_home_team == game.tip.home_team_to_win) %]
            checked="checked"
         [% END %]
-        [% IF NOT edit_mode; %]
+        [% IF NOT (game.can_edit AND edit_mode) %]
            disabled="disabled"
         [% END %]
 />
