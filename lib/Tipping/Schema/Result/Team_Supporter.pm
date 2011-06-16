@@ -38,7 +38,7 @@ __END__
 
 =head1 NAME
 
-Tipping::Schema::Result::Yeam_User - DBIx::Class result source
+Tipping::Schema::Result::Team_User - DBIx::Class result source
 
 =head1 DESCRIPTION
 
