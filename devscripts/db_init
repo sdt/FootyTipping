@@ -45,3 +45,10 @@ for u in `seq -f '%02.f' 1 16`; do
         ./devscripts/gen-tips --username user$u --compname comp$c --firstround 1 --lastround 24
     done
 done
+for c in `seq -f '%02.f' 1 4`; do
+    r=1
+    while ./devscripts/update_tipping_results --compname comp$c --round $r; do
+        r=$(( $r + 1 ))
+    done
+    unset r
+done
