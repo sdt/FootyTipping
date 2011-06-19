@@ -31,7 +31,7 @@ fi
 
 create_user() {
     local i=$1
-    ./devscripts/create-user --username user$i --password pass$i --email user$i@nftatips.org --realname "User $i"
+    ./devscripts/create-user --username user$i --password pass$i --email user$i@nftatips.org --realname "User $i" --team Hawthorn
 }
 
 # Now add some extra stuff

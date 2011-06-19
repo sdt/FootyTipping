@@ -132,8 +132,9 @@ while (@comps) {
     $comp->delete;
     is(scalar $user_list[0]->competitions, --$num_comps);
 }
-$teams->find( { name => 'Hawthorn' } )->add_to_supporters({supporter => $user_list[0]});
-is($user_list[0]->team->team->name, 'Hawthorn');
+$user_list[0]->team( $teams->find( { name => 'Hawthorn' } ) );
+$user_list[0]->update;
+is($user_list[0]->team->name, 'Hawthorn');
 #$user_list[0]->team({ team => $teams->find( { name => 'Hawthorn' } ) });
 
 my $finished_games = $game_teams->search(

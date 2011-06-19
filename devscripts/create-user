@@ -31,9 +31,7 @@ $schema->txn_do(sub {
         });
 
     if (defined $team) {
-        my $supported_team = $schema->resultset('Team')->find({
-                name => $team
-            });
-        $supported_team->add_to_supporters({ supporter => $user });
+        $user->team( $schema->resultset('Team')->find({ name => $team }) );
+        $user->update;
     }
 });

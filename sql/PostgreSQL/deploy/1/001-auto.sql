@@ -1,6 +1,6 @@
 -- 
 -- Created by SQL::Translator::Producer::PostgreSQL
--- Created on Tue May 24 17:23:28 2011
+-- Created on Sun Jun 19 11:53:26 2011
 -- 
 ;
 --
@@ -25,22 +25,6 @@ CREATE TABLE "tbl_team" (
   PRIMARY KEY ("team_id"),
   CONSTRAINT "tbl_team_name" UNIQUE ("name"),
   CONSTRAINT "tbl_team_nickname" UNIQUE ("nickname")
-);
-
-;
---
--- Table: tbl_user
---
-CREATE TABLE "tbl_user" (
-  "user_id" serial NOT NULL,
-  "username" character varying NOT NULL,
-  "real_name" character varying NOT NULL,
-  "email" character varying NOT NULL,
-  "password" character(50) NOT NULL,
-  "is_superuser" boolean DEFAULT '0' NOT NULL,
-  PRIMARY KEY ("user_id"),
-  CONSTRAINT "tbl_user_real_name" UNIQUE ("real_name"),
-  CONSTRAINT "tbl_user_username" UNIQUE ("username")
 );
 
 ;
@@ -83,6 +67,24 @@ CREATE INDEX "tbl_round_result_timestamp_idx_competition_id" on "tbl_round_resul
 
 ;
 --
+-- Table: tbl_user
+--
+CREATE TABLE "tbl_user" (
+  "user_id" serial NOT NULL,
+  "username" character varying NOT NULL,
+  "real_name" character varying NOT NULL,
+  "email" character varying NOT NULL,
+  "team_id" integer,
+  "password" character(50) NOT NULL,
+  "is_superuser" boolean DEFAULT '0' NOT NULL,
+  PRIMARY KEY ("user_id"),
+  CONSTRAINT "tbl_user_real_name" UNIQUE ("real_name"),
+  CONSTRAINT "tbl_user_username" UNIQUE ("username")
+);
+CREATE INDEX "tbl_user_idx_team_id" on "tbl_user" ("team_id");
+
+;
+--
 -- Table: tbl_venue_sponsorname
 --
 CREATE TABLE "tbl_venue_sponsorname" (
@@ -93,6 +95,22 @@ CREATE TABLE "tbl_venue_sponsorname" (
   PRIMARY KEY ("venue_id", "name")
 );
 CREATE INDEX "tbl_venue_sponsorname_idx_venue_id" on "tbl_venue_sponsorname" ("venue_id");
+
+;
+--
+-- Table: tbl_game_team
+--
+CREATE TABLE "tbl_game_team" (
+  "game_id" integer NOT NULL,
+  "behinds" integer DEFAULT 0 NOT NULL,
+  "is_home_team" boolean NOT NULL,
+  "team_id" integer NOT NULL,
+  "goals" integer DEFAULT 0 NOT NULL,
+  PRIMARY KEY ("game_id", "team_id"),
+  CONSTRAINT "tbl_game_team_game_id_is_home_team" UNIQUE ("game_id", "is_home_team")
+);
+CREATE INDEX "tbl_game_team_idx_game_id" on "tbl_game_team" ("game_id");
+CREATE INDEX "tbl_game_team_idx_team_id" on "tbl_game_team" ("team_id");
 
 ;
 --
@@ -112,35 +130,6 @@ CREATE TABLE "tbl_membership" (
 );
 CREATE INDEX "tbl_membership_idx_competition_id" on "tbl_membership" ("competition_id");
 CREATE INDEX "tbl_membership_idx_user_id" on "tbl_membership" ("user_id");
-
-;
---
--- Table: tbl_team_supporter
---
-CREATE TABLE "tbl_team_supporter" (
-  "user_id" integer NOT NULL,
-  "team_id" integer NOT NULL,
-  PRIMARY KEY ("user_id", "team_id"),
-  CONSTRAINT "tbl_team_supporter_user_id" UNIQUE ("user_id")
-);
-CREATE INDEX "tbl_team_supporter_idx_user_id" on "tbl_team_supporter" ("user_id");
-CREATE INDEX "tbl_team_supporter_idx_team_id" on "tbl_team_supporter" ("team_id");
-
-;
---
--- Table: tbl_game_team
---
-CREATE TABLE "tbl_game_team" (
-  "game_id" integer NOT NULL,
-  "behinds" integer DEFAULT 0 NOT NULL,
-  "is_home_team" boolean NOT NULL,
-  "team_id" integer NOT NULL,
-  "goals" integer DEFAULT 0 NOT NULL,
-  PRIMARY KEY ("game_id", "team_id"),
-  CONSTRAINT "tbl_game_team_game_id_is_home_team" UNIQUE ("game_id", "is_home_team")
-);
-CREATE INDEX "tbl_game_team_idx_game_id" on "tbl_game_team" ("game_id");
-CREATE INDEX "tbl_game_team_idx_team_id" on "tbl_game_team" ("team_id");
 
 ;
 --
@@ -184,24 +173,12 @@ ALTER TABLE "tbl_round_result_timestamp" ADD FOREIGN KEY ("competition_id")
   REFERENCES "tbl_competition" ("competition_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
 
 ;
+ALTER TABLE "tbl_user" ADD FOREIGN KEY ("team_id")
+  REFERENCES "tbl_team" ("team_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
+
+;
 ALTER TABLE "tbl_venue_sponsorname" ADD FOREIGN KEY ("venue_id")
   REFERENCES "tbl_venue" ("venue_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
-
-;
-ALTER TABLE "tbl_membership" ADD FOREIGN KEY ("competition_id")
-  REFERENCES "tbl_competition" ("competition_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
-
-;
-ALTER TABLE "tbl_membership" ADD FOREIGN KEY ("user_id")
-  REFERENCES "tbl_user" ("user_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
-
-;
-ALTER TABLE "tbl_team_supporter" ADD FOREIGN KEY ("user_id")
-  REFERENCES "tbl_user" ("user_id") ON DELETE CASCADE DEFERRABLE;
-
-;
-ALTER TABLE "tbl_team_supporter" ADD FOREIGN KEY ("team_id")
-  REFERENCES "tbl_team" ("team_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
 
 ;
 ALTER TABLE "tbl_game_team" ADD FOREIGN KEY ("game_id")
@@ -210,6 +187,14 @@ ALTER TABLE "tbl_game_team" ADD FOREIGN KEY ("game_id")
 ;
 ALTER TABLE "tbl_game_team" ADD FOREIGN KEY ("team_id")
   REFERENCES "tbl_team" ("team_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
+
+;
+ALTER TABLE "tbl_membership" ADD FOREIGN KEY ("competition_id")
+  REFERENCES "tbl_competition" ("competition_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
+
+;
+ALTER TABLE "tbl_membership" ADD FOREIGN KEY ("user_id")
+  REFERENCES "tbl_user" ("user_id") ON DELETE CASCADE ON UPDATE CASCADE DEFERRABLE;
 
 ;
 ALTER TABLE "tbl_round_result" ADD FOREIGN KEY ("membership_id")

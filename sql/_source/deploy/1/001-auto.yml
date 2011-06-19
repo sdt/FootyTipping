@@ -151,7 +151,7 @@ schema:
           type: NORMAL
       name: tbl_game
       options: []
-      order: 5
+      order: 4
     tbl_game_team:
       constraints:
         - deferrable: 1
@@ -270,7 +270,7 @@ schema:
           type: NORMAL
       name: tbl_game_team
       options: []
-      order: 10
+      order: 8
     tbl_membership:
       constraints:
         - deferrable: 1
@@ -422,7 +422,7 @@ schema:
           type: NORMAL
       name: tbl_membership
       options: []
-      order: 8
+      order: 9
     tbl_round_result:
       constraints:
         - deferrable: 1
@@ -490,7 +490,7 @@ schema:
           type: NORMAL
       name: tbl_round_result
       options: []
-      order: 11
+      order: 10
     tbl_round_result_timestamp:
       constraints:
         - deferrable: 1
@@ -558,7 +558,7 @@ schema:
           type: NORMAL
       name: tbl_round_result_timestamp
       options: []
-      order: 6
+      order: 5
     tbl_team:
       constraints:
         - deferrable: 1
@@ -633,94 +633,6 @@ schema:
       name: tbl_team
       options: []
       order: 2
-    tbl_team_supporter:
-      constraints:
-        - deferrable: 1
-          expression: ''
-          fields:
-            - user_id
-            - team_id
-          match_type: ''
-          name: ''
-          on_delete: ''
-          on_update: ''
-          options: []
-          reference_fields: []
-          reference_table: ''
-          type: PRIMARY KEY
-        - deferrable: 1
-          expression: ''
-          fields:
-            - user_id
-          match_type: ''
-          name: tbl_team_supporter_user_id
-          on_delete: ''
-          on_update: ''
-          options: []
-          reference_fields: []
-          reference_table: ''
-          type: UNIQUE
-        - deferrable: 1
-          expression: ''
-          fields:
-            - user_id
-          match_type: ''
-          name: tbl_team_supporter_fk_user_id
-          on_delete: CASCADE
-          on_update: ''
-          options: []
-          reference_fields:
-            - user_id
-          reference_table: tbl_user
-          type: FOREIGN KEY
-        - deferrable: 1
-          expression: ''
-          fields:
-            - team_id
-          match_type: ''
-          name: tbl_team_supporter_fk_team_id
-          on_delete: CASCADE
-          on_update: CASCADE
-          options: []
-          reference_fields:
-            - team_id
-          reference_table: tbl_team
-          type: FOREIGN KEY
-      fields:
-        team_id:
-          data_type: integer
-          default_value: ~
-          is_nullable: 0
-          is_primary_key: 1
-          is_unique: 0
-          name: team_id
-          order: 2
-          size:
-            - 0
-        user_id:
-          data_type: integer
-          default_value: ~
-          is_nullable: 0
-          is_primary_key: 1
-          is_unique: 1
-          name: user_id
-          order: 1
-          size:
-            - 0
-      indices:
-        - fields:
-            - user_id
-          name: tbl_team_supporter_idx_user_id
-          options: []
-          type: NORMAL
-        - fields:
-            - team_id
-          name: tbl_team_supporter_idx_team_id
-          options: []
-          type: NORMAL
-      name: tbl_team_supporter
-      options: []
-      order: 9
     tbl_tip:
       constraints:
         - deferrable: 1
@@ -845,7 +757,7 @@ schema:
           type: NORMAL
       name: tbl_tip
       options: []
-      order: 12
+      order: 11
     tbl_user:
       constraints:
         - deferrable: 1
@@ -884,6 +796,19 @@ schema:
           reference_fields: []
           reference_table: ''
           type: UNIQUE
+        - deferrable: 1
+          expression: ''
+          fields:
+            - team_id
+          match_type: ''
+          name: tbl_user_fk_team_id
+          on_delete: CASCADE
+          on_update: CASCADE
+          options: []
+          reference_fields:
+            - team_id
+          reference_table: tbl_team
+          type: FOREIGN KEY
       fields:
         email:
           data_type: varchar
@@ -902,7 +827,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: is_superuser
-          order: 6
+          order: 7
           size:
             - 0
         password:
@@ -912,7 +837,7 @@ schema:
           is_primary_key: 0
           is_unique: 0
           name: password
-          order: 5
+          order: 6
           size:
             - 50
         real_name:
@@ -923,6 +848,16 @@ schema:
           is_unique: 1
           name: real_name
           order: 3
+          size:
+            - 0
+        team_id:
+          data_type: integer
+          default_value: ~
+          is_nullable: 1
+          is_primary_key: 0
+          is_unique: 0
+          name: team_id
+          order: 5
           size:
             - 0
         user_id:
@@ -946,10 +881,15 @@ schema:
           order: 2
           size:
             - 0
-      indices: []
+      indices:
+        - fields:
+            - team_id
+          name: tbl_user_idx_team_id
+          options: []
+          type: NORMAL
       name: tbl_user
       options: []
-      order: 3
+      order: 6
     tbl_venue:
       constraints:
         - deferrable: 1
@@ -1011,7 +951,7 @@ schema:
       indices: []
       name: tbl_venue
       options: []
-      order: 4
+      order: 3
     tbl_venue_sponsorname:
       constraints:
         - deferrable: 1
@@ -1108,7 +1048,6 @@ translator:
         Tipping::Schema::Result::RoundResult: RoundResult
         Tipping::Schema::Result::RoundResultTimestamp: RoundResultTimestamp
         Tipping::Schema::Result::Team: Team
-        Tipping::Schema::Result::Team_Supporter: Team_Supporter
         Tipping::Schema::Result::Tip: Tip
         Tipping::Schema::Result::User: User
         Tipping::Schema::Result::Venue: Venue
@@ -1161,7 +1100,7 @@ translator:
           name: tbl_competition
           result_class: Tipping::Schema::Result::Competition
           resultset_attributes: {}
-          resultset_class: DBIx::Class::ResultSet
+          resultset_class: Tipping::Schema::ResultSet
           schema: *1
           source_name: Competition
           sqlt_deploy_callback: default_sqlt_deploy_hook
@@ -1321,7 +1260,7 @@ translator:
           name: tbl_game_team
           result_class: Tipping::Schema::Result::Game_Team
           resultset_attributes: {}
-          resultset_class: DBIx::Class::ResultSet
+          resultset_class: Tipping::Schema::ResultSet
           schema: *1
           source_name: Game_Team
           sqlt_deploy_callback: default_sqlt_deploy_hook
@@ -1417,7 +1356,7 @@ translator:
           name: tbl_membership
           result_class: Tipping::Schema::Result::Membership
           resultset_attributes: {}
-          resultset_class: DBIx::Class::ResultSet
+          resultset_class: Tipping::Schema::ResultSet
           schema: *1
           source_name: Membership
           sqlt_deploy_callback: default_sqlt_deploy_hook
@@ -1502,7 +1441,7 @@ translator:
           name: tbl_round_result_timestamp
           result_class: Tipping::Schema::Result::RoundResultTimestamp
           resultset_attributes: {}
-          resultset_class: DBIx::Class::ResultSet
+          resultset_class: Tipping::Schema::ResultSet
           schema: *1
           source_name: RoundResultTimestamp
           sqlt_deploy_callback: default_sqlt_deploy_hook
@@ -1542,10 +1481,10 @@ translator:
                 cascade_copy: 1
                 cascade_delete: 1
                 join_type: LEFT
-              class: Tipping::Schema::Result::Team_Supporter
+              class: Tipping::Schema::Result::User
               cond:
                 foreign.team_id: self.team_id
-              source: Tipping::Schema::Result::Team_Supporter
+              source: Tipping::Schema::Result::User
           _unique_constraints:
             primary: *8
             tbl_team_name:
@@ -1555,58 +1494,9 @@ translator:
           name: tbl_team
           result_class: Tipping::Schema::Result::Team
           resultset_attributes: {}
-          resultset_class: DBIx::Class::ResultSet
+          resultset_class: Tipping::Schema::ResultSet
           schema: *1
           source_name: Team
-          sqlt_deploy_callback: default_sqlt_deploy_hook
-        Team_Supporter: !!perl/hash:DBIx::Class::ResultSource::Table
-          _columns:
-            team_id:
-              data_type: integer
-              is_nullable: 0
-            user_id:
-              data_type: integer
-              is_nullable: 0
-          _columns_info_loaded: 0
-          _ordered_columns:
-            - user_id
-            - team_id
-          _primaries: &9
-            - user_id
-            - team_id
-          _relationships:
-            supporter:
-              attrs:
-                accessor: single
-                fk_columns:
-                  user_id: 1
-                is_foreign_key_constraint: 1
-                undef_on_null_fk: 1
-              class: Tipping::Schema::Result::User
-              cond:
-                foreign.user_id: self.user_id
-              source: Tipping::Schema::Result::User
-            team:
-              attrs:
-                accessor: single
-                fk_columns:
-                  team_id: 1
-                is_foreign_key_constraint: 1
-                undef_on_null_fk: 1
-              class: Tipping::Schema::Result::Team
-              cond:
-                foreign.team_id: self.team_id
-              source: Tipping::Schema::Result::Team
-          _unique_constraints:
-            primary: *9
-            tbl_team_supporter_user_id:
-              - user_id
-          name: tbl_team_supporter
-          result_class: Tipping::Schema::Result::Team_Supporter
-          resultset_attributes: {}
-          resultset_class: DBIx::Class::ResultSet
-          schema: *1
-          source_name: Team_Supporter
           sqlt_deploy_callback: default_sqlt_deploy_hook
         Tip: !!perl/hash:DBIx::Class::ResultSource::Table
           _columns:
@@ -1637,7 +1527,7 @@ translator:
             - game_id
             - home_team_to_win
             - timestamp
-          _primaries: &10
+          _primaries: &9
             - membership_id
             - game_id
             - timestamp
@@ -1676,7 +1566,7 @@ translator:
                 foreign.user_id: self.submitter_id
               source: Tipping::Schema::Result::User
           _unique_constraints:
-            primary: *10
+            primary: *9
           name: tbl_tip
           result_class: Tipping::Schema::Result::Tip
           resultset_attributes: {}
@@ -1707,6 +1597,9 @@ translator:
             real_name:
               data_type: varchar
               is_nullable: 0
+            team_id:
+              data_type: integer
+              is_nullable: 1
             user_id:
               data_type: integer
               is_auto_increment: 1
@@ -1720,9 +1613,10 @@ translator:
             - username
             - real_name
             - email
+            - team_id
             - password
             - is_superuser
-          _primaries: &11
+          _primaries: &10
             - user_id
           _relationships:
             memberships:
@@ -1748,15 +1642,16 @@ translator:
             team:
               attrs:
                 accessor: single
-                cascade_delete: 1
-                cascade_update: 1
-                join_type: LEFT
-              class: Tipping::Schema::Result::Team_Supporter
+                fk_columns:
+                  team_id: 1
+                is_foreign_key_constraint: 1
+                undef_on_null_fk: 1
+              class: Tipping::Schema::Result::Team
               cond:
-                foreign.user_id: self.user_id
-              source: Tipping::Schema::Result::Team_Supporter
+                foreign.team_id: self.team_id
+              source: Tipping::Schema::Result::Team
           _unique_constraints:
-            primary: *11
+            primary: *10
             tbl_user_real_name:
               - real_name
             tbl_user_username:
@@ -1764,7 +1659,7 @@ translator:
           name: tbl_user
           result_class: Tipping::Schema::Result::User
           resultset_attributes: {}
-          resultset_class: DBIx::Class::ResultSet
+          resultset_class: Tipping::Schema::ResultSet
           schema: *1
           source_name: User
           sqlt_deploy_callback: default_sqlt_deploy_hook
@@ -1785,7 +1680,7 @@ translator:
             - venue_id
             - name
             - time_zone
-          _primaries: &12
+          _primaries: &11
             - venue_id
           _relationships:
             games:
@@ -1809,13 +1704,13 @@ translator:
                 foreign.venue_id: self.venue_id
               source: Tipping::Schema::Result::Venue_SponsorName
           _unique_constraints:
-            primary: *12
+            primary: *11
             tbl_venue_name:
               - name
           name: tbl_venue
           result_class: Tipping::Schema::Result::Venue
           resultset_attributes: {}
-          resultset_class: DBIx::Class::ResultSet
+          resultset_class: Tipping::Schema::ResultSet
           schema: *1
           source_name: Venue
           sqlt_deploy_callback: default_sqlt_deploy_hook
@@ -1840,7 +1735,7 @@ translator:
             - name
             - start_year
             - end_year
-          _primaries: &13
+          _primaries: &12
             - venue_id
             - name
           _relationships:
@@ -1856,11 +1751,11 @@ translator:
                 foreign.venue_id: self.venue_id
               source: Tipping::Schema::Result::Venue
           _unique_constraints:
-            primary: *13
+            primary: *12
           name: tbl_venue_sponsorname
           result_class: Tipping::Schema::Result::Venue_SponsorName
           resultset_attributes: {}
-          resultset_class: DBIx::Class::ResultSet
+          resultset_class: Tipping::Schema::ResultSet
           schema: *1
           source_name: Venue_SponsorName
           sqlt_deploy_callback: default_sqlt_deploy_hook
@@ -1884,13 +1779,13 @@ translator:
             - version
             - ddl
             - upgrade_sql
-          _primaries: &14
+          _primaries: &13
             - id
           _relationships: {}
           _unique_constraints:
             dbix_class_deploymenthandler_versions_version:
               - version
-            primary: *14
+            primary: *13
           name: dbix_class_deploymenthandler_versions
           result_class: DBIx::Class::DeploymentHandler::VersionStorage::Standard::VersionResult
           resultset_attributes: {}
@@ -1912,13 +1807,13 @@ translator:
           - dbi:Pg:dbname=tipping;host=localhost
           - tipping
           - tipping
-          - &15
+          - &14
             AutoCommit: 1
             PrintError: 0
             RaiseError: 1
             ShowErrorStatement: 1
             pg_enable_utf8: 1
-        _dbic_connect_attributes: *15
+        _dbic_connect_attributes: *14
         _in_do_block: 0
         _sql_maker: ~
         _sql_maker_opts: {}
@@ -1926,18 +1821,17 @@ translator:
         schema: *1
         transaction_depth: 0
     sources:
-      - Competition
       - Venue
       - Team
+      - Competition
       - User
       - Game
       - Membership
       - RoundResultTimestamp
       - RoundResult
       - Game_Team
-      - Tip
       - Venue_SponsorName
-      - Team_Supporter
+      - Tip
   parser_type: SQL::Translator::Parser::DBIx::Class
   producer_args: {}
   producer_type: SQL::Translator::Producer::YAML
