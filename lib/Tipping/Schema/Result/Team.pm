@@ -36,7 +36,7 @@ __PACKAGE__->many_to_many(
 );
 
 __PACKAGE__->has_many(
-    supporters => 'Tipping::Schema::Result::Team_Supporter',
+    supporters => 'Tipping::Schema::Result::User',
     'team_id'
 );
 

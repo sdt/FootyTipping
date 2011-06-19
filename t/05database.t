@@ -35,6 +35,7 @@ my $games = $schema->resultset('Game');
 my $venues = $schema->resultset('Venue');
 my $comps = $schema->resultset('Competition');
 my $users = $schema->resultset('User');
+my $teams = $schema->resultset('Team');
 my $memberships = $schema->resultset('Membership');
 
 is($games->count, 187, '187 games');
@@ -93,7 +94,7 @@ my $num_comps = 3;
 my @comps = map { $fixtures->competition(name => "comp$_") } (1 .. $num_comps);
 
 my $num_users = 10;
-my @users = map {
+my @user_list = map {
         $fixtures->user(username => "user$_", competitions => \@comps )
     } (1 .. $num_users);
 
@@ -126,6 +127,15 @@ is($users->search({ username => 'user1' })
          ->search_related('competition', { 'name' => [qw/comp1 comp2/] })
          ->count, 2);
 
+while (@comps) {
+    my $comp = shift @comps;
+    $comp->delete;
+    is(scalar $user_list[0]->competitions, --$num_comps);
+}
+$user_list[0]->team( $teams->find( { name => 'Hawthorn' } ) );
+$user_list[0]->update;
+is($user_list[0]->team->name, 'Hawthorn');
+#$user_list[0]->team({ team => $teams->find( { name => 'Hawthorn' } ) });
 
 my $finished_games = $game_teams->search(
     {

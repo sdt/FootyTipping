@@ -23,6 +23,11 @@ __PACKAGE__->add_columns(
     real_name => $string,
     email     => $string,
 
+    team_id => {
+        data_type           => 'integer',
+        is_nullable         => 1,
+    },
+
     password => {
         data_type           => 'char',
         size                => 50,
@@ -63,9 +68,9 @@ __PACKAGE__->many_to_many(
     'competition'   # GOTCHA!: competition, not competition_id!
 );
 
-__PACKAGE__->might_have(
-    team => 'Tipping::Schema::Result::Team_Supporter',
-    'user_id'
+__PACKAGE__->belongs_to(
+    team => 'Tipping::Schema::Result::Team',
+    'team_id'
 );
 
 sub can_view_tips {
