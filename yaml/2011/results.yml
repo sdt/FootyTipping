@@ -1661,3 +1661,315 @@ update:
       relation: game
       values:
         has_ended: 1
+  - search:
+      game.round: 12
+      team.name: St Kilda
+    update:
+      behinds: 9
+      goals: 12
+  - search:
+      game.round: 12
+      team.name: Western Bulldogs
+    update:
+      behinds: 9
+      goals: 8
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 12
+      team.name: Adelaide
+    update:
+      behinds: 7
+      goals: 10
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 12
+      team.name: West Coast
+    update:
+      behinds: 16
+      goals: 15
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 12
+      team.name: Geelong
+    update:
+      behinds: 10
+      goals: 13
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 12
+      team.name: Hawthorn
+    update:
+      behinds: 5
+      goals: 13
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 12
+      team.name: Gold Coast
+    update:
+      behinds: 9
+      goals: 9
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 12
+      team.name: North Melbourne
+    update:
+      behinds: 14
+      goals: 18
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 12
+      team.name: Carlton
+    update:
+      behinds: 10
+      goals: 19
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 12
+      team.name: Brisbane
+    update:
+      behinds: 9
+      goals: 9
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 12
+      team.name: Sydney
+    update:
+      behinds: 21
+      goals: 9
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 12
+      team.name: Richmond
+    update:
+      behinds: 11
+      goals: 9
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 12
+      team.name: Fremantle
+    update:
+      behinds: 8
+      goals: 15
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 12
+      team.name: Essendon
+    update:
+      behinds: 10
+      goals: 9
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 12
+      team.name: Melbourne
+    update:
+      behinds: 5
+      goals: 6
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 12
+      team.name: Collingwood
+    update:
+      behinds: 15
+      goals: 19
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 13
+      team.name: Western Bulldogs
+    update:
+      behinds: 16
+      goals: 14
+  - search:
+      game.round: 13
+      team.name: Adelaide
+    update:
+      behinds: 10
+      goals: 10
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 13
+      team.name: Essendon
+    update:
+      behinds: 18
+      goals: 12
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 13
+      team.name: North Melbourne
+    update:
+      behinds: 9
+      goals: 17
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 13
+      team.name: Hawthorn
+    update:
+      behinds: 15
+      goals: 19
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 13
+      team.name: Gold Coast
+    update:
+      behinds: 10
+      goals: 8
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 13
+      team.name: St Kilda
+    update:
+      behinds: 6
+      goals: 11
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 13
+      team.name: Geelong
+    update:
+      behinds: 10
+      goals: 15
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 13
+      team.name: Brisbane
+    update:
+      behinds: 10
+      goals: 14
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 13
+      team.name: Richmond
+    update:
+      behinds: 17
+      goals: 18
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 13
+      team.name: Melbourne
+    update:
+      behinds: 17
+      goals: 22
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 13
+      team.name: Fremantle
+    update:
+      behinds: 12
+      goals: 8
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 13
+      team.name: Carlton
+    update:
+      behinds: 10
+      goals: 15
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 13
+      team.name: Sydney
+    update:
+      behinds: 6
+      goals: 10
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 13
+      team.name: West Coast
+    update:
+      behinds: 20
+      goals: 15
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
+  - search:
+      game.round: 13
+      team.name: Port Adelaide
+    update:
+      behinds: 10
+      goals: 13
+    update_related:
+      relation: game
+      values:
+        has_ended: 1
