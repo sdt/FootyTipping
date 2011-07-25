@@ -26,6 +26,7 @@ requires 'File::Slurp';
 requires 'Getopt::Lazy';
 requires 'GraphViz';
 requires 'Hash::MoreUtils';
+requires 'indirect';
 requires 'Modern::Perl';
 requires 'YAML::XS';
 requires 'WWW::Mechanize';
